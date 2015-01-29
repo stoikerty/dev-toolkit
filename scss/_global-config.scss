@@ -1,0 +1,30 @@
+// ---
+// Caution! these have an effect on a lot of elements
+// --
+
+// Define repsonsive breakpoints for application
+$use-em-breakpoints  : true;  // use px for breakpoints
+
+// retrieve useful helpers
+@import "_helpers.scss";
+
+// Separate breakpoints into 2 views
+// (do not use quotes when assigning to variable)
+
+// one for mobile devices, small screens
+$breakpoints-view-small : phone smart tablet7;
+// one for desktop-like devices, 10inch and above
+$breakpoints-view-large : tablet10 pcsmall pclarge;
+
+// --------
+
+// retrieve mixins, specific to this application
+@import "global-mixins/_animations.scss";
+@import "global-mixins/_font-settings.scss";
+
+// Application Variable Defaults
+$grey             : #ddd;
+$padding          : 10px;
+$background-color : #e6e6e6;
+$body-color       : #fafafa;
+

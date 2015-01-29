@@ -1,0 +1,112 @@
+@import "../_helpers.scss";
+
+@mixin font-family($font-family:default, $font-style:default){
+    $type : default;
+
+    @if $font-family == small {
+        // use regular style for small font
+
+        $type : $font-family;
+        @if $font-style == normal { font-weight : normal; }
+        @if $font-style == bold   { font-weight : bold; }
+        @if $font-style == italic { font-weight : normal; font-style : italic; }
+
+    } @else {
+        // use custom font for different styles
+
+        @if $font-style != default {
+            @if $font-style == normal {
+                font-weight : normal;
+                $type : $font-family;
+            }
+            @if $font-style == bold {
+                font-weight : normal;
+                $type : bold;
+            }
+        } @else {
+            // revert to default styling
+            font-weight : normal;
+            $type : $font-family;
+        }
+    }
+
+    @if $type == default { font-family : 'Verdana', arial, sans-serif; }
+    @if $type == text    { font-family : 'Verdana', arial, sans-serif; }
+    @if $type == bold    { font-family : 'Verdana', arial, sans-serif; }
+    @if $type == small   { font-family : 'Verdana', arial, sans-serif; }
+}
+
+@mixin title($size:medium, $color:default, $font-style:default){
+    $font-family : default;
+
+    @if $size == x-small { font-size : 16px; $font-family : small; }
+    @if $size == small   { font-size : 18px; }
+    @if $size == medium  { font-size : 23px; }
+    @if $size == large   { font-size : 28px; }
+    @if $size == x-large { font-size : 32px; }
+
+    @if $color == default { color : #222; }
+    @else if $color != auto { color : $color; }
+
+    @include font-family($font-family, $font-style);
+}
+
+@mixin text($size:medium, $color:default, $font-style:default){
+    $font-family : text;
+
+    @if $size == x-small { font-size : 12px; $font-family : small; }
+    @if $size == small   { font-size : 14px; $font-family : small; }
+    @if $size == medium  { font-size : 16px; }
+    @if $size == large   { font-size : 18px; }
+    @if $size == x-large { font-size : 20px; }
+
+    @if $color == default { color : #222; }
+    @else if $color != auto { color : $color; }
+
+    @include font-family($font-family, $font-style);
+}
+
+@mixin label($size:medium, $color:default, $font-style:default){
+    $font-family : default;
+
+    @if $size == x-small { font-size : 11px; $font-family : small; }
+    @if $size == small   { font-size : 12px; $font-family : small; }
+    @if $size == medium  { font-size : 13px; $font-family : small; }
+    @if $size == large   { font-size : 16px; }
+    @if $size == x-large { font-size : 18px; }
+
+    @if $color == default { color : #999; }
+    @else if $color != auto { color : $color; }
+
+    @include font-family($font-family, $font-style);
+}
+
+@mixin figure($size:medium, $color:default, $font-style:default){
+    $font-family : default;
+
+    @if $size == x-small { font-size : 12px; $font-family : small; }
+    @if $size == small   { font-size : 14px; $font-family : small; }
+    @if $size == medium  { font-size : 20px; }
+    @if $size == large   { font-size : 24px; }
+    @if $size == x-large { font-size : 28px; }
+
+    @if $color == default { color : #333; }
+    @else if $color != auto { color : $color; }
+
+    @include font-family($font-family, $font-style);
+}
+
+@mixin emptyHeight($height : 1.4em){
+    line-height : $height;
+    min-height  : $height;
+}
+
+@mixin fontAwesome($line-height : 1){
+    display     : inline-block;
+    font-family : FontAwesome;
+    font-style  : normal;
+    font-weight : normal;
+    line-height : $line-height;
+    -webkit-font-smoothing  : antialiased;
+    -moz-osx-font-smoothing : grayscale;
+}

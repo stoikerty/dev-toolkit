@@ -1,0 +1,21 @@
+{
+  "name": "stk-toolbox-project",
+  "version": "0.0.0",
+  "description": "{ Project }",
+  "main": "run-server.js",
+  "scripts": {
+    "server": "node run-server.js",
+    "build": "node run-build.js"
+  },
+  "author": "Jorge Antunes",
+  "license": "",
+  "dependencies": {
+    "ampersand-view": "^7.2.0",
+    "domready": "^1.0.7",
+    "hapi": "^6.8.1",
+    "livereload": "^0.3.4",
+    "moonboots-static": "^1.2.0",
+    "moonboots_hapi": "^2.4.0",
+    "templatizer": "^1.0.1"
+  }
+}
