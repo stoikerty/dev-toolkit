@@ -1,9 +1,11 @@
 How to use this folder
 ======================
 
-Warning: You will need to understand how to integrate compiled templates using javascript, either with [Ampersand.js(https://ampersandjs.com/) or by using another way. This toolbox does not have pure html-files of any kind, everything is compiled from .jade templates. [The built output is minimalistic and consists of only 3 files, an html-file a js-file and a css-file](http://read.humanjavascript.com/ch02-the-big-decision.html).
+Warning:
+You will need to understand how to integrate compiled templates using javascript, either with [Ampersand.js](https://ampersandjs.com/) or by using another way. This toolbox does not have pure html-files of any kind, everything is compiled from .jade templates. [The built output is minimalistic and consists of only 3 files, an html-file a js-file and a css-file](http://read.humanjavascript.com/ch02-the-big-decision.html).
+Also, you need to have previous experience in using npm and common-js modules. Furthermore, it is beneficial if you also know about sass/scss for creating your css.
 
-You will need to install [node with npm](http://nodejs.org/), [ruby & compass](http://compass-style.org/install/).
+You will need to install [node with npm](http://nodejs.org/) as well as [ruby & compass](http://compass-style.org/install/).
 
 Make sure to install the correct version of compass:
 > gem install compass --version 0.12.6
