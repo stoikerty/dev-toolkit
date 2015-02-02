@@ -7,6 +7,7 @@ var moonboots = new Moonboots({
         main : __dirname + '/app/app.js',
         developmentMode : false,
         minify : true,
+        resourcePrefix : '',
         stylesheets : [
             __dirname + '/public/css/style.css'
         ],
