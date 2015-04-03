@@ -225,8 +225,7 @@ pip-log.txt
 node_modules/
 
 #############
-## Sass
+## Generated Public Files
 #############
 
-.sass-cache/
-public/css/
+public/
