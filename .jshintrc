@@ -1,0 +1,15 @@
+{
+  // Available jshint options
+  // https://github.com/linnovate/mean/blob/master/.jshintrc
+  // http://jshint.com/docs/options/#devel
+
+  // Enforcing
+  "eqeqeq": true,   // true: Require triple equals (===) for comparison
+  "undef": true,    // true: Require all non-global variables to be declared (prevents global leaks)
+  "unused": "vars", // true: Require all defined variables be used
+
+  // Environments
+  "browser": true, // Web Browser (window, document, etc)
+  "node": true,    // Node.js
+  "devel": false   // Development/debugging (alert, confirm, etc)
+}
