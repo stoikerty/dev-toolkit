@@ -4,7 +4,7 @@
 // Supports multiple input & output files
 
 var gulp       = require('gulp');
-var gutil      = require('gulp-util'); 
+var gutil      = require('gulp-util');
 var browserify = require('browserify');
 var reactify   = require('reactify');
 var watchify   = require('watchify');

@@ -1,6 +1,6 @@
 var readAssetsPath = require("./utils/generateAssetsPath");
 
-var src  = './gulp/assets';
+var src  = './assets';
 var assetsPath = readAssetsPath();
 var assetsHost = '';
 var publicDir = './public';
@@ -14,7 +14,7 @@ module.exports = {
   // BrowserSync options can be found here:
   // http://www.browsersync.io/docs/options/
   browserSync: {
-    proxy: 'localhost:3000',
+    proxy: 'localhost:2000',
 
     // Stop the browser from automatically opening
     open: false,
