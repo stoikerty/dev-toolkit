@@ -2,7 +2,7 @@ stk-toolbox
 =============
 
 Install Node : [Node Platform](https://nodejs.org/)<br>
-**Start Server** : `npm run server` or `npm start`<br>
+**Start Server** : `npm run server`<br>
 **Start Asset Watcher** : `npm run watch`<br>
 *( `npm run build` builds files for production but needs personalised code-changes within gulp config & tasks )*
 
