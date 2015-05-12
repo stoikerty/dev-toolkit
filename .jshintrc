@@ -7,9 +7,15 @@
   "eqeqeq": true,   // true: Require triple equals (===) for comparison
   "undef": true,    // true: Require all non-global variables to be declared (prevents global leaks)
   "unused": "vars", // true: Require all defined variables be used
+  "esnext": true,   // true: Allow ES.next (ES6) syntax (ex: `const`)
 
   // Environments
   "browser": true, // Web Browser (window, document, etc)
   "node": true,    // Node.js
-  "devel": false   // Development/debugging (alert, confirm, etc)
+  "devel": false,  // Development/debugging (alert, confirm, etc)
+
+  // Custom Globals
+  "globals": {
+    "app": true
+  }
 }

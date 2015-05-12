@@ -13,6 +13,7 @@
   "author": "Jorge Antunes",
   "license": "ISC",
   "devDependencies": {
+    "babelify": "^6.0.2",
     "browser-sync": "^2.2.3",
     "browserify": "^9.0.3",
     "gulp": "^3.8.11",

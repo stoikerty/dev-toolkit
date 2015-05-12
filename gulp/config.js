@@ -38,7 +38,7 @@ module.exports = {
     dest: dest + '/js',
 
     transforms: {
-      reactify: true,
+      babelify: true
     },
     rootFiles: [
       {

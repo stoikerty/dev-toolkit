@@ -4,9 +4,9 @@
 // Supports multiple input & output files
 
 var gulp       = require('gulp');
-var gutil      = require('gulp-util');
+var gutil      = require('gulp-util'); 
 var browserify = require('browserify');
-var reactify   = require('reactify');
+var babelify   = require('babelify');
 var watchify   = require('watchify');
 var source     = require('vinyl-source-stream');
 var buffer     = require('vinyl-buffer');
@@ -48,11 +48,11 @@ function runBrowserify(files, transforms, options){
     if (options && options.devMode) { devMode = true; }
 
     var bundler = browserify({
-      entries: file.src, // Only need initial file, browserify finds the deps
-      debug: devMode     // Enable sourcemaps
+        entries: file.src, // Only need initial file, browserify finds the deps
+        debug: devMode        // Enable sourcemaps
     });
 
-    if (transforms.reactify) bundler.transform(reactify);   // Convert JSX
+    if (transforms.babelify) bundler.transform(babelify); // Convert ES6 syntax & JSX
     
     // save the bundle creation process as a function
     var createBundle = function (bundler){

@@ -1,20 +1,20 @@
-var React = require('react');
+import React from 'react';
 
 var Body = React.createClass({
-  getInitialState : function () {
+  getInitialState() {
     return {
       classes : '',
       color : true
     };
   },
 
-  switchColor : function () {
+  switchColor() {
     this.setState({
         color: !this.state.color
     });
   },
 
-  render : function () {
+  render() {
     return (
       <body>
         <div
@@ -30,4 +30,4 @@ var Body = React.createClass({
   }
 });
 
-module.exports = Body;
+export default Body;

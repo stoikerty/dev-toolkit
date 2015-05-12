@@ -7,7 +7,7 @@ var config     = require('../config');
 
 gulp.task('jshint', function () {
   return gulp.src(config.jshint.src)
-    .pipe(react())
+    .pipe(react({ es6module : true }))
     .pipe(jshint())
     .pipe(jshint.reporter('jshint-stylish'))
     .pipe(jshint.reporter('fail'));
