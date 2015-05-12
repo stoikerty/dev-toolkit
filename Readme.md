@@ -4,7 +4,7 @@ stk-toolbox
 Install Node: [Node Platform](https://nodejs.org/)<br>
 Start Server: `npm run server` or `npm start`<br>
 Start Asset Watcher: `npm run watch`<br>
-*Build Files for Production:  `npm run build` (personalised code-changes needed within gulp config and tasks)*
+*( `npm run build` builds files for production but needs personalised code-changes within gulp config & tasks )*
 
 Now you should be ready to go to start building your project.
 
