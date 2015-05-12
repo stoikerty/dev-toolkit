@@ -1,0 +1,10 @@
+@import 'mixins/animations';
+@import 'mixins/font-settings';
+@import 'mixins/helpers';
+
+body{
+  background-color : #eee;
+  font-family: Verdana;
+
+  *, *:before, *:after{ box-sizing : border-box; }
+}

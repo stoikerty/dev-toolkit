@@ -22,5 +22,5 @@ app.use(errorHandler({
   showStack: true
 }));
 
-console.log("Project Server listening on http://%s:%s", hostname, port);
+console.log("\nProject Server listening on http://%s:%s", hostname, port);
 app.listen(port, hostname);
