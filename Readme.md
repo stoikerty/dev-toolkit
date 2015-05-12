@@ -9,7 +9,7 @@ Install Node : [Node Platform](https://nodejs.org/)<br>
 Now you should be ready to go to start building your project.
 
 ---
-
 If you are looking for a resource to learn from, have a look at the **Human JavaScript** video course titled ["Build an App with React and Ampersand"](http://learn.humanjavascript.com/react-ampersand) or read the ["Human JavaScript Book"](http://read.humanjavascript.com/) by [@HenrikJoreteg](twitter.com/henrikjoreteg)
 
+---
 A Server is fired on `localhost:2000`, while the watch-runner proxies it through [BrowserSync](http://www.browsersync.io/) on `localhost:3000` (default). BrowserSync will reload on file-changes and synchronise scrolling etc. on any browsers connected to `http://localhost:3000`.
