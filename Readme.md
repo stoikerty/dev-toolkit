@@ -1,4 +1,4 @@
-stk-toolbox
+stk-toolkit
 =============
 
 Install Node : [Node Platform](https://nodejs.org/)<br>
