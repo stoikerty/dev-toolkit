@@ -215,17 +215,3 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
-
-
-
-#############
-## Node
-#############
-
-node_modules/
-
-#############
-## Generated Public Files
-#############
-
-public/

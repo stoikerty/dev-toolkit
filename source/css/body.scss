@@ -1,0 +1,25 @@
+@import "compass/css3/box-sizing";
+@import "compass/css3/box-shadow";
+@import "compass/utilities/general/clearfix";
+
+body {
+	position  : relative;
+	width     : 100%;
+	padding   : 0px;
+	margin    : 0;
+	border    : none;
+	font-size : 100%;
+	font      : inherit;
+	vertical-align : baseline;
+	line-height    : 1;
+	
+  font-family: Verdana;
+
+	background-color : #fff;
+
+  @include box-sizing(border-box);
+
+	/* simple clearfix to contain all elements */
+	//overflow: hidden;
+	content: " ";
+}

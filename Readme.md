@@ -1,15 +1,30 @@
-stk-toolkit
-=============
+How to use this folder
+======================
 
-Install Node : [Node Platform](https://nodejs.org/)<br>
-**Start Server** : `npm run server`<br>
-**Start Asset Watcher** : `npm run watch`<br>
-*( `npm run build` builds files for production but needs personalised code-changes within gulp config & tasks )*
+The source code is built using ["middleman"](http://middlemanapp.com/)
+Assuming you have ruby and rubygems installed, to install and use middleman you can type in the following line in the terminal:
+> gem install middleman
 
-Now you should be ready to go to start building your project.
+Then, inside this folder run `bundle install` to get and install the necessary gems used in the project.
 
----
-If you are looking for a resource to learn from, have a look at the **Human JavaScript** video course titled ["Build an App with React and Ampersand"](http://learn.humanjavascript.com/react-ampersand) or read the ["Human JavaScript Book"](http://read.humanjavascript.com/) by [@HenrikJoreteg](twitter.com/henrikjoreteg)
 
----
-:point_right: A Server is fired on `localhost:2000`, while the watch-runner proxies it through [BrowserSync](http://www.browsersync.io/) on `localhost:3000` (default). BrowserSync will reload on file-changes and synchronise scrolling etc. on any browsers connected to `http://localhost:3000`.
+Building the final project files
+--------------------------------
+> bundle exec middleman build
+
+All your files will be compiled into the `build` folder.
+
+
+Using the project folder as a development server
+------------------------------------------------
+> bundle exec middleman server
+
+if encountering problems you can also use:
+> middleman server -p 4567 -e development
+
+shorter syntax version should work as well:
+> middleman server
+
+Now you can modify the files in the `source` directory, they will be automatically compiled and your page should be refreshed for you to see the results.
+
+**~ happy coding ~**
