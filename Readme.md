@@ -15,4 +15,4 @@ If you are looking for a resource to learn from, have a look at the **Human Java
 :point_right: A Server is fired on `localhost:2000`, while the watch-runner proxies it through [BrowserSync](http://www.browsersync.io/) on `localhost:3000` (default). BrowserSync will reload on file-changes and synchronise scrolling etc. on any browsers connected to `http://localhost:3000`.
 
 ---
-with the kind support of BrowserStack ![BrowserStack-Image](https://raw.githubusercontent.com/stoikerty/stk-toolkit/master/browserstack-logo.png)
+kindly supported by ![BrowserStack-Image](https://raw.githubusercontent.com/stoikerty/stk-toolkit/master/browserstack-logo.png) [BrowserStack](https://www.browserstack.com)
