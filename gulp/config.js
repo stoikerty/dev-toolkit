@@ -1,9 +1,11 @@
-var readAssetsPath = require("./utils/generateAssetsPath");
+var generateAssetsPath = require("./utils/generateAssetsPath");
 
-var src  = './assets';
-var assetsPath = readAssetsPath();
+var src  = './gulp/assets';
+var assetsPath = generateAssetsPath({ name: 'assets'});
 var assetsHost = '';
-var publicDir = './public';
+var proxyURL = 'localhost:2000';
+var rootDir = '.';
+var publicDir = 'public/';
 var dest = publicDir + assetsPath;
 
 module.exports = {
@@ -14,7 +16,9 @@ module.exports = {
   // BrowserSync options can be found here:
   // http://www.browsersync.io/docs/options/
   browserSync: {
-    proxy: 'localhost:2000',
+    proxy: proxyURL,
+
+    reloadDelay: 100,
 
     // Stop the browser from automatically opening
     open: false,
@@ -22,10 +26,10 @@ module.exports = {
     ghostMode: {
       clicks: false,
       scroll: true,
-      forms: true
+      forms: true,
     },
     // show what browsers are connected
-    logConnections: true
+    logConnections: true,
   },
 
   // JS Configuration
@@ -35,21 +39,23 @@ module.exports = {
 
   javascript: {
     src: src + '/javascript/**/*.js',
+    serverSrc: src + '/javascript/**/*.js',
     dest: dest + '/js',
 
     transforms: {
-      babelify: true
+      babelify: true,
     },
     rootFiles: [
       {
         src: src + '/javascript/app.js',
-        dest: 'app.js'
-      }
-    ]
+        destName: 'app.js',
+        destDir: dest + '/js',
+      },
+    ],
   },
 
-  jshint: {
-    src: src + '/javascript/**/*.js'
+  eslint: {
+    src: src + '/javascript/**/*.js',
   },
 
   // CSS Configuration
@@ -59,6 +65,7 @@ module.exports = {
 
   sass: {
     src: src + '/stylesheets/**/*.{sass,scss}',
+    watchSrc: src + '/stylesheets/**/*.{sass,scss}',
     dest: dest + '/css',
 
     settings: {
@@ -69,6 +76,7 @@ module.exports = {
     },
 
     production:{
+      src: src + '/stylesheets/**/*.{sass,scss}',
       settings: {
         indentedSyntax: false,  // Enable .scss syntax!
         imagePath: assetsHost + assetsPath,   // Used by the image-url helper
@@ -91,8 +99,13 @@ module.exports = {
   // Static Assets
   // ==============
 
-  filesPublic: {
-    src: src + '/files-public/**/*',
+  files: {
+    src: src + '/files/**/*',
+    dest: publicDir
+  },
+
+  publicRoot: {
+    src: src + '/public-root/**/*',
     dest: publicDir
   },
 
@@ -103,7 +116,7 @@ module.exports = {
 
   images: {
     src: src + '/images/**/*',
-    dest: dest
+    dest: dest + '/images',
   },
 
   // Production Settings

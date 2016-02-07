@@ -1,0 +1,10 @@
+// retrieve configuration
+@import 'global-config';
+
+@import 'default-html-stylesheet';
+
+// style specific to the application
+@import 'application/style';
+
+// page-specific styling
+@import 'app-body/style';

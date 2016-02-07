@@ -1,15 +1,16 @@
 var express = require("express"),
-    app = express(),
-    bodyParser = require('body-parser'),
-    errorHandler = require('errorhandler'),
-    methodOverride = require('method-override'),
-    hostname = process.env.HOSTNAME || 'localhost',
-    port = parseInt(process.env.PORT, 10) || 2000,
-    publicDir = process.argv[2] || __dirname + '/public';
+  app = express(),
+  bodyParser = require('body-parser'),
+  errorHandler = require('errorhandler'),
+  methodOverride = require('method-override'),
+  hostname = process.env.HOSTNAME || 'localhost',
+  port = parseInt(process.env.PORT, 10) || 2000,
+  publicDir = process.argv[2] || __dirname + '/public';
 
-app.get("/", function (req, res) {
-  res.redirect("/index.html");
+app.get('/', function (req, res) {
+  res.sendFile(__dirname + "/public/index.html");
 });
+
 
 app.use(methodOverride());
 app.use(bodyParser.json());
@@ -22,5 +23,5 @@ app.use(errorHandler({
   showStack: true
 }));
 
-console.log("\nProject Server listening on http://%s:%s", hostname, port);
-app.listen(port, hostname);
+console.log("Project Server listening on http://%s:%s", hostname, port);
+app.listen(port);

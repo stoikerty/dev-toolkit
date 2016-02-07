@@ -6,6 +6,7 @@
 var gulp   = require('gulp');
 var gutil  = require('gulp-util');
 var watch  = require('gulp-watch');
+var gaze   = require('gaze');
 var config = require('../config');
 
 gulp.task('watch', function(cb){
@@ -17,9 +18,18 @@ gulp.task('watch', function(cb){
   return cb;
 });
 
-gulp.task('run-watch', ['javascript-watch', 'browserSync', 'sass', 'images', 'files-public'], function(callback) {
-  watch(config.sass.src, function() { gulp.start(['sass']); });
-  watch(config.images.src, function() { gulp.start(['images']); });
-  watch(config.filesPublic.src, function() { gulp.start(['files-public']); });
-  watch(config.fonts.src, function() { gulp.start(['fonts']); });
+var watchFiles = function(files, task){
+  gaze(files, function() {
+    this.on('changed', function(filepath) {
+      gulp.start([task]);
+    });
+  });
+}
+
+gulp.task('run-watch', ['javascript-watch', 'browserSync', 'sass', 'images', 'fonts', 'files', 'public-root'], function(callback) {
+  watchFiles(config.sass.src, 'sass');
+  watchFiles(config.images.src, 'images');
+  watchFiles(config.fonts.src, 'fonts');
+  watchFiles(config.files.src, 'files');
+  watchFiles(config.publicRoot.src, 'public-root');
 });
