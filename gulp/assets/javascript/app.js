@@ -5,7 +5,6 @@ import AppBody from './AppBody';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import domready from 'domready';
-import each from 'amp-each';
 
 // import individual utils
 const { queryByHook } = app.utils;
