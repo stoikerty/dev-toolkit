@@ -1,0 +1,31 @@
+{
+  "name": "stk-toolkit",
+  "version": "4.0.0",
+  "description": "{ Project }",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stoikerty/stk-toolkit.git"
+  },
+  "keywords": [
+    "webpack",
+    "sass",
+    "react",
+    "browserify",
+    "gulp",
+    "moonboots",
+    "middleman"
+  ],
+  "author": "Jorge Antunes",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/stoikerty/stk-toolkit/issues"
+  },
+  "homepage": "https://github.com/stoikerty/stk-toolkit#readme",
+  "devDependencies": {
+    "webpack": "^1.12.14"
+  }
+}
