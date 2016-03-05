@@ -1,6 +1,6 @@
 {
   "name": "stk-toolkit-project",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "{ Project }",
   "main": "server.js",
   "repository": {
