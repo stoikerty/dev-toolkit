@@ -10,7 +10,7 @@ const PATHS = {
 
 export default {
   entry: {
-    app: PATHS.client
+    client: PATHS.client
   },
   output: {
     path: PATHS.build,
@@ -21,6 +21,7 @@ export default {
       {
         test: /\.js$/,
         loader: 'babel-loader',
+        exclude: path.resolve(__dirname, "node_modules"),
         query: {
           presets: ['es2015', 'react']
         }
