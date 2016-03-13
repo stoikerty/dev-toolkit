@@ -4,8 +4,8 @@ import hbs from 'express-handlebars';
 GLOBAL.app = {};
 
 app.server = {};
-app.server.hostname = '';
-app.server.port = 28892;
+app.server.hostname = 'localhost';
+app.server.port = 3000;
 
 // Create express server instance
 // -> Set the folder for html views & disable powered-by header

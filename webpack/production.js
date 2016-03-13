@@ -15,6 +15,4 @@ compiler.run((err, stats)=>{
   console.log(stats.toString(config.stats));
 });
 
-// Start Server on specific port
-console.log("Project Server listening on http://%s:%s", app.server.hostname, app.server.port);
-app.server.instance.listen(app.server.port);
+app.server.start();

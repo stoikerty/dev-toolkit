@@ -1,4 +1,5 @@
-const path = require('path');
+import path from 'path';
+import webpack from 'webpack';
 
 const DEBUG = !process.argv.includes('--release');
 const VERBOSE = process.argv.includes('--verbose');
@@ -9,22 +10,30 @@ const PATHS = {
 };
 
 export default {
-  entry: {
-    client: PATHS.client
-  },
+  // devtool: 'cheap-module-eval-source-map',
+  entry: [
+    'webpack-hot-middleware/client',
+    PATHS.client
+  ],
   output: {
     path: PATHS.build,
-    filename: 'app.js'
+    filename: 'app.js',
+    publicPath: '/'
   },
+  plugins: [
+    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
+  ],
   module: {
     loaders: [
       {
-        test: /\.js$/,
+        // test: /\.js$/,
+        // loaders: ['babel'],
+        // exclude: path.resolve(__dirname, "node_modules"),
+        // include: __dirname
+        test: /\.jsx?$/,
         loader: 'babel-loader',
-        exclude: path.resolve(__dirname, "node_modules"),
-        query: {
-          presets: ['es2015', 'react']
-        }
+        exclude: /node_modules/
       }
     ]
   },

@@ -4,8 +4,17 @@ import serveStatic from 'serve-static';
 import './bootstrap';
 import router from './router';
 
-// Serve the files in the public folder
-app.server.instance.use(serveStatic('build'));
+// launch server later using start-method
+app.server.start = ()=>{
+  app.server.instance.use(serveStatic('build'));
 
-// Use React Router
-app.server.instance.use(router);
+  app.server.instance.listen(app.server.port, function(error) {
+    if (error) {
+      console.error(error)
+    } else {
+      console.info('==> 🌎  Listening on port %s. Open up http://' + app.server.hostname + ':%s/ in your browser.', app.server.port, app.server.port)
+    }
+  })
+
+  app.server.instance.use(router);
+};
