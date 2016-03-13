@@ -10,7 +10,7 @@ const PATHS = {
 };
 
 export default {
-  // devtool: 'cheap-module-eval-source-map',
+  devtool: 'source-map',
   entry: [
     'webpack-hot-middleware/client',
     PATHS.client
@@ -27,13 +27,9 @@ export default {
   module: {
     loaders: [
       {
-        // test: /\.js$/,
-        // loaders: ['babel'],
-        // exclude: path.resolve(__dirname, "node_modules"),
-        // include: __dirname
         test: /\.jsx?$/,
         loader: 'babel-loader',
-        exclude: /node_modules/
+        exclude: path.resolve(__dirname, "../node_modules")
       }
     ]
   },
