@@ -3,10 +3,10 @@ import { Router, browserHistory, RouterContext } from 'react-router';
 
 import routes from './routes';
 
-export default class extends React.Component{
+export default class RouterContainer extends React.Component{
   constructor(props){
     super(props);
-    this.displayName = 'Router';
+    this.displayName = 'RouterContainer';
 
     this.state = {};
   }

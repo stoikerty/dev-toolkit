@@ -1,40 +1,55 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import domready from 'domready';
+import RedBox from 'redbox-react';
 
-let render = () => {
-  const Router = require('./Router').default;
-  const rootEl = document.querySelector('[data-jshook~="app-body"]');
-  ReactDOM.render(
-    <Router/>,
-    rootEl
-  );
-}
+class App {
+  constructor() {
+    this.render = this.render.bind(this);
+    this.hotReRender = this.hotReRender.bind(this);
+    this.renderError = this.renderError.bind(this);
+    this.rootElement = null;
 
-if (module.hot) {
-  // Support hot reloading of components
-  // and display an overlay for runtime errors
-  const renderApp = render;
-  const rootEl = document.querySelector('[data-jshook~="app-body"]');
-  const renderError = (error) => {
-    const RedBox = require('redbox-react')
+    domready(()=> {
+      this.rootElement = document.querySelector('[data-jshook~="app-body"]');
+      this.render();
+
+      // Support hot reloading of components
+      if (module.hot) {
+        module.hot.accept('./RouterContainer', () => {
+          setTimeout(this.hotReRender);
+        });
+      }
+    });
+  }
+
+  // render App with fresh version of required module
+  render(){
+    const RootComponent = require('./RouterContainer').default;
+
+    ReactDOM.render(
+      <RootComponent/>,
+      this.rootElement
+    );
+  }
+
+  // re-render after hot-reloading a module
+  hotReRender(){
+    try {
+      this.render();
+    } catch (error) {
+      this.renderError(error);
+    }
+  }
+
+  // display an overlay for runtime errors
+  renderError(error){
     ReactDOM.render(
       <RedBox error={error} />,
-      rootEl
+      this.rootElement
     );
-  };
-  render = () => {
-    try {
-      renderApp()
-    } catch (error) {
-      renderError(error)
-    }
-  };
-  module.hot.accept('./Router', () => {
-    setTimeout(render)
-  });
+  }
 }
 
-domready(()=> {
-  render();
-});
+// start up the app
+new App();

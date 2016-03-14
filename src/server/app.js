@@ -1,13 +1,15 @@
 import serveStatic from 'serve-static';
+import router from './router';
 
 // Preconfigure the `app`-object
 import './bootstrap';
-import router from './router';
 
-// launch server later using start-method
+// launch server later with webpack using start-method
 app.server.start = ()=>{
+  // serve build folder
   app.server.instance.use(serveStatic('build'));
 
+  // Listen on specified port
   app.server.instance.listen(app.server.port, function(error) {
     if (error) {
       console.error(error)
@@ -16,5 +18,6 @@ app.server.start = ()=>{
     }
   })
 
+  // start react-router
   app.server.instance.use(router);
 };

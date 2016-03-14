@@ -1,6 +1,7 @@
 import express from 'express';
 import hbs from 'express-handlebars';
 
+// Create Node Global
 GLOBAL.app = {};
 
 app.server = {};
