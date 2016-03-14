@@ -11,7 +11,7 @@ export default class Component extends React.Component{
 
   render() {
     return (
-      <div className="component">
+      <div className={s.Component}>
         Component
       </div>
     );

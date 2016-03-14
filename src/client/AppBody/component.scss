@@ -1,11 +1,13 @@
 @import 'style/config.scss';
 
-.component{
+.Component{
   @include position(relative, block, 100%);
   float : left;
   clear : both;
   padding : $grid * 2;
   box-sizing : border-box;
+  min-height: $grid * 3;
+  @include proto(2, 0.5);
 
   transition: all 0.2s $ease-in-out-quart;
 }
