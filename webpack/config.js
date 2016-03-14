@@ -5,11 +5,12 @@ const DEBUG = !process.argv.includes('--release');
 const VERBOSE = process.argv.includes('--verbose');
 
 const PATHS = {
-  client: path.join(__dirname, '../src/client/app.js'),
-  build: path.join(__dirname, '../build')
+  client: path.resolve(__dirname, '../src/client/app.js'),
+  build: path.resolve(__dirname, '../build')
 };
 
 export default {
+  // context: path.resolve(__dirname, '../src/client'),
   devtool: 'source-map',
   entry: [
     'webpack-hot-middleware/client',
@@ -29,8 +30,24 @@ export default {
       {
         test: /\.jsx?$/,
         loader: 'babel-loader',
-        exclude: path.resolve(__dirname, "../node_modules")
+        exclude: path.resolve(__dirname, '../node_modules')
+      },
+      {
+        test: /\.scss$/,
+        loaders: ['style-loader', 'css-loader', 'sass-loader']
       }
+    ]
+  },
+
+  // allow loading of files using client-path
+  sassLoader: {
+    includePaths: [ PATHS.client ]
+  },
+
+  resolve: {
+    modulesDirectories: [
+      path.resolve(__dirname, '../src/client'),
+      'node_modules'
     ]
   },
 

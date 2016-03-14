@@ -1,6 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router';
 
+//import s from './style/app.scss';
+import Component from './AppBody/Component';
+
 export default class AppBody extends React.Component{
   constructor(props){
     super(props);
@@ -22,6 +25,8 @@ export default class AppBody extends React.Component{
             {' Non-existing Page' }
           </Link>
         </div>
+
+        <Component/>
 
         <div className="current-route">
           { this.props.children }

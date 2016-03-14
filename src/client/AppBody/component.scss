@@ -1,0 +1,11 @@
+@import '~style/config';
+
+.component{
+  @include position(relative, block, 100%);
+  float : left;
+  clear : both;
+  padding : $grid * 2;
+  box-sizing : border-box;
+
+  transition: all 0.2s $ease-in-out-quart;
+}

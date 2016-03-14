@@ -1,0 +1,67 @@
+// ---
+// Caution! these have an effect on a lot of elements
+// --
+
+// compass config option: make gradients work on IE
+$experimental-support-for-svg: true;
+
+// Define repsonsive breakpoints for application
+$breakpoint-phone    : 0px;
+$breakpoint-smart    : 300px;
+$breakpoint-tablet7  : 440px;
+$breakpoint-tablet10 : 768px;
+$breakpoint-pcsmall  : 992px;
+$breakpoint-pclarge  : 1200px;
+
+// Width of the Views available (no small view available yet)
+$view-mobile  : 100%;
+// $view-pcsmall : 740px;
+$view-pclarge : 962px;
+
+// the side-padding used on a view
+$view-padding : 1em;
+
+// use pixels for breakpoints
+$use-em-breakpoints  : false;
+
+// useful helper mixins
+@import "mixins/_helpers.scss";
+
+// Our custom function for rewriting the urls of background-images for caching
+$image-path-replace-string: "__IMAGE_URL__" !default;
+@function image-url($url) {
+  @return url("#{$image-path-replace-string}#{$url}");
+}
+
+// font-settings for app (get passed through mixin as defaults)
+$text-color-default : #333;
+$font-xxlarge : 30px;
+$font-xlarge  : 26px;
+$font-large   : 22px;
+$font-medium  : 18px;
+$font-small   : 14px;
+$font-xsmall  : 12px;
+$font-path : '../fonts';
+@import "mixins/_font-settings.scss";
+
+// set common variables for use throughout the app
+$grid : 10px;
+
+// New brand colors
+$brand-green        : #14a58e;
+$brand-red          : #e01d58;
+$brand-blue         : #3597ad;
+$brand-grey-lighter : #f5f5f5;
+$brand-grey-light   : #ddd;
+$brand-grey         : #999;
+$brand-grey-medium  : #666;
+$brand-grey-dark    : #222;
+$brand-orange       : #f29918;
+$brand-yellow       : #ffcb41;
+$brand-purple       : #90437e;
+
+// Shades
+$brand-red-light  : lighten(desaturate($brand-red, 2%), 3%);  // #fd3d54
+$brand-red-dark   : darken(desaturate($brand-red, 23%), 8%);  // #e22037
+$brand-blue-light : lighten(desaturate($brand-blue, 2%), 3%); // #1287fd
+$brand-blue-dark  : darken(desaturate($brand-blue, 23%), 8%); // #196bbe
