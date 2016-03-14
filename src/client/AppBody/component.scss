@@ -1,4 +1,4 @@
-@import '~style/config';
+@import 'style/config.scss';
 
 .component{
   @include position(relative, block, 100%);

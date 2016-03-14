@@ -1,5 +1,6 @@
 import React from 'react';
-// import s from './component.scss';
+import s from './component.scss';
+// if (typeof window !== 'undefined') require('./component.scss');
 
 export default class Component extends React.Component{
   constructor(props){

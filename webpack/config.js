@@ -1,15 +1,22 @@
 import path from 'path';
 import webpack from 'webpack';
 
+
+import register from 'ignore-styles';
+register(['.scss']);
+
 const DEBUG = !process.argv.includes('--release');
 const VERBOSE = process.argv.includes('--verbose');
 
+const clientRoot = path.resolve(__dirname, '../src/client');
 const PATHS = {
-  client: path.resolve(__dirname, '../src/client/app.js'),
+  clientRoot: clientRoot,
+  client: path.resolve(clientRoot, 'app.js'),
   build: path.resolve(__dirname, '../build')
 };
 
 export default {
+  // target: 'node',
   // context: path.resolve(__dirname, '../src/client'),
   devtool: 'source-map',
   entry: [
@@ -23,7 +30,10 @@ export default {
   },
   plugins: [
     new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.HotModuleReplacementPlugin(),
+    new webpack.HotModuleReplacementPlugin()
+    // ,
+    // new webpack.IgnorePlugin(/\.scss$/),
+    // new webpack.NormalModuleReplacementPlugin(/\.scss$/, 'node-noop')
   ],
   module: {
     loaders: [
@@ -34,19 +44,24 @@ export default {
       },
       {
         test: /\.scss$/,
-        loaders: ['style-loader', 'css-loader', 'sass-loader']
+        loaders: [
+          // 'null-loader',
+          'style-loader',
+          'css-loader',
+          'sass-loader'
+        ]
       }
     ]
   },
 
-  // allow loading of files using client-path
+  // allow loading of scss files using client-path
   sassLoader: {
-    includePaths: [ PATHS.client ]
+    includePaths: [ PATHS.clientRoot ]
   },
 
   resolve: {
     modulesDirectories: [
-      path.resolve(__dirname, '../src/client'),
+      PATHS.clientRoot,
       'node_modules'
     ]
   },
