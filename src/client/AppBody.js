@@ -1,13 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-// Styles are imported here, they are currently only supported on the client
-// so leaving the import on while starting the server makes the server break
-// TODO: implement `webpack-isomorphic-tools`
 import s from './style/app.scss';
-// import s from './style.scss';
-// if (typeof window !== 'undefined') require('./style/app.scss');
-// else console.log('server');
 import Component from './AppBody/Component';
 
 export default class AppBody extends React.Component{

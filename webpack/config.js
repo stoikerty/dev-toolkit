@@ -1,7 +1,7 @@
 import path from 'path';
 import webpack from 'webpack';
 
-
+// Disable `.scss`-imports on the server with this package
 import register from 'ignore-styles';
 register(['.scss']);
 
@@ -16,25 +16,24 @@ const PATHS = {
 };
 
 export default {
-  // target: 'node',
-  // context: path.resolve(__dirname, '../src/client'),
   devtool: 'source-map',
+
   entry: [
     'webpack-hot-middleware/client',
     PATHS.client
   ],
+
   output: {
     path: PATHS.build,
     filename: 'app.js',
     publicPath: '/'
   },
+
   plugins: [
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin()
-    // ,
-    // new webpack.IgnorePlugin(/\.scss$/),
-    // new webpack.NormalModuleReplacementPlugin(/\.scss$/, 'node-noop')
   ],
+
   module: {
     loaders: [
       {
@@ -44,12 +43,7 @@ export default {
       },
       {
         test: /\.scss$/,
-        loaders: [
-          // 'null-loader',
-          'style-loader',
-          'css-loader',
-          'sass-loader'
-        ]
+        loaders: ['style-loader', 'css-loader', 'sass-loader']
       }
     ]
   },
