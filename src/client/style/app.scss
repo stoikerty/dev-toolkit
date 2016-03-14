@@ -2,7 +2,7 @@
 @import './config.scss';
 
 // Global-style specific to the application
-body{
+body:global{
   // Body Style
   font-family : 'Source Sans Pro', Verdana, Arial, sans-serif;
   margin : 0;
@@ -10,15 +10,15 @@ body{
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
 
-  .app-body{
-    // Defaults
-    *{ box-sizing : border-box; }
-    img{ max-width : 100%; }
+.AppBody{
+  // Defaults
+  *{ box-sizing : border-box; }
+  img{ max-width : 100%; }
 
-    // Remove 300ms click-delay for IE11+
-    a[href], button, .btn, .button { touch-action: manipulation; }
+  // Remove 300ms click-delay for IE11+
+  a[href], button, .btn, .button { touch-action: manipulation; }
 
-    @include font(medium);
-  }
+  @include font(medium);
 }

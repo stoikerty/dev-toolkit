@@ -14,7 +14,7 @@ export default class AppBody extends React.Component{
 
   render() {
     return (
-      <div className="app-body">
+      <div className={s.AppBody}>
         { '{ stk-toolkit-4 }' }
 
         <div className="navigation">
