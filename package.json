@@ -27,6 +27,7 @@
   },
   "homepage": "https://github.com/stoikerty/stk-toolkit#readme",
   "devDependencies": {
+    "autoprefixer": "^6.3.3",
     "babel-cli": "^6.6.5",
     "babel-core": "^6.7.2",
     "babel-loader": "^6.2.4",
@@ -37,6 +38,7 @@
     "node-sass": "^3.4.2",
     "nodemon": "^1.9.1",
     "null-loader": "^0.1.1",
+    "postcss-loader": "^0.8.2",
     "redbox-react": "^1.2.2",
     "sass-loader": "^3.2.0",
     "style-loader": "^0.13.0",

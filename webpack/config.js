@@ -1,5 +1,6 @@
 import path from 'path';
 import webpack from 'webpack';
+import autoprefixer from 'autoprefixer';
 
 // -----
 
@@ -82,6 +83,7 @@ export default {
         loaders: [
           'style-loader',
           'css-loader?modules&importLoaders=1&localIdentName=' + cssChunkNaming,
+          'postcss-loader',
           'sass-loader'
         ]
       }
@@ -92,6 +94,17 @@ export default {
   sassLoader: {
     includePaths: scssConfigIncludePaths
   },
+
+  // `postcss-loader`-specific config
+  postcss: [
+    autoprefixer({
+      browsers: [
+        '> 0.8%',
+        'last 2 versions',
+        'Explorer >= 9'
+      ]
+    })
+  ],
 
   resolve: {
     modulesDirectories: [
