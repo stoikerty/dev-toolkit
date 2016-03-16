@@ -3,17 +3,19 @@
 
 // Global-style specific to the application
 body:global{
-  // Body Style
+  // Body Style. Puh-lease no margin and better contrast
   font-family : 'Source Sans Pro', Verdana, Arial, sans-serif;
+  color : #282828;
   margin : 0;
   background-color : $white-96;
 
+  // make fonts look nicer
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 .AppBody{
-  // Defaults
+  // Style Defaults. Use border-box & make sure images don't overflow.
   *{ box-sizing : border-box; }
   img{ max-width : 100%; }
 
