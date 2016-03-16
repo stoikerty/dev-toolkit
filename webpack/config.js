@@ -97,6 +97,8 @@ export default {
 
   // `postcss-loader`-specific config
   postcss: [
+    // Supported Browsers via `Autoprefixer`
+    // see: https://github.com/ai/browserslist
     autoprefixer({
       browsers: [
         '> 0.8%',
