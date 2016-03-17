@@ -6,7 +6,7 @@ GLOBAL.app = {};
 
 app.server = {};
 app.server.hostname = 'localhost';
-app.server.port = 3000;
+app.server.port = 2000;
 
 // Create express server instance
 // -> Set the folder for html views & disable powered-by header
