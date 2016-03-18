@@ -101,7 +101,10 @@ export default {
     loaders: [
       {
         test: /\.js?$/,
-        loader: 'babel-loader',
+        loaders: [
+          'babel-loader',
+          'eslint-loader'
+        ],
         exclude: path.resolve(__dirname, '../node_modules')
       },
       {
