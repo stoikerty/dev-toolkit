@@ -12,11 +12,11 @@ app.server.start = ()=>{
   // Listen on specified port
   app.server.instance.listen(app.server.port, function(error) {
     if (error) {
-      console.error(error)
+      app.error(error);
     } else {
-      console.info('==> 🌎  Listening on port %s. Open up http://' + app.server.hostname + ':%s/ in your browser.', app.server.port, app.server.port)
+      app.log('==> 🌎  Listening on port %s. Open up http://' + app.server.hostname + ':%s/ in your browser.', app.server.port, app.server.port);
     }
-  })
+  });
 
   // start react-router
   app.server.instance.use(router);

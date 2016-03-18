@@ -22,15 +22,6 @@ app.server.instance.disable('x-powered-by');
 // A neat console wrapper that keeps the correct line number.
 // http://stackoverflow.com/questions/13815640/a-proper-wrapper-for-console-log-with-correct-line-number
 app.log = function() {
-  if (app.isDev && console && console.log)
-    return console.log.bind(console);
-  else
-    return ()=>{};
-}();
-app.warn = function() {
-  if (app.isDev && console && console.warn)
-    return console.warn.bind(console);
-  else
-    return ()=>{};
+  return console.log.bind(console);
 }();
 /*eslint-enable no-console */
