@@ -28,22 +28,39 @@
         // Ignore React because it's needed before ReactDOM
         "varsIgnorePattern": "React"
       }
-    ]
+    ],
+
+    "react/jsx-no-duplicate-props": 2,
+    "react/jsx-no-undef": 2,
+    "react/jsx-uses-react": 2,
+    "react/jsx-uses-vars": 2,
+    "react/react-in-jsx-scope": 2
   },
   "env": {
     "es6": true,
     "browser": true,
     "node": true
   },
-  "extends": "eslint:recommended",
   "ecmaFeatures": {
     "jsx": true,
     "modules": true,
     "experimentalObjectRestSpread": false
   },
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true,
+      "modules": true,
+      "experimentalObjectRestSpread": false
+    },
+  },
+
   "plugins": [
     "react"
   ],
+  "extends": ["eslint:recommended"],
+
   // Custom Globals
   "globals": {
     "app": true,
