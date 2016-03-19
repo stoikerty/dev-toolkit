@@ -29,4 +29,4 @@ I opted to use [webpack-dev-middleware](https://github.com/webpack/webpack-dev-m
 
 CSS is imported via [css-modules](https://github.com/css-modules/css-modules). If you have never heard about css-modules, read ["CSS Modules - *Welcome to the Future*"](http://glenmaddern.com/articles/css-modules).
 
-Currently there is no test-suite. I might add one if I get more exposure into using tests myself. Although I do like keeping the toolkit simple instead of adding all sorts of dependencies just for the sake of having more features. You can always add your own.
+Currently there is no test-suite. I might add one if I get more exposure into using tests myself. Although I do like keeping the toolkit simple and extensible instead of adding all sorts of dependencies for the sake of having more features. Feel free to add your own if you need it.
