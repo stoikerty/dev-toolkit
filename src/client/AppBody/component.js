@@ -12,7 +12,7 @@ export default class Component extends React.Component{
   render() {
     return (
       <div className={s.ExampleComponent}>
-        Component
+        Styled Example Component
       </div>
     );
   }
