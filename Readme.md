@@ -1,7 +1,7 @@
 <h1 align="center">:star2: universal-dev-toolkit :star2:</h1>
 <p align="center"><sub>Javascript Development Toolkit by <a href="https://twitter.com/stoikerty">@stoikerty</a>, kindly supported by <a href="https://raw.githubusercontent.com/stoikerty/universal-dev-toolkit/master/browserstack-logo.png" target="_blank"><img src="https://raw.githubusercontent.com/stoikerty/universal-dev-toolkit/master/browserstack-logo.png" alt="BrowserStack-Image" style="max-width:100%;"></a> <a href="https://www.browserstack.com">BrowserStack</a>.</sub></p>
 
-## How to Use <small>- Getting started quickly</small>
+### How to Use <small>- Getting started quickly</small>
 - Install Node : [Node Platform](https://nodejs.org/) <small>*(I'm using v5.6.0 but v4.2 LTS should work too)*</small><br>
 - **Install the dependencies via npm** : `npm install`<br>
 - **Start Server with Asset Watcher** : `npm run dev`<br>
