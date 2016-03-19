@@ -2,9 +2,6 @@
 // Caution! these have an effect on a lot of elements
 // --
 
-// compass config option: make gradients work on IE
-$experimental-support-for-svg: true;
-
 // Define repsonsive breakpoints for application
 $breakpoint-phone    : 0px;
 $breakpoint-smart    : 300px;
@@ -26,12 +23,6 @@ $use-em-breakpoints  : false;
 
 // useful helper mixins
 @import "mixins/_helpers.scss";
-
-// Our custom function for rewriting the urls of background-images for caching
-$image-path-replace-string: "__IMAGE_URL__" !default;
-@function image-url($url) {
-  @return url("#{$image-path-replace-string}#{$url}");
-}
 
 // font-settings for app (get passed through mixin as defaults)
 $text-color-default : #333;
