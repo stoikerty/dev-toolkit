@@ -1,6 +1,7 @@
- :star2: universal-dev-toolkit :star2:
+<div style="text-align:center">:star2: universal-dev-toolkit :star2:<div/>
 =============
-<sub>Javascript Development Toolkit by [@stoikerty](https://twitter.com/stoikerty), kindly supported by ![BrowserStack-Image](https://raw.githubusercontent.com/stoikerty/universal-dev-toolkit/master/browserstack-logo.png) [BrowserStack](https://www.browserstack.com).</sub>
+<div style="text-align:center"><sub>Javascript Development Toolkit by [@stoikerty](https://twitter.com/stoikerty), kindly supported by ![BrowserStack-Image](https://raw.githubusercontent.com/stoikerty/universal-dev-toolkit/master/browserstack-logo.png) [BrowserStack](https://www.browserstack.com).</sub><div/>
+<br>
 
 ## How to Use <small>- Getting started quickly</small>
 - Install Node : [Node Platform](https://nodejs.org/) <small>*(I'm using v5.6.0 but v4.2 LTS should work too)*</small><br>
@@ -14,6 +15,7 @@ You should now be ready to start building your project. If it doesn't work, feel
 *You will be working with [Universal Javascript](https://medium.com/@mjackson/universal-javascript-4761051b7ae9#.llvvuk4l5), managed via [webpack](https://webpack.github.io/), therefore your source-code located in `src` will be divided into 2 directories, `client` and `server`. The `layout.html` is located in `src\server\views`*.
 
 I use [Express](http://expressjs.com/) with [React-Router](https://github.com/reactjs/react-router), [React](https://facebook.github.io/react/) and [SCSS](http://sass-lang.com/) with [Autoprefixer](https://github.com/postcss/autoprefixer) to build my projects. There are a few customisations although I kept the files to a minimum to allow for exploration and you being able to change things to your liking.
+<br><br>
 
 ---
 
