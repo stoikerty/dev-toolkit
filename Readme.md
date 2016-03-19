@@ -17,7 +17,7 @@ I use [Express](http://expressjs.com/) with [React-Router](https://github.com/re
 
 ---
 
-##### Creating a Build, how webpack is configured
+##### Creating a Build <sub>/ How webpack is configured</sub>
 - Build production files for transferring to Server with `npm run build`. The server runs on port `2000`.
 - Lint your files using [eslint](http://eslint.org/) with `npm run lint`.
 
