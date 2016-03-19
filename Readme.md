@@ -1,8 +1,7 @@
 <h1 align="center">:star2: universal-dev-toolkit :star2:</h1>
 <p align="center"><sub>Javascript Development Toolkit by <a href="https://twitter.com/stoikerty">@stoikerty</a>, kindly supported by <a href="https://raw.githubusercontent.com/stoikerty/universal-dev-toolkit/master/browserstack-logo.png" target="_blank"><img src="https://raw.githubusercontent.com/stoikerty/universal-dev-toolkit/master/browserstack-logo.png" alt="BrowserStack-Image" style="max-width:100%;"></a> <a href="https://www.browserstack.com">BrowserStack</a>.</sub></p>
-<br>
 
-### How to Use <small>- Getting started quickly</small>
+#### How to Use <small>- Getting started quickly</small>
 - Install Node : [Node Platform](https://nodejs.org/) <small>*(I'm using v5.6.0 but v4.2 LTS should work too)*</small><br>
 - **Install the dependencies via npm** : `npm install`<br>
 - **Start Server with Asset Watcher** : `npm run dev`<br>
@@ -18,11 +17,11 @@ I use [Express](http://expressjs.com/) with [React-Router](https://github.com/re
 
 ---
 
-#### Creating a Build, how webpack is configured
+##### Creating a Build, how webpack is configured
 - Build production files for transferring to Server with `npm run build`. The server runs on port `2000`.
 - Lint your files using [eslint](http://eslint.org/) with `npm run lint`.
 
-Have a look at the `package.json` for a full list of dependencies. The webpack folder contains a **`webpack/config.js`** that is used both for running **`webpack/development.js`** <small>(via `npm run dev`)</small> and **`webpack/production.js`** <small>(via `npm run build`)</small>.
+Have a look at the `package.json` for a full list of dependencies. The webpack folder contains a **`webpack/config.js`** that is used both for running **`webpack/development.js`** <sub>(via `npm run dev`)</sub> and **`webpack/production.js`** <sub>(via `npm run build`)</sub>.
 
 #### Decisions :foggy:
 
