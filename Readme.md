@@ -1,7 +1,7 @@
 <h1 align="center">:star2: universal-dev-toolkit :star2:</h1>
 <p align="center"><sub>Javascript Development Toolkit by <a href="https://twitter.com/stoikerty">@stoikerty</a>, kindly supported by <a href="https://raw.githubusercontent.com/stoikerty/universal-dev-toolkit/master/browserstack-logo.png" target="_blank"><img src="https://raw.githubusercontent.com/stoikerty/universal-dev-toolkit/master/browserstack-logo.png" alt="BrowserStack-Image" style="max-width:100%;"></a> <a href="https://www.browserstack.com">BrowserStack</a>.</sub></p>
 
-### How to Use <sub>- Getting started quickly</sub>
+### How to Use <sub>/ Getting started quickly</sub>
 - Install Node : [Node Platform](https://nodejs.org/) <sub>*(I'm using v5.6.0 but v4.2 LTS should work too)*</sub><br>
 - **Install the dependencies via npm** : `npm install`<br>
 - **Start Server with Asset Watcher** : `npm run dev`<br>
@@ -23,7 +23,7 @@ I use [Express](http://expressjs.com/) with [React-Router](https://github.com/re
 
 Have a look at the `package.json` for a full list of dependencies. The webpack folder contains a **`webpack/config.js`** that is used both for running **`webpack/development.js`** <sub>(via `npm run dev`)</sub> and **`webpack/production.js`** <sub>(via `npm run build`)</sub>.
 
-#### Decisions :foggy:
+##### Decisions :foggy:
 
 I opted to use [webpack-dev-middleware](https://github.com/webpack/webpack-dev-middleware) and [webpack-hot-middleware](https://github.com/glenjamin/webpack-hot-middleware) for adding hot-reload functionality via a server that you can customize separately in the `src`-folder. The state of React-components is not kept as I'm looking to work with Redux, I got the idea to stop using unsafe transforms from and reduce the complexity of Babel Transforms via [an Article I read "Hot Reloading in React - *or, an Ode to Accidental Complexity*"](https://medium.com/@dan_abramov/hot-reloading-in-react-1140438583bf#.3mce9tv45) and the resulting discussion in [a Redux pull-request](https://github.com/reactjs/redux/pull/1455).
 
