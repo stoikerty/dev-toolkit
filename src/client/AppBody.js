@@ -15,7 +15,7 @@ export default class AppBody extends React.Component{
   render() {
     return (
       <div className={s.AppBody}>
-        { '{ stk-toolkit-4 }' }
+        { '{ universal-dev-toolkit }' }
 
         <div className="navigation">
           <Link to="/example-page">

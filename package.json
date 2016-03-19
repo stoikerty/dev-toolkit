@@ -1,5 +1,5 @@
 {
-  "name": "stk-toolkit",
+  "name": "universal-dev-toolkit",
   "version": "4.0.0",
   "description": "{ Project }",
   "main": "index.js",
@@ -10,23 +10,26 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/stoikerty/stk-toolkit.git"
+    "url": "git+https://github.com/stoikerty/universal-dev-toolkit.git"
   },
   "keywords": [
+    "stoikerty",
     "webpack",
     "sass",
     "react",
     "browserify",
     "gulp",
     "moonboots",
-    "middleman"
+    "middleman",
+    "stk-toolkit",
+    "universal-dev-toolkit"
   ],
   "author": "Jorge Antunes",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/stoikerty/stk-toolkit/issues"
+    "url": "https://github.com/stoikerty/universal-dev-toolkit/issues"
   },
-  "homepage": "https://github.com/stoikerty/stk-toolkit#readme",
+  "homepage": "https://github.com/stoikerty/universal-dev-toolkit#readme",
   "devDependencies": {
     "autoprefixer": "^6.3.3",
     "babel-cli": "^6.6.5",
