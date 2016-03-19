@@ -35,10 +35,10 @@ $font-xsmall  : 12px;
 $font-path : '../fonts';
 @import "mixins/_font-settings.scss";
 
-// set common variables for use throughout the app
+// a common variable for use throughout the app as simple grid-system
 $grid : 10px;
 
-// New brand colors
+// New brand colors (Use your own!)
 $brand-green        : #14a58e;
 $brand-red          : #e01d58;
 $brand-blue         : #3597ad;
