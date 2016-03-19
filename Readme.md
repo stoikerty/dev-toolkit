@@ -1,6 +1,6 @@
  :star2: universal-dev-toolkit :star2:
 =============
-<sub>Development Toolkit by [@stoikerty](https://twitter.com/stoikerty), kindly supported by ![BrowserStack-Image](https://raw.githubusercontent.com/stoikerty/universal-dev-toolkit/master/browserstack-logo.png) [BrowserStack](https://www.browserstack.com).</sub>
+<sub>Javascript Development Toolkit by [@stoikerty](https://twitter.com/stoikerty), kindly supported by ![BrowserStack-Image](https://raw.githubusercontent.com/stoikerty/universal-dev-toolkit/master/browserstack-logo.png) [BrowserStack](https://www.browserstack.com).</sub>
 
 ## How to Use <small>- Getting started quickly</small>
 - Install Node : [Node Platform](https://nodejs.org/) <small>*(I'm using v5.6.0 but v4.2 LTS should work too)*</small><br>
