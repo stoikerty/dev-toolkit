@@ -5,7 +5,7 @@ import router from './router';
 import './bootstrap';
 
 // launch server later with webpack using start-method
-app.server.start = ()=>{
+app.server.start = (options={ message:null })=>{
   // serve build folder
   app.server.instance.use(serveStatic('build'));
 
@@ -14,7 +14,10 @@ app.server.start = ()=>{
     if (error) {
       app.error(error);
     } else {
-      app.log('==> 🌎  Listening on port %s. Open up http://' + app.server.hostname + ':%s/ in your browser.', app.server.port, app.server.port);
+      app.log('==> 🌎 Listening on http://' + app.server.hostname + ':%s/', app.server.port);
+      if (options.message){
+        app.log(options.message);
+      }
     }
   });
 
