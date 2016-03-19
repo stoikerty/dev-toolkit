@@ -1,4 +1,4 @@
-<p align="center"><h1>:star2: universal-dev-toolkit :star2:</h1><p/>
+<h1 align="center">:star2: universal-dev-toolkit :star2:<h1/>
 <p align="center"><sub>Javascript Development Toolkit by [@stoikerty](https://twitter.com/stoikerty), kindly supported by ![BrowserStack-Image](https://raw.githubusercontent.com/stoikerty/universal-dev-toolkit/master/browserstack-logo.png) [BrowserStack](https://www.browserstack.com).</sub><p/>
 
 ## How to Use <small>- Getting started quickly</small>
