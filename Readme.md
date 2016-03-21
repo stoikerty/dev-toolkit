@@ -1,6 +1,11 @@
 <img src="https://raw.githubusercontent.com/stoikerty/universal-dev-toolkit/features/improve-documentation/toolkit/documentation/logo.jpg" alt="universal-dev-toolkit-logo">
 <p align="center"><sub>Javascript Development Toolkit by <a href="https://twitter.com/stoikerty">@stoikerty</a>, kindly supported by <a href="https://raw.githubusercontent.com/stoikerty/universal-dev-toolkit/master/browserstack-logo.png"><img src="https://raw.githubusercontent.com/stoikerty/universal-dev-toolkit/master/browserstack-logo.png" alt="BrowserStack-Image"></a> <a href="https://www.browserstack.com">BrowserStack</a>.</sub></p>
 
+
+| Title | Title | Title |
+| --- | --- | --- |
+| You should now be ready to start building your project. | You should now be ready to start building your project. | You should now be ready to start building your project. |
+
 #### How to Use <sub>/ Getting started quickly</sub>
 - Install Node : [Node Platform](https://nodejs.org/) <sub>*(I'm using v5.6.0 but v4.2 LTS should work too)*</sub><br>
 - **Install the dependencies via npm** : `npm install`<br>
