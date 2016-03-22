@@ -5,7 +5,7 @@ import webpackHotMiddleware from 'webpack-hot-middleware';
 import config from './config';
 
 // Use the express production server
-import '../src/server/app';
+import '../../src/server/app';
 
 const compiler = webpack(config);
 
