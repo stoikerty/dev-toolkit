@@ -5,23 +5,112 @@
 <img src="/toolkit/documentation/top-headers.jpg" alt="universal-dev-toolkit-logo">
 <br>
 
-|  |  |  |
-| --- | --- | --- |
-| --- | --- | --- |
-| --- | --- | --- |
-| --- | --- | --- |
-| --- | --- | --- |
-| You should now be ready to start building your project. | You should now be ready to start building your project. | You should now be ready to start building your project. |
+<table>
+  <tbody>
+    <tr>
+      <td>
+        Install [ Node v5.6.0 ](https://nodejs.org/)<br><sub>*(v4.2 LTS should work too)*</sub><br><br>**Install dependencies**<br>`npm install`<br><br>**Start Server**<br>`npm run dev`<br><br>
+      </td>
+      <td>
 
+        <ul>
+          <li>
+            **src**
+
+            <ul>
+              <li>
+                client
+
+
+                <ul>
+                  <li>
+                    AppBody
+                  </li>
+                  <li>
+                    style
+                  </li>
+                  <li>
+                    views
+                  </li>
+                </ul>
+              </li>
+              <li>
+                server
+
+                <ul>
+                  <li>
+                    public-files
+                  </li>
+                  <li>
+                    views
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <sub>**toolkit**</sub>
+
+            <ul>
+              <li>
+                <sub>webpack</sub>
+              </li>
+              <li>
+                <sub>documentation</sub>
+              </li>
+            </ul>
+          </li>
+        </ul>
+
+        <ul>
+          <li>
+            <sub>**package.json**</sub>
+          </li>
+          <li>
+            <sub>**Readme.md**</sub>
+          </li>
+          <li>
+            <sub>...</sub>
+          </li>
+        </ul>
+
+      </td>
+      <td>
+
+        <ul>
+          <li>
+            **React**+React-Router
+          </li>
+          <li>
+            **SASS**/css-modules
+          </li>
+          <li>
+            **ES2015**/ES6
+          </li>
+        </ul>
+
+      </td>
+    </tr>
+    <tr>
+      <td>
+        You should now be ready to start building your project. If it doesn't work, feel free to [report an issue or help somebody out](https://github.com/stoikerty/universal-dev-toolkit/issues).
+      </td>
+      <td>
+        :point_right:  Your source-files will be **hot-reloaded** and proxied via `http://localhost:3000`.<br><br>*You will be working with [Universal Javascript](https://medium.com/@mjackson/universal-javascript-4761051b7ae9#.llvvuk4l5), managed via [webpack](https://webpack.github.io/).*        
+      </td>
+      <td>
+
+There are a few customisations although the files are kept to a minimum to allow for exploration and you being able to change things to your liking.
+
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
 
 #### How to Use <sub>/ Getting started quickly</sub>
-- Install Node : [Node Platform](https://nodejs.org/) <sub>*(I'm using v5.6.0 but v4.2 LTS should work too)*</sub><br>
-- **Install the dependencies via npm** : `npm install`<br>
-- **Start Server with Asset Watcher** : `npm run dev`<br>
 
-You should now be ready to start building your project. If it doesn't work, feel free to [report an issue or help somebody out](https://github.com/stoikerty/universal-dev-toolkit/issues).
-
-:point_right:  Your source-files will be **hot-reloaded** and proxied via `http://localhost:3000`.
 
 *You will be working with [Universal Javascript](https://medium.com/@mjackson/universal-javascript-4761051b7ae9#.llvvuk4l5), managed via [webpack](https://webpack.github.io/), therefore your source-code located in `src` will be divided into 2 directories, `client` and `server`. The `layout.html` is located in `src/server/views`*.
 
