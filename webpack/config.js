@@ -138,6 +138,7 @@ export default {
   ],
 
   resolve: {
+    // files in these directories can be imported without a relative path
     modulesDirectories: [
       PATHS.clientRoot,
       'node_modules'
