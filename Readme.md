@@ -8,24 +8,31 @@
 <table>
   <tbody>
     <tr>
-      <td>
-        Install [ Node v5.6.0 ](https://nodejs.org/)<br><sub>*(v4.2 LTS should work too)*</sub><br><br>**Install dependencies**<br>`npm install`<br><br>**Start Server**<br>`npm run dev`<br><br>
+      <td width="33.3333%">
+        Install <a href="https://nodejs.org/">Node v5.6.0</a>
+        <br>
+        <sub><em>(v4.2 LTS should work too)</em></sub>
+        <br><br>
+
+        <strong>Install dependencies</strong>
+        <br>
+        <code>npm install</code>
+        <br><br>
+
+        <strong>Start Server, watch assets</strong><br><code>npm run dev</code>
+        <br><br>
       </td>
-      <td>
+      <td width="33.3333%">
 
         <ul>
           <li>
-            **src**
+            <strong>src</strong>
 
             <ul>
               <li>
                 client
 
-
                 <ul>
-                  <li>
-                    AppBody
-                  </li>
                   <li>
                     style
                   </li>
@@ -48,15 +55,17 @@
               </li>
             </ul>
           </li>
+        </ul>
+        <ul>
           <li>
-            <sub>**toolkit**</sub>
+            <strong>toolkit</strong>
 
             <ul>
               <li>
-                <sub>webpack</sub>
+                webpack
               </li>
               <li>
-                <sub>documentation</sub>
+                documentation
               </li>
             </ul>
           </li>
@@ -64,58 +73,87 @@
 
         <ul>
           <li>
-            <sub>**package.json**</sub>
+            <sub>package.json</sub>
           </li>
           <li>
-            <sub>**Readme.md**</sub>
+            <sub>Readme.md</sub>
           </li>
           <li>
-            <sub>...</sub>
+            <sub><em>... dotfiles</em></sub>
           </li>
         </ul>
 
       </td>
-      <td>
+      <td width="33.3333%">
 
         <ul>
           <li>
-            **React**+React-Router
+            <a href="https://babeljs.io/docs/learn-es2015/">ES2015 / ES6</a>
           </li>
           <li>
-            **SASS**/css-modules
+            <a href="http://survivejs.com/webpack/requiring-files/">absolute imports</a>
           </li>
           <li>
-            **ES2015**/ES6
+            <a href="https://webpack.github.io/docs/hot-module-replacement-with-webpack.html">Vanilla HMR</a>
+          </li>
+          <li>
+            <a href="https://browsersync.io/">Browsersync</a>
+          </li>
+          <li>
+            <a href="http://eslint.org/">ESLint</a>
+          </li>
+        </ul>
+
+        <ul>
+          <li>
+            <a href="https://facebook.github.io/react/">React</a>
+          </li>
+          <li>
+            <a href="http://sass-lang.com/">sass / scss</a>
+          </li>
+          <li>
+            <a href="https://github.com/css-modules/css-modules">css-modules</a>
+          </li>
+          <li>
+            <a href="https://github.com/postcss/autoprefixer">Autoprefixer</a>
+          </li>
+        </ul>
+
+        <ul>
+          <li>
+            <a href="http://expressjs.com/">express</a>
+          </li>
+          <li>
+            <a href="https://github.com/reactjs/react-router">react-router</a>
           </li>
         </ul>
 
       </td>
     </tr>
     <tr>
-      <td>
-        You should now be ready to start building your project. If it doesn't work, feel free to [report an issue or help somebody out](https://github.com/stoikerty/universal-dev-toolkit/issues).
+      <td width="33.3333%">
+        You should now be ready to start building your project.
+        <br><br>
+        If it doesn't work, feel free to <a href="https://github.com/stoikerty/universal-dev-toolkit/issues">report an issue or help somebody out</a>.
       </td>
-      <td>
-        :point_right:  Your source-files will be **hot-reloaded** and proxied via `http://localhost:3000`.<br><br>*You will be working with [Universal Javascript](https://medium.com/@mjackson/universal-javascript-4761051b7ae9#.llvvuk4l5), managed via [webpack](https://webpack.github.io/).*        
+      <td width="33.3333%">
+        :point_right:  Your source-files will be <strong>hot-reloaded</strong> and proxied via <code>http://localhost:3000</code>.<br><br><em>You will be working with <a href="https://medium.com/@mjackson/universal-javascript-4761051b7ae9#.llvvuk4l5">Universal Javascript</a>, managed via <a href="https://webpack.github.io/">webpack</a>.</em>        
       </td>
-      <td>
+      <td width="33.3333%">
 
-There are a few customisations although the files are kept to a minimum to allow for exploration and you being able to change things to your liking.
+        Files are kept to a minimum to allow for exploration and personal customisation.
 
       </td>
     </tr>
   </tbody>
 </table>
 
-<br>
+---
 
 #### How to Use <sub>/ Getting started quickly</sub>
 
 
-*You will be working with [Universal Javascript](https://medium.com/@mjackson/universal-javascript-4761051b7ae9#.llvvuk4l5), managed via [webpack](https://webpack.github.io/), therefore your source-code located in `src` will be divided into 2 directories, `client` and `server`. The `layout.html` is located in `src/server/views`*.
-
-I use [Express](http://expressjs.com/) with [React-Router](https://github.com/reactjs/react-router), [React](https://facebook.github.io/react/) and [SCSS](http://sass-lang.com/) with [Autoprefixer](https://github.com/postcss/autoprefixer) to build my projects. There are a few customisations although I kept the files to a minimum to allow for exploration and you being able to change things to your liking.
-<br><br>
+*The `layout.html` is located in `src/server/views`*.
 
 ---
 
