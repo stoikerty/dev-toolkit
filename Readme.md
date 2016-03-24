@@ -1,5 +1,5 @@
-<img src="https://raw.githubusercontent.com/stoikerty/universal-dev-toolkit/features/improve-documentation/toolkit/documentation/logo.jpg" alt="universal-dev-toolkit-logo">
-<p align="center"><sub>Javascript Development Toolkit by <a href="https://twitter.com/stoikerty">@stoikerty</a>, kindly supported by <a href="https://raw.githubusercontent.com/stoikerty/universal-dev-toolkit/master/browserstack-logo.png"><img src="https://raw.githubusercontent.com/stoikerty/universal-dev-toolkit/master/browserstack-logo.png" alt="BrowserStack-Image"></a> <a href="https://www.browserstack.com">BrowserStack</a>.</sub></p>
+<img src="/toolkit/documentation/logo.jpg" alt="universal-dev-toolkit-logo">
+<p align="center"><sub>Javascript Development Toolkit by <a href="https://twitter.com/stoikerty">@stoikerty</a>, kindly supported by <a href="https://www.browserstack.com/"><img src="/toolkit/documentation/browserstack-logo.png" alt="BrowserStack-Image"></a> <a href="https://www.browserstack.com">BrowserStack</a>.</sub></p>
 
 <br><br>
 <img src="/toolkit/documentation/top-headers.jpg" alt="universal-dev-toolkit-logo">
