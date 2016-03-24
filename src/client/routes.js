@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route } from 'react-router';
 
-import AppBody from './AppBody';
+import AppBody from './views/AppBody';
 import ExamplePage from './views/ExamplePage';
 import NoMatch404 from './views/NoMatch404';
 

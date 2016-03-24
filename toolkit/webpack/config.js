@@ -3,6 +3,9 @@ import webpack from 'webpack';
 import autoprefixer from 'autoprefixer';
 import BrowserSyncPlugin from 'browser-sync-webpack-plugin';
 
+
+export const root = '../../';
+
 // -----
 
 // Create shared config variables
@@ -10,11 +13,11 @@ import BrowserSyncPlugin from 'browser-sync-webpack-plugin';
 const DEBUG = !process.argv.includes('--release');
 const VERBOSE = process.argv.includes('--verbose');
 
-const clientRoot = path.resolve(__dirname, '../src/client');
+const clientRoot = path.resolve(__dirname, root + 'src/client');
 const PATHS = {
   clientRoot: clientRoot,
   client: path.resolve(clientRoot, 'app.js'),
-  build: path.resolve(__dirname, '../build')
+  build: path.resolve(__dirname, root + 'build')
 };
 
 const cssChunkNaming = '[name]__[local]___[hash:base64:5]';
@@ -105,7 +108,7 @@ export default {
           'babel-loader',
           'eslint-loader'
         ],
-        exclude: path.resolve(__dirname, '../node_modules')
+        exclude: path.resolve(__dirname, root + 'node_modules')
       },
       {
         test: /\.scss$/,
@@ -138,6 +141,7 @@ export default {
   ],
 
   resolve: {
+    // files in these directories can be imported without a relative path
     modulesDirectories: [
       PATHS.clientRoot,
       'node_modules'
