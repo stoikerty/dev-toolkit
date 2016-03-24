@@ -24,6 +24,7 @@
       </td>
       <td width="33.3333%">
 
+        <br>
         <ul>
           <li>
             <strong>src</strong>
@@ -34,10 +35,10 @@
 
                 <ul>
                   <li>
-                    style
+                    <em>style</em>
                   </li>
                   <li>
-                    views
+                    <em>views</em>
                   </li>
                 </ul>
               </li>
@@ -46,10 +47,10 @@
 
                 <ul>
                   <li>
-                    public-files
+                    <em>public-files</em>
                   </li>
                   <li>
-                    views
+                    <em>views</em>
                   </li>
                 </ul>
               </li>
@@ -79,7 +80,7 @@
             <sub>Readme.md</sub>
           </li>
           <li>
-            <sub><em>... dotfiles</em></sub>
+            <sub>...dotfiles</sub>
           </li>
         </ul>
 
@@ -141,7 +142,7 @@
       </td>
       <td width="33.3333%">
 
-        Files are kept to a minimum to allow for exploration and personal customisation.
+        Files are kept to a minimum to allow for exploration and customisation.
 
       </td>
     </tr>
