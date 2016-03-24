@@ -152,7 +152,7 @@
 
 ##### Some additional information <sub>/ quick clues for you</sub>
 
-The `style`-directory can be accessed via absolute import.
+The `style`-directory can be accessed via absolute import in scss files.
 ```scss
 @import 'style/config.scss';
 ```
