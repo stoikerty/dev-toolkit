@@ -156,11 +156,11 @@ The `style`-directory can be accessed via absolute import in scss files.
 ```scss
 @import 'style/config.scss';
 ```
-The directories for absolute imports are defined in `webpack/config.js` under `modulesDirectories`
+The directories for absolute imports are defined in `webpack/config.js` under `modulesDirectories`.
 
 The `layout.html` is located in `src/server/views` and only contains one javascript hook `app-body` to insert markup into from javascript. The server inserts markup via Handlebars.
 
-Both the `server` and `client` have an `app.js`. These are the starting points for each app and behave differently from another as you might've guessed.
+Both the `server` and `client` have an `app.js`. These are the starting points for each and behave differently from another as you might've guessed.
 <br><br>
 
 ##### Creating a Build <sub>/ webpack configuration</sub>
