@@ -148,20 +148,31 @@
   </tbody>
 </table>
 
+<br>
+
+##### Some additional information <sub>/ quick clues for you</sub>
+
+The `style`-directory can be accessed via absolute import.
+```scss
+@import 'style/config.scss';
+```
+The directories for absolute imports are defined in `webpack/config.js` under `modulesDirectories`
+
+The `layout.html` is located in `src/server/views` and only contains one javascript hook `app-body` to insert markup into from javascript. The server inserts markup via Handlebars.
+
+Both the `server` and `client` have an `app.js`. These are the starting points for each app and behave differently from another as you might've guessed.
+<br><br>
+
+##### Creating a Build <sub>/ webpack configuration</sub>
+- **`npm run build`** To build production files for transferring to Server.<br>The server runs on port `2000`, it's available to change in `server/bootstrap.js` and `toolkit/webpack/config`.
+- Lint your files using [eslint](http://eslint.org/) with **`npm run lint`**.
+
+Have a look at the `package.json` for a full list of dependencies.
+
+The webpack folder contains a **`webpack/config.js`** that is used both for running **`webpack/development.js`** <sub>(via `npm run dev`)</sub> and **`webpack/production.js`** <sub>(via `npm run build`)</sub>.
+<br><br>
+
 ---
-
-#### How to Use <sub>/ Getting started quickly</sub>
-
-
-*The `layout.html` is located in `src/server/views`*.
-
----
-
-##### Creating a Build <sub>/ How webpack is configured</sub>
-- Build production files for transferring to Server with `npm run build`. The server runs on port `2000`.
-- Lint your files using [eslint](http://eslint.org/) with `npm run lint`.
-
-Have a look at the `package.json` for a full list of dependencies. The webpack folder contains a **`webpack/config.js`** that is used both for running **`webpack/development.js`** <sub>(via `npm run dev`)</sub> and **`webpack/production.js`** <sub>(via `npm run build`)</sub>.
 
 ##### Decisions :foggy:
 
