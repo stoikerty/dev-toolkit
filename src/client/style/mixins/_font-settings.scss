@@ -1,74 +1,3 @@
-@mixin importFont($family, $path, $filename, $include_woff2 : true){
-  @font-face{
-    font-family : $family;
-    src : url($path + "/" + $filename + ".eot");
-    @if $include_woff2 == true {
-      src : url($path + "/" + $filename + ".eot?#iefix") format("embedded-opentype"),
-            url($path + "/" + $filename + ".woff2") format("woff2"),
-            url($path + "/" + $filename + ".woff") format("woff"),
-            url($path + "/" + $filename + ".ttf") format("truetype"),
-            url($path + "/" + $filename + ".svg" + "#" + $filename) format("svg");
-    } @else {
-      src : url($path + "/" + $filename + ".eot?#iefix") format("embedded-opentype"),
-            url($path + "/" + $filename + ".woff") format("woff"),
-            url($path + "/" + $filename + ".ttf") format("truetype"),
-            url($path + "/" + $filename + ".svg" + "#" + $filename) format("svg");
-    }
-    font-weight : normal;
-    font-style  : normal;
-  }
-}
-
-@mixin font-family($font-family:default, $font-style:default){
-  $type : default;
-
-  // use custom font for different styles if needed
-  @if $font-style != default {
-    @if $font-style == xlight {
-      font-weight : 200;
-      $type : default;
-    }
-    @if $font-style == light {
-      font-weight : 300;
-      $type : default;
-    }
-    @if $font-style == normal {
-      font-weight : 400;
-      $type : default;
-    }
-    @if $font-style == bold {
-      font-weight : 600;
-      $type : default;
-    }
-    @if $font-style == xbold {
-      // change font-weight to `normal` if a custom bold font is to be used
-      font-weight : 700;
-      $type : default;
-    }
-
-    @if $font-style == italic {
-      font-weight : 400;
-      font-style : italic;
-    }
-  } @else {
-    // revert to default styling
-    font-weight : 400;
-    $type : default;
-  }
-
-  @if $type == default { font-family : 'Source Sans Pro', Arial, sans-serif; }
-  @if $type == light   { font-family : 'Source Sans Pro', Arial, sans-serif; }
-  @if $type == normal  { font-family : 'Source Sans Pro', Arial, sans-serif; }
-  @if $type == bold    { font-family : 'Source Sans Pro', Arial, sans-serif; }
-  @if $type == small   { font-family : Arial, sans-serif; }
-  @if $type == code    { font-family : Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New; }
-}
-
-@mixin emptyHeight($height : 1.4em){
-  line-height : $height;
-  min-height  : $height;
-}
-
 $font-xxlarge : 30px !default;
 $font-xlarge  : 26px !default;
 $font-large   : 22px !default;
@@ -86,10 +15,6 @@ $font-xsmall  : 12px !default;
     @else if $font-size == small   { font-size : $font-small;   }
     @else if $font-size == xsmall  { font-size : $font-xsmall;  }
     @else { font-size : $font-size; }
-
-    // @if $font-size >= 36px {
-    //   letter-spacing : -0.02em;
-    // }
   }
   @if $color != auto {
     @if $color == default { color : $text-color-default; }
