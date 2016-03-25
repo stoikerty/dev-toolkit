@@ -177,11 +177,11 @@ The webpack folder contains a **`webpack/config.js`** that is used both for runn
 
 ##### Decisions :foggy:
 
-I opted to use [webpack-dev-middleware](https://github.com/webpack/webpack-dev-middleware) and [webpack-hot-middleware](https://github.com/glenjamin/webpack-hot-middleware) for adding hot-reload functionality via a minimal server. See the `src/server`-folder. The hot-reloading only happens during development.
+I opted to use [webpack-dev-middleware](https://github.com/webpack/webpack-dev-middleware) and [webpack-hot-middleware](https://github.com/glenjamin/webpack-hot-middleware) for adding hot-reload functionality. I'm using **vanilla HMR** which covers most of the benefits people are looking for in hot-reloaded javascript.
 
-I'm using **vanilla HMR** which covers most of the benefits people are looking for in hot-reloading javascript. The state of React-components is not kept as I'm looking to work with Redux, I got the idea to stop using unsafe transforms and reduce the complexity of Babel Transforms via [an Article I read "Hot Reloading in React - *or, an Ode to Accidental Complexity*"](https://medium.com/@dan_abramov/hot-reloading-in-react-1140438583bf#.3mce9tv45) and the resulting discussion in [a Redux pull-request](https://github.com/reactjs/redux/pull/1455).
+The state of React-components is not kept as I'm looking to work with Redux. I got the idea to stop using unsafe transforms and reduce the complexity of Babel Transforms via an Article I read called ["Hot Reloading in React - *or, an Ode to Accidental Complexity*"](https://medium.com/@dan_abramov/hot-reloading-in-react-1140438583bf#.3mce9tv45) and the resulting discussion in [a Redux pull-request](https://github.com/reactjs/redux/pull/1455).
 
-CSS is imported using [css-modules](https://github.com/css-modules/css-modules). If you have never heard about css-modules, read ["CSS Modules - *Welcome to the Future*"](http://glenmaddern.com/articles/css-modules).
+CSS is imported using [css-modules](https://github.com/css-modules/css-modules). If you have never heard about css-modules, read ["CSS Modules - *Welcome to the Future*"](http://glenmaddern.com/articles/css-modules). It allows you to write css without using globals all over the place.
 
 Currently there is no test-suite. I might add one if I get more exposure into using tests myself. Although I do like keeping the toolkit simple and extensible instead of adding all sorts of dependencies for the sake of having more features. Feel free to add your own if you need it.
 
