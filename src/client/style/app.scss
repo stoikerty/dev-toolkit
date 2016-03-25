@@ -22,5 +22,9 @@ body:global{
   // Remove 300ms click-delay for IE11+
   a[href], button, .btn, .button { touch-action: manipulation; }
 
+  // position-mixin: position, display (optional), width (optional), height (optional)
+
+  // font-mixin: font-size, color (optional), font-style (optional)
+  // see: mixins\_font-settings.scss
   @include font(medium);
 }

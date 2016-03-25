@@ -2,9 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import domready from 'domready';
 import RedBox from 'redbox-react';
-// `RouterContainer`-module is required below
+// Note: `RouterContainer`-module is required below
 
-// Create Client-App with hot-reloading capabilities
+// Creates a Client-App with hot-reloading capabilities
 class App {
   constructor() {
     this.render = this.render.bind(this);
@@ -17,7 +17,8 @@ class App {
       this.rootElement = document.querySelector('[data-jshook~="app-body"]');
       this.render();
 
-      // Support hot reloading of components by rerendering via webpack & setTimeout
+      // Support hot reloading of components by rerendering via vanilla webpack
+      // HMR (Hot-Module-Replacement) & setTimeout
       if (module.hot) {
         module.hot.accept('./RouterContainer', () => {
           setTimeout(this.hotReRender);
@@ -36,7 +37,8 @@ class App {
     );
   }
 
-  // Re-render after hot-reloading a module, display error if necessary
+  // Re-render after hot-reloading a module,
+  // display error if something during the compilation goes wrong.
   hotReRender(){
     try {
       this.render();
