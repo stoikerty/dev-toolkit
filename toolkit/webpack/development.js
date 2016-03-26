@@ -5,7 +5,7 @@ import webpackHotMiddleware from 'webpack-hot-middleware';
 import config from './config';
 
 config.devtool = 'source-map';
-config.entry.concat(['webpack-hot-middleware/client']);
+config.entry = ['webpack-hot-middleware/client'].concat(config.entry);
 
 const compiler = webpack(config);
 
