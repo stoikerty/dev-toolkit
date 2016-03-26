@@ -3,6 +3,10 @@ import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
 
 import config from './config';
+
+config.devtool = 'source-map';
+config.entry.concat(['webpack-hot-middleware/client']);
+
 const compiler = webpack(config);
 
 // Use the express production server

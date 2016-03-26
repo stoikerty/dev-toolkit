@@ -2,6 +2,7 @@ import path from 'path';
 import webpack from 'webpack';
 import autoprefixer from 'autoprefixer';
 import BrowserSyncPlugin from 'browser-sync-webpack-plugin';
+import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
 // Create shared config variables
 // ---
@@ -20,6 +21,8 @@ const scssConfigIncludePaths = [ PATHS.clientRoot ];
 
 const DEBUG = !process.argv.includes('--release');
 const VERBOSE = process.argv.includes('--verbose');
+
+// -----
 
 // Server-side rendering of scss files
 // ---
@@ -52,13 +55,16 @@ hook({
 
 // Resulting webpack config
 // ---
-export default {
-  // What kind of sourcemap should we use?
-  devtool: 'source-map',
 
+const styleLoaders = [
+  'css-loader?modules&importLoaders=1&localIdentName=' + cssChunkNaming,
+  'postcss-loader',
+  'sass-loader'
+];
+
+export default {
   // The entry and ouput configuration for the bundle(s)
   entry: [
-    'webpack-hot-middleware/client',
     PATHS.client
   ],
   output: {
@@ -68,7 +74,9 @@ export default {
   },
 
   // Webpack plugins
-  plugins: [
+  // Use hot-reload middleware and browsersync in development,
+  // extract css into one file for production.
+  plugins: isDev? [
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
 
@@ -95,7 +103,10 @@ export default {
         // and let Webpack Dev Server take care of this.
         reload: false
       }
-    )
+    ),
+  ] : [
+    new ExtractTextPlugin('style.css', { allChunks: true }),
+    new webpack.optimize.UglifyJsPlugin({ minimize: true }),
   ],
 
   // The module-loaders
@@ -109,14 +120,15 @@ export default {
         ],
         exclude: path.resolve(__dirname, root + 'node_modules')
       },
-      {
+
+      // Use separate style-tags for developemnt,
+      // extract CSS into one file for production.
+      isDev? {
         test: /\.scss$/,
-        loaders: [
-          'style-loader',
-          'css-loader?modules&importLoaders=1&localIdentName=' + cssChunkNaming,
-          'postcss-loader',
-          'sass-loader'
-        ]
+        loaders : ['style-loader'].concat(styleLoaders)
+      } : {
+        test: /\.scss$/,
+        loader : ExtractTextPlugin.extract('style-loader', styleLoaders)
       }
     ]
   },
