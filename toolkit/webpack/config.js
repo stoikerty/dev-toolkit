@@ -3,15 +3,10 @@ import webpack from 'webpack';
 import autoprefixer from 'autoprefixer';
 import BrowserSyncPlugin from 'browser-sync-webpack-plugin';
 
-
-export const root = '../../';
-
-// -----
-
 // Create shared config variables
 // ---
-const DEBUG = !process.argv.includes('--release');
-const VERBOSE = process.argv.includes('--verbose');
+const isDev = (process.env.NODE_ENV === 'development');
+const root = '../../';
 
 const clientRoot = path.resolve(__dirname, root + 'src/client');
 const PATHS = {
@@ -23,7 +18,8 @@ const PATHS = {
 const cssChunkNaming = '[name]__[local]___[hash:base64:5]';
 const scssConfigIncludePaths = [ PATHS.clientRoot ];
 
-// -----
+const DEBUG = !process.argv.includes('--release');
+const VERBOSE = process.argv.includes('--verbose');
 
 // Server-side rendering of scss files
 // ---
