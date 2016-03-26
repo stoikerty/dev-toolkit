@@ -10,8 +10,8 @@ export const root = '../../';
 
 // Create shared config variables
 // ---
-const DEBUG = !process.argv.includes('--release');
-const VERBOSE = process.argv.includes('--verbose');
+const DEBUG = true;
+const VERBOSE = false;
 
 const clientRoot = path.resolve(__dirname, root + 'src/client');
 const PATHS = {
