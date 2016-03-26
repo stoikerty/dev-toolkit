@@ -57,19 +57,21 @@ hook({
 // Resulting webpack config
 // ---
 export default {
+  // What kind of sourcemap should we use?
   devtool: 'source-map',
 
+  // The entry and ouput configuration for the bundle(s)
   entry: [
     'webpack-hot-middleware/client',
     PATHS.client
   ],
-
   output: {
     path: PATHS.build,
     filename: 'app.js',
     publicPath: '/'
   },
 
+  // Webpack plugins
   plugins: [
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
@@ -100,6 +102,7 @@ export default {
     )
   ],
 
+  // The module-loaders
   module: {
     loaders: [
       {
@@ -148,6 +151,7 @@ export default {
     ]
   },
 
+  // how much information webpack should output
   stats: {
     colors: true,
     reasons: DEBUG,
