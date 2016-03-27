@@ -3,32 +3,92 @@ import webpack from 'webpack';
 import autoprefixer from 'autoprefixer';
 import BrowserSyncPlugin from 'browser-sync-webpack-plugin';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import CopyWebpackPlugin from 'copy-webpack-plugin';
+import hook from 'css-modules-require-hook';
+import sass from 'node-sass';
 
-// Create shared config variables
+//
+// Webpack Configuration
+// ---------------------
+//
+// Find the following sections below
+// - Paths
+// - Webpack Plugins
+// - Style configuration (+ scss server side rendering)
+// - Resulting Webpack config
+
+// Paths
 // ---
 const isDev = (process.env.NODE_ENV === 'development');
-const root = '../../';
+const VERBOSE_LOGGING = false;
 
+const root = '../../';
 const clientRoot = path.resolve(__dirname, root + 'src/client');
+const serverRoot = path.resolve(__dirname, root + 'src/server');
+
 const PATHS = {
+  publicFiles: path.resolve(serverRoot, 'public-files'),
   clientRoot: clientRoot,
   client: path.resolve(clientRoot, 'app.js'),
   build: path.resolve(__dirname, root + 'build')
 };
 
-const cssChunkNaming = '[name]__[local]___[hash:base64:5]';
-const scssConfigIncludePaths = [ PATHS.clientRoot ];
-
-const DEBUG = !process.argv.includes('--release');
-const VERBOSE = process.argv.includes('--verbose');
-
-// -----
-
-// Server-side rendering of scss files
+// Webpack Plugins
 // ---
-import hook from 'css-modules-require-hook';
-import sass from 'node-sass';
+const sharedPlugins = [
+  new CopyWebpackPlugin([ { from: PATHS.publicFiles, to: 'files' } ])
+];
 
+const developmentPlugins = [
+  // Use hot-reload middleware, use browsersync for development
+  new webpack.optimize.OccurenceOrderPlugin(),
+  new webpack.HotModuleReplacementPlugin(),
+
+  new BrowserSyncPlugin({
+    // BrowserSync options - see: http://www.browsersync.io/docs/options/
+
+    // Use http://localhost:3000/ for development, proxy Dev Server.
+    host: 'localhost', port: 3000,
+    proxy: 'http://localhost:2000/',
+    // Stop the browser from automatically opening.
+    open: false,
+    // Scrolls & Form inputs on any device will be mirrored to all others.
+    ghostMode: {
+      clicks: false,
+      scroll: true,
+      forms: true,
+    },
+    // Show what browsers are connected.
+    logConnections: true,
+  },
+  {
+    // Webpack Plugin options
+
+    // Prevent BrowserSync from reloading the page
+    // and let Webpack Dev Server take care of this.
+    reload: false
+  })
+];
+
+const productionPlugins = [
+  // Extract css into one file for production, minify javascript
+  new ExtractTextPlugin('style.css', { allChunks: true }),
+  new webpack.optimize.UglifyJsPlugin({ minimize: true, compress: { warnings: false } })
+];
+
+// Style configuration
+// ---
+const scssConfigIncludePaths = [ PATHS.clientRoot ];
+const cssChunkNaming = '[name]__[local]___[hash:base64:5]';
+
+const styleLoaders = [
+  'css-loader?modules&importLoaders=1&localIdentName=' + cssChunkNaming,
+  'postcss-loader',
+  'sass-loader'
+];
+
+// Set up server-side rendering of scss files
+// ---
 // Implement a hook in node for `.scss`-imports that uses
 // the same settings as the webpack config.
 hook({
@@ -51,17 +111,8 @@ hook({
   },
 });
 
-// -----
-
 // Resulting webpack config
 // ---
-
-const styleLoaders = [
-  'css-loader?modules&importLoaders=1&localIdentName=' + cssChunkNaming,
-  'postcss-loader',
-  'sass-loader'
-];
-
 export default {
   // The entry and ouput configuration for the bundle(s)
   entry: [
@@ -74,40 +125,9 @@ export default {
   },
 
   // Webpack plugins
-  // Use hot-reload middleware and browsersync in development,
-  // extract css into one file for production.
-  plugins: isDev? [
-    new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.HotModuleReplacementPlugin(),
-
-    new BrowserSyncPlugin(
-      // BrowserSync options - see: http://www.browsersync.io/docs/options/
-      {
-        // Use http://localhost:3000/ for development, proxy Dev Server.
-        host: 'localhost', port: 3000,
-        proxy: 'http://localhost:2000/',
-        // Stop the browser from automatically opening.
-        open: false,
-        // Scrolls & Form inputs on any device will be mirrored to all others.
-        ghostMode: {
-          clicks: false,
-          scroll: true,
-          forms: true,
-        },
-        // Show what browsers are connected.
-        logConnections: true,
-      },
-      // Plugin options
-      {
-        // Prevent BrowserSync from reloading the page
-        // and let Webpack Dev Server take care of this.
-        reload: false
-      }
-    ),
-  ] : [
-    new ExtractTextPlugin('style.css', { allChunks: true }),
-    new webpack.optimize.UglifyJsPlugin({ minimize: true }),
-  ],
+  plugins: isDev ?
+    sharedPlugins.concat(developmentPlugins)
+    : sharedPlugins.concat(productionPlugins),
 
   // The module-loaders
   module: {
@@ -123,7 +143,7 @@ export default {
 
       // Use separate style-tags for developemnt,
       // extract CSS into one file for production.
-      isDev? {
+      isDev ? {
         test: /\.scss$/,
         loaders : ['style-loader'].concat(styleLoaders)
       } : {
@@ -151,8 +171,8 @@ export default {
     })
   ],
 
+  // Files in these directories can be imported without a relative path
   resolve: {
-    // files in these directories can be imported without a relative path
     modulesDirectories: [
       PATHS.clientRoot,
       'node_modules'
@@ -162,13 +182,15 @@ export default {
   // how much information webpack should output
   stats: {
     colors: true,
-    reasons: DEBUG,
-    hash: VERBOSE,
-    version: VERBOSE,
     timings: true,
-    chunks: VERBOSE,
-    chunkModules: VERBOSE,
-    cached: VERBOSE,
-    cachedAssets: VERBOSE,
+    reasons: true,
+
+    children: VERBOSE_LOGGING,
+    hash: VERBOSE_LOGGING,
+    version: VERBOSE_LOGGING,
+    chunks: VERBOSE_LOGGING,
+    chunkModules: VERBOSE_LOGGING,
+    cached: VERBOSE_LOGGING,
+    cachedAssets: VERBOSE_LOGGING,
   }
 };
