@@ -4,8 +4,9 @@ import router from './router';
 // Preconfigure the `app`-object
 import './bootstrap';
 
-// launch server later with webpack using start-method
+// launch server later with webpack using start-function
 app.server.start = (options={ message:null })=>{
+
   // serve build folder
   app.server.instance.use(serveStatic('build'));
 
@@ -23,4 +24,5 @@ app.server.start = (options={ message:null })=>{
 
   // start react-router
   app.server.instance.use(router);
+
 };
