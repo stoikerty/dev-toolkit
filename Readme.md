@@ -159,7 +159,7 @@ The `style`-directory can be accessed via absolute import in scss files.
 ```
 The directories for absolute imports are defined in `webpack/config.js` under `modulesDirectories`.
 
-The `layout.html` is located in `src/server/views` and only contains one javascript hook `app-body` to insert markup into from javascript. The server inserts markup via Handlebars.
+The `layout.html` is located in `src/server/views` and only contains one javascript hook `app-body` to insert markup into from javascript. The server inserts markup via Handlebars. I've included [Font Awesome](http://fortawesome.github.io/Font-Awesome/) and [Source Sans Pro](https://www.google.com/fonts/specimen/Source+Sans+Pro) in the `layout.html` as sane defaults.
 
 Both the `server` and `client` have an `app.js` that serve as starting points.
 <br><br>
