@@ -164,7 +164,7 @@ Both the `server` and `client` have an `app.js` that serve as starting points.
 <br><br>
 
 ##### Creating a Build <sub>/ webpack configuration</sub>
-- **`npm run build`** To build production files for transferring to Server.<br>The server runs on port `2000`, it's available to change in `server/bootstrap.js` and `toolkit/webpack/config`.
+- **`npm run build`** to build production files for transferring to Server.<br>The server runs on port `2000`, the port is available to change in `server/bootstrap.js` and `toolkit/webpack/config`.
 - Lint your files using [eslint](http://eslint.org/) with **`npm run lint`**.
 
 Have a look at the `package.json` for a full list of dependencies.
