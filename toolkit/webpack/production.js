@@ -11,4 +11,5 @@ compiler.run((err, stats)=>{
   app.log(stats.toString(config.stats));
 });
 
+// start the server
 app.server.start();
