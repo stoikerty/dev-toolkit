@@ -24,7 +24,6 @@
       </td>
       <td width="33.3333%">
 
-        <br>
         <ul>
           <li>
             <strong>src</strong>
