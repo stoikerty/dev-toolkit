@@ -5,6 +5,12 @@ import AppBody from './views/AppBody';
 import ExamplePage from './views/ExamplePage';
 import NoMatch404 from './views/NoMatch404';
 
+// `routes.js`
+// -----------
+// This looks like a component but is in effect just a routing definition.
+// These routes are rendered both on the client and on the server, therefore
+// they are imported in `RouterContainer` and in `server/router.js`.
+
 // Use AppBody as surrounding container for all routes
 export default (
   <Route path="/" component={AppBody}>

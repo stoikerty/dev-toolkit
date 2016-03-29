@@ -4,7 +4,14 @@ import domready from 'domready';
 import RedBox from 'redbox-react';
 // Note: `RouterContainer`-module is required below
 
-// Creates a Client-App with hot-reloading capabilities
+// `app.js`
+// --------
+// This file is responsible for handling hot-reloading only. It reloads the main
+// root container (RouterContainer) whenever one of the files that gets imported
+// by that container change.
+// An error is displayed if something goes wrong or a syntax-error occurs.
+
+// Create a Client-App with hot-reloading capabilities
 class App {
   constructor() {
     this.render = this.render.bind(this);
