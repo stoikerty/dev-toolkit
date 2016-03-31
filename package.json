@@ -73,6 +73,7 @@
     "webpack-hot-middleware": "^2.10.0"
   },
   "dependencies": {
+    "classnames": "^2.2.3",
     "domready": "^1.0.8",
     "express": "^4.13.4",
     "express-handlebars": "^3.0.0",
