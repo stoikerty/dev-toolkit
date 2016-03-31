@@ -1,7 +1,7 @@
-// always base components on the global configuration to get mixins etc
+// Always base components on the global configuration to get mixins etc
 @import 'style/config.scss';
 
-// example-animation
+// Animations work just like you're used to
 @keyframes move-up-and-down {
   0% {
     transform : translateY(0px);
@@ -20,7 +20,7 @@
   }
 }
 
-// "camelCase" is the default convention with css-modules
+// "camelCase" is the default convention with css-modules so let's stick to that
 .exampleComponent{
   // This mixin changes cursor and disables user-selection
   @include isButton;
@@ -34,14 +34,25 @@
   min-height: $grid * 3;
   text-align: center;
 
-  // prototyping-mixin: color (number from 1-2), opacity (optional)
+  // Prototyping-mixin: color (number from 1-2), opacity (optional)
   @include proto(2, 0.4);
 
   // Easing-variables are provided for use in transitions and animations
   animation : move-up-and-down 2.4s $ease-in-out-quart;
   animation-iteration-count: infinite;
 
-  // Example pseudo-element
+  // There are six different breakpoints, customize them in `style/_config.scss`
+  @include breakpoint(phone)    { @include proto(1, 0.4); }
+  @include breakpoint(smart)    { @include proto(2, 0.4); }
+  @include breakpoint(tablet7)  { @include proto(3, 0.4); }
+  @include breakpoint(tablet10) { @include proto(4, 0.3); }
+  @include breakpoint(pcsmall)  { @include proto(5, 0.8); }
+  @include breakpoint(pclarge)  { @include proto(6, 0.4); }
+  // you can also combine them
+  @include breakpoint(phone smart tablet7) { font-weight: bold; }
+  @include breakpoint(tablet10 pcsmall pclarge)  { font-weight: 300; }
+
+  // Pseudo-Elements also work!
   $dot-size : 16px;
   &:after{
     @include position(absolute, block, $dot-size, $dot-size);
@@ -77,21 +88,21 @@
   // font-mixin: font-size, color (optional), font-weight (optional)
   // see: mixins\_font-settings.scss
   @include font(small, $brand-blue, bold);
+  text-shadow: 0.5px 0.5px 0px rgba(#fff, 1);
   line-height : 2em;
-}
 
-.isHidden{
-  // With css-modules you use composition
+  // You can either use composition via sass with `&` like it's done here,
+  // or use composition via css-modules with `composes: text;`
   // see: https://github.com/css-modules/css-modules#composition
-  composes: text;
+  &.hiddenText{
+    opacity : 0;
+    transform : scale(0);
+    max-height : 0;
 
-  opacity : 0;
-  transform : scale(0);
-  max-height : 0;
-
-  transition :
-    transform 0.3s 0.14s $ease-in-out,
-    max-height 0.3s 0.14s $ease-in-out,
-    opacity 0.3s 0.14s $ease-in-out
-  ;
+    transition :
+      transform 0.3s 0.14s $ease-in-out,
+      max-height 0.3s 0.14s $ease-in-out,
+      opacity 0.3s 0.14s $ease-in-out
+    ;
+  }
 }

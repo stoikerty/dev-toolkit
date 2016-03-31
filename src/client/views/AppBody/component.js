@@ -27,7 +27,7 @@ export default class Component extends React.Component{
             { 'click to test <If/> condition' }
           </div>
         <Else/>
-          <div className={cx(s.text, s.isHidden)}>
+          <div className={cx(s.text, s.hiddenText)}>
             { 'woohooo!' }
           </div>
         </If>
