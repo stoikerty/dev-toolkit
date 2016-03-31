@@ -1,14 +1,97 @@
-// always base components on the global configuration
+// always base components on the global configuration to get mixins etc
 @import 'style/config.scss';
 
-.ExampleComponent{
+// example-animation
+@keyframes move-up-and-down {
+  0% {
+    transform : translateY(0px);
+  }
+  50% {
+    transform : translateY(15px);
+  }
+  80% {
+    transform : translateY(0px) scale(1);
+  }
+  90% {
+    transform : translateY(0px) scale(0.9);
+  }
+  100% {
+    transform : translateY(0px) scale(1);
+  }
+}
+
+// "camelCase" is the default convention with css-modules
+.exampleComponent{
+  // This mixin changes cursor and disables user-selection
+  @include isButton;
+
   // position-mixin: position, display (optional), width (optional), height (optional)
+  @include position(relative, block, 90%);
+  float : left;
+  clear : both;
+  margin : 10px 5%;
+  padding : $grid * 2;
+  min-height: $grid * 3;
+  text-align: center;
+
+  // prototyping-mixin: color (number from 1-2), opacity (optional)
+  @include proto(2, 0.4);
+
+  // Easing-variables are provided for use in transitions and animations
+  animation : move-up-and-down 2.4s $ease-in-out-quart;
+  animation-iteration-count: infinite;
+
+  // Example pseudo-element
+  $dot-size : 16px;
+  &:after{
+    @include position(absolute, block, $dot-size, $dot-size);
+    top : 100%;
+    left : 50%;
+    content : '';
+    margin-top : -($dot-size / 2);
+    margin-left : -($dot-size / 2);
+    border-radius: 50px;
+
+    @include proto(4, 0.6);
+
+    animation : move-up-and-down 2.4s $ease-out-quart;
+    animation-iteration-count: infinite;
+  }
+}
+
+
+// Example sub-classes
+.text{
   @include position(relative, block, 100%);
   float : left;
   clear : both;
-  padding : $grid * 2;
-  min-height: $grid * 3;
+  opacity : 1;
+  max-height : 100px;
 
-  // mixin for prototyping: color (number from 1-2), opacity (optional)
-  @include proto(2, 0.5);
+  transition :
+    transform 0.3s $ease-in-out,
+    max-height 0.3s $ease-in-out,
+    opacity 0.3s $ease-in-out
+  ;
+
+  // font-mixin: font-size, color (optional), font-weight (optional)
+  // see: mixins\_font-settings.scss
+  @include font(small, $brand-blue, bold);
+  line-height : 2em;
+}
+
+.isHidden{
+  // With css-modules you use composition
+  // see: https://github.com/css-modules/css-modules#composition
+  composes: text;
+
+  opacity : 0;
+  transform : scale(0);
+  max-height : 0;
+
+  transition :
+    transform 0.3s 0.14s $ease-in-out,
+    max-height 0.3s 0.14s $ease-in-out,
+    opacity 0.3s 0.14s $ease-in-out
+  ;
 }
