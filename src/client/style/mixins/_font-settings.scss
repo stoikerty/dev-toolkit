@@ -9,7 +9,7 @@ $font-small   : 14px !default;
 $font-xsmall  : 12px !default;
 
 // use mixin for font-sizes throughout app
-@mixin font($font-size: auto, $color: auto, $font-style: auto){
+@mixin font($font-size: auto, $color: auto, $font-weight: auto){
   @if $font-size != auto {
     @if $font-size == default { font-size : $font-medium; }
     @else if $font-size == xxlarge { font-size : $font-xxlarge; }
@@ -24,7 +24,7 @@ $font-xsmall  : 12px !default;
     @if $color == default { color : $text-color-default; }
     @else { color : $color; }
   }
-  @if $font-style != auto {
-    @include font-family(default, $font-style);
+  @if $font-weight != auto {
+    font-weight: $font-weight;
   }
 }
