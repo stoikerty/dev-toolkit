@@ -15,22 +15,32 @@ export default class AppBody extends React.Component{
   render() {
     return (
       <div className={s.AppBody}>
-        { '{ universal-dev-toolkit }' }
+        {/*
+          You can still use inline styles, but it is preferable to use
+          the css-modules approach from the Example-component below.
+        */}
+        <div style={{ textAlign: 'center', margin: '8px', fontWeight: 'bold' }}>
+          { '{ universal-dev-toolkit }' }
+        </div>
 
-        <div className="navigation">
+        <div style={{ textAlign: 'center', opacity: 0.6 }}>
           <Link to="/example-page">
             { 'Example Page' }
           </Link>
+          {' - '}
           <Link to="/somewhere-else">
             {' Non-existing Page' }
           </Link>
         </div>
+        <hr/>
 
-        <Component/>
-
-        <div className="current-route">
+        <div className="current-route" style={{ textAlign: 'center'}}>
           { this.props.children }
         </div>
+
+        {/* Styled Example Component */}
+        <hr/>
+        <Component/>
       </div>
     );
   }
