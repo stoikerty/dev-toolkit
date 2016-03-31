@@ -63,10 +63,17 @@
     margin-left : -($dot-size / 2);
     border-radius: 50px;
 
-    @include proto(4, 0.6);
+    @include proto(4, 0.4);
 
     animation : move-up-and-down 2.4s $ease-out-quart;
     animation-iteration-count: infinite;
+  }
+
+  // As well as pseudo-classes like `:active`
+  &:active{
+    &:after{
+        @include proto(4, 1);
+    }
   }
 }
 
@@ -101,8 +108,8 @@
 
     transition :
       transform 0.3s 0.14s $ease-in-out,
-      max-height 0.3s 0.14s $ease-in-out,
-      opacity 0.3s 0.14s $ease-in-out
+      max-height 0.3s $ease-in-out,
+      opacity 0.3s $ease-in-out
     ;
   }
 }
