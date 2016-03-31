@@ -3,7 +3,12 @@ import { Router, browserHistory, RouterContext } from 'react-router';
 
 import routes from './routes';
 
-// The root-container of our App that manages the configured routes.
+// `RouterContainer.js`
+// --------------------
+// The root-container of our App that manages the configured routes. If you us
+// Redux, the <Provider> component should wrap the <Router> below. Note how
+// this file uses capitalized camel-case to denote that it is a React-component.
+
 export default class RouterContainer extends React.Component{
   constructor(props){
     super(props);

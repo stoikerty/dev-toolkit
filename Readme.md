@@ -24,7 +24,6 @@
       </td>
       <td width="33.3333%">
 
-        <br>
         <ul>
           <li>
             <strong>src</strong>
@@ -165,7 +164,7 @@ Both the `server` and `client` have an `app.js` that serve as starting points.
 <br><br>
 
 ##### Creating a Build <sub>/ webpack configuration</sub>
-- **`npm run build`** To build production files for transferring to Server.<br>The server runs on port `2000`, it's available to change in `server/bootstrap.js` and `toolkit/webpack/config`.
+- **`npm run build`** to build production files for transferring to Server.<br>The server runs on port `2000`, the port is available to change in `server/bootstrap.js` and `toolkit/webpack/config`.
 - Lint your files using [eslint](http://eslint.org/) with **`npm run lint`**.
 
 Have a look at the `package.json` for a full list of dependencies.
@@ -173,17 +172,7 @@ Have a look at the `package.json` for a full list of dependencies.
 The webpack folder contains a **`webpack/config.js`** that is used both for running **`webpack/development.js`** <sub>(via `npm run dev`)</sub> and **`webpack/production.js`** <sub>(via `npm run build`)</sub>.
 <br><br>
 
----
-
-##### Decisions :foggy:
-
-I opted to use [webpack-dev-middleware](https://github.com/webpack/webpack-dev-middleware) and [webpack-hot-middleware](https://github.com/glenjamin/webpack-hot-middleware) for adding hot-reload functionality. I'm using **vanilla HMR** which covers most of the benefits people are looking for in hot-reloaded javascript.
-
-The state of React-components is not kept as I'm looking to work with Redux. I got the idea to stop using unsafe transforms and reduce the complexity of Babel Transforms via an Article I read called ["Hot Reloading in React - *or, an Ode to Accidental Complexity*"](https://medium.com/@dan_abramov/hot-reloading-in-react-1140438583bf#.3mce9tv45) and the resulting discussion in [a Redux pull-request](https://github.com/reactjs/redux/pull/1455).
-
-CSS is imported using [css-modules](https://github.com/css-modules/css-modules). If you have never heard about css-modules, read ["CSS Modules - *Welcome to the Future*"](http://glenmaddern.com/articles/css-modules). It allows you to write css without using globals all over the place.
-
-Currently there is no test-suite. I might add one if I get more exposure into using tests myself. Although I do like keeping the toolkit simple and extensible instead of adding all sorts of dependencies for the sake of having more features. Feel free to add your own if you need it.
+<sub>**Note:**<br>*I'm researching for a way to make the usage simpler by transforming the toolkit into an* ***npm-package*** *so you can install and use it as a updatable dependency.*</sub>
 
 ---
 
