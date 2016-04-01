@@ -4,17 +4,17 @@
   "description": "{ Project }",
   "main": "index.js",
   "scripts": {
-    "start": "npm install && better-npm-run copy-example-files",
+    "start": "npm install && better-npm-run copy-example-files && better-npm-run install-src-dependencies",
     "dev": "better-npm-run development",
     "build": "better-npm-run build",
     "lint": "eslint src --config src/.eslintrc"
   },
   "betterScripts": {
     "copy-example-files": {
-      "command": "ncp toolkit/documentation/src_example_files src",
-      "env": {
-        "NODE_ENV": "production"
-      }
+      "command": "ncp toolkit/documentation/src_example_files src"
+    },
+    "install-src-dependencies": {
+      "command": "cd src && npm install && cd .."
     },
     "development": {
       "command": "babel-node toolkit/webpack/development.js",
