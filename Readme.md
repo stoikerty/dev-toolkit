@@ -91,7 +91,7 @@
             <a href="https://babeljs.io/docs/learn-es2015/">ES2015 / ES6</a>
           </li>
           <li>
-            <a href="http://survivejs.com/webpack/requiring-files/">absolute imports</a>
+            <a href="http://survivejs.com/webpack/requiring-files/">root-relative imports</a>
           </li>
           <li>
             <a href="https://webpack.github.io/docs/hot-module-replacement-with-webpack.html">Vanilla HMR</a>
