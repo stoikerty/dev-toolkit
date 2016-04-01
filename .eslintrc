@@ -16,6 +16,9 @@
       0,
       "always-multiline"
     ],
+    "no-console": [
+      0
+    ],
     "no-unused-vars": [
       2,
       {
