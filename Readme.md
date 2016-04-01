@@ -158,11 +158,20 @@
 
 ##### Some additional information <sub>/ quick clues for you</sub>
 
-The `style`-directory can be accessed via absolute import in scss files.
+The `src/client/style`-directory can be accessed via root-import in scss files.
 ```scss
 @import 'style/config.scss';
 ```
-The directories for absolute imports are defined in `webpack/config.js` under `modulesDirectories`.
+
+A similar solution also works for js-files, it works a bit differently because it needs to be compiled both for the client and for the server (via `babel-node` thanks to [`babel-root-import`](https://github.com/michaelzoidl/babel-root-import)).
+
+Import files in with `/src` as the base, using `~/`.
+```js
+// example import on client
+import utils from '~/client/utils';
+// example import on server
+import utils from '~/server/utils';
+```
 
 The `layout.html` is located in `src/server/views` and only contains one javascript hook `app-body` to insert markup into from javascript. The server inserts markup via Handlebars. I've included [Font Awesome](http://fortawesome.github.io/Font-Awesome/) and [Source Sans Pro](https://www.google.com/fonts/specimen/Source+Sans+Pro) in the `layout.html` as sane defaults.
 
