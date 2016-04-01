@@ -85,7 +85,7 @@
 
       </td>
       <td width="33.3333%">
-
+        <br>
         <ul>
           <li>
             <a href="https://babeljs.io/docs/learn-es2015/">ES2015 / ES6</a>
@@ -109,6 +109,9 @@
             <a href="https://facebook.github.io/react/">React</a>
           </li>
           <li>
+            <a href="https://github.com/AlexGilleran/jsx-control-statements">jsx-control-statements</a>
+          </li>
+          <li>
             <a href="http://sass-lang.com/">sass / scss</a>
           </li>
           <li>
@@ -116,9 +119,6 @@
           </li>
           <li>
             <a href="https://github.com/postcss/autoprefixer">Autoprefixer</a>
-          </li>
-          <li>
-            <a href="https://github.com/AlexGilleran/jsx-control-statements">jsx-control-statements</a>
           </li>
           <li>
             <a href="https://github.com/JedWatson/classnames">classnames</a>
