@@ -24,7 +24,7 @@ body:global{
 
   // position-mixin: position, display (optional), width (optional), height (optional)
 
-  // font-mixin: font-size, color (optional), font-style (optional)
+  // font-mixin: font-size, color (optional), font-weight (optional)
   // see: mixins\_font-settings.scss
   @include font(medium);
 }
