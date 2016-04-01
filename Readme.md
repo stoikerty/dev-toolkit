@@ -117,6 +117,12 @@
           <li>
             <a href="https://github.com/postcss/autoprefixer">Autoprefixer</a>
           </li>
+          <li>
+            <a href="https://github.com/AlexGilleran/jsx-control-statements">jsx-control-statements</a>
+          </li>
+          <li>
+            <a href="https://github.com/JedWatson/classnames">classnames</a>
+          </li>
         </ul>
 
         <ul>
@@ -171,8 +177,6 @@ Have a look at the `package.json` for a full list of dependencies.
 
 The webpack folder contains a **`webpack/config.js`** that is used both for running **`webpack/development.js`** <sub>(via `npm run dev`)</sub> and **`webpack/production.js`** <sub>(via `npm run build`)</sub>.
 <br><br>
-
-<sub>**Note:**<br>*I'm researching for a way to make the usage simpler by transforming the toolkit into an* ***npm-package*** *so you can install and use it as a updatable dependency.*</sub>
 
 ---
 
