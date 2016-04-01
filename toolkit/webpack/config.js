@@ -140,7 +140,10 @@ export default {
           'babel-loader',
           'eslint-loader'
         ],
-        exclude: path.resolve(__dirname, root + 'node_modules')
+        exclude: [
+          path.resolve(__dirname, root + 'src/node_modules'),
+          path.resolve(__dirname, root + 'node_modules')
+        ]
       },
 
       // Use separate style-tags for developemnt,
@@ -153,6 +156,11 @@ export default {
         loader : ExtractTextPlugin.extract('style-loader', styleLoaders)
       }
     ]
+  },
+
+  // use .eslintrc file inside `src`-folder
+  eslint: {
+    configFile: path.resolve(__dirname, root + 'src/.eslintrc')
   },
 
   // `sass-loader`-specific config
@@ -177,6 +185,7 @@ export default {
   resolve: {
     modulesDirectories: [
       PATHS.clientRoot,
+      'src/node_modules',
       'node_modules'
     ]
   },
