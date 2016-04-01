@@ -1,12 +1,18 @@
 #############
-## Node
+## Your Source Files
 #############
 
-node_modules/
-npm-debug.log
+src/
 
 #############
 ## Generated Build Files
 #############
 
 build/
+
+#############
+## Node
+#############
+
+node_modules/
+npm-debug.log
