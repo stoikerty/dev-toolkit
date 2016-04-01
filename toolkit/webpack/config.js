@@ -44,30 +44,32 @@ const developmentPlugins = [
   new webpack.optimize.OccurenceOrderPlugin(),
   new webpack.HotModuleReplacementPlugin(),
 
-  new BrowserSyncPlugin({
-    // BrowserSync options - see: http://www.browsersync.io/docs/options/
+  new BrowserSyncPlugin(
+    {
+      // BrowserSync options - see: http://www.browsersync.io/docs/options/
 
-    // Use http://localhost:3000/ for development, proxy Dev Server.
-    host: 'localhost', port: 3000,
-    proxy: 'http://localhost:2000/',
-    // Stop the browser from automatically opening.
-    open: false,
-    // Scrolls & Form inputs on any device will be mirrored to all others.
-    ghostMode: {
-      clicks: false,
-      scroll: true,
-      forms: true,
+      // Use http://localhost:3000/ for development, proxy Dev Server.
+      host: 'localhost', port: 3000,
+      proxy: 'http://localhost:2000/',
+      // Stop the browser from automatically opening.
+      open: false,
+      // Scrolls & Form inputs on any device will be mirrored to all others.
+      ghostMode: {
+        clicks: false,
+        scroll: true,
+        forms: true,
+      },
+      // Show what browsers are connected.
+      logConnections: true,
     },
-    // Show what browsers are connected.
-    logConnections: true,
-  },
-  {
-    // Webpack Plugin options
+    {
+      // Webpack Plugin options
 
-    // Prevent BrowserSync from reloading the page
-    // and let Webpack Dev Server take care of this.
-    reload: false
-  })
+      // Prevent BrowserSync from reloading the page
+      // and let Webpack Dev Server take care of this.
+      reload: false
+    }
+  )
 ];
 
 const productionPlugins = [
