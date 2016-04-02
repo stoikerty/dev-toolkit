@@ -62,6 +62,12 @@
                   </li>
                 </ul>
               </li>
+              <li>
+                <sub>package.json</sub>
+              </li>
+              <li>
+                <sub>...dotfiles</sub>
+              </li>
             </ul>
           </li>
         </ul>
@@ -153,10 +159,10 @@
         If it doesn't work, feel free to <a href="https://github.com/stoikerty/universal-dev-toolkit/issues">report an issue or help somebody out</a>.
       </td>
       <td width="33.3333%">
-        :point_right:  The <code>src</code> folder is yours to use and has it's own <code>package.json</code> and <code>.eslintrc</code>-file separate from the toolkit.
+        :point_right:  The <code>src</code> folder is yours to use and has customizable <code>package.json</code>, <code>.env</code> and <code>.eslintrc</code>-files separate from the toolkit.
         <br>
         <br>
-        :point_right:  Your source-files will be <strong>hot-reloaded</strong> and proxied via <code>http://localhost:3000</code>.<br><br><em>You will be working with <a href="https://medium.com/@mjackson/universal-javascript-4761051b7ae9#.llvvuk4l5">Universal Javascript</a>, managed via <a href="https://webpack.github.io/">webpack</a>.</em>
+        :point_right:  Your source-files will be <strong>hot-reloaded</strong> and proxied via <code>http://localhost:3000</code>. <small>(Default)</small><br><br><em>You will be working with <a href="https://medium.com/@mjackson/universal-javascript-4761051b7ae9#.llvvuk4l5">Universal Javascript</a>, managed via <a href="https://webpack.github.io/">webpack</a>.</em>
       </td>
       <td width="33.3333%">
 
@@ -195,10 +201,22 @@ Both the `server` and `client` have an `app.js` that serve as starting points.
 <br><br>
 
 ##### Creating a Build <sub>/ webpack configuration</sub>
-- **`npm run build`** to build production files for transferring to Server.<br>The server runs on port `2000`, the port is available to change in `server/bootstrap.js` and `toolkit/webpack/config`.
-- Lint your files using [eslint](http://eslint.org/) with **`npm run lint`**.
 
-Have a look at the `package.json` for a full list of dependencies.
+Run your commands inside the `src`-folder.
+- **`npm install [package]`** installs a package into your `src`-dependencies.
+- *configure your project-settings in `src/package.json`*
+- *configure the server port in `src/.env`*
+
+
+- **`npm run build`** builds production files for your hosted server.<br>They will be located outside `src`, in a new folder called `build`.
+
+
+- **`npm run lint`** lints your files using [eslint](http://eslint.org/).
+- *configure your linting preferences in `src/.eslintrc`*
+
+Once you have run `npm start`, you will have 2 `package.json`-files. The one inside the root-folder contains the development dependencies necessary for making the toolkit work. You shouldn't need to make any changes in that file unless you want to customize the toolkit itself.
+
+The `package.json` inside the `src`-folder is the file you're most probably interested in since it relates directly to your project, it contains some dependencies although you should be able to modify it however you like.
 
 The webpack folder contains a **`webpack/config.js`** that is used both for running **`webpack/development.js`** <sub>(via `npm run dev`)</sub> and **`webpack/production.js`** <sub>(via `npm run build`)</sub>.
 <br><br>
