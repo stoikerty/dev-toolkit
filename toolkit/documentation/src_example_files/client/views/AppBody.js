@@ -19,7 +19,7 @@ export default class AppBody extends React.Component{
         {/* Title */}
         {/*
           You can still use inline styles as shown here, but it is preferable
-          to use the css-modules approach from the Example-component below.
+          to use the css-modules approach from the Example-page below.
         */}
         <div style={{ textAlign: 'center', margin: '8px', fontWeight: 'bold' }}>
           { '{ universal-dev-toolkit }' }
@@ -27,6 +27,10 @@ export default class AppBody extends React.Component{
 
         {/* Navigation */}
         <div style={{ textAlign: 'center', opacity: 0.6 }}>
+          <Link to="/">
+            { 'Home' }
+          </Link>
+          {' - '}
           <Link to="/example-page">
             { 'Example Page' }
           </Link>
@@ -35,9 +39,9 @@ export default class AppBody extends React.Component{
             {' Non-existing Page' }
           </Link>
         </div>
-        <hr/>
 
         {/* Pages */}
+        <hr/>
         <div className="current-route" style={{ textAlign: 'center'}}>
           { this.props.children }
         </div>
