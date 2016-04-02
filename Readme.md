@@ -199,6 +199,10 @@ The `layout.html` is located in `src/server/views` and only contains one javascr
 
 <hr>
 
+###### About `.env`
+I've added [`better-npm-run`](https://github.com/benoror/better-npm-run) to make the usage of the configuration via environment-variables in `src/.env` easy. You can remove the dependency and omit `.env` to work with only the defaults.
+
+###### About `app.js` & webpack
 Both the `server` and `client` have an `app.js` that serve as starting points. They only contain the most necessary code to make it work with the toolkit.
 
 *All other files inside `src` serve mostly as an example of what a universal web app could look like.*
@@ -225,9 +229,6 @@ Run your commands inside the `src`-folder.
 Once you have run `npm start`, you will have 2 `package.json`-files. The one inside the root-folder contains the development dependencies necessary for making the toolkit work. You shouldn't need to make any changes in that file unless you want to customize the toolkit itself. *(This will make it harder to update it in the future)*
 
 The `package.json` inside the `src`-folder is the file you're most probably interested in since it relates directly to your project, it contains some dependencies to make the web app work, you should be able to modify it however you like.
-
-###### About `.env`
-I've added [`better-npm-run`](https://github.com/benoror/better-npm-run) to make the usage of the configuration via environment-variables in `src/.env` easy. You can remove the dependency and omit `.env` to work with only the defaults.
 <br><br>
 
 ---
