@@ -3,9 +3,17 @@
   "version": "1.0.0",
   "description": "{ Project Name }",
   "scripts": {
-    "dev": "cd .. && npm run dev && cd src",
-    "build": "cd .. && npm run build && cd src",
+    "dev": "better-npm-run dev",
+    "build": "better-npm-run build",
     "lint": "cd .. && npm run lint && cd src"
+  },
+  "betterScripts": {
+    "dev": {
+      "command": "cd .. && npm run dev && cd src"
+    },
+    "build": {
+      "command": "cd .. && npm run build && cd src"
+    }
   },
   "repository": {
     "type": "git",
@@ -22,5 +30,8 @@
     "react-dom": "^0.14.7",
     "react-router": "^2.0.0-rc4",
     "serve-static": "^1.10.2"
+  },
+  "devDependencies": {
+    "better-npm-run": "0.0.8"
   }
 }
