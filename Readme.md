@@ -169,7 +169,7 @@
         Files are kept to a minimum to allow for exploration and customisation.
         <br>
         <br>
-        <em>The toolkit can be updated separately without affecting your <code>src</code>-dependencies.</em>
+        <em>The toolkit can be updated separately without affecting your project dependencies in <code>src</code>.</em>
 
       </td>
     </tr>
