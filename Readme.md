@@ -195,9 +195,17 @@ import utils from '~/client/utils';
 import utils from '~/server/utils';
 ```
 
-The `layout.html` is located in `src/server/views` and only contains one javascript hook `app-body` to insert markup into from javascript. The server inserts markup via Handlebars. I've included [Font Awesome](http://fortawesome.github.io/Font-Awesome/) and [Source Sans Pro](https://www.google.com/fonts/specimen/Source+Sans+Pro) in the `layout.html` as sane defaults.
+The `layout.html` is located in `src/server/views` and only contains one javascript hook `app-body` to insert markup into from javascript. The server inserts markup via Handlebars. [Font Awesome](http://fortawesome.github.io/Font-Awesome/) and [Source Sans Pro](https://www.google.com/fonts/specimen/Source+Sans+Pro) are included in the `layout.html` as sane defaults.
 
-Both the `server` and `client` have an `app.js` that serve as starting points.
+<hr>
+
+Both the `server` and `client` have an `app.js` that serve as starting points. They only contain the most necessary code to make it work with the toolkit.
+
+*All other files inside `src` serve mostly as an example of what a universal web app could look like.*
+
+The `client/app.js` contains the hot-module-replacement functionality that is exposed via the webpack middleware, while the `server/app.js` contains a class-export that is ultimately imported into the toolkit and then started.
+
+The **`webpack/config.js`** is used both for running **`webpack/development.js`** <sub>(via `npm run dev`)</sub> and **`webpack/production.js`** <sub>(via `npm run build`)</sub>.
 <br><br>
 
 ##### Creating a Build <sub>/ webpack configuration</sub>
@@ -217,8 +225,6 @@ Run your commands inside the `src`-folder.
 Once you have run `npm start`, you will have 2 `package.json`-files. The one inside the root-folder contains the development dependencies necessary for making the toolkit work. You shouldn't need to make any changes in that file unless you want to customize the toolkit itself.
 
 The `package.json` inside the `src`-folder is the file you're most probably interested in since it relates directly to your project, it contains some dependencies although you should be able to modify it however you like.
-
-The webpack folder contains a **`webpack/config.js`** that is used both for running **`webpack/development.js`** <sub>(via `npm run dev`)</sub> and **`webpack/production.js`** <sub>(via `npm run build`)</sub>.
 <br><br>
 
 ---
