@@ -217,17 +217,17 @@ The **`webpack/config.js`** is used both for running **`webpack/development.js`*
 Run your commands inside the `src`-folder.
 - **`npm run build`** builds production files for your hosted server.<br>They will be located outside `src`, in a new folder called `build`.
 <br>
-<small>**configure the server port in `src/.env`**</small>
+<sub>**configure the server port in `src/.env`**</sub>
 
 
 - **`npm install [package]`** installs a package into your `src`-dependencies.
 <br>
-<small>**configure your project-settings in `src/package.json`**</small>
+<sub>**configure your project-settings in `src/package.json`**</sub>
 
 
 - **`npm run lint`** lints your files using [eslint](http://eslint.org/).
 <br>
-<small>**configure your linting preferences in `src/.eslintrc`**</small>
+<sub>**configure your linting preferences in `src/.eslintrc`**</sub>
 
 Once you have run `npm start`, you will have 2 `package.json`-files. The one inside the root-folder contains the development dependencies necessary for making the toolkit work. You shouldn't need to make any changes in that file unless you want to customize the toolkit itself. *(This will make it harder to update it in the future)*
 
