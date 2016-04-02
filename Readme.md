@@ -16,19 +16,19 @@
 
         <strong>Start a project</strong>
         <br>
-        <code>></code> <code>npm start</code>
+        <strong><code>></code></strong> <code>npm start</code>
         <br><br>
 
-        <strong>Use created <code>src</code>-folder</strong>
+        <strong>Use created src-folder</strong>
         <br>
-        <code>></code> <code>cd src</code>
+        <strong><code>></code></strong> <code>cd src</code>
         <br>
-        <code>src></code> <code>git init</code>
+        <strong><code>src></code></strong> <code>git init</code>
         <br><br>
 
         <strong>Start Server, watch assets</strong>
         <br>
-        <code>src></code> <code>npm run dev</code>
+        <strong><code>src></code></strong> <code>npm run dev</code>
         <br><br>
       </td>
       <td width="33.3333%">
