@@ -10,12 +10,13 @@ config.entry = ['webpack-hot-middleware/client'].concat(config.entry);
 const compiler = webpack(config);
 
 // Use the express production server
-import '../../src/server/app';
+import serverApp from '../../src/server/app';
+const server = new serverApp;
 
-// Use middleware for hot-reloading
-app.server.instance.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: config.output.publicPath }));
-app.server.instance.use(webpackHotMiddleware(compiler));
+// Bind middleware for hot-reloading
+server.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: config.output.publicPath }));
+server.use(webpackHotMiddleware(compiler));
 
-app.server.start({
+server.start({
   message: '==> Browsersync should be launched soon. Use one of the Access URLs for development.'
 });
