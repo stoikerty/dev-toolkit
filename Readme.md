@@ -14,9 +14,16 @@
         <sub><em>(v4.2 LTS should work too)</em></sub>
         <br><br>
 
-        <strong>Install dependencies</strong>
+        <strong>Start a project</strong>
         <br>
-        <code>npm install</code>
+        <code>npm start</code>
+        <br><br>
+
+        <strong>Use created <code>src</code>-folder</strong>
+        <br>
+        <code>cd src</code>
+        <br>
+        <code>git init</code>
         <br><br>
 
         <strong>Start Server, watch assets</strong><br><code>npm run dev</code>
@@ -56,6 +63,7 @@
             </ul>
           </li>
         </ul>
+        <hr>
         <ul>
           <li>
             <strong>toolkit</strong>
@@ -143,11 +151,17 @@
         If it doesn't work, feel free to <a href="https://github.com/stoikerty/universal-dev-toolkit/issues">report an issue or help somebody out</a>.
       </td>
       <td width="33.3333%">
-        :point_right:  Your source-files will be <strong>hot-reloaded</strong> and proxied via <code>http://localhost:3000</code>.<br><br><em>You will be working with <a href="https://medium.com/@mjackson/universal-javascript-4761051b7ae9#.llvvuk4l5">Universal Javascript</a>, managed via <a href="https://webpack.github.io/">webpack</a>.</em>        
+        :point_right:  The `src` folder is yours to use and has it's own `package.json` and `.eslintrc`-file separate from the toolkit.
+        <br>
+        <br>
+        :point_right:  Your source-files will be <strong>hot-reloaded</strong> and proxied via <code>http://localhost:3000</code>.<br><br><em>You will be working with <a href="https://medium.com/@mjackson/universal-javascript-4761051b7ae9#.llvvuk4l5">Universal Javascript</a>, managed via <a href="https://webpack.github.io/">webpack</a>.</em>
       </td>
       <td width="33.3333%">
 
         Files are kept to a minimum to allow for exploration and customisation.
+        <br>
+        <br>
+        <em>The toolkit can be updated separately without affecting your `src`-dependencies.</em>
 
       </td>
     </tr>

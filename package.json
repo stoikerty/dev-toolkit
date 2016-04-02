@@ -4,21 +4,28 @@
   "description": "{ Project }",
   "main": "index.js",
   "scripts": {
-    "build": "better-npm-run build",
+    "start": "npm install && better-npm-run copy-example-files && better-npm-run install-src-dependencies",
     "dev": "better-npm-run development",
-    "lint": "eslint src"
+    "build": "better-npm-run build",
+    "lint": "eslint src --config src/.eslintrc"
   },
   "betterScripts": {
-    "build": {
-      "command": "babel-node toolkit/webpack/production.js",
-      "env": {
-        "NODE_ENV": "production"
-      }
+    "copy-example-files": {
+      "command": "ncp toolkit/documentation/src_example_files src"
+    },
+    "install-src-dependencies": {
+      "command": "cd src && npm install && cd .."
     },
     "development": {
       "command": "babel-node toolkit/webpack/development.js",
       "env": {
         "NODE_ENV": "development"
+      }
+    },
+    "build": {
+      "command": "babel-node toolkit/webpack/production.js",
+      "env": {
+        "NODE_ENV": "production"
       }
     }
   },
@@ -64,6 +71,7 @@
     "eslint-plugin-react": "^4.2.3",
     "extract-text-webpack-plugin": "^1.0.1",
     "jsx-control-statements": "^3.1.0",
+    "ncp": "^2.0.0",
     "node-sass": "^3.4.2",
     "postcss-loader": "^0.8.2",
     "redbox-react": "^1.2.2",
@@ -72,15 +80,5 @@
     "webpack": "^1.12.14",
     "webpack-dev-middleware": "^1.5.1",
     "webpack-hot-middleware": "^2.10.0"
-  },
-  "dependencies": {
-    "classnames": "^2.2.3",
-    "domready": "^1.0.8",
-    "express": "^4.13.4",
-    "express-handlebars": "^3.0.0",
-    "react": "^0.14.7",
-    "react-dom": "^0.14.7",
-    "react-router": "^2.0.0-rc4",
-    "serve-static": "^1.10.2"
   }
 }

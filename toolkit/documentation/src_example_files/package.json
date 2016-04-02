@@ -1,0 +1,26 @@
+{
+  "name": "your-project",
+  "version": "1.0.0",
+  "description": "{ Project Name }",
+  "scripts": {
+    "dev": "cd .. && npm run dev && cd src",
+    "build": "cd .. && npm run build && cd src",
+    "lint": "cd .. && npm run lint && cd src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "your-repo-url"
+  },
+  "author": "your-name",
+  "license": "ISC",
+  "dependencies": {
+    "classnames": "^2.2.3",
+    "domready": "^1.0.8",
+    "express": "^4.13.4",
+    "express-handlebars": "^3.0.0",
+    "react": "^0.14.7",
+    "react-dom": "^0.14.7",
+    "react-router": "^2.0.0-rc4",
+    "serve-static": "^1.10.2"
+  }
+}
