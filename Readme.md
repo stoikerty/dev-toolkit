@@ -208,23 +208,26 @@ The `client/app.js` contains the hot-module-replacement functionality that is ex
 The **`webpack/config.js`** is used both for running **`webpack/development.js`** <sub>(via `npm run dev`)</sub> and **`webpack/production.js`** <sub>(via `npm run build`)</sub>.
 <br><br>
 
-##### Creating a Build <sub>/ webpack configuration</sub>
+##### Creating a Build <sub>/ and other useful commands</sub>
 
 Run your commands inside the `src`-folder.
-- **`npm install [package]`** installs a package into your `src`-dependencies.
-- *configure your project-settings in `src/package.json`*
+- **`npm run build`** builds production files for your hosted server.<br>They will be located outside `src`, in a new folder called `build`.
 - *configure the server port in `src/.env`*
 
 
-- **`npm run build`** builds production files for your hosted server.<br>They will be located outside `src`, in a new folder called `build`.
+- **`npm install [package]`** installs a package into your `src`-dependencies.
+- *configure your project-settings in `src/package.json`*
 
 
 - **`npm run lint`** lints your files using [eslint](http://eslint.org/).
 - *configure your linting preferences in `src/.eslintrc`*
 
-Once you have run `npm start`, you will have 2 `package.json`-files. The one inside the root-folder contains the development dependencies necessary for making the toolkit work. You shouldn't need to make any changes in that file unless you want to customize the toolkit itself.
+Once you have run `npm start`, you will have 2 `package.json`-files. The one inside the root-folder contains the development dependencies necessary for making the toolkit work. You shouldn't need to make any changes in that file unless you want to customize the toolkit itself. *(This will make it harder to update it in the future)*
 
-The `package.json` inside the `src`-folder is the file you're most probably interested in since it relates directly to your project, it contains some dependencies although you should be able to modify it however you like.
+The `package.json` inside the `src`-folder is the file you're most probably interested in since it relates directly to your project, it contains some dependencies to make the web app work, you should be able to modify it however you like.
+
+###### About `.env`
+I've added [`better-npm-run`](https://github.com/benoror/better-npm-run) to make the usage of the configuration via environment-variables in `src/.env` easy. You can remove the dependency and omit `.env` to work with only the defaults.
 <br><br>
 
 ---
