@@ -14,6 +14,8 @@ body:global{
   -moz-osx-font-smoothing: grayscale;
 }
 
+// Default styles for the app-body.
+// Keep it short, move component & page styles elsewhere.
 .AppBody{
   // Style Defaults. Use border-box & make sure images don't overflow.
   *{ box-sizing : border-box; }
@@ -21,8 +23,6 @@ body:global{
 
   // Remove 300ms click-delay for IE11+
   a[href], button, .btn, .button { touch-action: manipulation; }
-
-  // position-mixin: position, display (optional), width (optional), height (optional)
 
   // font-mixin: font-size, color (optional), font-weight (optional)
   // see: mixins\_font-settings.scss

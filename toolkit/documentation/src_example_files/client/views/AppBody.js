@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router';
 
 import s from '../style/app.scss';
-import Component from './AppBody/Component';
 
 export default class AppBody extends React.Component{
   constructor(props){
@@ -45,10 +44,7 @@ export default class AppBody extends React.Component{
         <div className="current-route" style={{ textAlign: 'center'}}>
           { this.props.children }
         </div>
-
-        {/* Styled Example Component */}
         <hr/>
-        <Component/>
 
       </div>
     );

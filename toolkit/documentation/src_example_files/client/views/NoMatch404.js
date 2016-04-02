@@ -10,7 +10,11 @@ export default class NoMatch404 extends React.Component{
 
   render() {
     return (
-      <div> { '404 Error Page' } </div>
+      <div>
+        <small>
+          { '404 Error Page' }
+        </small>
+      </div>
     );
   }
 }
