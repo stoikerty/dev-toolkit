@@ -151,7 +151,7 @@
         If it doesn't work, feel free to <a href="https://github.com/stoikerty/universal-dev-toolkit/issues">report an issue or help somebody out</a>.
       </td>
       <td width="33.3333%">
-        :point_right:  The `src` folder is yours to use and has it's own `package.json` and `.eslintrc`-file separate from the toolkit.
+        :point_right:  The <code>src</code> folder is yours to use and has it's own <code>package.json</code> and <code>.eslintrc</code>-file separate from the toolkit.
         <br>
         <br>
         :point_right:  Your source-files will be <strong>hot-reloaded</strong> and proxied via <code>http://localhost:3000</code>.<br><br><em>You will be working with <a href="https://medium.com/@mjackson/universal-javascript-4761051b7ae9#.llvvuk4l5">Universal Javascript</a>, managed via <a href="https://webpack.github.io/">webpack</a>.</em>
@@ -161,7 +161,7 @@
         Files are kept to a minimum to allow for exploration and customisation.
         <br>
         <br>
-        <em>The toolkit can be updated separately without affecting your `src`-dependencies.</em>
+        <em>The toolkit can be updated separately without affecting your <code>src</code>-dependencies.</em>
 
       </td>
     </tr>
