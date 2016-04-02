@@ -7,8 +7,9 @@ import router from './router';
 class App{
   constructor(){
     // server config
-    this.hostname = 'localhost';
-    this.port = 2000;
+    this.hostname = process.env.HOST || 'localhost';
+    this.port = process.env.PORT || 2000;
+
     // bind class methods
     this.init = this.init.bind(this);
     this.start = this.start.bind(this);
@@ -43,13 +44,13 @@ class App{
     this.express.use(serveStatic('build'));
 
     // Listen on specified port
-    this.express.listen(this.port, function(error) {
+    this.express.listen(this.port, (error)=> {
       if (error) {
-        app.error(error);
+        this.express.error(error);
       } else {
-        app.log('==> 🌎 Listening on http://' + this.hostname + ':%s/', this.port);
+        this.log('==> 🌎 Listening on http://' + this.hostname + ':%s/', this.port);
         if (options.message){
-          app.log(options.message);
+          this.log(options.message);
         }
       }
     });
