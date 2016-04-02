@@ -181,7 +181,7 @@ The `src/client/style`-directory can be accessed via root-import in scss files.
 
 A similar solution also works for js-files, it works a bit differently because it needs to be compiled both for the client and for the server (via `babel-node` thanks to [`babel-root-import`](https://github.com/michaelzoidl/babel-root-import)).
 
-Import files in with `/src` as the base, using `~/`.
+Import files with `/src` as the base, using `~/`.
 ```js
 // example import on client
 import utils from '~/client/utils';
