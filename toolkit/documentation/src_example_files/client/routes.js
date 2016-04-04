@@ -2,10 +2,10 @@ import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 
 import AppBody from './views/AppBody';
-import Home from './views/Home';
-import NoMatch404 from './views/NoMatch404';
+import Home from './views/AppBody/Home';
+import NoMatch404 from './views/AppBody/NoMatch404';
 
-import ExamplePage from './views/ExamplePage';
+import ExamplePage from './views/AppBody/ExamplePage';
 
 // `routes.js`
 // -----------
