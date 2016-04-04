@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 
+// import global style
 import s from '../style/app.scss';
 
 export default class AppBody extends React.Component{
