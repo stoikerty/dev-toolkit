@@ -20,7 +20,13 @@ import sass from 'node-sass';
 // Paths
 // ---
 const isDev = (process.env.NODE_ENV === 'development');
-const VERBOSE_LOGGING = false;
+
+// get user-specific configuration from `.env`
+const HOST = process.env.HOST || 'localhost';
+const PORT = process.env.PORT || 2000;
+const PROXY_HOST = process.env.PROXY_HOST || 'localhost';
+const PROXY_PORT = process.env.PROXY_PORT || 3000;
+const VERBOSE_LOGGING = process.env.VERBOSE_LOGGING || false;
 
 const root = '../../';
 const clientRoot = path.resolve(__dirname, root + 'src/client');
@@ -49,8 +55,8 @@ const developmentPlugins = [
       // BrowserSync options - see: http://www.browsersync.io/docs/options/
 
       // Use http://localhost:3000/ for development, proxy Dev Server.
-      host: 'localhost', port: 3000,
-      proxy: 'http://localhost:2000/',
+      host: PROXY_HOST, port: PROXY_PORT,
+      proxy: `http://${HOST}:${PORT}/`,
       // Stop the browser from automatically opening.
       open: false,
       // Scrolls & Form inputs on any device will be mirrored to all others.

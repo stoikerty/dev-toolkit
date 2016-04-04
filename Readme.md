@@ -62,6 +62,12 @@
                   </li>
                 </ul>
               </li>
+              <li>
+                <sub>package.json</sub>
+              </li>
+              <li>
+                <sub>...dotfiles</sub>
+              </li>
             </ul>
           </li>
         </ul>
@@ -153,17 +159,17 @@
         If it doesn't work, feel free to <a href="https://github.com/stoikerty/universal-dev-toolkit/issues">report an issue or help somebody out</a>.
       </td>
       <td width="33.3333%">
-        :point_right:  The <code>src</code> folder is yours to use and has it's own <code>package.json</code> and <code>.eslintrc</code>-file separate from the toolkit.
+        :point_right:  The <code>src</code> folder is yours to use and has customizable <code>package.json</code>, <code>.env</code> and <code>.eslintrc</code>-files separate from the toolkit.
         <br>
         <br>
-        :point_right:  Your source-files will be <strong>hot-reloaded</strong> and proxied via <code>http://localhost:3000</code>.<br><br><em>You will be working with <a href="https://medium.com/@mjackson/universal-javascript-4761051b7ae9#.llvvuk4l5">Universal Javascript</a>, managed via <a href="https://webpack.github.io/">webpack</a>.</em>
+        :point_right:  Your source-files will be <strong>hot-reloaded</strong> and proxied via <code>http://localhost:3000</code>. <small>(Default)</small><br><br><em>You will be working with <a href="https://medium.com/@mjackson/universal-javascript-4761051b7ae9#.llvvuk4l5">Universal Javascript</a>, managed via <a href="https://webpack.github.io/">webpack</a>.</em>
       </td>
       <td width="33.3333%">
 
         Files are kept to a minimum to allow for exploration and customisation.
         <br>
         <br>
-        <em>The toolkit can be updated separately without affecting your <code>src</code>-dependencies.</em>
+        <em>The toolkit can be updated separately without affecting your project dependencies in <code>src</code>.</em>
 
       </td>
     </tr>
@@ -189,18 +195,41 @@ import utils from '~/client/utils';
 import utils from '~/server/utils';
 ```
 
-The `layout.html` is located in `src/server/views` and only contains one javascript hook `app-body` to insert markup into from javascript. The server inserts markup via Handlebars. I've included [Font Awesome](http://fortawesome.github.io/Font-Awesome/) and [Source Sans Pro](https://www.google.com/fonts/specimen/Source+Sans+Pro) in the `layout.html` as sane defaults.
+The `layout.html` is located in `src/server/views` and only contains one javascript hook `app-body` to insert markup into from javascript. The server inserts markup via Handlebars. [Font Awesome](http://fortawesome.github.io/Font-Awesome/) and [Source Sans Pro](https://www.google.com/fonts/specimen/Source+Sans+Pro) are included in the `layout.html` as sane defaults.
 
-Both the `server` and `client` have an `app.js` that serve as starting points.
+<hr>
+
+###### About `.env`
+I've added [`better-npm-run`](https://github.com/benoror/better-npm-run) to make the usage of the configuration via environment-variables in `src/.env` easy. You can remove the dependency and omit `.env` to work with only the defaults.
+
+###### About `app.js` & webpack
+Both the `server` and `client` have an `app.js` that serve as starting points. They only contain the most necessary code to make it work with the toolkit. *All other files inside `src` serve mostly as an example of what a universal web app could look like.*
+
+The `client/app.js` contains the hot-module-replacement functionality that is exposed via the webpack middleware, while the `server/app.js` contains a class-export that is ultimately imported into the toolkit and then started.
+
+Webpack is configured via **`webpack/config.js`** which is used both for running **`webpack/development.js`** <sub>(`npm run dev`)</sub> and **`webpack/production.js`** <sub>(`npm run build`)</sub>.
 <br><br>
 
-##### Creating a Build <sub>/ webpack configuration</sub>
-- **`npm run build`** to build production files for transferring to Server.<br>The server runs on port `2000`, the port is available to change in `server/bootstrap.js` and `toolkit/webpack/config`.
-- Lint your files using [eslint](http://eslint.org/) with **`npm run lint`**.
+##### Creating a Build <sub>/ and other useful commands</sub>
 
-Have a look at the `package.json` for a full list of dependencies.
+Run your commands inside the `src`-folder.
+- **`npm run build`** builds production files for your hosted server.<br>They will be located outside `src`, in a new folder called `build`.
+<br>
+<sub>**configure the server port in `src/.env`**</sub>
 
-The webpack folder contains a **`webpack/config.js`** that is used both for running **`webpack/development.js`** <sub>(via `npm run dev`)</sub> and **`webpack/production.js`** <sub>(via `npm run build`)</sub>.
+
+- **`npm install [package]`** installs a package into your `src`-dependencies.
+<br>
+<sub>**configure your project-settings in `src/package.json`**</sub>
+
+
+- **`npm run lint`** lints your files using [eslint](http://eslint.org/).
+<br>
+<sub>**configure your linting preferences in `src/.eslintrc`**</sub>
+
+Once you have run `npm start`, you will have 2 `package.json`-files. The one inside the root-folder contains the development dependencies necessary for making the toolkit work. You shouldn't need to make any changes in that file unless you want to customize the toolkit itself. *(This will make it harder to update it in the future)*
+
+The `package.json` inside the `src`-folder is the file you're most probably interested in since it relates directly to your project, it contains some dependencies to make the web app work, you should be able to modify it however you like.
 <br><br>
 
 ---

@@ -1,9 +1,9 @@
 import React from 'react';
 
-export default class NoMatch404 extends React.Component{
+export default class ExamplePage extends React.Component{
   constructor(props){
     super(props);
-    this.displayName = 'NoMatch404';
+    this.displayName = 'ExamplePage';
 
     this.state = {};
   }
@@ -12,8 +12,10 @@ export default class NoMatch404 extends React.Component{
     return (
       <div>
         <small>
-          { '404 Error Page' }
+          { 'Home Page' }
         </small>
+        <br/>
+        { 'Click a link in the Navigation.' }
       </div>
     );
   }
