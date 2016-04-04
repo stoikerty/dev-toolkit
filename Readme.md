@@ -203,13 +203,11 @@ The `layout.html` is located in `src/server/views` and only contains one javascr
 I've added [`better-npm-run`](https://github.com/benoror/better-npm-run) to make the usage of the configuration via environment-variables in `src/.env` easy. You can remove the dependency and omit `.env` to work with only the defaults.
 
 ###### About `app.js` & webpack
-Both the `server` and `client` have an `app.js` that serve as starting points. They only contain the most necessary code to make it work with the toolkit.
-
-*All other files inside `src` serve mostly as an example of what a universal web app could look like.*
+Both the `server` and `client` have an `app.js` that serve as starting points. They only contain the most necessary code to make it work with the toolkit. *All other files inside `src` serve mostly as an example of what a universal web app could look like.*
 
 The `client/app.js` contains the hot-module-replacement functionality that is exposed via the webpack middleware, while the `server/app.js` contains a class-export that is ultimately imported into the toolkit and then started.
 
-The **`webpack/config.js`** is used both for running **`webpack/development.js`** <sub>(via `npm run dev`)</sub> and **`webpack/production.js`** <sub>(via `npm run build`)</sub>.
+Webpack is configured via **`webpack/config.js`** which is used both for running **`webpack/development.js`** <sub>(`npm run dev`)</sub> and **`webpack/production.js`** <sub>(`npm run build`)</sub>.
 <br><br>
 
 ##### Creating a Build <sub>/ and other useful commands</sub>
