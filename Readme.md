@@ -234,4 +234,4 @@ The `package.json` inside the `src`-folder is the file you're most probably inte
 
 ---
 
-*For more information, see [the release PR](https://github.com/stoikerty/universal-dev-toolkit/pull/1).*
+*[Release-History](https://github.com/stoikerty/universal-dev-toolkit/releases).*
