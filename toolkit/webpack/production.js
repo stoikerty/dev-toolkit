@@ -1,9 +1,6 @@
 import webpack from 'webpack';
 import config from './config';
 
-// Use the express production server
-import '../../src/server/app';
-
 // compile all files necessary for serving
 const compiler = webpack(config);
 compiler.run((err, stats)=>{
@@ -11,5 +8,9 @@ compiler.run((err, stats)=>{
   app.log(stats.toString(config.stats));
 });
 
+// Use the express production server
+import serverApp from '../../src/server/app';
+const server = new serverApp;
+
 // start the server
-app.server.start();
+server.start();

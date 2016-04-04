@@ -20,7 +20,13 @@ import sass from 'node-sass';
 // Paths
 // ---
 const isDev = (process.env.NODE_ENV === 'development');
-const VERBOSE_LOGGING = false;
+
+// get user-specific configuration from `.env`
+const HOST = process.env.HOST || 'localhost';
+const PORT = process.env.PORT || 2000;
+const PROXY_HOST = process.env.PROXY_HOST || 'localhost';
+const PROXY_PORT = process.env.PROXY_PORT || 3000;
+const VERBOSE_LOGGING = process.env.VERBOSE_LOGGING || false;
 
 const root = '../../';
 const clientRoot = path.resolve(__dirname, root + 'src/client');
@@ -44,30 +50,32 @@ const developmentPlugins = [
   new webpack.optimize.OccurenceOrderPlugin(),
   new webpack.HotModuleReplacementPlugin(),
 
-  new BrowserSyncPlugin({
-    // BrowserSync options - see: http://www.browsersync.io/docs/options/
+  new BrowserSyncPlugin(
+    {
+      // BrowserSync options - see: http://www.browsersync.io/docs/options/
 
-    // Use http://localhost:3000/ for development, proxy Dev Server.
-    host: 'localhost', port: 3000,
-    proxy: 'http://localhost:2000/',
-    // Stop the browser from automatically opening.
-    open: false,
-    // Scrolls & Form inputs on any device will be mirrored to all others.
-    ghostMode: {
-      clicks: false,
-      scroll: true,
-      forms: true,
+      // Use http://localhost:3000/ for development, proxy Dev Server.
+      host: PROXY_HOST, port: PROXY_PORT,
+      proxy: `http://${HOST}:${PORT}/`,
+      // Stop the browser from automatically opening.
+      open: false,
+      // Scrolls & Form inputs on any device will be mirrored to all others.
+      ghostMode: {
+        clicks: false,
+        scroll: true,
+        forms: true,
+      },
+      // Show what browsers are connected.
+      logConnections: true,
     },
-    // Show what browsers are connected.
-    logConnections: true,
-  },
-  {
-    // Webpack Plugin options
+    {
+      // Webpack Plugin options
 
-    // Prevent BrowserSync from reloading the page
-    // and let Webpack Dev Server take care of this.
-    reload: false
-  })
+      // Prevent BrowserSync from reloading the page
+      // and let Webpack Dev Server take care of this.
+      reload: false
+    }
+  )
 ];
 
 const productionPlugins = [
@@ -138,7 +146,10 @@ export default {
           'babel-loader',
           'eslint-loader'
         ],
-        exclude: path.resolve(__dirname, root + 'node_modules')
+        exclude: [
+          path.resolve(__dirname, root + 'src/node_modules'),
+          path.resolve(__dirname, root + 'node_modules')
+        ]
       },
 
       // Use separate style-tags for developemnt,
@@ -151,6 +162,11 @@ export default {
         loader : ExtractTextPlugin.extract('style-loader', styleLoaders)
       }
     ]
+  },
+
+  // use .eslintrc file inside `src`-folder
+  eslint: {
+    configFile: path.resolve(__dirname, root + 'src/.eslintrc')
   },
 
   // `sass-loader`-specific config
@@ -175,6 +191,7 @@ export default {
   resolve: {
     modulesDirectories: [
       PATHS.clientRoot,
+      'src/node_modules',
       'node_modules'
     ]
   },

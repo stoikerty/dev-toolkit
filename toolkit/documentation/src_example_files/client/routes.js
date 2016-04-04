@@ -1,9 +1,11 @@
 import React from 'react';
-import { Route } from 'react-router';
+import { Route, IndexRoute } from 'react-router';
 
 import AppBody from './views/AppBody';
-import ExamplePage from './views/ExamplePage';
+import Home from './views/Home';
 import NoMatch404 from './views/NoMatch404';
+
+import ExamplePage from './views/ExamplePage';
 
 // `routes.js`
 // -----------
@@ -14,6 +16,9 @@ import NoMatch404 from './views/NoMatch404';
 // Use AppBody as surrounding container for all routes
 export default (
   <Route path="/" component={AppBody}>
+
+    {/* A view for the home page */}
+    <IndexRoute path="" component={Home}/>
 
     {/* Make an example-page available */}
     <Route path="example-page" component={ExamplePage}/>

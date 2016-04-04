@@ -14,12 +14,21 @@
         <sub><em>(v4.2 LTS should work too)</em></sub>
         <br><br>
 
-        <strong>Install dependencies</strong>
+        <strong>Start a project</strong>
         <br>
-        <code>npm install</code>
+        <strong><code>></code></strong> <code>npm start</code>
         <br><br>
 
-        <strong>Start Server, watch assets</strong><br><code>npm run dev</code>
+        <strong>Use created src-folder</strong>
+        <br>
+        <strong><code>></code></strong> <code>cd src</code>
+        <br>
+        <strong><code>src></code></strong> <code>git init</code>
+        <br><br>
+
+        <strong>Start Server, watch assets</strong>
+        <br>
+        <strong><code>src></code></strong> <code>npm run dev</code>
         <br><br>
       </td>
       <td width="33.3333%">
@@ -53,9 +62,16 @@
                   </li>
                 </ul>
               </li>
+              <li>
+                <sub>package.json</sub>
+              </li>
+              <li>
+                <sub>...dotfiles</sub>
+              </li>
             </ul>
           </li>
         </ul>
+        <hr>
         <ul>
           <li>
             <strong>toolkit</strong>
@@ -85,13 +101,13 @@
 
       </td>
       <td width="33.3333%">
-
+        <br>
         <ul>
           <li>
             <a href="https://babeljs.io/docs/learn-es2015/">ES2015 / ES6</a>
           </li>
           <li>
-            <a href="http://survivejs.com/webpack/requiring-files/">absolute imports</a>
+            <a href="http://survivejs.com/webpack/requiring-files/">root-relative imports</a>
           </li>
           <li>
             <a href="https://webpack.github.io/docs/hot-module-replacement-with-webpack.html">Vanilla HMR</a>
@@ -109,6 +125,9 @@
             <a href="https://facebook.github.io/react/">React</a>
           </li>
           <li>
+            <a href="https://github.com/AlexGilleran/jsx-control-statements">jsx-control-statements</a>
+          </li>
+          <li>
             <a href="http://sass-lang.com/">sass / scss</a>
           </li>
           <li>
@@ -116,6 +135,9 @@
           </li>
           <li>
             <a href="https://github.com/postcss/autoprefixer">Autoprefixer</a>
+          </li>
+          <li>
+            <a href="https://github.com/JedWatson/classnames">classnames</a>
           </li>
         </ul>
 
@@ -137,11 +159,17 @@
         If it doesn't work, feel free to <a href="https://github.com/stoikerty/universal-dev-toolkit/issues">report an issue or help somebody out</a>.
       </td>
       <td width="33.3333%">
-        :point_right:  Your source-files will be <strong>hot-reloaded</strong> and proxied via <code>http://localhost:3000</code>.<br><br><em>You will be working with <a href="https://medium.com/@mjackson/universal-javascript-4761051b7ae9#.llvvuk4l5">Universal Javascript</a>, managed via <a href="https://webpack.github.io/">webpack</a>.</em>        
+        :point_right:  The <code>src</code> folder is yours to use and has customizable <code>package.json</code>, <code>.env</code> and <code>.eslintrc</code>-files separate from the toolkit.
+        <br>
+        <br>
+        :point_right:  Your source-files will be <strong>hot-reloaded</strong> and proxied via <code>http://localhost:3000</code>. <small>(Default)</small><br><br><em>You will be working with <a href="https://medium.com/@mjackson/universal-javascript-4761051b7ae9#.llvvuk4l5">Universal Javascript</a>, managed via <a href="https://webpack.github.io/">webpack</a>.</em>
       </td>
       <td width="33.3333%">
 
         Files are kept to a minimum to allow for exploration and customisation.
+        <br>
+        <br>
+        The toolkit can be updated separately without affecting your project dependencies in <code>src</code>.
 
       </td>
     </tr>
@@ -152,28 +180,58 @@
 
 ##### Some additional information <sub>/ quick clues for you</sub>
 
-The `style`-directory can be accessed via absolute import in scss files.
+The `src/client/style`-directory can be accessed via root-import in scss files.
 ```scss
 @import 'style/config.scss';
 ```
-The directories for absolute imports are defined in `webpack/config.js` under `modulesDirectories`.
 
-The `layout.html` is located in `src/server/views` and only contains one javascript hook `app-body` to insert markup into from javascript. The server inserts markup via Handlebars. I've included [Font Awesome](http://fortawesome.github.io/Font-Awesome/) and [Source Sans Pro](https://www.google.com/fonts/specimen/Source+Sans+Pro) in the `layout.html` as sane defaults.
+A similar solution also works for js-files, it works a bit differently because it needs to be compiled both for the client and for the server (via `babel-node` thanks to [`babel-root-import`](https://github.com/michaelzoidl/babel-root-import)).
 
-Both the `server` and `client` have an `app.js` that serve as starting points.
+Import files with `/src` as the base, using `~/`.
+```js
+// example import on client
+import utils from '~/client/utils';
+// example import on server
+import utils from '~/server/utils';
+```
+
+The `layout.html` is located in `src/server/views` and only contains one javascript hook `app-body` to insert markup into from javascript. The server inserts markup via Handlebars. [Font Awesome](http://fortawesome.github.io/Font-Awesome/) and [Source Sans Pro](https://www.google.com/fonts/specimen/Source+Sans+Pro) are included in the `layout.html` as sane defaults.
+
+<hr>
+
+###### About `.env`
+I've added [`better-npm-run`](https://github.com/benoror/better-npm-run) to make the usage of the configuration via environment-variables in `src/.env` easy. You can remove the dependency and omit `.env` to work with only the defaults.
+
+###### About `app.js` & webpack
+Both the `server` and `client` have an `app.js` that serve as starting points. They only contain the most necessary code to make it work with the toolkit. *All other files inside `src` serve mostly as an example of what a universal web app could look like.*
+
+The `client/app.js` contains the hot-module-replacement functionality that is exposed via the webpack middleware, while the `server/app.js` contains a class-export that is ultimately imported into the toolkit and then started.
+
+Webpack is configured via **`webpack/config.js`** which is used both for running **`webpack/development.js`** <sub>(`npm run dev`)</sub> and **`webpack/production.js`** <sub>(`npm run build`)</sub>.
 <br><br>
 
-##### Creating a Build <sub>/ webpack configuration</sub>
-- **`npm run build`** to build production files for transferring to Server.<br>The server runs on port `2000`, the port is available to change in `server/bootstrap.js` and `toolkit/webpack/config`.
-- Lint your files using [eslint](http://eslint.org/) with **`npm run lint`**.
+##### Creating a Build <sub>/ and other useful commands</sub>
 
-Have a look at the `package.json` for a full list of dependencies.
+Run your commands inside the `src`-folder.
+- **`npm run build`** builds production files for your hosted server.<br>They will be located outside `src`, in a new folder called `build`.
+<br>
+<sub>**configure the server port in `src/.env`**</sub>
 
-The webpack folder contains a **`webpack/config.js`** that is used both for running **`webpack/development.js`** <sub>(via `npm run dev`)</sub> and **`webpack/production.js`** <sub>(via `npm run build`)</sub>.
+
+- **`npm install [package]`** installs a package into your `src`-dependencies.
+<br>
+<sub>**configure your project-settings in `src/package.json`**</sub>
+
+
+- **`npm run lint`** lints your files using [eslint](http://eslint.org/).
+<br>
+<sub>**configure your linting preferences in `src/.eslintrc`**</sub>
+
+Once you have run `npm start`, you will have 2 `package.json`-files. The one inside the root-folder contains the development dependencies necessary for making the toolkit work. You shouldn't need to make any changes in that file unless you want to customize the toolkit itself. *(This will make it harder to update it in the future)*
+
+The `package.json` inside the `src`-folder is the file you're most probably interested in since it relates directly to your project, it contains some dependencies to make the web app work, you should be able to modify it however you like.
 <br><br>
-
-<sub>**Note:**<br>*I'm researching for a way to make the usage simpler by transforming the toolkit into an* ***npm-package*** *so you can install and use it as a updatable dependency.*</sub>
 
 ---
 
-*For more information, see [the release PR](https://github.com/stoikerty/universal-dev-toolkit/pull/1).*
+*For more information, see the [Release History](https://github.com/stoikerty/universal-dev-toolkit/releases).*
