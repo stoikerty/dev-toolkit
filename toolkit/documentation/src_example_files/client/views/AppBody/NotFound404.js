@@ -1,9 +1,9 @@
 import React from 'react';
 
-export default class NoMatch404 extends React.Component{
+export default class NotFound404 extends React.Component{
   constructor(props){
     super(props);
-    this.displayName = 'NoMatch404';
+    this.displayName = 'NotFound404';
 
     this.state = {};
   }
