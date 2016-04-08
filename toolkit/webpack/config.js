@@ -166,6 +166,7 @@ export default {
 
   // use .eslintrc file inside `src`-folder
   eslint: {
+    useEslintrc: false,
     configFile: path.resolve(__dirname, root + 'src/.eslintrc')
   },
 
