@@ -7,7 +7,7 @@
     "start": "npm install && better-npm-run copy-example-files && better-npm-run install-src-dependencies",
     "dev": "better-npm-run development",
     "build": "better-npm-run build",
-    "lint": "eslint src --config src/.eslintrc"
+    "lint": "cd src && eslint --no-eslintrc --config .eslintrc . && cd .."
   },
   "betterScripts": {
     "copy-example-files": {

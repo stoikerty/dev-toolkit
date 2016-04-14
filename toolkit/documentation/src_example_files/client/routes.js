@@ -2,10 +2,10 @@ import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 
 import AppBody from './views/AppBody';
-import Home from './views/Home';
-import NoMatch404 from './views/NoMatch404';
+import Home from './views/AppBody/Home';
+import NotFound404 from './views/AppBody/NotFound404';
 
-import ExamplePage from './views/ExamplePage';
+import ExamplePage from './views/AppBody/ExamplePage';
 
 // `routes.js`
 // -----------
@@ -24,7 +24,7 @@ export default (
     <Route path="example-page" component={ExamplePage}/>
 
     {/* Use a view for non-existing routes */}
-    <Route path="*" component={NoMatch404}/>
+    <Route path="*" component={NotFound404}/>
 
   </Route>
 );
