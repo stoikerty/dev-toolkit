@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "npm install && better-npm-run copy-example-files && better-npm-run install-src-dependencies",
+    "reinstall": "npm install && better-npm-run install-src-dependencies",
     "dev": "better-npm-run development",
     "build": "better-npm-run build",
     "lint": "cd src && eslint --no-eslintrc --config .eslintrc . && cd .."
@@ -67,7 +68,7 @@
     "copy-webpack-plugin": "^1.1.1",
     "css-loader": "^0.23.1",
     "css-modules-require-hook": "^4.0.0",
-    "eslint": "^2.9.0",
+    "eslint": "^2.10.1",
     "eslint-config-airbnb": "^7.0.0",
     "eslint-loader": "^1.3.0",
     "eslint-plugin-import": "^1.6.1",
