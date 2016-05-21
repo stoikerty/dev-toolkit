@@ -5,6 +5,7 @@ import BrowserSyncPlugin from 'browser-sync-webpack-plugin';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 import hook from 'css-modules-require-hook';
+import fileshook from 'files-require-hook';
 import sass from 'node-sass';
 
 //
@@ -119,6 +120,19 @@ hook({
   },
 });
 
+// Set up server-side rendering of image files
+// ---
+// Implement a hook that uses a file-path for node
+// NOTE:
+//   For the build-process it is likely that the files should first
+//   be copied into the build dir and then referenced from there instead of
+//   using the original file-path. Similar to `webpack-isomorphic-tools`.
+//   see: https://github.com/halt-hammerzeit/webpack-isomorphic-tools#getting-down-to-business
+fileshook({
+  extensions: ['jpg', 'jpeg', 'png', 'gif', 'svg'],
+  base: process.cwd(),
+});
+
 // Resulting webpack config
 // ---
 export default {
@@ -150,6 +164,13 @@ export default {
           path.resolve(__dirname, root + 'src/node_modules'),
           path.resolve(__dirname, root + 'node_modules')
         ]
+      },
+      {
+        test: /\.(jpe?g|png|gif|svg)$/i,
+        loaders: [
+          'file?hash=sha512&digest=hex&name=[hash].[ext]',
+          'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false',
+        ],
       },
 
       // Use separate style-tags for developemnt,
