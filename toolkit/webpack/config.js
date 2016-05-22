@@ -9,6 +9,10 @@ import hook from 'css-modules-require-hook';
 import fileshook from 'files-require-hook';
 import sass from 'node-sass';
 
+import pkg from '../../src/package.json';
+const vendor = pkg.toolkitSettings && pkg.toolkitSettings.vendor ?
+  pkg.toolkitSettings.vendor : [];
+
 //
 // Webpack Configuration
 // ---------------------
@@ -49,7 +53,10 @@ const PATHS = {
 // Webpack Plugins
 // ---
 const sharedPlugins = [
-  new CopyWebpackPlugin([ { from: PATHS.publicFiles, to: 'files' } ])
+  new CopyWebpackPlugin([ { from: PATHS.publicFiles, to: 'files' } ]),
+  new webpack.DefinePlugin({
+      'process.env.NODE_ENV': `"${process.env.NODE_ENV || 'development'}"`,
+  }),
 ];
 
 const developmentPlugins = [
@@ -86,8 +93,9 @@ const developmentPlugins = [
 ];
 
 const productionPlugins = [
+  new webpack.optimize.CommonsChunkPlugin('vendor', '[name].[chunkhash].js'),
+
   // Extract css into one file for production, minify javascript
-  new ExtractTextPlugin('style.css', { allChunks: true }),
   new ExtractTextPlugin('[name].[chunkhash].css', { allChunks: true }),
   new webpack.optimize.UglifyJsPlugin({ minimize: true, compress: { warnings: false } }),
   new HtmlWebpackPlugin({
@@ -96,6 +104,7 @@ const productionPlugins = [
 
     reactHtml: '',
     isDev,
+    creatingBuild: true,
   }),
 ];
 
@@ -151,13 +160,15 @@ fileshook({
 // ---
 export default {
   // The entry and ouput configuration for the bundle(s)
-  entry: [
-    PATHS.client
-  ],
+  entry: {
+    app: [PATHS.client],
+    vendor: vendor,
+  },
   output: {
     path: PATHS.build,
-    filename: 'app.js',
-    publicPath: '/'
+    filename: isDev ? '[name].js' : '[name].[chunkhash].js',
+    chunkFilename: isDev ? '[name].js' : '[name].[chunkhash].js',
+    publicPath: '/',
   },
 
   // Webpack plugins

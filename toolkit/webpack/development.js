@@ -5,7 +5,8 @@ import webpackHotMiddleware from 'webpack-hot-middleware';
 import config from './config';
 
 config.devtool = 'source-map';
-config.entry = ['webpack-hot-middleware/client'].concat(config.entry);
+// use forEach here if there is more than one entry (such as `vendor`)
+config.entry.app = ['webpack-hot-middleware/client'].concat(config.entry.app);
 
 const compiler = webpack(config);
 
