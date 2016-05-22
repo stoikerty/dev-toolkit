@@ -4,6 +4,7 @@ import autoprefixer from 'autoprefixer';
 import BrowserSyncPlugin from 'browser-sync-webpack-plugin';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
 import hook from 'css-modules-require-hook';
 import fileshook from 'files-require-hook';
 import sass from 'node-sass';
@@ -21,6 +22,11 @@ import sass from 'node-sass';
 // Paths
 // ---
 const isDev = (process.env.NODE_ENV === 'development');
+
+global.settings = {
+  usesServerRendering : process.env.SERVER_RENDERING || true,
+  isDev,
+}
 
 // get user-specific configuration from `.env`
 const HOST = process.env.HOST || 'localhost';
@@ -82,7 +88,15 @@ const developmentPlugins = [
 const productionPlugins = [
   // Extract css into one file for production, minify javascript
   new ExtractTextPlugin('style.css', { allChunks: true }),
-  new webpack.optimize.UglifyJsPlugin({ minimize: true, compress: { warnings: false } })
+  new ExtractTextPlugin('[name].[chunkhash].css', { allChunks: true }),
+  new webpack.optimize.UglifyJsPlugin({ minimize: true, compress: { warnings: false } }),
+  new HtmlWebpackPlugin({
+    inject: false,
+    template: 'src/server/views/layout.hbs',
+
+    reactHtml: '',
+    isDev,
+  }),
 ];
 
 // Style configuration
@@ -154,6 +168,7 @@ export default {
   // The module-loaders
   module: {
     loaders: [
+      { test: /\.hbs$/, loader: 'handlebars-loader' },
       { test: /\.json$/, loader: 'json-loader' },
       {
         test: /\.js?$/,
