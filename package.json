@@ -26,14 +26,14 @@
       }
     },
     "build": {
-      "command": "babel-node toolkit/webpack/generateBuild.js",
+      "command": "rimraf build && babel-node toolkit/webpack/generateBuild.js",
       "env": {
         "NODE_ENV": "production",
         "SERVER_RENDERING": "false"
       }
     },
     "server": {
-      "command": "babel-node toolkit/webpack/server.js",
+      "command": "rimraf build && babel-node toolkit/webpack/server.js",
       "env": {
         "NODE_ENV": "production",
         "SERVER_RENDERING": "true"
@@ -100,6 +100,7 @@
     "node-sass": "^3.4.2",
     "postcss-loader": "^0.8.2",
     "redbox-react": "^1.2.2",
+    "rimraf": "^2.5.2",
     "sass-loader": "^3.2.0",
     "style-loader": "^0.13.0",
     "webpack": "^1.12.14",
