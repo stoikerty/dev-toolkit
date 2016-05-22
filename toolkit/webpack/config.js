@@ -154,6 +154,7 @@ export default {
   // The module-loaders
   module: {
     loaders: [
+      { test: /\.json$/, loader: 'json-loader' },
       {
         test: /\.js?$/,
         loaders: [
