@@ -9,16 +9,13 @@ import hook from 'css-modules-require-hook';
 import fileshook from 'files-require-hook';
 import sass from 'node-sass';
 
-import pkg from '../../src/package.json';
-const vendor = pkg.toolkitSettings && pkg.toolkitSettings.vendor ?
-  pkg.toolkitSettings.vendor : [];
-
 //
 // Webpack Configuration
 // ---------------------
 //
 // Find the following sections below
 // - Paths
+// - User-specific Package settings
 // - Webpack Plugins
 // - Style configuration (+ scss server side rendering)
 // - Resulting Webpack config
@@ -39,16 +36,24 @@ const PROXY_HOST = process.env.PROXY_HOST || 'localhost';
 const PROXY_PORT = process.env.PROXY_PORT || 3000;
 const VERBOSE_LOGGING = process.env.VERBOSE_LOGGING || false;
 
-const root = '../../';
-const clientRoot = path.resolve(__dirname, root + 'src/client');
-const serverRoot = path.resolve(__dirname, root + 'src/server');
+const root = process.env.UDT_APP_PATH;
+const clientRoot = path.join(root + '/src/client');
+const serverRoot = path.join(root + '/src/server');
 
 const PATHS = {
-  publicFiles: path.resolve(serverRoot, 'public-files'),
+  publicFiles: path.join(serverRoot, '/public-files'),
   clientRoot: clientRoot,
-  client: path.resolve(clientRoot, 'app.js'),
-  build: path.resolve(__dirname, root + 'build')
+  client: path.join(clientRoot, '/app.js'),
+  build: path.join(root + '/build')
 };
+
+console.log('PATHS: ', PATHS);
+
+// User-specific Package settings
+// ---
+const pkg = require(path.join(root, '/package.json')) || {};
+const vendor = pkg.toolkitSettings && pkg.toolkitSettings.vendor ?
+  pkg.toolkitSettings.vendor : [];
 
 // Webpack Plugins
 // ---
@@ -153,7 +158,7 @@ hook({
 //   see: https://github.com/halt-hammerzeit/webpack-isomorphic-tools#getting-down-to-business
 fileshook({
   extensions: ['jpg', 'jpeg', 'png', 'gif', 'svg'],
-  base: process.cwd(),
+  base: root,
 });
 
 // Resulting webpack config
@@ -188,8 +193,8 @@ export default {
           'eslint-loader'
         ],
         exclude: [
-          path.resolve(__dirname, root + 'src/node_modules'),
-          path.resolve(__dirname, root + 'node_modules')
+          path.join(root + '/src/node_modules'),
+          path.join(root + '/node_modules')
         ]
       },
       {
@@ -215,7 +220,7 @@ export default {
   // use .eslintrc file inside `src`-folder
   eslint: {
     useEslintrc: false,
-    configFile: path.resolve(__dirname, root + 'src/.eslintrc')
+    configFile: path.join(root + '/.eslintrc')
   },
 
   // `sass-loader`-specific config
@@ -240,8 +245,7 @@ export default {
   resolve: {
     modulesDirectories: [
       PATHS.clientRoot,
-      'src/node_modules',
-      'node_modules'
+      path.join(root + '/node_modules')
     ]
   },
 

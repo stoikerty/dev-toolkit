@@ -1,3 +1,4 @@
+import path from 'path';
 import webpack from 'webpack';
 import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
@@ -11,7 +12,8 @@ config.entry.app = ['webpack-hot-middleware/client'].concat(config.entry.app);
 const compiler = webpack(config);
 
 // Use the express production server
-import serverApp from '../../src/server/app';
+// import serverApp from './dynamic/serverApp';
+const serverApp = require(path.join(process.env.UDT_APP_PATH, '/src/server/app'));
 const server = new serverApp;
 
 // Bind middleware for hot-reloading
