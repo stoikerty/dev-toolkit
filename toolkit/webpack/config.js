@@ -37,14 +37,15 @@ const PROXY_PORT = process.env.PROXY_PORT || 3000;
 const VERBOSE_LOGGING = process.env.VERBOSE_LOGGING || false;
 
 const root = process.env.UDT_APP_PATH;
-const clientRoot = path.join(root + '/src/client');
-const serverRoot = path.join(root + '/src/server');
+const UDTroot = process.env.UDT_ROOT;
+const clientRoot = path.join(root, '/src/client');
+const serverRoot = path.join(root, '/src/server');
 
 const PATHS = {
   publicFiles: path.join(serverRoot, '/public-files'),
   clientRoot: clientRoot,
   client: path.join(clientRoot, '/app.js'),
-  build: path.join(root + '/build')
+  build: path.join(root, '/build')
 };
 
 console.log('PATHS: ', PATHS);
@@ -105,7 +106,7 @@ const productionPlugins = [
   new webpack.optimize.UglifyJsPlugin({ minimize: true, compress: { warnings: false } }),
   new HtmlWebpackPlugin({
     inject: false,
-    template: 'src/server/views/layout.hbs',
+    template: path.join(root, '/src/server/views/layout.hbs'),
 
     reactHtml: '',
     isDev,
@@ -193,8 +194,8 @@ export default {
           'eslint-loader'
         ],
         exclude: [
-          path.join(root + '/src/node_modules'),
-          path.join(root + '/node_modules')
+          path.join(root, '/node_modules'),
+          path.join(UDTroot, '/node_modules')
         ]
       },
       {
@@ -220,7 +221,7 @@ export default {
   // use .eslintrc file inside `src`-folder
   eslint: {
     useEslintrc: false,
-    configFile: path.join(root + '/.eslintrc')
+    configFile: path.join(root, '/.eslintrc')
   },
 
   // `sass-loader`-specific config
@@ -245,8 +246,17 @@ export default {
   resolve: {
     modulesDirectories: [
       PATHS.clientRoot,
-      path.join(root + '/node_modules')
-    ]
+      path.join(root, '/node_modules'),
+      path.join(UDTroot, '/node_modules')
+    ],
+
+    fallback: [ path.join(UDTroot, '/node_modules') ]
+  },
+  resolveLoader: {
+    modulesDirectories: [
+      path.join(UDTroot, '/node_modules')
+    ],
+    fallback: [ path.join(UDTroot, '/node_modules') ]
   },
 
   // how much information webpack should output

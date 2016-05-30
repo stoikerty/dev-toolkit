@@ -13,7 +13,7 @@ const compiler = webpack(config);
 
 // Use the express production server
 // import serverApp from './dynamic/serverApp';
-const serverApp = require(path.join(process.env.UDT_APP_PATH, '/src/server/app'));
+const serverApp = require(path.join(process.env.UDT_APP_PATH, '/src/server/app')).default;
 const server = new serverApp;
 
 // Bind middleware for hot-reloading
