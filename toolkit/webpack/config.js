@@ -192,12 +192,9 @@ export default {
         loaders: [
           'babel-loader',
           // TODO: fix eslint issue
-          // 'eslint-loader'
+          'eslint-loader'
         ],
-        exclude: [
-          path.join(root, '/node_modules'),
-          path.join(UDTroot, '/node_modules')
-        ]
+        exclude: /(node_modules)/
       },
       {
         test: /\.(jpe?g|png|gif|svg)$/i,
