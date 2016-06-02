@@ -1,6 +1,6 @@
 {
   "name": "universal-dev-toolkit",
-  "version": "4.1.3",
+  "version": "4.1.4",
   "description": "{ Universal Development Toolkit }",
   "main": "index.js",
   "scripts": {
@@ -69,7 +69,7 @@
     "url": "https://github.com/stoikerty/universal-dev-toolkit/issues"
   },
   "homepage": "https://github.com/stoikerty/universal-dev-toolkit#readme",
-  "devDependencies": {
+  "dependencies": {
     "autoprefixer": "^6.3.3",
     "babel-cli": "^6.6.5",
     "babel-core": "^6.7.2",
@@ -112,9 +112,7 @@
     "style-loader": "^0.13.0",
     "webpack": "^1.12.14",
     "webpack-dev-middleware": "^1.5.1",
-    "webpack-hot-middleware": "^2.10.0"
-  },
-  "dependencies": {
+    "webpack-hot-middleware": "^2.10.0",
     "body-parser": "^1.15.1",
     "compression": "^1.6.2",
     "errorhandler": "^1.4.3",
