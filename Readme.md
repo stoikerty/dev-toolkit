@@ -1,3 +1,5 @@
+**IN DEVELOPMENT - coming soon, usage via npm**
+
 <img src="/toolkit/documentation/logo.jpg" alt="universal-dev-toolkit-logo">
 <p align="center"><sub>Javascript Development Toolkit by <a href="https://twitter.com/stoikerty">@stoikerty</a>, kindly supported by <a href="https://www.browserstack.com/"><img src="/toolkit/documentation/browserstack-logo.png" alt="BrowserStack-Image"></a> <a href="https://www.browserstack.com">BrowserStack</a>.</sub></p>
 
