@@ -191,7 +191,6 @@ export default {
         test: /\.js?$/,
         loaders: [
           'babel-loader',
-          // TODO: fix eslint issue
           'eslint-loader'
         ],
         exclude: /(node_modules)/
