@@ -8,7 +8,7 @@
     "jsx-control-statements",
     "transform-class-properties",
     [
-      "babel-root-import", {
+      "babel-root-import-custom", {
         "rootPathSuffix": "src"
       }
     ]
