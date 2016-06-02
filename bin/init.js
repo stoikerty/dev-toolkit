@@ -8,10 +8,5 @@ var appPath = process.cwd();
 var modulePath = getInstalledPath('universal-dev-toolkit');
 
 // Use the paths dynamically
-$('export UDT_APP_PATH=' + appPath);
-$('export UDT_ROOT=' + modulePath);
-$('export BABEL_ROOT_IMPORT_CUSTOM_ROOT_PATH=' + appPath);
-$('cd ' + appPath);
-$('rimraf build');
 $('cd ' + modulePath);
-$('npm run build');
+$('ncp ' + modulePath + '/toolkit/documentation/src_example_files ' + appPath);

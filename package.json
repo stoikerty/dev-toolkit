@@ -4,8 +4,6 @@
   "description": "{ Universal Development Toolkit }",
   "main": "index.js",
   "scripts": {
-    "start": "npm install && better-npm-run copy-example-files && better-npm-run install-src-dependencies",
-    "reinstall": "npm install && better-npm-run install-src-dependencies",
     "dev": "better-npm-run development",
     "build": "better-npm-run build",
     "server": "better-npm-run server",
@@ -13,14 +11,13 @@
     "lint": "cd src && eslint --no-eslintrc --config .eslintrc . && cd .."
   },
   "bin": {
+    "udt-init": "bin/init.js",
+    "udt-init-bare": "bin/init-bare.js",
     "udt-dev": "bin/dev.js",
     "udt-build": "bin/build.js",
     "udt-server": "bin/server.js"
   },
   "betterScripts": {
-    "copy-example-files": {
-      "command": "ncp toolkit/documentation/src_example_files src"
-    },
     "install-src-dependencies": {
       "command": "cd src && npm install && cd .."
     },
@@ -32,10 +29,11 @@
       }
     },
     "build": {
-      "command": "rimraf build && babel-node toolkit/webpack/generateBuild.js",
+      "command": "babel-node toolkit/webpack/generateBuild.js",
       "env": {
         "NODE_ENV": "production",
-        "SERVER_RENDERING": "false"
+        "SERVER_RENDERING": "false",
+        "BABEL_DISABLE_CACHE": 1
       }
     },
     "server": {
