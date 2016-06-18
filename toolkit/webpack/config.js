@@ -1,11 +1,19 @@
-import plugins from './config/plugins';
-import loaders from './config/loaders';
-import eslint from './config/eslint';
-import sassLoader from './config/sassLoader';
-import postcss from './config/postcss';
-import resolve from './config/resolve';
+import path from 'path';
+// import plugins from './config/plugins';
+// import loaders from './config/loaders';
+// import eslint from './config/eslint';
+// import sassLoader from './config/sassLoader';
+// import postcss from './config/postcss';
+// import resolve from './config/resolve';
 
-import { PATHS, env, vendorModules, namingConvention } from './userSettings';
+import {
+  PATHS,
+  env,
+  vendorModules,
+  namingConvention,
+  rootForToolkit,
+  rootForWebpack,
+} from './userSettings';
 
 // Resulting webpack config
 // ---
@@ -39,6 +47,8 @@ export default {
 
   // `postcss-loader`-specific config
   // postcss,
+
+  // Files in these directories can be imported without a relative path
 
   // Files in these directories can be imported without a relative path
   // resolve,
