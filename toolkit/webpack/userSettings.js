@@ -1,13 +1,9 @@
 import path from 'path';
 
-const isDev = (process.env.NODE_ENV === 'development');
+const isDev = global.toolkitCli.isDev;
 
 export const rootForWebpack = './';
 export const rootForRequire = process.cwd();
-
-const clientRoot = path.resolve(rootForWebpack, 'src/client');
-const serverRoot = path.resolve(rootForWebpack, 'src/server');
-const buildFolder = path.resolve(rootForWebpack, 'build');
 
 const pkg = require(path.resolve(rootForRequire, 'package.json')) || {}; // eslint-disable-line global-require, max-len
 export const vendorModules = pkg.toolkitSettings && pkg.toolkitSettings.vendor ?
@@ -22,6 +18,9 @@ export const env = {
   VERBOSE_LOGGING: process.env.VERBOSE_LOGGING || false,
 };
 
+const clientRoot = path.resolve(rootForWebpack, 'src/client');
+const serverRoot = path.resolve(rootForWebpack, 'src/server');
+const buildFolder = path.resolve(rootForWebpack, 'build');
 export const PATHS = {
   publicFilesFolder: path.resolve(serverRoot, 'public-files'),
   manifestRootAssetPath: './src/client',

@@ -24,24 +24,24 @@ export default {
   },
 
   // Webpack plugins
-  plugins,
+  // plugins,
 
   // The module-loaders
-  module: {
-    loaders,
-  },
+  // module: {
+  //   loaders,
+  // },
 
   // use .eslintrc file inside `src`-folder
-  eslint,
+  // eslint,
 
   // `sass-loader`-specific config
-  sassLoader,
+  // sassLoader,
 
   // `postcss-loader`-specific config
-  postcss,
+  // postcss,
 
   // Files in these directories can be imported without a relative path
-  resolve,
+  // resolve,
 
   // how much information webpack should output
   stats: {
