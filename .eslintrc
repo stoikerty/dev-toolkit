@@ -1,0 +1,20 @@
+{
+  "extends": "airbnb",
+  "parser": "babel-eslint",
+  "rules": {
+    "no-multiple-empty-lines": [
+      "error", {
+        "max": 1
+      }
+    ]
+  },
+
+  "globals": {
+    "app": true,
+    "If": true,
+    "Else": true
+  },
+  "env": {
+    "mocha": true
+  }
+}
