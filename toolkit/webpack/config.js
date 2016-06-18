@@ -36,23 +36,25 @@ const PROXY_HOST = process.env.PROXY_HOST || 'localhost';
 const PROXY_PORT = process.env.PROXY_PORT || 3000;
 const VERBOSE_LOGGING = process.env.VERBOSE_LOGGING || false;
 
-const root = process.env.UDT_APP_PATH;
-const UDTroot = process.env.UDT_ROOT;
-const clientRoot = path.join(root, '/src/client');
-const serverRoot = path.join(root, '/src/server');
+const projectRootWebpack = './';
+const projectRootRequire = process.cwd();
+// const root = process.env.UDT_APP_PATH;
+// const UDTroot = process.env.UDT_ROOT;
+const clientRoot = path.join(projectRootWebpack, '/src/client');
+const serverRoot = path.join(projectRootWebpack, '/src/server');
 
 const PATHS = {
   publicFiles: path.join(serverRoot, '/public-files'),
   clientRoot: clientRoot,
   client: path.join(clientRoot, '/app.js'),
-  build: path.join(root, '/build')
+  build: path.join(projectRootWebpack, '/build')
 };
 
 console.log('PATHS: ', PATHS);
 
 // User-specific Package settings
 // ---
-const pkg = require(path.join(root, '/package.json')) || {};
+const pkg = require(path.join(projectRootRequire, '/package.json')) || {};
 const vendor = pkg.toolkitSettings && pkg.toolkitSettings.vendor ?
   pkg.toolkitSettings.vendor : [];
 
@@ -106,7 +108,7 @@ const productionPlugins = [
   new webpack.optimize.UglifyJsPlugin({ minimize: true, compress: { warnings: false } }),
   new HtmlWebpackPlugin({
     inject: false,
-    template: path.join(root, '/src/server/views/layout.hbs'),
+    template: path.join(projectRootWebpack, '/src/server/views/layout.hbs'),
 
     reactHtml: '',
     isDev,
@@ -159,7 +161,7 @@ hook({
 //   see: https://github.com/halt-hammerzeit/webpack-isomorphic-tools#getting-down-to-business
 fileshook({
   extensions: ['jpg', 'jpeg', 'png', 'gif', 'svg'],
-  base: root,
+  base: projectRootWebpack,
 });
 
 // Resulting webpack config
@@ -218,7 +220,7 @@ export default {
   // use .eslintrc file inside `src`-folder
   eslint: {
     useEslintrc: false,
-    configFile: path.join(root, '/.eslintrc')
+    configFile: path.join(projectRootWebpack, '/.eslintrc')
   },
 
   // `sass-loader`-specific config
@@ -243,17 +245,17 @@ export default {
   resolve: {
     modulesDirectories: [
       PATHS.clientRoot,
-      path.join(root, '/node_modules'),
-      path.join(UDTroot, '/node_modules')
+      path.join(projectRootWebpack, '/node_modules'),
+      // path.join(UDTroot, '/node_modules')
     ],
 
-    fallback: [ path.join(UDTroot, '/node_modules') ]
+    // fallback: [ path.join(UDTroot, '/node_modules') ]
   },
   resolveLoader: {
     modulesDirectories: [
-      path.join(UDTroot, '/node_modules')
+      // path.join(UDTroot, '/node_modules')
     ],
-    fallback: [ path.join(UDTroot, '/node_modules') ]
+    // fallback: [ path.join(UDTroot, '/node_modules') ]
   },
 
   // how much information webpack should output
