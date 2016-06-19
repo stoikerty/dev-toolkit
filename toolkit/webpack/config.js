@@ -16,10 +16,6 @@ import {
   rootForToolkit,
 } from './userSettings';
 
-console.log('rootForWebpack', rootForWebpack);
-console.log('rootForRequire', rootForRequire);
-console.log('rootForToolkit', rootForToolkit);
-
 // Resulting webpack config
 // ---
 export default {
@@ -67,7 +63,7 @@ export default {
   // },
   resolveLoader: {
     modulesDirectories: [
-      path.join(rootForToolkit, '/node_modules')
+      path.join(rootForToolkit, '/node_modules'),
     ],
     fallback: [path.join(rootForToolkit, '/node_modules')],
   },

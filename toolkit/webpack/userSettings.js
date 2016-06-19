@@ -35,3 +35,13 @@ export const PATHS = {
 const devNamingConvention = '[name]';
 const prodNamingConvention = '[name].[chunkhash]';
 export const namingConvention = isDev ? devNamingConvention : prodNamingConvention;
+
+// ---
+
+const logger = require('eazy-logger').Logger({
+  prefix: '{blue:[}{magenta:easy-logger}{blue:] }',
+  useLevelPrefixes: true,
+});
+logger.debug('rootForWebpack', rootForWebpack);
+logger.debug('rootForRequire', rootForRequire);
+logger.debug('rootForToolkit', rootForToolkit);
