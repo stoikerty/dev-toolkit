@@ -5,7 +5,6 @@ const isDev = global.toolkitCli.isDev;
 export const rootForWebpack = './';
 export const rootForRequire = process.cwd();
 export const rootForToolkit = path.resolve(__dirname, '../../');
-console.log(rootForToolkit);
 
 const pkg = require(path.resolve(rootForRequire, 'package.json')) || {}; // eslint-disable-line global-require, max-len
 export const vendorModules = pkg.toolkitSettings && pkg.toolkitSettings.vendor ?

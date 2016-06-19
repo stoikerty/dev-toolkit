@@ -1,6 +1,6 @@
 {
   "name": "universal-dev-toolkit",
-  "version": "5.0.0-alpha",
+  "version": "4.1.7",
   "description": "{ Universal Development Toolkit }",
   "main": "index.js",
   "scripts": {},

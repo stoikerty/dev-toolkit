@@ -11,9 +11,14 @@ import {
   env,
   vendorModules,
   namingConvention,
-  rootForToolkit,
   rootForWebpack,
+  rootForRequire,
+  rootForToolkit,
 } from './userSettings';
+
+console.log('rootForWebpack', rootForWebpack);
+console.log('rootForRequire', rootForRequire);
+console.log('rootForToolkit', rootForToolkit);
 
 // Resulting webpack config
 // ---
@@ -51,7 +56,21 @@ export default {
   // Files in these directories can be imported without a relative path
 
   // Files in these directories can be imported without a relative path
-  // resolve,
+  // resolve: {
+  //   modulesDirectories: [
+  //     PATHS.clientRoot,
+  //     path.join(rootForWebpack, '/node_modules'),
+  //     path.join(rootForToolkit, '/node_modules')
+  //   ],
+  //
+  //   fallback: [path.join(rootForToolkit, '/node_modules')]
+  // },
+  resolveLoader: {
+    modulesDirectories: [
+      path.join(rootForToolkit, '/node_modules')
+    ],
+    fallback: [path.join(rootForToolkit, '/node_modules')],
+  },
 
   // how much information webpack should output
   stats: {
