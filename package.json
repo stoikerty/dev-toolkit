@@ -4,10 +4,14 @@
   "description": "{ Universal Development Toolkit }",
   "main": "index.js",
   "scripts": {
-    "build": "babel toolkit --out-dir dist"
+    "build": "babel toolkit --out-dir dist",
+    "watch": "babel toolkit --watch --out-dir dist",
+    "prepublish": "npm run build"
   },
   "bin": {
-    "udt-dev": "bin/dev.js"
+    "udt-dev": "bin/development.js",
+    "udt-prod": "bin/production.js",
+    "udt-build": "bin/build.js"
   },
   "repository": {
     "type": "git",

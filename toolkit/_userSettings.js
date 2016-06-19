@@ -4,7 +4,11 @@ const isDev = global.toolkitCli.isDev;
 
 export const rootForWebpack = './';
 export const rootForRequire = process.cwd();
-export const rootForToolkit = path.resolve(__dirname, '../../');
+export const rootForToolkit = path.resolve(__dirname, '../');
+
+console.log('1. rootForWebpack', rootForWebpack);
+console.log('2. rootForRequire', rootForRequire);
+console.log('3. rootForToolkit', rootForToolkit);
 
 const pkg = require(path.resolve(rootForRequire, 'package.json')) || {}; // eslint-disable-line global-require, max-len
 export const vendorModules = pkg.toolkitSettings && pkg.toolkitSettings.vendor ?
@@ -35,13 +39,3 @@ export const PATHS = {
 const devNamingConvention = '[name]';
 const prodNamingConvention = '[name].[chunkhash]';
 export const namingConvention = isDev ? devNamingConvention : prodNamingConvention;
-
-// ---
-
-const logger = require('eazy-logger').Logger({
-  prefix: '{blue:[}{magenta:easy-logger}{blue:] }',
-  useLevelPrefixes: true,
-});
-logger.debug('rootForWebpack', rootForWebpack);
-logger.debug('rootForRequire', rootForRequire);
-logger.debug('rootForToolkit', rootForToolkit);

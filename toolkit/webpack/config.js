@@ -1,4 +1,3 @@
-import path from 'path';
 // import plugins from './config/plugins';
 // import loaders from './config/loaders';
 // import eslint from './config/eslint';
@@ -6,15 +5,16 @@ import path from 'path';
 // import postcss from './config/postcss';
 // import resolve from './config/resolve';
 
+import path from 'path';
+
 import {
   PATHS,
   env,
   vendorModules,
   namingConvention,
   rootForWebpack,
-  rootForRequire,
   rootForToolkit,
-} from './userSettings';
+} from '../_userSettings';
 
 // Resulting webpack config
 // ---
@@ -52,21 +52,21 @@ export default {
   // Files in these directories can be imported without a relative path
 
   // Files in these directories can be imported without a relative path
-  // resolve: {
-  //   modulesDirectories: [
-  //     PATHS.clientRoot,
-  //     path.join(rootForWebpack, '/node_modules'),
-  //     path.join(rootForToolkit, '/node_modules')
-  //   ],
-  //
-  //   fallback: [path.join(rootForToolkit, '/node_modules')]
-  // },
-  resolveLoader: {
+  resolve: {
     modulesDirectories: [
-      path.join(rootForToolkit, '/node_modules'),
+      PATHS.clientRoot,
+      path.join(rootForWebpack, '/node_modules'),
+      path.join(rootForToolkit, '/node_modules')
     ],
-    fallback: [path.join(rootForToolkit, '/node_modules')],
+
+    fallback: [path.join(rootForToolkit, '/node_modules')]
   },
+  // resolveLoader: {
+  //   modulesDirectories: [
+  //     path.join(rootForToolkit, '/node_modules'),
+  //   ],
+  //   fallback: [path.join(rootForToolkit, '/node_modules')],
+  // },
 
   // how much information webpack should output
   stats: {
