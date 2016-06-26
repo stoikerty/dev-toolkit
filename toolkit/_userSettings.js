@@ -23,6 +23,12 @@ export const env = {
   VERBOSE_LOGGING: process.env.VERBOSE_LOGGING || false,
 };
 
+export const userEnv = {
+  NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+  API_DOMAIN: JSON.stringify(process.env.API_DOMAIN),
+  COOKIE_DOMAIN: JSON.stringify(process.env.COOKIE_DOMAIN),
+};
+
 const clientRoot = path.resolve(rootForWebpack, 'src/client');
 const serverRoot = path.resolve(rootForWebpack, 'src/server');
 const buildFolder = path.resolve(rootForWebpack, 'build');
@@ -34,8 +40,9 @@ export const PATHS = {
   serverRoot,
   clientAppEntryPoint: path.resolve(clientRoot, 'app.js'),
   buildFolder,
+  templateLocation: 'src/server/views/layout.hbs',
 };
 
 const devNamingConvention = '[name]';
-const prodNamingConvention = '[name].[chunkhash]';
+export const prodNamingConvention = '[name].[chunkhash]';
 export const namingConvention = isDev ? devNamingConvention : prodNamingConvention;

@@ -1,4 +1,4 @@
-// import plugins from './config/plugins';
+import plugins from './config/plugins';
 import loaders from './config/loaders';
 // import eslint from './config/eslint';
 // import sassLoader from './config/sassLoader';
@@ -33,7 +33,7 @@ export default {
   },
 
   // Webpack plugins
-  // plugins,
+  plugins,
 
   // The module-loaders
   module: {
