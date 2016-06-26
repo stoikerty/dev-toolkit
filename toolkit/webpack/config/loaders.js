@@ -1,7 +1,14 @@
+import path from 'path';
+import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import cssHook from 'css-modules-require-hook';
 import filesHook from 'files-require-hook';
 import jsxHook from 'node-jsx-babel';
 import sass from 'node-sass';
+
+import {
+  PATHS,
+  isDev,
+} from '../../_userSettings';
 
 // Style configuration
 // ---
@@ -29,6 +36,7 @@ const preprocessCss = (cssFileData, cssFilePath) => {
     includePaths,
   }).css;
 };
+
 cssHook({
   extensions: ['.scss'],
 
@@ -56,47 +64,42 @@ filesHook({
 // ---
 jsxHook.install();
 
-export default {
-  loaders: [
-    { test: /\.hbs$/, loader: 'handlebars-loader' },
-    { test: /\.json$/, loader: 'json-loader' },
-    {
-      test: /\.jsx?$/,
-      loaders: [
-        'babel-loader',
-        'eslint-loader',
-      ],
-      exclude: isDev ? /(node_modules)/ : /(node_modules)|\.dynamic.jsx?$/,
-    },
-    // Only use dynamic loading when creating a client-bundle since it breaks hot-reload.
-    isDev ? {
-      loaders: [],
-    } : {
-      test: /\.dynamic.jsx?$/,
-      loaders: [
-        // The`bundle`-loader automatically uses module directly when code is run on the server
-        'bundle?lazy&name=[name]',
-        'babel-loader',
-        'eslint-loader',
-      ],
-      exclude: /(node_modules)/,
-    },
-    {
-      test: /\.(jpe?g|png|gif|svg)$/i,
-      loaders: [
-        'file?hash=sha512&digest=hex&name=[hash].[ext]',
-        'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false',
-      ],
-    },
+export default [
+  { test: /\.hbs$/, loader: 'handlebars-loader' },
+  { test: /\.json$/, loader: 'json-loader' },
+  {
+    test: /\.jsx?$/,
+    loaders: [
+      'babel-loader',
+      'eslint-loader',
+    ],
+    exclude: /(node_modules)|\.dynamic.jsx?$/,
+  },
+  {
+    test: /\.dynamic.jsx?$/,
+    loaders: [
+      // The`bundle`-loader automatically uses module directly when code is run on the server
+      'bundle?lazy&name=[name]',
+      'babel-loader',
+      'eslint-loader',
+    ],
+    exclude: /(node_modules)/,
+  },
+  {
+    test: /\.(jpe?g|png|gif|svg)$/i,
+    loaders: [
+      'file?hash=sha512&digest=hex&name=[hash].[ext]',
+      'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false',
+    ],
+  },
 
-    // Use separate style-tags for development,
-    // extract CSS into one file for production.
-    isDev ? {
-      test: /\.scss$/,
-      loaders: ['style-loader'].concat(styleLoaders),
-    } : {
-      test: /\.scss$/,
-      loader: ExtractTextPlugin.extract('style-loader', styleLoaders),
-    },
-  ],
-};
+  // Use separate style-tags for development,
+  // extract CSS into one file for production.
+  isDev ? {
+    test: /\.scss$/,
+    loaders: ['style-loader'].concat(styleLoaders),
+  } : {
+    test: /\.scss$/,
+    loader: ExtractTextPlugin.extract('style-loader', styleLoaders),
+  },
+];

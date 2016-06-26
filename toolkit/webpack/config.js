@@ -1,5 +1,5 @@
 // import plugins from './config/plugins';
-// import loaders from './config/loaders';
+import loaders from './config/loaders';
 // import eslint from './config/eslint';
 // import sassLoader from './config/sassLoader';
 // import postcss from './config/postcss';
@@ -36,9 +36,9 @@ export default {
   // plugins,
 
   // The module-loaders
-  // module: {
-  //   loaders,
-  // },
+  module: {
+    loaders,
+  },
 
   // use .eslintrc file inside `src`-folder
   // eslint,
@@ -56,17 +56,17 @@ export default {
     modulesDirectories: [
       PATHS.clientRoot,
       path.join(rootForWebpack, '/node_modules'),
-      path.join(rootForToolkit, '/node_modules')
+      path.join(rootForToolkit, '/node_modules'),
     ],
 
-    fallback: [path.join(rootForToolkit, '/node_modules')]
+    fallback: [path.join(rootForToolkit, '/node_modules')],
   },
-  // resolveLoader: {
-  //   modulesDirectories: [
-  //     path.join(rootForToolkit, '/node_modules'),
-  //   ],
-  //   fallback: [path.join(rootForToolkit, '/node_modules')],
-  // },
+  resolveLoader: {
+    modulesDirectories: [
+      path.join(rootForToolkit, '/node_modules'),
+    ],
+    fallback: [path.join(rootForToolkit, '/node_modules')],
+  },
 
   // how much information webpack should output
   stats: {
