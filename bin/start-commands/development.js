@@ -5,4 +5,4 @@ require('babel-register');
 global.toolkitCli = {
   isDev: true,
 };
-require('../dist/development');
+require('../../dist/development');

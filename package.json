@@ -1,7 +1,7 @@
 {
-  "name": "universal-dev-toolkit",
+  "name": "dev-toolkit",
   "version": "4.1.13",
-  "description": "{ Universal Development Toolkit }",
+  "description": "{ dev-toolkit }",
   "main": "index.js",
   "scripts": {
     "build": "babel toolkit --out-dir dist",
@@ -9,13 +9,11 @@
     "prepublish": "npm run build"
   },
   "bin": {
-    "udt-dev": "bin/development.js",
-    "udt-prod": "bin/production.js",
-    "udt-build": "bin/build.js"
+    "dev-toolkit": "bin/start.js",
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/stoikerty/universal-dev-toolkit.git"
+    "url": "git+https://github.com/stoikerty/dev-toolkit.git"
   },
   "keywords": [
     "stoikerty",
@@ -27,14 +25,15 @@
     "moonboots",
     "middleman",
     "stk-toolkit",
-    "universal-dev-toolkit"
+    "universal-dev-toolkit",
+    "dev-toolkit"
   ],
   "author": "Jorge Antunes",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/stoikerty/universal-dev-toolkit/issues"
+    "url": "https://github.com/stoikerty/dev-toolkit/issues"
   },
-  "homepage": "https://github.com/stoikerty/universal-dev-toolkit#readme",
+  "homepage": "https://github.com/stoikerty/dev-toolkit#readme",
   "dependencies": {
     "babel-cli": "^6.10.1",
     "babel-core": "^6.10.4",
