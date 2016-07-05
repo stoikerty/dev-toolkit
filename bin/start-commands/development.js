@@ -1,4 +1,3 @@
-#!/usr/bin/env node
 console.log('Toolkit - Development');
 // process.env.BABEL_DISABLE_CACHE = 0;
 require('babel-register');
