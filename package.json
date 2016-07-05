@@ -9,7 +9,7 @@
     "prepublish": "npm run build"
   },
   "bin": {
-    "dev-toolkit": "bin/start.js",
+    "dev-toolkit": "bin/start.js"
   },
   "repository": {
     "type": "git",
