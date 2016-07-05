@@ -87,14 +87,14 @@ const productionPlugins = [
     defer: ['app'],
     defaultAttribute: 'sync',
   }),
-  new ManifestRevisionPlugin(
-    PATHS.manifest,
-    {
-      rootAssetPath: PATHS.manifestRootAssetPath,
-      ignorePaths: [],
-      extensionsRegex: /\.(jpe?g|png|gif|svg)$/i,
-    }
-  ),
+  // new ManifestRevisionPlugin(
+  //   PATHS.manifest,
+  //   {
+  //     rootAssetPath: PATHS.manifestRootAssetPath,
+  //     ignorePaths: [],
+  //     extensionsRegex: /\.(jpe?g|png|gif|svg)$/i,
+  //   }
+  // ),
 ];
 
 // TODO: extract out
