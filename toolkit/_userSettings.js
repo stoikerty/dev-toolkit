@@ -24,9 +24,9 @@ export const env = {
 };
 
 export const userEnv = {
-  NODE_ENV: JSON.stringify(process.env.NODE_ENV),
-  API_DOMAIN: JSON.stringify(process.env.API_DOMAIN),
-  COOKIE_DOMAIN: JSON.stringify(process.env.COOKIE_DOMAIN),
+  // NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+  // API_DOMAIN: JSON.stringify(process.env.API_DOMAIN),
+  // COOKIE_DOMAIN: JSON.stringify(process.env.COOKIE_DOMAIN),
 };
 
 const clientRoot = path.resolve(rootForWebpack, 'src/client');
@@ -40,7 +40,7 @@ export const PATHS = {
   serverRoot,
   clientAppEntryPoint: path.resolve(clientRoot, 'app.js'),
   buildFolder,
-  templateLocation: 'src/server/views/layout.hbs',
+  templateLocation: path.resolve(serverRoot, 'views/layout.hbs'),
 };
 
 const devNamingConvention = '[name]';

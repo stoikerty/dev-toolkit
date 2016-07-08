@@ -6,7 +6,7 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import ScriptExtHtmlWebpackPlugin from 'script-ext-html-webpack-plugin';
 import CompressionPlugin from 'compression-webpack-plugin';
 import ProgressBarPlugin from 'progress-bar-webpack-plugin';
-import ManifestRevisionPlugin from 'manifest-revision-webpack-plugin';
+// import ManifestRevisionPlugin from 'manifest-revision-webpack-plugin';
 
 import {
   PATHS,
@@ -20,16 +20,14 @@ import {
 const sharedPlugins = [
   new ProgressBarPlugin({ width: 40 }),
   new webpack.optimize.CommonsChunkPlugin('vendor', `${namingConvention}.js`),
-  new CopyWebpackPlugin([{ from: PATHS.publicFiles }]),
+  // NOTE: 'glob' of undefined error
+  // new CopyWebpackPlugin([{ from: PATHS.publicFiles }]),
   new webpack.DefinePlugin({
     'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV), // for redux only
     buildSettings: {
       env: userEnv,
     },
   }),
-  new webpack.EnvironmentPlugin([
-    'API_DOMAIN',
-  ]),
 ];
 
 const developmentPlugins = [
@@ -76,11 +74,6 @@ const productionPlugins = [
     reactHtml: '',
     isDev,
     creatingBuild: true,
-    // TODO: extract out
-    SEGMENT_PROJECT_ID: process.env.SEGMENT_PROJECT_ID,
-    COOKIE_DOMAIN: process.env.COOKIE_DOMAIN,
-    GA_ANALYTICS_PROFILE: process.env.GA_ANALYTICS_PROFILE,
-    NEW_RELIC_PROJECT_ID: process.env.NEW_RELIC_PROJECT_ID,
   }),
   new ScriptExtHtmlWebpackPlugin({
     async: ['app'],
