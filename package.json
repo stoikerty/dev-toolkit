@@ -35,6 +35,7 @@
   },
   "homepage": "https://github.com/stoikerty/dev-toolkit#readme",
   "dependencies": {
+    "autoprefixer": "^6.3.7",
     "babel-cli": "^6.10.1",
     "babel-core": "^6.10.4",
     "babel-eslint": "^6.0.4",

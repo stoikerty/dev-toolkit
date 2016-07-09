@@ -2,11 +2,11 @@ import path from 'path';
 
 export const isDev = global.toolkitCli.isDev;
 
-export const rootForWebpack = './';
+export const rootForProject = './';
 export const rootForRequire = process.cwd();
 export const rootForToolkit = path.resolve(__dirname, '../');
 
-console.log('1. rootForWebpack', rootForWebpack);
+console.log('1. rootForProject', rootForProject);
 console.log('2. rootForRequire', rootForRequire);
 console.log('3. rootForToolkit', rootForToolkit);
 
@@ -29,9 +29,9 @@ export const userEnv = {
   // COOKIE_DOMAIN: JSON.stringify(process.env.COOKIE_DOMAIN),
 };
 
-const clientRoot = path.resolve(rootForWebpack, 'src/client');
-const serverRoot = path.resolve(rootForWebpack, 'src/server');
-const buildFolder = path.resolve(rootForWebpack, 'build');
+const clientRoot = path.resolve(rootForProject, 'src/client');
+const serverRoot = path.resolve(rootForProject, 'src/server');
+const buildFolder = path.resolve(rootForProject, 'build');
 export const PATHS = {
   publicFilesFolder: path.resolve(serverRoot, 'public-files'),
   manifestRootAssetPath: './src/client',

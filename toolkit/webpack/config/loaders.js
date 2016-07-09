@@ -1,4 +1,5 @@
 import path from 'path';
+import autoprefixer from 'autoprefixer';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import cssHook from 'css-modules-require-hook';
 import filesHook from 'files-require-hook';
@@ -102,4 +103,20 @@ export default [
     test: /\.scss$/,
     loader: ExtractTextPlugin.extract('style-loader', styleLoaders),
   },
+];
+
+export const sassLoader = {
+  includePaths: scssConfigIncludePaths,
+};
+
+export const postcss = [
+  // Supported Browsers via `Autoprefixer`
+  // see: https://github.com/ai/browserslist
+  autoprefixer({
+    browsers: [
+      '> 0.8%',
+      'last 2 versions',
+      'Explorer >= 9',
+    ],
+  }),
 ];

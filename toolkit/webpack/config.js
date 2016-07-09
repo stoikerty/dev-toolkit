@@ -1,18 +1,17 @@
 import plugins from './config/plugins';
-import loaders from './config/loaders';
+import loaders, { sassLoader, postcss } from './config/loaders';
 // import eslint from './config/eslint';
-// import sassLoader from './config/sassLoader';
-// import postcss from './config/postcss';
-// import resolve from './config/resolve';
 
 import path from 'path';
 
 import {
+  isDev,
   PATHS,
   env,
   vendorModules,
   namingConvention,
-  rootForWebpack,
+  rootForProject,
+  rootForRequire,
   rootForToolkit,
 } from '../_userSettings';
 
@@ -41,21 +40,29 @@ export default {
   },
 
   // use .eslintrc file inside `src`-folder
-  // eslint,
+  eslint: {
+    useEslintrc: false,
+    configFile: path.resolve(rootForRequire, '.eslintrc'),
+
+    // Override any settings from the configFile
+    rules: isDev ? {
+      'no-debugger': [
+        'warn',
+      ],
+    } : {},
+  },
 
   // `sass-loader`-specific config
-  // sassLoader,
+  sassLoader,
 
   // `postcss-loader`-specific config
-  // postcss,
-
-  // Files in these directories can be imported without a relative path
+  postcss,
 
   // Files in these directories can be imported without a relative path
   resolve: {
     modulesDirectories: [
       PATHS.clientRoot,
-      path.join(rootForWebpack, '/node_modules'),
+      path.join(rootForProject, '/node_modules'),
       path.join(rootForToolkit, '/node_modules'),
     ],
 
