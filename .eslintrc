@@ -6,6 +6,11 @@
       "error", {
         "max": 1
       }
+    ],
+    "import/no-unresolved": [
+      2, {
+        "ignore": ['\~*']
+      }
     ]
   },
 
