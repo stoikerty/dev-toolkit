@@ -1,6 +1,6 @@
 import path from 'path';
 
-const isDev = global.toolkitCli.isDev;
+export const isDev = global.toolkitCli.isDev;
 
 export const rootForWebpack = './';
 export const rootForRequire = process.cwd();
