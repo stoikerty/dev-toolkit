@@ -45,7 +45,6 @@
     "babel-preset-react": "^6.5.0",
     "babel-preset-stage-1": "^6.5.0",
     "babel-register": "^6.9.0",
-    "babel-root-import": "^4.0.1",
     "browser-sync": "^2.13.0",
     "browser-sync-webpack-plugin": "^1.0.3",
     "bundle-loader": "^0.5.4",

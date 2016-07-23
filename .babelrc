@@ -6,11 +6,6 @@
   ],
   "plugins": [
     "jsx-control-statements",
-    "transform-class-properties",
-    [
-      "babel-root-import", {
-        "rootPathSuffix": "src"
-      }
-    ]
+    "transform-class-properties"
   ]
 }

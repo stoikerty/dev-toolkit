@@ -15,6 +15,25 @@ import {
   rootForToolkit,
 } from '../_userSettings';
 
+console.log([
+  path.resolve(__dirname, rootForRequire),
+  PATHS.clientRoot,
+]);
+
+// root: path.resolve(__dirname, rootForRequire),
+// // the alias will allow us to get files relative to the `src`-folder
+// // exmaple: `import { myUtil } from 'src/client/utils';`
+// alias: {
+//   src: 'src',
+// },
+// modulesDirectories: [
+//   path.resolve(PATHS.clientRoot),
+//   path.resolve(rootForProject, 'node_modules'),
+//   path.resolve(rootForToolkit, 'node_modules'),
+// ],
+//
+// fallback: [path.resolve(rootForToolkit, 'node_modules')],
+
 // Resulting webpack config
 // ---
 export default {
@@ -60,19 +79,26 @@ export default {
 
   // Files in these directories can be imported without a relative path
   resolve: {
+    extensions: ['', '.js', '.jsx'],
+    root: path.resolve(__dirname, rootForRequire),
+    // the alias will allow us to get files relative to the `src`-folder
+    // exmaple: `import { myUtil } from 'src/client/utils';`
+    alias: {
+      src: 'src',
+    },
     modulesDirectories: [
       PATHS.clientRoot,
-      path.join(rootForProject, '/node_modules'),
-      path.join(rootForToolkit, '/node_modules'),
+      path.resolve(rootForProject, 'node_modules'),
+      path.resolve(rootForToolkit, 'node_modules'),
     ],
 
-    fallback: [path.join(rootForToolkit, '/node_modules')],
+    fallback: [path.resolve(rootForToolkit, 'node_modules')],
   },
   resolveLoader: {
     modulesDirectories: [
-      path.join(rootForToolkit, '/node_modules'),
+      path.resolve(rootForToolkit, 'node_modules'),
     ],
-    fallback: [path.join(rootForToolkit, '/node_modules')],
+    fallback: [path.resolve(rootForToolkit, 'node_modules')],
   },
 
   // how much information webpack should output
