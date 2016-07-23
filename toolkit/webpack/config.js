@@ -15,10 +15,10 @@ import {
   rootForToolkit,
 } from '../_userSettings';
 
-console.log([
-  path.resolve(__dirname, rootForRequire),
-  PATHS.clientRoot,
-]);
+// console.log(process.env.NODE_PATH);
+//
+// process.env.NODE_PATH = process.env.NODE_PATH ?
+//   (process.env.NODE_PATH + '')
 
 // root: path.resolve(__dirname, rootForRequire),
 // // the alias will allow us to get files relative to the `src`-folder
