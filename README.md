@@ -5,3 +5,6 @@
 Currently converting the project to an NPM-package.
 
 **[ Work in Progress ]**
+
+
+Fancy working on the toolkit itself? [This wiki](https://github.com/stoikerty/dev-toolkit/wiki/Developing-on-the-Toolkit-itself) could be useful to you.
