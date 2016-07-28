@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 var spawn = require('cross-spawn');
 
+console.log('0.1 NODE_PATH before: ', process.env.NODE_PATH);
+
 // Required for root-relative imports to work in server-rendering,
 // because webpack's alias is not picked up in node.
 // For other solutions, see the following.
