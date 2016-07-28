@@ -88,7 +88,9 @@ export default {
     },
     modulesDirectories: [
       PATHS.clientRoot,
+      path.resolve(rootForProject),
       path.resolve(rootForProject, 'node_modules'),
+      path.resolve(rootForToolkit),
       path.resolve(rootForToolkit, 'node_modules'),
     ],
 
@@ -96,6 +98,9 @@ export default {
   },
   resolveLoader: {
     modulesDirectories: [
+      path.resolve(rootForProject),
+      path.resolve(rootForProject, 'node_modules'),
+      path.resolve(rootForToolkit),
       path.resolve(rootForToolkit, 'node_modules'),
     ],
     fallback: [path.resolve(rootForToolkit, 'node_modules')],
