@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 var spawn = require('cross-spawn');
 var path = require('path');
+var isWin = process.platform === 'win32';
 
 var currentPath = path.resolve(process.cwd());
 var startScriptPath = path.resolve(__dirname, './start.js');
@@ -20,7 +21,7 @@ spawn(
     env: {
       NODE_PATH: currentPath,
     },
-    shell: true,
+    shell: !isWin,
     stdio: 'inherit',
   }
 );
