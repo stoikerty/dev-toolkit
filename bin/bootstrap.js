@@ -16,6 +16,7 @@ console.log('0.3 startScriptPath: ', startScriptPath);
 // https://lostechies.com/derickbailey/2014/02/20/how-i-work-around-the-require-problem-in-nodejs/
 spawn(
   'node',
+  // Add color support for dependency-modules like `chalk`
   [startScriptPath, '--color'],
   {
     env: {
