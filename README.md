@@ -4,7 +4,7 @@
 <sub>**Version 5.0.3**</sub>
 
 **The Javascript Development Toolkit**<br>
-A jump-start to develop your Native Web App.
+Jump-start your Native Web App.
 
 ```js
 // clone the starter repo
