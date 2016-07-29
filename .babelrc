@@ -1,14 +1,11 @@
 {
   "presets": [
     "es2015",
+    "stage-1",
     "react"
   ],
   "plugins": [
     "jsx-control-statements",
-    [
-      "babel-root-import", {
-        "rootPathSuffix": "src"
-      }
-    ]
+    "transform-class-properties"
   ]
 }

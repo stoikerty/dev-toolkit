@@ -1,0 +1,28 @@
+{
+  "extends": "airbnb",
+  "parser": "babel-eslint",
+  "rules": {
+    "no-multiple-empty-lines": [
+      "error", {
+        "max": 1
+      }
+    ],
+    // Ignore custom import temporarily so text-editors work with `eslint-plugin-import`
+    // see: https://github.com/AtomLinter/linter-eslint/issues/610
+    "import/no-unresolved": [
+      "error",
+      {
+        "ignore": [ 'src/' ]
+      }
+    ]
+  },
+
+  "globals": {
+    "app": true,
+    "If": true,
+    "Else": true
+  },
+  "env": {
+    "mocha": true
+  }
+}

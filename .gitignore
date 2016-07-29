@@ -1,14 +1,8 @@
 #############
-## Your Source Files
+## Generated Files
 #############
 
-src/
-
-#############
-## Generated Build Files
-#############
-
-build/
+dist/
 
 #############
 ## Node

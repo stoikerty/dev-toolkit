@@ -1,37 +1,19 @@
 {
-  "name": "universal-dev-toolkit",
-  "version": "4.0.0",
-  "description": "{ Project }",
+  "name": "dev-toolkit",
+  "version": "5.0.3",
+  "description": "{ dev-toolkit }",
   "main": "index.js",
   "scripts": {
-    "start": "npm install && better-npm-run copy-example-files && better-npm-run install-src-dependencies",
-    "dev": "better-npm-run development",
-    "build": "better-npm-run build",
-    "lint": "cd src && eslint --no-eslintrc --config .eslintrc . && cd .."
+    "build": "babel toolkit --out-dir dist",
+    "watch": "babel toolkit --watch --out-dir dist",
+    "prepublish": "npm run build"
   },
-  "betterScripts": {
-    "copy-example-files": {
-      "command": "ncp toolkit/documentation/src_example_files src"
-    },
-    "install-src-dependencies": {
-      "command": "cd src && npm install && cd .."
-    },
-    "development": {
-      "command": "babel-node toolkit/webpack/development.js",
-      "env": {
-        "NODE_ENV": "development"
-      }
-    },
-    "build": {
-      "command": "babel-node toolkit/webpack/production.js",
-      "env": {
-        "NODE_ENV": "production"
-      }
-    }
+  "bin": {
+    "dev-toolkit": "bin/bootstrap.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/stoikerty/universal-dev-toolkit.git"
+    "url": "git+https://github.com/stoikerty/dev-toolkit.git"
   },
   "keywords": [
     "stoikerty",
@@ -43,42 +25,61 @@
     "moonboots",
     "middleman",
     "stk-toolkit",
-    "universal-dev-toolkit"
+    "universal-dev-toolkit",
+    "dev-toolkit"
   ],
   "author": "Jorge Antunes",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/stoikerty/universal-dev-toolkit/issues"
+    "url": "https://github.com/stoikerty/dev-toolkit/issues"
   },
-  "homepage": "https://github.com/stoikerty/universal-dev-toolkit#readme",
-  "devDependencies": {
-    "autoprefixer": "^6.3.3",
-    "babel-cli": "^6.6.5",
-    "babel-core": "^6.7.2",
-    "babel-eslint": "^5.0.4",
+  "homepage": "https://github.com/stoikerty/dev-toolkit#readme",
+  "dependencies": {
+    "autoprefixer": "^6.3.7",
+    "babel-cli": "^6.10.1",
+    "babel-core": "^6.10.4",
+    "babel-eslint": "^6.0.4",
     "babel-loader": "^6.2.4",
-    "babel-preset-es2015": "^6.6.0",
+    "babel-plugin-transform-class-properties": "^6.10.2",
+    "babel-preset-es2015": "^6.9.0",
     "babel-preset-react": "^6.5.0",
-    "babel-root-import": "^3.2.2",
-    "better-npm-run": "0.0.8",
-    "browser-sync": "^2.11.1",
-    "browser-sync-webpack-plugin": "^1.0.1",
-    "copy-webpack-plugin": "^1.1.1",
+    "babel-preset-stage-1": "^6.5.0",
+    "babel-register": "^6.9.0",
+    "browser-sync": "^2.13.0",
+    "browser-sync-webpack-plugin": "^1.0.3",
+    "bundle-loader": "^0.5.4",
+    "compression-webpack-plugin": "^0.3.1",
+    "copy-webpack-plugin": "^3.0.1",
+    "cross-env": "^2.0.0",
+    "cross-spawn": "^4.0.0",
     "css-loader": "^0.23.1",
-    "css-modules-require-hook": "^4.0.0",
-    "eslint": "^2.6.0",
+    "css-modules-require-hook": "^4.0.1",
+    "eazy-logger": "^3.0.2",
+    "eslint": "^2.13.0",
+    "eslint-config-airbnb": "^9.0.1",
     "eslint-loader": "^1.3.0",
-    "eslint-plugin-react": "^4.2.3",
+    "eslint-plugin-import": "^1.8.1",
+    "eslint-plugin-jsx-a11y": "^1.5.3",
+    "eslint-plugin-react": "^5.2.2",
     "extract-text-webpack-plugin": "^1.0.1",
-    "jsx-control-statements": "^3.1.0",
-    "ncp": "^2.0.0",
-    "node-sass": "^3.4.2",
-    "postcss-loader": "^0.8.2",
-    "redbox-react": "^1.2.2",
-    "sass-loader": "^3.2.0",
-    "style-loader": "^0.13.0",
-    "webpack": "^1.12.14",
-    "webpack-dev-middleware": "^1.5.1",
+    "file-loader": "^0.9.0",
+    "files-require-hook": "^1.0.0",
+    "handlebars": "^4.0.5",
+    "handlebars-loader": "^1.3.0",
+    "html-webpack-plugin": "^2.21.0",
+    "image-webpack-loader": "^1.8.0",
+    "json-loader": "^0.5.4",
+    "jsx-control-statements": "^3.1.2",
+    "manifest-revision-webpack-plugin": "^0.3.0",
+    "node-jsx-babel": "^0.14.2",
+    "node-sass": "^3.8.0",
+    "postcss-loader": "^0.9.1",
+    "progress-bar-webpack-plugin": "^1.8.0",
+    "sass-loader": "^3.2.2",
+    "script-ext-html-webpack-plugin": "^1.3.0",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.13.1",
+    "webpack-dev-middleware": "^1.6.1",
     "webpack-hot-middleware": "^2.10.0"
   }
 }
