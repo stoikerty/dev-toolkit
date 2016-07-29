@@ -1,4 +1,5 @@
 import plugins from './config/plugins';
+import resolve from './config/resolve';
 import loaders, { sassLoader, postcss } from './config/loaders';
 // import eslint from './config/eslint';
 
@@ -10,9 +11,7 @@ import {
   env,
   vendorModules,
   namingConvention,
-  rootForProject,
   rootForRequire,
-  rootForToolkit,
 } from '../_userSettings';
 
 // console.log(process.env.NODE_PATH);
@@ -78,33 +77,7 @@ export default {
   postcss,
 
   // Files in these directories can be imported without a relative path
-  resolve: {
-    extensions: ['', '.js', '.jsx'],
-    root: path.resolve(__dirname, rootForRequire),
-    // the alias will allow us to get files relative to the `src`-folder
-    // exmaple: `import { myUtil } from 'src/client/utils';`
-    alias: {
-      src: 'src',
-    },
-    modulesDirectories: [
-      PATHS.clientRoot,
-      path.resolve(rootForProject),
-      path.resolve(rootForProject, 'node_modules'),
-      path.resolve(rootForToolkit),
-      path.resolve(rootForToolkit, 'node_modules'),
-    ],
-
-    fallback: [path.resolve(rootForToolkit, 'node_modules')],
-  },
-  resolveLoader: {
-    modulesDirectories: [
-      path.resolve(rootForProject),
-      path.resolve(rootForProject, 'node_modules'),
-      path.resolve(rootForToolkit),
-      path.resolve(rootForToolkit, 'node_modules'),
-    ],
-    fallback: [path.resolve(rootForToolkit, 'node_modules')],
-  },
+  resolve,
 
   // how much information webpack should output
   stats: {
