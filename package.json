@@ -1,6 +1,6 @@
 {
   "name": "dev-toolkit",
-  "version": "5.0.0",
+  "version": "5.0.3",
   "description": "{ dev-toolkit }",
   "main": "index.js",
   "scripts": {
