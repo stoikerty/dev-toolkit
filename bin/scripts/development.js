@@ -1,10 +1,12 @@
+#!/usr/bin/env node
 const debug = require('../utils/debug');
 const chalk = require('chalk');
 const path = require('path');
 
 const babelConfig = require(path.resolve(__dirname, '../../babelrc.js'));
 
-console.log(chalk.blue('~ Javascript Development Toolkit ~'));
+console.log(chalk.blue('~') + ' Javascript Development Toolkit ' + chalk.blue('~'));
+
 require('babel-register')(babelConfig);
 global.toolkitCli = {
   isDev: true,

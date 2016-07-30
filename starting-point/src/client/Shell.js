@@ -2,15 +2,11 @@ import React, { PropTypes } from 'react';
 
 import s from './Shell/_style.scss';
 
-import test from 'src/client/utils/test';
-
 const displayName = 'Shell';
 const defaultProps = {};
 const propTypes = {
   children: PropTypes.node,
 };
-
-test();
 
 const component = (props) => (
   <div className={s.shell}>
