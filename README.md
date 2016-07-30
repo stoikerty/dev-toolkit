@@ -1,7 +1,7 @@
 # dev-toolkit
 
 [![Join the chat at https://gitter.im/stoikerty/dev-toolkit](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/stoikerty/dev-toolkit?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)&nbsp;&nbsp;
-<sub>**Version 5.0.3**</sub>
+<sub>**Version 5.0.7**</sub>
 
 **The Javascript Development Toolkit**<br>
 Jump-start your Native Web App.
