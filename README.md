@@ -43,8 +43,8 @@ npm run dev
 [React]: https://facebook.github.io/react/
 [jsx-control-statements]: https://github.com/AlexGilleran/jsx-control-statements
 [sass / scss]: http://sass-lang.com/
+[css-modules]: https://github.com/css-modules/css-modules
 [Autoprefixer]: https://github.com/postcss/autoprefixer
-[classnames]: https://github.com/JedWatson/classnames
 [express]: http://expressjs.com/
 [react-router]: https://github.com/reactjs/react-router
 
