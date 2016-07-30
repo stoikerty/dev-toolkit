@@ -6,10 +6,9 @@
 **The Javascript Development Toolkit**<br>
 Jump-start your Native Web App.
 
-```js
+```bash
 npm install -g dev-toolkit
-dev-toolkit init my_app
-
+dev-toolkit --init my_app
 cd my_app
 npm run dev
 ```
