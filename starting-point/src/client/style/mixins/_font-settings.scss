@@ -1,0 +1,64 @@
+// Defaults for font-sizes
+// don't change these, override them via style/_config
+$text-color-default : #333 !default;
+$font-xxxlarge : 37px !default;
+$font-xxlarge : 26px !default;
+$font-xlarge  : 21px !default;
+$font-large   : 18px !default;
+$font-medium  : 16px !default;
+$font-small   : 14px !default;
+$font-xsmall  : 12px !default;
+
+// use mixin for font-sizes throughout app
+@mixin font($font-size: auto, $color: auto, $font-weight: auto){
+  @if $font-size != auto {
+    @if $font-size == default { font-size : $font-medium; }
+    @else if $font-size == xxxlarge { font-size : $font-xxxlarge; }
+    @else if $font-size == xxlarge { font-size : $font-xxlarge; }
+    @else if $font-size == xlarge  { font-size : $font-xlarge;  }
+    @else if $font-size == large   { font-size : $font-large;   }
+    @else if $font-size == medium  { font-size : $font-medium;  }
+    @else if $font-size == small   { font-size : $font-small;   }
+    @else if $font-size == xsmall  { font-size : $font-xsmall;  }
+    @else { font-size : $font-size; }
+  }
+  @if $color != auto {
+    @if $color == default { color : $text-color-default; }
+    @else { color : $color; }
+  }
+  @if $font-weight != auto {
+    font-weight: $font-weight;
+  }
+}
+
+@mixin importFont(
+  $family,
+  $path,
+  $filename,
+  $hash: 'v1',
+  $font-weight: normal,
+  $font-style: normal,
+  $include-woff2 : false
+){
+  @font-face{
+    font-family : $family;
+    // NOTE:
+    //  don't hash on eot-files, prevents `OTS parsing error: invalid version tag`
+    @if $include-woff2 == true {
+      src : url($path + "/" + $filename + ".eot"),
+            url($path + "/" + $filename + ".eot?" + $hash + "#iefix") format("embedded-opentype"),
+            url($path + "/" + $filename + ".woff2?" + $hash) format("woff2"),
+            url($path + "/" + $filename + ".woff?" + $hash) format("woff"),
+            url($path + "/" + $filename + ".ttf?" + $hash) format("truetype"),
+            url($path + "/" + $filename + ".svg?" + $hash + "#" + $filename) format("svg");
+    } @else {
+      src : url($path + "/" + $filename + ".eot"),
+            url($path + "/" + $filename + ".eot?" + $hash + "#iefix") format("embedded-opentype"),
+            url($path + "/" + $filename + ".woff?" + $hash) format("woff"),
+            url($path + "/" + $filename + ".ttf?" + $hash) format("truetype"),
+            url($path + "/" + $filename + ".svg?" + $hash + "#" + $filename) format("svg");
+    }
+    font-weight : $font-weight;
+    font-style  : $font-style;
+  }
+}

@@ -9,6 +9,7 @@ import sass from 'node-sass';
 import {
   PATHS,
   isDev,
+  babelConfig,
 } from '../../_userSettings';
 
 // Style configuration
@@ -71,7 +72,7 @@ export default [
   {
     test: /\.jsx?$/,
     loaders: [
-      'babel-loader',
+      `babel-loader?${JSON.stringify(babelConfig)}`,
       'eslint-loader',
     ],
     exclude: /(node_modules)|\.dynamic.jsx?$/,
@@ -81,7 +82,7 @@ export default [
     loaders: [
       // The`bundle`-loader automatically uses module directly when code is run on the server
       'bundle?lazy&name=[name]',
-      'babel-loader',
+      `babel-loader?${JSON.stringify(babelConfig)}`,
       'eslint-loader',
     ],
     exclude: /(node_modules)/,

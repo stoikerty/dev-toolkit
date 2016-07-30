@@ -7,14 +7,10 @@
 Jump-start your Native Web App.
 
 ```js
-// clone the starter repo
-git clone git@github.com:stoikerty/dev-toolkit-starter.git my_project
+npm install -g dev-toolkit
+dev-toolkit init my_app
 
-// install the dependencies
-cd my_project
-npm install
-
-// and you're ready to go
+cd my_app
 npm run dev
 ```
 

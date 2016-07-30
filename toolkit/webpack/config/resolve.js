@@ -4,6 +4,7 @@ import {
   rootForRequire,
 } from '../../_userSettings';
 
+// Files in these directories can be imported without a relative path
 export default {
   extensions: ['', '.js', '.jsx'],
   root: path.resolve(__dirname, rootForRequire),
