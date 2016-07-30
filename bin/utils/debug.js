@@ -1,7 +1,7 @@
 const chalk = require('chalk');
 
 module.exports = function debug() {
-  if (process.env.TOOLKIT_DEBUG) {
+  if (process.env.TOOLKIT_DEBUG === 'true') {
     var allArgs = [
       chalk.magenta('|| ') +
       chalk.blue(arguments['0'])

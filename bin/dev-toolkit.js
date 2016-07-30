@@ -6,7 +6,6 @@ const argv = require('yargs')
   .alias('i', 'init')
   .alias('d', 'debug').argv;
 const pkg = require('../package.json');
-const debug = require('./utils/debug');
 
 // Notify of debug mode
 if (argv.debug) {
@@ -15,6 +14,8 @@ if (argv.debug) {
 } else {
   process.env.TOOLKIT_DEBUG = false;
 }
+
+const debug = require('./utils/debug');
 
 function run(options) {
   const isWin = process.platform === 'win32';
@@ -26,6 +27,7 @@ function run(options) {
   debug('NODE_PATH', process.env.NODE_PATH);
   debug('currentPath', currentPath);
   debug('devToolkitPath', devToolkitPath);
+  debug('given arguments', argv);
   debug('');
 
   debug('running Script:', options.script);
