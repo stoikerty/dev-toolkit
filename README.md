@@ -1,4 +1,4 @@
-<img src="/dev-toolkit-logo.svg" alt="universal-dev-toolkit-logo" height='60'>
+<img src="/dev-toolkit-logo.png" alt="universal-dev-toolkit-logo" height='60'>
 
 [![Join the chat at https://gitter.im/stoikerty/dev-toolkit](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/stoikerty/dev-toolkit?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)&nbsp;&nbsp;
 <sub>**Version 5.0.8**</sub>
@@ -49,6 +49,6 @@ npm run dev
 [react-router]: https://github.com/reactjs/react-router
 
 ---
-<p align="center"><sub>kindly supported by <a href="https://www.browserstack.com/"><img src="/toolkit/documentation/browserstack-logo.png" alt="BrowserStack-Image"></a> <a href="https://www.browserstack.com">BrowserStack</a>.</sub></p>
+<p align="center"><sub>kindly supported by <a href="https://www.browserstack.com">BrowserStack</a>.</sub></p>
 <br>
 Fancy working on the toolkit itself? [This wiki](https://github.com/stoikerty/dev-toolkit/wiki/Developing-on-the-Toolkit-itself) could be useful to you.
