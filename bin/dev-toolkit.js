@@ -12,6 +12,8 @@ const debug = require('./utils/debug');
 if (argv.debug) {
   process.env.TOOLKIT_DEBUG = true;
   console.log(chalk.magenta.underline('DEBUG MODE'));
+} else {
+  process.env.TOOLKIT_DEBUG = false;
 }
 
 function run(options) {
@@ -35,6 +37,7 @@ function run(options) {
   // Add color support for dependency-modules like `chalk`
   args.push('--color');
 
+  debug(chalk.magenta.underline('---'));
   // spawn is required for root-relative imports to work in server-rendering, because webpack's
   // alias is not picked up in node. For other solutions, see the following:
   // https://gist.github.com/branneman/8048520
@@ -45,6 +48,7 @@ function run(options) {
     {
       env: {
         NODE_PATH: currentPath,
+        TOOLKIT_DEBUG: process.env.TOOLKIT_DEBUG,
       },
 
       // OSX will throw error if shell is not set
@@ -52,11 +56,6 @@ function run(options) {
       stdio: 'inherit',
     }
   );
-
-
-  if (argv.debug) {
-    console.log('0.4 NODE_PATH after: ', process.env.NODE_PATH);
-  }
 }
 
 if (argv.version) {

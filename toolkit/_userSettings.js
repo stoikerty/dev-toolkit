@@ -1,4 +1,5 @@
 import path from 'path';
+import debug from './utils/debug';
 
 export const isDev = global.toolkitCli.isDev;
 
@@ -6,13 +7,17 @@ export const rootForProject = './';
 export const rootForRequire = process.cwd();
 export const rootForToolkit = path.resolve(__dirname, '../');
 
-console.log('1. rootForProject', rootForProject);
-console.log('2. rootForRequire', rootForRequire);
-console.log('3. rootForToolkit', rootForToolkit);
+debug('rootForProject', rootForProject);
+debug('rootForRequire', rootForRequire);
+debug('rootForToolkit', rootForToolkit);
 
-const pkg = require(path.resolve(rootForRequire, 'package.json')) || {}; // eslint-disable-line global-require, max-len
+// eslint-disable-next-line global-require
+const pkg = require(path.resolve(rootForRequire, 'package.json')) || {};
 export const vendorModules = pkg.toolkitSettings && pkg.toolkitSettings.vendor ?
   pkg.toolkitSettings.vendor : [];
+
+// eslint-disable-next-line global-require
+export const babelConfig = require(path.resolve(__dirname, '../babelrc.js'));
 
 // environment variables & defaults
 export const env = {
