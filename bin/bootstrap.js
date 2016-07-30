@@ -1,10 +1,10 @@
 #!/usr/bin/env node
-var spawn = require('cross-spawn');
-var path = require('path');
-var isWin = process.platform === 'win32';
+const spawn = require('cross-spawn');
+const path = require('path');
+const isWin = process.platform === 'win32';
 
-var currentPath = path.resolve(process.cwd());
-var startScriptPath = path.resolve(__dirname, './start.js');
+const currentPath = path.resolve(process.cwd());
+const startScriptPath = path.resolve(__dirname, './start.js');
 
 console.log('0.1 NODE_PATH before: ', process.env.NODE_PATH);
 console.log('0.2 currentPath: ', currentPath);

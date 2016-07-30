@@ -1,0 +1,10 @@
+@import 'style/config';
+
+// import global style once
+@import 'style/global';
+
+.shell{
+  @include position(relative, block, 100%);
+  float : left;
+  @include proto(3, 0.2);
+}
