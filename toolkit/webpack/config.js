@@ -2,6 +2,7 @@ import plugins from './config/plugins';
 import loaders, { sassLoader, postcss } from './config/loaders';
 import eslint from './config/eslint';
 import resolve from './config/resolve';
+import resolveLoader from './config/resolveLoader';
 import stats from './config/stats';
 
 import {
@@ -36,8 +37,9 @@ export default {
   postcss,
   eslint,
 
-  //  Manage directories for dependencies with `resolve`
+  //  Manage directories for dependencies with `resolve` & `resolveLoader`
   resolve,
+  resolveLoader,
 
   // How much information webpack should output
   stats,

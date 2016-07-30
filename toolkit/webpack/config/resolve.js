@@ -1,7 +1,9 @@
 import path from 'path';
 
 import {
+  rootForProject,
   rootForRequire,
+  rootForToolkit,
 } from '../../_userSettings';
 
 // Files in these directories can be imported without a relative path
@@ -13,7 +15,9 @@ export default {
   alias: {
     src: 'src',
   },
+
   modulesDirectories: [
-    'node_modules',
+    path.resolve(rootForProject, 'node_modules'),
+    path.resolve(rootForToolkit, 'node_modules'),
   ],
 };
