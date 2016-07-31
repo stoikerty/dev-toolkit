@@ -1,4 +1,4 @@
-<img src="/dev-toolkit-logo.png" alt="universal-dev-toolkit-logo" height='46'><sub>**v5.0.8**</sub>
+<img src="/dev-toolkit-logo.png" alt="universal-dev-toolkit-logo" height='52'><sub>**v5.0.8**</sub>
 
 [![Codewake](https://www.codewake.com/badges/ask_question.svg)](https://www.codewake.com/p/dev-toolkit)
 [![Join the chat at https://gitter.im/stoikerty/dev-toolkit](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/stoikerty/dev-toolkit?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
