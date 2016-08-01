@@ -1,4 +1,4 @@
-<img src="/dev-toolkit-logo.png" alt="universal-dev-toolkit-logo" height='48'><sub>**v5.0.8**</sub>
+<img src="/dev-toolkit-logo.png" alt="universal-dev-toolkit-logo" height='40'><sub>**v5.0.8**</sub>
 
 [![Codewake](https://www.codewake.com/badges/ask_question.svg)](https://www.codewake.com/p/dev-toolkit)
 [![Join the chat at https://gitter.im/stoikerty/dev-toolkit](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/stoikerty/dev-toolkit?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
@@ -12,6 +12,8 @@ dev-toolkit --init my_app
 cd my_app
 npm run dev
 ```
+
+*The toolkit is still in development, there's a few bugs to iron out. Please file an issue if you encounter any, you'll help improve the project for everyone! thanks!*
 
 ---
 ### Features
