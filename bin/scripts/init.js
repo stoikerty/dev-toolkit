@@ -29,8 +29,11 @@ if (appName) {
       ['install'],
       {
         env: isWin ? {
+          PATH: process.env.PATH,
           APPDATA: process.env.APPDATA,
-        } : {},
+        } : {
+          PATH: process.env.PATH,
+        },
 
         // OSX will throw error if shell is not set
         shell: !isWin,

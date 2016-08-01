@@ -49,6 +49,10 @@ function run(options) {
     args,
     {
       env: {
+        // Fixes `spawn node ENOENT` error by transferring PATH
+        // http://stackoverflow.com/questions/27688804/how-do-i-debug-error-spawn-enoent-on-node-js
+        PATH: process.env.PATH,
+
         NODE_PATH: currentPath,
         TOOLKIT_DEBUG: process.env.TOOLKIT_DEBUG,
       },
