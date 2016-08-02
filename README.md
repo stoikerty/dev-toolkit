@@ -13,8 +13,6 @@ cd my_app
 npm run dev
 ```
 
-*The toolkit is still in development, there's a few bugs to iron out. Please file an issue if you encounter any, you'll help improve the project for everyone! thanks!*
-
 ---
 ### Features
 
