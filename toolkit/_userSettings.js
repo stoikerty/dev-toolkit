@@ -1,4 +1,6 @@
 import path from 'path';
+import fileExists from 'file-exists';
+
 import debug from './utils/debug';
 
 export const isDev = global.toolkitCli.isDev;
@@ -37,13 +39,18 @@ export const userEnv = {
 const clientRoot = path.resolve(rootForProject, 'src/client');
 const serverRoot = path.resolve(rootForProject, 'src/server');
 const buildFolder = path.resolve(rootForProject, 'build');
+
+const clientAppEntryPoint = fileExists(path.resolve(clientRoot, 'app.js')) ?
+  path.resolve(clientRoot, 'app.js') : path.resolve(clientRoot, 'app.jsx');
+debug('clientAppEntryPoint', clientAppEntryPoint);
+
 export const PATHS = {
   publicFilesFolder: path.resolve(serverRoot, 'public-files'),
   manifestRootAssetPath: './src/client',
   manifest: path.resolve(buildFolder, 'manifest.json'),
   clientRoot,
   serverRoot,
-  clientAppEntryPoint: path.resolve(clientRoot, 'app.js'),
+  clientAppEntryPoint,
   buildFolder,
   templateLocation: path.resolve(serverRoot, 'views/layout.hbs'),
 };

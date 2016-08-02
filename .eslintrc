@@ -1,12 +1,20 @@
 {
-  "extends": "airbnb",
+  "plugins": [
+    "jsx-control-statements"
+  ],
+  "extends": [
+    "airbnb",
+    "plugin:jsx-control-statements/recommended"
+  ],
   "parser": "babel-eslint",
   "rules": {
     "no-multiple-empty-lines": [
-      "error", {
+      "error",
+      {
         "max": 1
       }
     ],
+
     // Ignore custom import temporarily so text-editors work with `eslint-plugin-import`
     // see: https://github.com/AtomLinter/linter-eslint/issues/610
     "import/no-unresolved": [
@@ -17,10 +25,15 @@
     ]
   },
 
+  "settings" : {
+    "import/resolver": {
+      "webpack": {
+        "config": "dist/webpack/config.js"
+      }
+    }
+  },
   "globals": {
-    "app": true,
-    "If": true,
-    "Else": true
+    "app": true
   },
   "env": {
     "mocha": true

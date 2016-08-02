@@ -17,7 +17,7 @@ export default {
   },
 
   modulesDirectories: [
-    path.resolve(rootForProject, 'node_modules'),
     path.resolve(rootForToolkit, 'node_modules'),
+    path.resolve(rootForProject, 'node_modules'),
   ],
 };
