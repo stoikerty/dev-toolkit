@@ -70,10 +70,10 @@ export default [
       `babel-loader?${JSON.stringify(babelConfig)}`,
       'eslint-loader',
     ],
-    exclude: /(node_modules)|\.dynamic.jsx?$/,
+    exclude: /(node_modules)|\.route.jsx?$|\.dynamic.jsx?$/,
   },
   {
-    test: /\.dynamic.jsx?$/,
+    test: /\.route.jsx?$|\.dynamic.jsx?$/,
     loaders: [
       // The`bundle`-loader automatically uses module directly when code is run on the server
       'bundle?lazy&name=[name]',
