@@ -10,4 +10,6 @@ module.exports = {
     require.resolve('jsx-control-statements'),
     require.resolve('babel-plugin-transform-class-properties'),
   ],
+
+  extensions: ['.jsx', '.js']
 };

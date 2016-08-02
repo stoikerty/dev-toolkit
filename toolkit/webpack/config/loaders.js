@@ -3,6 +3,7 @@ import autoprefixer from 'autoprefixer';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import cssHook from 'css-modules-require-hook';
 import filesHook from 'files-require-hook';
+import jsxHook from 'node-jsx-babel';
 import sass from 'node-sass';
 
 import {
@@ -60,6 +61,11 @@ filesHook({
   extensions: ['jpg', 'jpeg', 'png', 'gif', 'svg'],
   base: process.cwd(),
 });
+
+// Set up server-side rendering for jsx-files
+// NOTE: needs to be called before `babel-register`, otherwise it would be in `...config/loaders.js`
+// ---
+jsxHook.install();
 
 export default [
   { test: /\.hbs$/, loader: 'handlebars-loader' },
