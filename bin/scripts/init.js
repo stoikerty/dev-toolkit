@@ -2,7 +2,7 @@
 const spawn = require('cross-spawn');
 const chalk = require('chalk');
 const path = require('path');
-const copy = require('ncp');
+const fse = require('fs-extra');
 const debug = require('../utils/debug');
 const appName = process.argv[2];
 
@@ -15,16 +15,15 @@ if (appName) {
   debug('startingPoint', startingPoint);
   debug('appPath', appPath);
 
-  copy(startingPoint, appPath, function onFinish(err){
-     if (err) {
-       return console.error(err);
-     }
+  fse.copy(startingPoint, appPath, function (err) {
+    if (err) return console.error(err);
 
     console.log(chalk.green('->') + ' created files for ' + chalk.magenta(appName));
     console.log(chalk.green('->') + ' installing app dependencies...');
 
     const isWin = process.platform === 'win32';
-    spawn(
+
+    spawn.sync(
       'npm',
       ['install'],
       {
@@ -36,11 +35,17 @@ if (appName) {
         },
 
         // OSX will throw error if shell is not set
-        shell: !isWin,
+        // shell: !isWin,
         stdio: 'inherit',
         cwd: appPath,
       }
     );
+
+    // TODO: #bug #windows
+    //   Not sure why an `undefined`-folder gets created after spawn.
+    //   Current Solution is to delete it again. (Without `spawn`, no folder is created.)
+    const undefinedFolder = path.resolve(appPath, 'undefined');
+    fse.removeSync(undefinedFolder);
   });
 } else {
   console.log('Please specify a name for your app.');
