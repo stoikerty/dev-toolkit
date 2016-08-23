@@ -6,8 +6,6 @@ const jsxHook = require('node-jsx-babel');
 
 const babelConfig = require(path.resolve(__dirname, '../../babelrc.js'));
 
-console.log(chalk.blue('~') + ' Javascript Development Toolkit ' + chalk.blue('~'));
-
 // Set up server-side rendering for jsx-files
 // NOTE: needs to be called before `babel-register`, otherwise it would be in `...config/loaders.js`
 // ---
@@ -20,4 +18,4 @@ global.toolkitCli = {
 
 debug('NODE_PATH', process.env.NODE_PATH);
 debug(chalk.magenta.underline('---'));
-require('../../dist/development');
+require('../../dist/watch');
