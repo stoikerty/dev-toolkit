@@ -6,8 +6,6 @@ const fse = require('fs-extra');
 const debug = require('../utils/debug');
 const appName = process.argv[2];
 
-console.log(chalk.blue('~') + ' Javascript Development Toolkit ' + chalk.blue('~'));
-
 if (appName) {
   const startingPoint = path.resolve(__dirname, '../../starting-point');
   const appPath = path.resolve(process.cwd(), appName);

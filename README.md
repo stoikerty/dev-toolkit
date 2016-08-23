@@ -1,13 +1,17 @@
-<img src="/dev-toolkit-logo.png" alt="universal-dev-toolkit-logo" height='40'><sub>**v5.0.19**</sub>
+<img src="/dev-toolkit-logo.png" alt="universal-dev-toolkit-logo" height='40'><sub>**v5.1.0**</sub>
 
 **Javascript Development Toolkit**<br>
 Jump-start your `react`-powered Native Web App, server-side rendering included.
 
 ```bash
+# install & initialize new app
 npm install -g dev-toolkit
 dev-toolkit --init my_app
 cd my_app
+# run it via npm scripts
 npm run dev
+# or run it directly
+dev-toolkit --watch
 ```
 
 ---
@@ -46,9 +50,15 @@ npm run dev
 [react-router]: https://github.com/reactjs/react-router
 
 ---
-<p align="center"><sub>kindly supported by <a href="https://www.browserstack.com">BrowserStack</a>.</sub></p>
+<p align="center">
+  <sub>kindly supported by <a href="https://www.browserstack.com">BrowserStack</a>.</sub>
 
-[![Codewake](https://www.codewake.com/badges/ask_question.svg)](https://www.codewake.com/p/dev-toolkit)
-[![Join the chat at https://gitter.im/stoikerty/dev-toolkit](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/stoikerty/dev-toolkit?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-<br>
+  <br>
+
+  [![Codewake](https://www.codewake.com/badges/ask_question.svg)](https://www.codewake.com/p/dev-toolkit)
+  [![Join the chat at https://gitter.im/stoikerty/dev-toolkit](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/stoikerty/dev-toolkit?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+</p>
+
+<!-- -->
+
 Fancy working on the toolkit itself? [This wiki](https://github.com/stoikerty/dev-toolkit/wiki/Developing-on-the-Toolkit-itself) could be useful to you.
