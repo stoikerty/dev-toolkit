@@ -1,4 +1,4 @@
-<img src="/dev-toolkit-logo.png" alt="universal-dev-toolkit-logo" height='40'><sub>**v5.1.1**</sub>
+<img src="/dev-toolkit-logo.png" alt="universal-dev-toolkit-logo" height='40'><sub>**v5.1.2**</sub>
 
 **Javascript Development Toolkit**<br>
 Jump-start your `react`-powered Native Web App, server-side rendering included.
