@@ -6,7 +6,8 @@ const fse = require('fs-extra');
 const debug = require('../utils/debug');
 const appName = process.argv[2];
 
-if (appName) {
+// TODO: Use a better method than checking against `true`-string to know if appName is defined
+if (appName && appName !== 'true') {
   const startingPoint = path.resolve(__dirname, '../../starting-point');
   const appPath = path.resolve(process.cwd(), appName);
 
@@ -47,5 +48,5 @@ if (appName) {
   });
 } else {
   console.log('Please specify a name for your app.');
-  console.log('dev-toolkit --init my_app');
+  console.log(chalk.yellow('dev-toolkit --init my_app'));
 }
