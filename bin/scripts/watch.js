@@ -17,5 +17,5 @@ global.toolkitCli = {
 };
 
 debug('NODE_PATH', process.env.NODE_PATH);
-debug(chalk.magenta.underline('---'));
+debug(chalk.magenta('---'));
 require('../../dist/watch');

@@ -11,21 +11,21 @@ const pkg = require('../package.json');
 // Enables debugging messages
 if (argv.debug) {
   process.env.TOOLKIT_DEBUG = true;
-  console.log(chalk.magenta.underline('DEBUG MODE'));
+  console.log(chalk.magenta('DEBUG MODE'));
 } else {
   process.env.TOOLKIT_DEBUG = false;
 }
 
 // Outputs current version number from `package.json`
 if (argv.v || argv.version) {
-  console.log('[', chalk.magenta.underline(pkg.name + ' v' + pkg.version), ']');
+  console.log('[', chalk.magenta(pkg.name + ' v' + pkg.version), ']');
 }
 
 const debug = require('./utils/debug');
 
 // runs corresponding script inside `./scripts`-folder
 function run(options) {
-  console.log(chalk.magenta.underline('[ ' + options.script + ' ]'), '- ' + options.message + '\n');
+  console.log(chalk.magenta('[ ' + options.script + ' ]'), '- ' + options.message + '\n');
 
   const isWin = process.platform === 'win32';
   const currentPath = path.resolve(process.cwd());
@@ -49,7 +49,7 @@ function run(options) {
   // Add color support for dependency-modules like `chalk`
   args.push('--color');
 
-  debug(chalk.magenta.underline('---'));
+  debug(chalk.magenta('---'));
 
   // spawn is required for root-relative imports to work in server-rendering, because webpack's
   // alias is not picked up in node. For other solutions, see the following:
@@ -82,7 +82,6 @@ if (argv.watch) {
     args: [argv.watch],
   });
 }
-// if (argv.i || argv.init || (argv._[0] === 'init')) {
 if (argv.init) {
   run({
     script: 'init',
