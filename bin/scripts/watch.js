@@ -7,8 +7,9 @@ const jsxHook = require('node-jsx-babel');
 const babelConfig = require(path.resolve(__dirname, '../../babelrc.js'));
 
 // Set up server-side rendering for jsx-files
-// NOTE: needs to be called before `babel-register`, otherwise it would be in `...config/loaders.js`
-// ---
+// NOTE:
+//   This statement is here due to a race-condition.
+//   It needs to be called before `babel-register`, otherwise it would be in `...config/loaders.js`
 jsxHook.install();
 
 require('babel-register')(babelConfig);
