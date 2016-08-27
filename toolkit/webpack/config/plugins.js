@@ -20,8 +20,7 @@ import {
 const sharedPlugins = [
   new ProgressBarPlugin({ width: 40 }),
   new webpack.optimize.CommonsChunkPlugin('vendor', `${namingConvention}.js`),
-  // NOTE: 'glob' of undefined error
-  // new CopyWebpackPlugin([{ from: PATHS.publicFiles }]),
+  new CopyWebpackPlugin([{ from: PATHS.publicFilesFolder }]),
   new webpack.DefinePlugin({
     'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV), // for redux only
     buildSettings: {
