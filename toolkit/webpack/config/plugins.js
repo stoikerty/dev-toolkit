@@ -11,7 +11,6 @@ import ProgressBarPlugin from 'progress-bar-webpack-plugin';
 import {
   PATHS,
   env,
-  userEnv,
   isDev,
   namingConvention,
   prodNamingConvention,
@@ -22,9 +21,11 @@ const sharedPlugins = [
   new webpack.optimize.CommonsChunkPlugin('vendor', `${namingConvention}.js`),
   new CopyWebpackPlugin([{ from: PATHS.publicFilesFolder }]),
   new webpack.DefinePlugin({
-    'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV), // for redux only
+    // For redux and react only
+    'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+    // All other environment variables are passed through via `buildSettings`
     buildSettings: {
-      env: userEnv,
+      env: JSON.stringify(process.env),
     },
   }),
 ];
@@ -73,6 +74,7 @@ const productionPlugins = [
     reactHtml: '',
     isDev,
     creatingBuild: true,
+    env: JSON.stringify(process.env),
   }),
   new ScriptExtHtmlWebpackPlugin({
     async: ['app'],
