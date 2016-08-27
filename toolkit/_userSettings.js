@@ -55,6 +55,8 @@ export const PATHS = {
   templateLocation: path.resolve(serverRoot, 'views/layout.hbs'),
 };
 
+debug('PATHS.publicFilesFolder: ', PATHS.publicFilesFolder);
+
 const devNamingConvention = '[name]';
 export const prodNamingConvention = '[name].[chunkhash]';
 export const namingConvention = isDev ? devNamingConvention : prodNamingConvention;
