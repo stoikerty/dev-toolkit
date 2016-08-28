@@ -1,4 +1,4 @@
-<img src="/dev-toolkit-logo.png" alt="universal-dev-toolkit-logo" height='40'><sub>**v5.1.4**</sub>
+<img src="/dev-toolkit-logo.png" alt="universal-dev-toolkit-logo" height='40'><sub>**v5.2.0**</sub>
 
 **Javascript Development Toolkit**<br>
 Jump-start your `react`-powered Native Web App, server-side rendering included.
@@ -20,6 +20,12 @@ dev-toolkit --watch
 ```bash
 # Creates `build`-folder with compiled files (-b or --build)
 dev-toolkit --build
+```
+
+##### Check version
+```bash
+# Check Version (-v or --version)
+dev-toolkit -v
 ```
 
 ---
