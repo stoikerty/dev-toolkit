@@ -4,6 +4,7 @@ const chalk = require('chalk');
 const path = require('path');
 const argv = require('yargs')
   .alias('w', 'watch')
+  .alias('b', 'build')
   .alias('i', 'init')
   .alias('d', 'debug').argv;
 const pkg = require('../package.json');
