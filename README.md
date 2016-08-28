@@ -3,6 +3,7 @@
 **Javascript Development Toolkit**<br>
 Jump-start your `react`-powered Native Web App, server-side rendering included.
 
+##### Create a new project
 ```bash
 # install & initialize new app
 npm install -g dev-toolkit
@@ -11,8 +12,14 @@ cd my_app
 
 # run it via npm scripts
 npm run dev
-# or run it directly
+# or run it directly (-w or --watch)
 dev-toolkit --watch
+```
+
+##### Generate a static build
+```bash
+# Creates `build`-folder with compiled files (-b or --build)
+dev-toolkit --build
 ```
 
 ---
