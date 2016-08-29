@@ -2,7 +2,6 @@
   <img src="/dev-toolkit-logo.png" alt="universal-dev-toolkit-logo" height='40'><sub><strong>v5.2.0</strong></sub>
 </p>
 <p align="center">
-  <strong>Javascript Development Toolkit</strong><br/>
   Jump-start your <code>react</code>-powered Native Web App.<br/>
   <a href="#generate-a-static-build-with-dynamic-pages"><code># dynamic pages</code></a>
   <a href="#powerful-css-tools"><code># sass &amp; css-modules</code></a>
