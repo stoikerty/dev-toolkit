@@ -1,12 +1,12 @@
 <p align="center">
-  <img src="/dev-toolkit-logo.png" alt="universal-dev-toolkit-logo" height='40'><sub><strong>v5.2.2</strong></sub>
+  <img src="/dev-toolkit-logo.png" alt="universal-dev-toolkit-logo" height='40'><sub><strong>v5.2.3</strong></sub>
 </p>
 <p align="center">
   Jump-start your <code>react</code>-powered Native Web App.<br/>
   <a href="#generate-a-static-build-with-dynamic-pages"><code>dynamic pages</code></a>
-  &nbsp;&nbsp;&nbsp; <a href="#powerful-css-tools"><code>sass &amp; css-modules</code></a>
-  &nbsp;&nbsp;&nbsp; <a href="#use-server-with-server-side-rendering"><code>server-rendering</code></a>
-  &nbsp;&nbsp;&nbsp; <a href="#developer-convenience"><code>hot-reload</code></a>
+  &nbsp;&nbsp;<a href="#powerful-css-tools"><code>sass &amp; css-modules</code></a>
+  &nbsp;&nbsp;<a href="#use-server-with-server-side-rendering"><code>server-rendering</code></a>
+  &nbsp;&nbsp;<a href="#developer-convenience"><code>hot-reload</code></a>
 </p>
 
 ### Create a new project

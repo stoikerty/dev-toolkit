@@ -1,6 +1,6 @@
 {
   "name": "dev-toolkit",
-  "version": "5.2.2",
+  "version": "5.2.3",
   "description": "Javascript Development Toolkit for React",
   "main": "index.js",
   "scripts": {
