@@ -27,7 +27,7 @@ compiler.run((error) => {
   }
   catch (e) {
     if (e) {
-      console.log(e);
+      // console.log(e);
     }
     console.log('\n\n 🍰  Your build files are ready 💪\n');
   }

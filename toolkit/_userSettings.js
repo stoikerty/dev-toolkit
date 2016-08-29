@@ -3,7 +3,9 @@ import fileExists from 'file-exists';
 
 import debug from './utils/debug';
 
-export const isDev = global.toolkitCli.isDev;
+debug('global.toolkitScript', global.toolkitScript);
+export const isDev = global.toolkitScript === 'watch';
+debug('isDev', isDev);
 
 export const rootForProject = './';
 export const rootForRequire = process.cwd();
@@ -36,8 +38,6 @@ const buildFolder = path.resolve(rootForProject, 'build');
 
 const clientAppEntryPoint = fileExists(path.resolve(clientRoot, 'app.js')) ?
   path.resolve(clientRoot, 'app.js') : path.resolve(clientRoot, 'app.jsx');
-debug('clientAppEntryPoint', clientAppEntryPoint);
-
 const defaultPublicPath = '/';
 const publicPath = process.env.PUBLIC_PATH || defaultPublicPath;
 
@@ -50,10 +50,9 @@ export const PATHS = {
   serverRoot,
   clientAppEntryPoint,
   buildFolder,
-  publicPath,
+  publicPath: isDev ? defaultPublicPath : publicPath,
 };
-
-debug('PATHS.publicFilesFolder: ', PATHS.publicFilesFolder);
+debug('PATHS: ', PATHS);
 
 const watchNamingConvention = '[name]';
 export const buildNamingConvention = '[name].[chunkhash]';
