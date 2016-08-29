@@ -83,7 +83,8 @@ dev-toolkit -v
 -   [Vanilla HMR, webpack's hot-reload]
 -   [jsx-control-statements]
 -   [`transform-class-properties` support]
--   Support for various file-formats:<br>
+-   automatic asset-hashing during build, custom `vendor.js`
+-   support for various file-formats:<br>
     `css`, `scss`<br>
     `js`, `jsx`, `json`<br>
     `jpg`, `png`, `gif`, `svg`
@@ -96,7 +97,8 @@ dev-toolkit -v
 
 ###### Server-tools for Universal Apps
 
--   [express]
+-   your own server app in `src/server/app`
+-   [powered by express]
 -   [react-router]
 
 [ES2015 / ES6]: https://babeljs.io/docs/learn-es2015/
@@ -110,7 +112,7 @@ dev-toolkit -v
 [sass / scss]: http://sass-lang.com/
 [css-modules]: https://github.com/css-modules/css-modules
 [Autoprefixer]: https://github.com/postcss/autoprefixer
-[express]: http://expressjs.com/
+[powered by express]: http://expressjs.com/
 [react-router]: https://github.com/reactjs/react-router
 
 ---
