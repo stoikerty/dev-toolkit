@@ -4,7 +4,8 @@
 <p align="center">
   <strong>Javascript Development Toolkit</strong>
   Jump-start your <code>react</code>-powered Native Web App.
-  <br>
+</p>
+<p align="center">
   <a href="#generate-a-static-build-with-dynamic-pages"><code># dynamic pages</code></a>
   <a href="#powerful-css-tools"><code># sass &amp; css-modules</code></a>
   <a href="#use-server-in-production"><code># server-rendering</code></a>
