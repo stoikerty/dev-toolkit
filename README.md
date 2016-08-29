@@ -9,7 +9,7 @@
   <a href="#developer-convenience"><code># hot-reload</code></a>
 </p>
 
-##### Create a new project
+### Create a new project
 ```bash
 # install & initialize new app
 npm install -g dev-toolkit
@@ -22,7 +22,7 @@ npm run dev
 dev-toolkit --watch
 ```
 
-##### Generate a static build
+### Generate a static build
 ```bash
 # Create `build`-folder with compiled files (-b or --build)
 dev-toolkit --build
@@ -34,7 +34,7 @@ dev-toolkit --build
 - extracts css from individual modules
 - hashes assets, including `jpg`, `png`, `gif` & `svg`-files
 
-##### Generate a static build with dynamic pages
+#### Generate a static build with dynamic pages
 *(coming soon)*<br>
 To make use of dynamic pages and components for making your app load faster, [follow the instructions](https://github.com/stoikerty/dev-toolkit/wiki/dynamic-pages) and use the extended build command:
 ```bash
@@ -47,13 +47,15 @@ dev-toolkit --build --dynamic
 
 ---
 
-###### Use server in production
+### Use server with server-side rendering
 *(experimental)*<br>
+You can use your project as an universal/isomorphic server-side-rendered app. For advanced users only.
 ```bash
 # Compile and run `src/server/app` (-s or --serve)
 dev-toolkit --serve
 ```
-Use your project as an universal/isomorphic server-rendered app.
+
+### Misc
 
 ###### Check version
 ```bash
