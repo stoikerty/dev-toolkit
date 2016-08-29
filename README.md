@@ -48,7 +48,7 @@ dev-toolkit --build --dynamic
 ---
 
 ### Use server with server-side rendering
-*(experimental)*<br>
+*(experimental, coming soon)*<br>
 You can use your project as an universal/isomorphic server-side-rendered app. For advanced users only.
 ```bash
 # Compile and run `src/server/app` (-s or --serve)
