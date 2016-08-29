@@ -1,7 +1,8 @@
 <img src="/dev-toolkit-logo.png" alt="universal-dev-toolkit-logo" height='40'><sub>**v5.2.0**</sub>
 
 **Javascript Development Toolkit**<br>
-Jump-start your `react`-powered Native Web App, server-side rendering included.
+Jump-start your `react`-powered Native Web App.
+<br>[`# Dynamic Pages`]() [`# sass modules`]() [`# server-rendering`]() [`# hot-reload`]().
 
 ##### Create a new project
 ```bash
@@ -18,11 +19,29 @@ dev-toolkit --watch
 
 ##### Generate a static build
 ```bash
-# Creates `build`-folder with compiled files (-b or --build)
+# Create `build`-folder with compiled files (-b or --build)
 dev-toolkit --build
+```
+- removes previous `build`-folder
+- hashes assets
+- generates static markup for React
+- automatically uses production-builds of React and Redux
+
+##### Generate a static build with dynamic pages
+To make use of [dynamic pages and components]() for making your app load faster, use the extended build command:
+```bash
+# This will create an index-file for each specified dynamic route
+dev-toolkit --build --dynamic
 ```
 
 ---
+
+###### Use server in production *(experimental)*
+```bash
+# Compile and run `src/server/app` (-s or --serve)
+dev-toolkit --serve
+```
+Use your project as an universal/isomorphic server-rendered app.
 
 ###### Check version
 ```bash
@@ -45,27 +64,34 @@ dev-toolkit -v
 ---
 ### Features
 
--   [ES2015 / ES6]
--   [root-relative imports]
--   [Vanilla HMR]
--   [Browsersync]
--   [ESLint]
-
-<!-- -->
+###### Javascript Basics
 
 -   [React]
+-   [ES2015 / ES6]
+-   [root-relative imports with `src/...`]
+-   [ESLint]
+
+###### Developer Convenience
+
+-   [Browsersync]
+-   [Vanilla HMR]
 -   [jsx-control-statements]
+-   [`transform-class-properties` support]
+
+###### Powerful CSS Tools
+
+-   [Autoprefixer]
 -   [sass / scss]
 -   [css-modules]
--   [Autoprefixer]
 
-<!-- -->
+###### Server-tools for Universal Apps
 
 -   [express]
 -   [react-router]
 
 [ES2015 / ES6]: https://babeljs.io/docs/learn-es2015/
-[root-relative imports]: http://survivejs.com/webpack/requiring-files/
+[`transform-class-properties` support]: https://babeljs.io/docs/plugins/transform-class-properties/
+[root-relative imports with `src/...`]: http://survivejs.com/webpack/requiring-files/
 [Vanilla HMR]: https://webpack.github.io/docs/hot-module-replacement-with-webpack.html
 [Browsersync]: https://browsersync.io/
 [ESLint]: http://eslint.org/
