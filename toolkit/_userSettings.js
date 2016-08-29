@@ -3,9 +3,10 @@ import fileExists from 'file-exists';
 
 import debug from './utils/debug';
 
-debug('global.toolkitScript', global.toolkitScript);
-export const isDev = global.toolkitScript === 'watch';
-debug('isDev', isDev);
+export const currentScript = global.toolkitScript;
+debug('currentScript', currentScript);
+export const scriptOptions = global.scriptOptions || {};
+debug('scriptOptions', scriptOptions);
 
 export const rootForProject = './';
 export const rootForRequire = process.cwd();
@@ -42,18 +43,22 @@ const defaultPublicPath = '/';
 const publicPath = process.env.PUBLIC_PATH || defaultPublicPath;
 
 export const PATHS = {
-  templateLocation: path.resolve(serverRoot, 'views/layout.hbs'),
   publicFilesFolder: path.resolve(serverRoot, 'public-files'),
+  templateLocation: path.resolve(serverRoot, 'views/layout.hbs'),
+  staticRender: path.resolve(serverRoot, 'staticRender'),
+
   manifestRootAssetPath: './src/client',
   manifest: path.resolve(buildFolder, 'manifest.json'),
+
   clientRoot,
   serverRoot,
   clientAppEntryPoint,
   buildFolder,
-  publicPath: isDev ? defaultPublicPath : publicPath,
+  publicPath: (currentScript === 'watch') ? defaultPublicPath : publicPath,
 };
 debug('PATHS: ', PATHS);
 
 const watchNamingConvention = '[name]';
 export const buildNamingConvention = '[name].[chunkhash]';
-export const namingConvention = isDev ? watchNamingConvention : buildNamingConvention;
+export const namingConvention =
+  (currentScript === 'watch') ? watchNamingConvention : buildNamingConvention;

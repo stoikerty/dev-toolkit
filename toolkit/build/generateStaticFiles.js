@@ -64,7 +64,7 @@ export default (staticRender, routes, PATHS, message) => {
         const routePath = path.resolve(PATHS.build, route.substring(1));
         mkdirp(routePath, (mkdirError) => {
           // TODO: Handle multiple components in scripts and log
-          console.log(chalk.blue('\n>'), `Creating route ${chalk.magenta(route)} with dynamic Components ${chalk.magenta(dynamicComponent)}...`);
+          console.log(chalk.blue('\n>'), `route ${chalk.magenta(route)} with dynamic Components ${chalk.magenta(dynamicComponent)}`);
 
           if (mkdirError) {
             console.error(mkdirError);

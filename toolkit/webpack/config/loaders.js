@@ -7,7 +7,7 @@ import sass from 'node-sass';
 
 import {
   PATHS,
-  isDev,
+  currentScript,
   babelConfig,
 } from '../../_userSettings';
 
@@ -92,7 +92,7 @@ export default [
 
   // Use separate style-tags for development,
   // extract CSS into one file for production.
-  isDev ? {
+  currentScript === 'watch' ? {
     test: /\.scss$/,
     loaders: ['style-loader'].concat(styleLoaders),
   } : {

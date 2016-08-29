@@ -11,7 +11,7 @@ import ManifestRevisionPlugin from 'manifest-revision-webpack-plugin';
 import {
   PATHS,
   env,
-  isDev,
+  currentScript,
   namingConvention,
   buildNamingConvention,
 } from '../../_userSettings';
@@ -21,8 +21,12 @@ const sharedPlugins = [
   new webpack.optimize.CommonsChunkPlugin('vendor', `${namingConvention}.js`),
   new CopyWebpackPlugin([{ from: PATHS.publicFilesFolder }]),
   new webpack.DefinePlugin({
-    // For redux and react only
-    'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+    // For redux and react only, force `production` when creating a build or serving files
+    'process.env.NODE_ENV': JSON.stringify(
+      (currentScript === 'build') || (currentScript === 'serve')
+      ? 'production'
+      : process.env.NODE_ENV
+    ),
     // All other environment variables are passed through via `buildSettings`
     buildSettings: {
       env: JSON.stringify(process.env),
@@ -72,7 +76,6 @@ const productionPlugins = [
     template: PATHS.templateLocation,
 
     reactHtml: '',
-    isDev,
     creatingBuild: true,
     env: JSON.stringify(process.env),
   }),
@@ -102,6 +105,6 @@ if (process.env.COMPRESS) {
   );
 }
 
-export default isDev ?
+export default currentScript === 'watch' ?
   sharedPlugins.concat(developmentPlugins)
   : sharedPlugins.concat(productionPlugins);

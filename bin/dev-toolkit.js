@@ -95,7 +95,7 @@ if (argv.init) {
 if (argv.build) {
   run({
     script: 'build',
-    message: 'Creating a static build',
-    args: [argv.build],
+    message: 'Creating a static build' + (argv.dynamic ? ' with dynamic pages' : ''),
+    args: [(argv.dynamic ? 'dynamic' : '')],
   });
 }
