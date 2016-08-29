@@ -22,6 +22,8 @@ dev-toolkit --watch
 dev-toolkit --build
 ```
 
+---
+
 ###### Check version
 ```bash
 # Check Version (-v or --version)
