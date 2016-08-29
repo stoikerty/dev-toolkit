@@ -23,7 +23,7 @@ export default {
     path: PATHS.buildFolder,
     filename: `${namingConvention}.js`,
     chunkFilename: `${namingConvention}.js`,
-    publicPath: '/',
+    publicPath: PATHS.publicPath,
   },
 
   // Webpack plugins

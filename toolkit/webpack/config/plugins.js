@@ -62,7 +62,7 @@ const developmentPlugins = [
     }
   ),
 ];
-
+console.log(PATHS.templateLocation);
 const productionPlugins = [
   // Extract css into one file for production, minify javascript
   new ExtractTextPlugin(`${buildNamingConvention}.css`, { allChunks: true }),

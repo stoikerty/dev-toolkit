@@ -38,6 +38,9 @@ const clientAppEntryPoint = fileExists(path.resolve(clientRoot, 'app.js')) ?
   path.resolve(clientRoot, 'app.js') : path.resolve(clientRoot, 'app.jsx');
 debug('clientAppEntryPoint', clientAppEntryPoint);
 
+const defaultPublicPath = '/';
+const publicPath = process.env.PUBLIC_PATH || defaultPublicPath;
+
 export const PATHS = {
   templateLocation: path.resolve(serverRoot, 'views/layout.hbs'),
   publicFilesFolder: path.resolve(serverRoot, 'public-files'),
@@ -47,6 +50,7 @@ export const PATHS = {
   serverRoot,
   clientAppEntryPoint,
   buildFolder,
+  publicPath,
 };
 
 debug('PATHS.publicFilesFolder: ', PATHS.publicFilesFolder);
