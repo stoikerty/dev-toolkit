@@ -8,9 +8,6 @@ import { rootForRequire, routes, PATHS } from './_userSettings';
 // compile all files necessary for serving
 const compiler = webpack(config);
 compiler.run((err, stats) => {
-  // output what's happening within webpack
-  console.log(stats.toString(config.stats));
-
   try {
     // Use similar setup as for a test-environment (but with NODE_ENV set to `production`)
     // eslint-disable-next-line global-require
