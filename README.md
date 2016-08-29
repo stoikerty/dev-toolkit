@@ -2,7 +2,7 @@
 
 **Javascript Development Toolkit**<br>
 Jump-start your `react`-powered Native Web App.
-<br>[`# Dynamic Pages`](#generate-a-static-build-with-dynamic-pages) [`# sass modules`](#powerful-css-tools) [`# server-rendering`](#server-tools-for-universal-apps) [`# hot-reload`](#developer-convenience)
+<br>[`# Dynamic Pages`](#generate-a-static-build-with-dynamic-pages) [`# sass & css-modules`](#powerful-css-tools) [`# server-rendering`](#use-server-in-production) [`# hot-reload`](#developer-convenience)
 
 ##### Create a new project
 ```bash
@@ -28,6 +28,7 @@ dev-toolkit --build
 - automatically uses production-builds of React and Redux
 
 ##### Generate a static build with dynamic pages
+*(experimental)*<br>
 To make use of [dynamic pages and components]() for making your app load faster, use the extended build command:
 ```bash
 # This will create an index-file for each specified dynamic route
@@ -36,7 +37,8 @@ dev-toolkit --build --dynamic
 
 ---
 
-###### Use server in production *(experimental)*
+###### Use server in production
+*(experimental)*<br>
 ```bash
 # Compile and run `src/server/app` (-s or --serve)
 dev-toolkit --serve
