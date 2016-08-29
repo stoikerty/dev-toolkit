@@ -15,7 +15,7 @@ debug('rootForToolkit', rootForToolkit);
 
 // eslint-disable-next-line global-require
 const pkg = require(path.resolve(rootForRequire, 'package.json')) || {};
-export const vendorModules = pkg.toolkitSettings && pkg.toolkitSettings.vendor ?
+export const vendor = pkg.toolkitSettings && pkg.toolkitSettings.vendor ?
   pkg.toolkitSettings.vendor : [];
 
 // eslint-disable-next-line global-require

@@ -4,10 +4,19 @@
   "description": "dev-toolkit starting point",
   "main": "index.js",
   "scripts": {
-    "dev": "dev-toolkit"
+    "dev": "dev-toolkit --watch",
+    "build": "dev-toolkit --build"
   },
   "author": "",
   "license": "ISC",
+  "toolkitSettings": {
+    "vendor": [
+      "immutable",
+      "react",
+      "react-dom",
+      "react-router"
+    ]
+  },
   "dependencies": {
     "compression": "^1.6.2",
     "domready": "^1.0.8",
