@@ -30,12 +30,6 @@ export const env = {
   VERBOSE_LOGGING: process.env.VERBOSE_LOGGING || false,
 };
 
-export const userEnv = {
-  // NODE_ENV: JSON.stringify(process.env.NODE_ENV),
-  // API_DOMAIN: JSON.stringify(process.env.API_DOMAIN),
-  // COOKIE_DOMAIN: JSON.stringify(process.env.COOKIE_DOMAIN),
-};
-
 const clientRoot = path.resolve(rootForProject, 'src/client');
 const serverRoot = path.resolve(rootForProject, 'src/server');
 const buildFolder = path.resolve(rootForProject, 'build');
@@ -45,6 +39,7 @@ const clientAppEntryPoint = fileExists(path.resolve(clientRoot, 'app.js')) ?
 debug('clientAppEntryPoint', clientAppEntryPoint);
 
 export const PATHS = {
+  templateLocation: path.resolve(serverRoot, 'views/layout.hbs'),
   publicFilesFolder: path.resolve(serverRoot, 'public-files'),
   manifestRootAssetPath: './src/client',
   manifest: path.resolve(buildFolder, 'manifest.json'),
@@ -52,11 +47,10 @@ export const PATHS = {
   serverRoot,
   clientAppEntryPoint,
   buildFolder,
-  templateLocation: path.resolve(serverRoot, 'views/layout.hbs'),
 };
 
 debug('PATHS.publicFilesFolder: ', PATHS.publicFilesFolder);
 
-const devNamingConvention = '[name]';
-export const prodNamingConvention = '[name].[chunkhash]';
-export const namingConvention = isDev ? devNamingConvention : prodNamingConvention;
+const watchNamingConvention = '[name]';
+export const buildNamingConvention = '[name].[chunkhash]';
+export const namingConvention = isDev ? watchNamingConvention : buildNamingConvention;
