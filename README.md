@@ -23,15 +23,16 @@ dev-toolkit --watch
 dev-toolkit --build
 ```
 - removes previous `build`-folder
-- hashes assets
-- generates static markup for React
+- generates static markup for React (*soon*)
 - automatically uses production-builds of React and Redux
+- extracts css from individual modules
+- hashes assets, including `jpg`, `png`, `gif` & `svg`-files
 
 ##### Generate a static build with dynamic pages
 *(experimental)*<br>
-To make use of [dynamic pages and components]() for making your app load faster, use the extended build command:
+To make use of dynamic pages and components for making your app load faster, [follow the instructions](https://github.com/stoikerty/dev-toolkit/wiki/dynamic-pages) and use the extended build command:
 ```bash
-# This will create an index-file for each specified dynamic route
+# This will create an index-file for each dynamic route (-d --dynamic or --build --dynamic)
 dev-toolkit --build --dynamic
 ```
 
@@ -76,9 +77,13 @@ dev-toolkit -v
 ###### Developer Convenience
 
 -   [Browsersync]
--   [Vanilla HMR]
+-   [Vanilla HMR, webpack's hot-reload]
 -   [jsx-control-statements]
 -   [`transform-class-properties` support]
+-   Support for various file-formats:<br>
+    `css`, `scss`<br>
+    `js`, `jsx`, `json`<br>
+    `jpg`, `png`, `gif`, `svg`
 
 ###### Powerful CSS Tools
 
@@ -94,7 +99,7 @@ dev-toolkit -v
 [ES2015 / ES6]: https://babeljs.io/docs/learn-es2015/
 [`transform-class-properties` support]: https://babeljs.io/docs/plugins/transform-class-properties/
 [root-relative imports with `src/...`]: http://survivejs.com/webpack/requiring-files/
-[Vanilla HMR]: https://webpack.github.io/docs/hot-module-replacement-with-webpack.html
+[Vanilla HMR, webpack's hot-reload]: https://webpack.github.io/docs/hot-module-replacement-with-webpack.html
 [Browsersync]: https://browsersync.io/
 [ESLint]: http://eslint.org/
 [React]: https://facebook.github.io/react/
