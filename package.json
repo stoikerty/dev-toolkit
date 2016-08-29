@@ -1,7 +1,7 @@
 {
   "name": "dev-toolkit",
   "version": "5.2.3",
-  "description": "Javascript Development Toolkit for React",
+  "description": "Javascript development toolkit for power users.",
   "main": "index.js",
   "scripts": {
     "build": "babel toolkit --out-dir dist",
