@@ -22,10 +22,22 @@ dev-toolkit --watch
 dev-toolkit --build
 ```
 
-##### Check version
+###### Check version
 ```bash
 # Check Version (-v or --version)
 dev-toolkit -v
+```
+
+###### Define what modules are bundled into `vendor.js`
+```js
+// in your package.json, add `toolkitSettings` section
+"toolkitSettings": {
+  "vendor": [
+    "react",
+    "react-dom",
+    "react-router"
+  ]
+},
 ```
 
 ---
