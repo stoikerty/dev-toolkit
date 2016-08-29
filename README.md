@@ -5,7 +5,7 @@
   Jump-start your <code>react</code>-powered Native Web App.<br/>
   <a href="#generate-a-static-build-with-dynamic-pages"><code># dynamic pages</code></a>
   <a href="#powerful-css-tools"><code># sass &amp; css-modules</code></a>
-  <a href="#use-server-in-production"><code># server-rendering</code></a>
+  <a href="#use-server-with-server-side-rendering"><code># server-rendering</code></a>
   <a href="#developer-convenience"><code># hot-reload</code></a>
 </p>
 
