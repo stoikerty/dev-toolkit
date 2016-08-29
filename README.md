@@ -23,18 +23,21 @@ dev-toolkit --watch
 dev-toolkit --build
 ```
 - removes previous `build`-folder
-- generates static markup for React (*soon*)
+- generates static markup for React (*coming soon*)
 - automatically uses production-builds of React and Redux
 - extracts css from individual modules
 - hashes assets, including `jpg`, `png`, `gif` & `svg`-files
 
 ##### Generate a static build with dynamic pages
-*(experimental)*<br>
+*(coming soon)*<br>
 To make use of dynamic pages and components for making your app load faster, [follow the instructions](https://github.com/stoikerty/dev-toolkit/wiki/dynamic-pages) and use the extended build command:
 ```bash
 # This will create an index-file for each dynamic route (-d --dynamic or --build --dynamic)
 dev-toolkit --build --dynamic
 ```
+- creates multiple js-bundles for each dynamic page
+- each `index.html` contains a `script`-link to the `app` bundle and the page-bundle
+- scripts use `async` and `defer`-attributes as appropriate
 
 ---
 
@@ -111,7 +114,6 @@ dev-toolkit -v
 [react-router]: https://github.com/reactjs/react-router
 
 ---
-<sub>kindly supported by <a href="https://www.browserstack.com">BrowserStack</a>.</sub>
 
 [![Codewake](https://www.codewake.com/badges/ask_question.svg)](https://www.codewake.com/p/dev-toolkit)
 [![Join the chat at https://gitter.im/stoikerty/dev-toolkit](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/stoikerty/dev-toolkit?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
@@ -119,3 +121,7 @@ dev-toolkit -v
 <!-- -->
 
 Fancy working on the toolkit itself? [This wiki](https://github.com/stoikerty/dev-toolkit/wiki/Developing-on-the-Toolkit-itself) could be useful to you.
+
+---
+
+<sub>kindly supported by <a href="https://www.browserstack.com">BrowserStack</a>.</sub>
