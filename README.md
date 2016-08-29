@@ -35,7 +35,7 @@ To make use of dynamic pages and components for making your app load faster, [fo
 # This will create an index-file for each dynamic route (-d --dynamic or --build --dynamic)
 dev-toolkit --build --dynamic
 ```
-- creates multiple js-bundles for each dynamic page
+- creates multiple js-bundles, one for each dynamic page
 - each `index.html` contains a `script`-link to the `app` bundle and the page-bundle
 - scripts use `async` and `defer`-attributes as appropriate
 
