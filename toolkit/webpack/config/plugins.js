@@ -6,15 +6,14 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import ScriptExtHtmlWebpackPlugin from 'script-ext-html-webpack-plugin';
 import CompressionPlugin from 'compression-webpack-plugin';
 import ProgressBarPlugin from 'progress-bar-webpack-plugin';
-// import ManifestRevisionPlugin from 'manifest-revision-webpack-plugin';
+import ManifestRevisionPlugin from 'manifest-revision-webpack-plugin';
 
 import {
   PATHS,
   env,
-  userEnv,
-  isDev,
+  currentScript,
   namingConvention,
-  prodNamingConvention,
+  buildNamingConvention,
 } from '../../_userSettings';
 
 const sharedPlugins = [
@@ -22,9 +21,15 @@ const sharedPlugins = [
   new webpack.optimize.CommonsChunkPlugin('vendor', `${namingConvention}.js`),
   new CopyWebpackPlugin([{ from: PATHS.publicFilesFolder }]),
   new webpack.DefinePlugin({
-    'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV), // for redux only
+    // For redux and react only, force `production` when creating a build or serving files
+    'process.env.NODE_ENV': JSON.stringify(
+      (currentScript === 'build') || (currentScript === 'serve')
+      ? 'production'
+      : process.env.NODE_ENV
+    ),
+    // All other environment variables are passed through via `buildSettings`
     buildSettings: {
-      env: userEnv,
+      env: JSON.stringify(process.env),
     },
   }),
 ];
@@ -64,29 +69,29 @@ const developmentPlugins = [
 
 const productionPlugins = [
   // Extract css into one file for production, minify javascript
-  new ExtractTextPlugin(`${prodNamingConvention}.css`, { allChunks: true }),
+  new ExtractTextPlugin(`${buildNamingConvention}.css`, { allChunks: true }),
   new webpack.optimize.UglifyJsPlugin({ minimize: true, compress: { warnings: false } }),
   new HtmlWebpackPlugin({
     inject: false,
     template: PATHS.templateLocation,
 
     reactHtml: '',
-    isDev,
     creatingBuild: true,
+    env: JSON.stringify(process.env),
   }),
   new ScriptExtHtmlWebpackPlugin({
     async: ['app'],
     defer: ['app'],
     defaultAttribute: 'sync',
   }),
-  // new ManifestRevisionPlugin(
-  //   PATHS.manifest,
-  //   {
-  //     rootAssetPath: PATHS.manifestRootAssetPath,
-  //     ignorePaths: [],
-  //     extensionsRegex: /\.(jpe?g|png|gif|svg)$/i,
-  //   }
-  // ),
+  new ManifestRevisionPlugin(
+    PATHS.manifest,
+    {
+      rootAssetPath: PATHS.manifestRootAssetPath,
+      ignorePaths: [],
+      extensionsRegex: /\.(jpe?g|png|gif|svg)$/i,
+    }
+  ),
 ];
 
 // TODO: extract out
@@ -100,6 +105,6 @@ if (process.env.COMPRESS) {
   );
 }
 
-export default isDev ?
+export default currentScript === 'watch' ?
   sharedPlugins.concat(developmentPlugins)
   : sharedPlugins.concat(productionPlugins);

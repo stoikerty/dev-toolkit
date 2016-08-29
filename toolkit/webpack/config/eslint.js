@@ -1,7 +1,7 @@
 import path from 'path';
 
 import {
-  isDev,
+  currentScript,
   rootForRequire,
 } from '../../_userSettings';
 
@@ -10,7 +10,8 @@ export default {
   configFile: path.resolve(rootForRequire, '.eslintrc'),
 
   // Override any settings from the configFile
-  rules: isDev ? {
+  rules: currentScript === 'watch' ? {
+    // only warn for debugging statements while developing
     'no-debugger': [
       'warn',
     ],

@@ -7,7 +7,7 @@ import stats from './config/stats';
 
 import {
   PATHS,
-  vendorModules,
+  vendor,
   namingConvention,
 } from '../_userSettings';
 
@@ -17,13 +17,13 @@ export default {
   // The entry and ouput configuration for the bundle(s)
   entry: {
     app: [PATHS.clientAppEntryPoint],
-    vendor: vendorModules,
+    vendor,
   },
   output: {
     path: PATHS.buildFolder,
     filename: `${namingConvention}.js`,
     chunkFilename: `${namingConvention}.js`,
-    publicPath: '/',
+    publicPath: PATHS.publicPath,
   },
 
   // Webpack plugins

@@ -4,6 +4,7 @@ const chalk = require('chalk');
 const path = require('path');
 const argv = require('yargs')
   .alias('w', 'watch')
+  .alias('b', 'build')
   .alias('i', 'init')
   .alias('d', 'debug').argv;
 const pkg = require('../package.json');
@@ -51,6 +52,15 @@ function run(options) {
 
   debug(chalk.magenta('---'));
 
+  // Forward all environment variables to `spawn` so they can be used within the toolkit
+  const spawnEnv = process.env;
+  // Fixes `spawn node ENOENT` error by always transferring PATH
+  // http://stackoverflow.com/questions/27688804/how-do-i-debug-error-spawn-enoent-on-node-js
+  spawnEnv.PATH = process.env.PATH;
+  // Toolkit-related env variables
+  spawnEnv.NODE_PATH = currentPath;
+  spawnEnv.TOOLKIT_DEBUG = process.env.TOOLKIT_DEBUG;
+
   // spawn is required for root-relative imports to work in server-rendering, because webpack's
   // alias is not picked up in node. For other solutions, see the following:
   // https://gist.github.com/branneman/8048520
@@ -59,14 +69,7 @@ function run(options) {
     'node',
     args,
     {
-      env: {
-        // Fixes `spawn node ENOENT` error by transferring PATH
-        // http://stackoverflow.com/questions/27688804/how-do-i-debug-error-spawn-enoent-on-node-js
-        PATH: process.env.PATH,
-
-        NODE_PATH: currentPath,
-        TOOLKIT_DEBUG: process.env.TOOLKIT_DEBUG,
-      },
+      env: spawnEnv,
 
       // OSX will throw error if shell is not set
       shell: !isWin,
@@ -92,7 +95,7 @@ if (argv.init) {
 if (argv.build) {
   run({
     script: 'build',
-    message: 'Creating a static build',
-    args: [argv.build],
+    message: 'Creating a static build' + (argv.dynamic ? ' with dynamic pages' : ''),
+    args: [(argv.dynamic ? 'dynamic' : '')],
   });
 }
