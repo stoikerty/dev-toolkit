@@ -25,6 +25,7 @@ dev-toolkit --build
 - removes previous `build`-folder
 - generates static markup for React (*coming soon*)
 - automatically uses production-builds of React and Redux
+- allows for a [custom vendor-bundle](#define-what-modules-are-bundled-into-vendorjs)
 - extracts css from individual modules
 - hashes assets, including `jpg`, `png`, `gif` & `svg`-files
 
