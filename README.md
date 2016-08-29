@@ -2,7 +2,7 @@
 
 **Javascript Development Toolkit**<br>
 Jump-start your `react`-powered Native Web App.
-<br>[`# Dynamic Pages`]() [`# sass modules`]() [`# server-rendering`]() [`# hot-reload`]().
+<br>[`# Dynamic Pages`](#generate-a-static-build-with-dynamic-pages) [`# sass modules`](#powerful-css-tools) [`# server-rendering`](#server-tools-for-universal-apps) [`# hot-reload`](#developer-convenience)
 
 ##### Create a new project
 ```bash
