@@ -22,6 +22,17 @@ npm run dev
 dev-toolkit --watch
 ```
 
+This will give you the following structure to work with:
+```
+src
+├── client
+│   ├── app.js
+│   └── ...
+└── server
+    └── ...
+```
+
+
 ### Generate a static build
 ```bash
 # Create `build`-folder with compiled files (-b or --build)
