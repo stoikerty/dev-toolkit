@@ -1,6 +1,6 @@
 {
   "name": "dev-toolkit",
-  "version": "5.2.4",
+  "version": "5.2.5",
   "description": "Javascript development toolkit for power users || ES6, React & node-sass ||",
   "main": "index.js",
   "scripts": {
@@ -85,7 +85,7 @@
     "image-webpack-loader": "^1.8.0",
     "jsdom": "^9.4.2",
     "json-loader": "^0.5.4",
-    "jsx-control-statements": "^3.1.2",
+    "jsx-control-statements": "^3.1.3",
     "manifest-revision-webpack-plugin": "^0.3.0",
     "ncp": "^2.0.0",
     "node-jsx-babel": "^0.14.2",
