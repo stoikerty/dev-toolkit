@@ -1,6 +1,5 @@
 import {
   currentScript,
-  PATHS,
 } from '../../../_userSettings';
 
 // Ignore custom import temporarily so text-editors work with `eslint-plugin-import`
@@ -16,7 +15,6 @@ const sharedRules = {
 
 export default {
   useEslintrc: false,
-  configFile: PATHS.eslintProjectConfig,
 
   // Override any settings from the configFile
   rules: currentScript === 'watch' ? {
