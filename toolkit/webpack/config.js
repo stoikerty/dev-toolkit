@@ -39,7 +39,7 @@ export default {
   module: { loaders },
 
   // Specific config for loaders. `sass-loader`, `postcss-loader`, `eslint-loader`
-  sass,
+  sassLoader: sass,
   postcss,
   eslint,
 
