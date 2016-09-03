@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="/dev-toolkit-logo.png" alt="universal-dev-toolkit-logo" height='42'><sub><strong>v5.2.8</strong></sub>
+  <img src="/dev-toolkit-logo.png" alt="universal-dev-toolkit-logo" height='42'><sub><strong>v5.2.9</strong></sub>
 </p>
 <p align="center">
   Jump-start your <code>react</code>-powered Web App.<br/>
@@ -44,6 +44,13 @@ dev-toolkit --build
 - allows for a [custom vendor-bundle](#define-what-modules-are-bundled-into-vendorjs)
 - extracts css from individual modules
 - hashes assets, including `jpg`, `png`, `gif` & `svg`-files
+
+#### Verify build
+Verify if static build is working correctly.
+```bash
+# Runs a minimal server that serves the build folder (--static or --serve-static)
+dev-toolkit --serve-static
+```
 
 #### Generate a static build with dynamic pages
 *(coming soon)*<br>

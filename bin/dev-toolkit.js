@@ -6,6 +6,8 @@ const argv = require('yargs')
   .alias('w', 'watch')
   .alias('b', 'build')
   .alias('i', 'init')
+  .alias('s', 'serve')
+  .alias('static', 'serve-static')
   .alias('d', 'debug').argv;
 const pkg = require('../package.json');
 
@@ -83,6 +85,21 @@ if (argv.watch) {
     script: 'watch',
     message: 'Watching files for development',
     args: [argv.watch],
+  });
+}
+if (argv.serve) {
+  run({
+    script: 'serve',
+    message: 'Watching files for development',
+    args: [argv.serve],
+  });
+}
+if (argv['serve-static']) {
+  console.log(chalk.magenta('NOTE:'), 'Not for production use.');
+  run({
+    script: 'serveStatic',
+    message: 'Watching files for development',
+    args: [argv['serve-static']],
   });
 }
 if (argv.init) {
