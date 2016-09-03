@@ -15,8 +15,6 @@ import {
 cssHook();
 filesHook();
 
-console.log(sass, postcss, eslint);
-
 // Resulting webpack config
 // ---
 export default {

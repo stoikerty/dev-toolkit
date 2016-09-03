@@ -56,7 +56,7 @@ rimraf(PATHS.buildFolder, (error) => {
         }
       }
     } else {
-      console.log(` ⭐️  Your build is ready ⭐️`);
+      console.log(' ⭐️  Your build is ready ⭐️');
     }
   });
 });

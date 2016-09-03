@@ -8,7 +8,7 @@ import { rootForRequire } from './_userSettings';
 
 // Use the express production server
 const ServerApp = require(path.join(rootForRequire, '/src/server/app')).default;
-const server = new ServerApp;
+const server = new ServerApp();
 
 // Compile with webpack & bind middleware for hot-reloading
 config.devtool = 'source-map';

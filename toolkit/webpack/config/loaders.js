@@ -1,9 +1,5 @@
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
-export eslint from './loaders/eslint';
-export postcss from './loaders/postcss';
-export sass from './loaders/sass';
-
 import {
   currentScript,
   babelConfig,
@@ -18,6 +14,10 @@ const styleLoaders = [
   'postcss-loader',
   'sass-loader',
 ];
+
+export eslint from './loaders/eslint';
+export postcss from './loaders/postcss';
+export sass from './loaders/sass';
 
 export default [
   { test: /\.hbs$/, loader: 'handlebars-loader' },

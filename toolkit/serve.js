@@ -15,7 +15,7 @@ compiler.run((err, stats) => {
   // Use the express production server
   // eslint-disable-next-line global-require
   const ServerApp = require(path.join(rootForRequire, '/src/server/app')).default;
-  const server = new ServerApp;
+  const server = new ServerApp();
 
   // start the server
   server.start({ serveBuild: true });

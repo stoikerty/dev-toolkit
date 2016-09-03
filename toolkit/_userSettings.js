@@ -1,7 +1,6 @@
 import fs from 'fs';
 import path from 'path';
 import fileExists from 'file-exists';
-import jsonfile from 'jsonfile';
 
 import debug from './utils/debug';
 
@@ -31,8 +30,6 @@ export const babelConfig = require(path.resolve(__dirname, '../babelrc.js'));
 
 const eslintProjectConfig = path.resolve(rootForProject, '.eslintrc');
 // eslint-disable-next-line global-require
-// export const eslintConfig = fs.readFileSync(eslintProjectConfig, 'utf8');
-// export const eslintConfig = JSON.parse(fs.readFileSync(eslintProjectConfig, 'utf8'));
 export const eslintConfig = JSON.parse(fs.readFileSync(eslintProjectConfig, 'utf8'));
 
 // environment variables & defaults
