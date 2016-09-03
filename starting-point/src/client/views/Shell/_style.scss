@@ -1,0 +1,14 @@
+// Import global config in every file
+@import 'style/config';
+
+// Import global style once
+@import 'style/global';
+
+.shell{
+  // Positioning mixin. Better have a positioned element than regretting it later...
+  @include position(relative, block, 100%);
+  float : left;
+
+  // Use proto to design prototype component with random background-color & opacity
+  @include proto(4, 0.2);
+}

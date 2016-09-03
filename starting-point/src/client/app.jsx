@@ -39,7 +39,9 @@ class App {
 
   // Render App with fresh version of required Routing module
   renderApp() {
-    const RootComponent = require('./RouterContainer').default; // eslint-disable-line global-require, max-len
+    // eslint-disable-next-line global-require
+    const RootComponent = require('./RouterContainer').default;
+
     ReactDOM.render(
       <RootComponent />,
       this.rootElement

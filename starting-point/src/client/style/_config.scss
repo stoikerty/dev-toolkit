@@ -41,7 +41,7 @@ $body-font-family : 'Source Sans Pro', Verdana, Arial, sans-serif;
 @import 'mixins/_font-settings.scss';
 
 // a common variable for use throughout the app as simple grid-system
-$grid : 10px;
+$grid : 8px;
 
 // New brand colors (Use your own or inherit from mixins/_helpers)
 $brand-green  : $green;

@@ -2,6 +2,11 @@ import React, { PropTypes } from 'react';
 
 import s from './Shell/_style.scss';
 
+// `Shell.js`
+// --------------------
+// Having a Shell is perfect if you want to transition between different features of your app or
+// managing scroll-state and navigation.
+
 const displayName = 'Shell';
 const defaultProps = {};
 const propTypes = {
@@ -17,4 +22,4 @@ const component = (props) => (
 component.displayName = displayName;
 component.defaultProps = defaultProps;
 component.propTypes = propTypes;
-export { component as Shell };
+export default component;

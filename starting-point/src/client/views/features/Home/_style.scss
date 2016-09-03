@@ -1,10 +1,10 @@
 @import 'style/config';
 
-// import global style once
-@import 'style/global';
-
-.shell{
+.home{
   @include position(relative, block, 100%);
   float : left;
-  @include proto(3, 0.2);
+  margin : $grid * 2;
+  padding : $grid;
+
+  @include proto(1, 0.2);
 }

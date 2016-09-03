@@ -4,7 +4,7 @@ import serveStatic from 'serve-static';
 import hbs from 'express-handlebars';
 import router from './router';
 
-class App {
+export default new class App {
   constructor() {
     // server config
     this.hostname = process.env.HOST || 'localhost';
@@ -67,7 +67,4 @@ class App {
   use(...middlewareOptions) {
     this.express.use(...middlewareOptions);
   }
-}
-
-// Create Node Global
-global.app = new App;
+};

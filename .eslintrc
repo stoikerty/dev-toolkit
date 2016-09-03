@@ -14,28 +14,19 @@
         "max": 1
       }
     ],
-
-    // Ignore custom import temporarily so text-editors work with `eslint-plugin-import`
-    // see: https://github.com/AtomLinter/linter-eslint/issues/610
     "import/no-unresolved": [
       "error",
       {
-        "ignore": [ 'src/' ]
+        "ignore": [ "src/" ]
       }
     ]
   },
 
-  "settings" : {
-    "import/resolver": {
-      "webpack": {
-        "config": "dist/webpack/config.js"
-      }
-    }
-  },
-  "globals": {
-    "app": true
-  },
+  "globals": [
+    "app"
+  ],
   "env": {
+    "browser": true,
     "mocha": true
   }
 }

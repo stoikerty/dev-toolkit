@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="/dev-toolkit-logo.png" alt="universal-dev-toolkit-logo" height='42'><sub><strong>v5.2.6</strong></sub>
+  <img src="/dev-toolkit-logo.png" alt="universal-dev-toolkit-logo" height='42'><sub><strong>v5.2.7</strong></sub>
 </p>
 <p align="center">
   Jump-start your <code>react</code>-powered Web App.<br/>
@@ -89,36 +89,39 @@ dev-toolkit -v
 ---
 ### Features
 
+###### Compatibility
+
+- Multiplatform: Windows, OSX, Linux
+- Node.js `last tested version 5.10.1`
+- NPM `last tested version 3.8.3`
+
 ###### Javascript Basics
 
--   [React]
--   [ES2015 / ES6]
--   [root-relative imports with `src/...`]
--   [ESLint]
+- [React]
+- [ES2015 / ES6]
+- [root-relative imports with `src/...`]
+- [ESLint]
 
 ###### Developer Convenience
 
--   [Browsersync]
--   [Vanilla HMR, webpack's hot-reload]
--   [jsx-control-statements]
--   [`transform-class-properties` support]
--   automatic asset-hashing during build, custom `vendor.js`
--   support for various file-formats:<br>
-    `css`, `scss`<br>
-    `js`, `jsx`, `json`<br>
-    `jpg`, `png`, `gif`, `svg`
+- [Browsersync]
+- [Vanilla HMR, webpack's hot-reload]
+- [jsx-control-statements]
+- [`transform-class-properties` support]
+- automatic asset-hashing during build, custom `vendor.js`
+- support for various file-formats:<br>  `css`, `scss`<br>  `js`, `jsx`, `json`<br>  `jpg`, `png`, `gif`, `svg`
 
 ###### Powerful CSS Tools
 
--   [Autoprefixer]
--   [sass / scss]
--   [css-modules]
+- [Autoprefixer]
+- [sass / scss]
+- [css-modules]
 
 ###### Server-tools for Universal Apps
 
--   your own server app in `src/server/app`
--   [powered by express]
--   [react-router]
+- your own server app in `src/server/app`
+- [powered by express]
+- [react-router]
 
 [ES2015 / ES6]: https://babeljs.io/docs/learn-es2015/
 [`transform-class-properties` support]: https://babeljs.io/docs/plugins/transform-class-properties/
@@ -141,7 +144,7 @@ dev-toolkit -v
 
 <!-- -->
 
-Fancy working on the toolkit itself? [This wiki](https://github.com/stoikerty/dev-toolkit/wiki/Developing-on-the-Toolkit-itself) could be useful to you.
+Fancy working on the toolkit itself? Check out [the Contributing Guidelines](/CONTRIBUTING.md).
 
 ---
 

@@ -44,7 +44,8 @@ const developmentPlugins = [
       // BrowserSync options - see: http://www.browsersync.io/docs/options/
 
       // Use http://localhost:3000/ for development, proxy Dev Server.
-      host: env.PROXY_HOST, port: env.PROXY_PORT,
+      host: env.PROXY_HOST,
+      port: env.PROXY_PORT,
       proxy: `http://${env.HOST}:${env.PORT}/`,
       // Stop the browser from automatically opening.
       open: false,
