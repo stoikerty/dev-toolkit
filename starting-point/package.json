@@ -26,5 +26,15 @@
     "react-router": "^2.4.1",
     "redbox-react": "^1.2.8",
     "serve-static": "^1.11.1"
+  },
+  "devDependencies": {
+    "babel-eslint": "^6.1.2",
+    "eslint": "^3.4.0",
+    "eslint-config-airbnb": "^10.0.1",
+    "eslint-import-resolver-webpack": "^0.5.1",
+    "eslint-plugin-import": "^1.14.0",
+    "eslint-plugin-jsx-a11y": "^2.2.1",
+    "eslint-plugin-jsx-control-statements": "^2.1.1",
+    "eslint-plugin-react": "^6.2.0"
   }
 }

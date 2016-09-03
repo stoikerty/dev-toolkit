@@ -6,5 +6,5 @@
 .shell{
   @include position(relative, block, 100%);
   float : left;
-  @include proto(3, 0.2);
+  @include proto(4, 0.2);
 }

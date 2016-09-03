@@ -17,4 +17,4 @@ const component = (props) => (
 component.displayName = displayName;
 component.defaultProps = defaultProps;
 component.propTypes = propTypes;
-export { component as Shell };
+export default component;

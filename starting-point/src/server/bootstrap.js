@@ -70,4 +70,4 @@ class App {
 }
 
 // Create Node Global
-global.app = new App;
+global.app = new App();

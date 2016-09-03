@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/server';
 import { match, RouterContext } from 'react-router';
 
-const usesServerRendering = true;
+import { useServerRendering } from 'src/settings';
 import routes from '../client/routes';
 
 // React Router Boilerplate
@@ -15,7 +15,7 @@ export default (req, res) => {
     } else if (redirectLocation) {
       res.redirect(302, redirectLocation.pathname + redirectLocation.search);
     } else if (renderProps) {
-      const reactHtml = usesServerRendering ?
+      const reactHtml = useServerRendering ?
         ReactDOM.renderToString(<RouterContext {...renderProps} />) : '';
 
       // Render `layout`-template using Handlebars
