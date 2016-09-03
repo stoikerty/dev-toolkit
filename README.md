@@ -48,7 +48,7 @@ dev-toolkit --build
 #### Verify build
 Verify if static build is working correctly.
 ```bash
-# Runs a minimal server that serves the build folder
+# Runs a minimal server that serves the build folder (--static or --serve-static)
 dev-toolkit --serve-static
 ```
 
