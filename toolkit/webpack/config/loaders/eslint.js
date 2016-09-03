@@ -1,13 +1,11 @@
-import path from 'path';
-
 import {
   currentScript,
-  rootForRequire,
-} from '../../_userSettings';
+  PATHS,
+} from '../../../_userSettings';
 
 export default {
   useEslintrc: false,
-  configFile: path.resolve(rootForRequire, '.eslintrc'),
+  configFile: PATHS.eslintProjectConfig,
 
   // Override any settings from the configFile
   rules: currentScript === 'watch' ? {

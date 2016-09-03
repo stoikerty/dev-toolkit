@@ -5,21 +5,24 @@ import debug from './utils/debug';
 
 export const currentScript = global.toolkitScript;
 debug('currentScript', currentScript);
+
 export const scriptOptions = global.scriptOptions || {};
 debug('scriptOptions', scriptOptions);
 
 export const rootForProject = './';
-export const rootForRequire = process.cwd();
-export const rootForToolkit = path.resolve(__dirname, '../');
-
 debug('rootForProject', rootForProject);
+
+export const rootForRequire = process.cwd();
 debug('rootForRequire', rootForRequire);
+
+export const rootForToolkit = path.resolve(__dirname, '../');
 debug('rootForToolkit', rootForToolkit);
 
 // eslint-disable-next-line global-require
 const pkg = require(path.resolve(rootForRequire, 'package.json')) || {};
 export const vendor = pkg.toolkitSettings && pkg.toolkitSettings.vendor ?
   pkg.toolkitSettings.vendor : [];
+debug('vendor', vendor);
 
 // eslint-disable-next-line global-require
 export const babelConfig = require(path.resolve(__dirname, '../babelrc.js'));
@@ -49,6 +52,8 @@ export const PATHS = {
 
   manifestRootAssetPath: './src/client',
   manifest: path.resolve(buildFolder, 'manifest.json'),
+  eslintProjectConfig: path.resolve(rootForProject, '.eslintrc'),
+  scssIncludePaths: [clientRoot],
 
   clientRoot,
   serverRoot,
@@ -62,3 +67,4 @@ const watchNamingConvention = '[name]';
 export const buildNamingConvention = '[name].[chunkhash]';
 export const namingConvention =
   (currentScript === 'watch') ? watchNamingConvention : buildNamingConvention;
+export const cssChunkNaming = '[name]__[local]___[hash:base64:5]';

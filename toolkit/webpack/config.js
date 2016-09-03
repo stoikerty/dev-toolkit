@@ -1,6 +1,6 @@
 import plugins from './config/plugins';
-import loaders, { sassLoader, postcss } from './config/loaders';
-import eslint from './config/eslint';
+import { cssHook, filesHook } from './config/extensionHooks';
+import loaders, { sass, postcss, eslint } from './config/loaders';
 import resolve from './config/resolve';
 import resolveLoader from './config/resolveLoader';
 import stats from './config/stats';
@@ -10,6 +10,12 @@ import {
   vendor,
   namingConvention,
 } from '../_userSettings';
+
+// Set up server-rendering for file-extensions
+cssHook();
+filesHook();
+
+console.log(sass, postcss, eslint);
 
 // Resulting webpack config
 // ---
@@ -33,7 +39,7 @@ export default {
   module: { loaders },
 
   // Specific config for loaders. `sass-loader`, `postcss-loader`, `eslint-loader`
-  sassLoader,
+  sass,
   postcss,
   eslint,
 
