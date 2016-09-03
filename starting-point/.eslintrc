@@ -23,9 +23,6 @@
     ]
   },
 
-  "globals": [
-    "app"
-  ],
   "env": {
     "browser": true,
     "mocha": true
