@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 require('../utils/bootstrap');
 
-global.toolkitScript = 'watch';
+global.toolkitScript = 'serveStatic';
 global.scriptOptions = {};
-require('../../dist/watch');
+require('../../dist/serveStatic');
