@@ -3,6 +3,17 @@ import {
   PATHS,
 } from '../../../_userSettings';
 
+// Ignore custom import temporarily so text-editors work with `eslint-plugin-import`
+// see: https://github.com/AtomLinter/linter-eslint/issues/610
+const sharedRules = {
+  'import/no-unresolved': [
+    'error',
+    {
+      ignore: ['src/'],
+    },
+  ],
+};
+
 export default {
   useEslintrc: false,
   configFile: PATHS.eslintProjectConfig,
@@ -13,5 +24,7 @@ export default {
     'no-debugger': [
       'warn',
     ],
-  } : {},
+
+    ...sharedRules,
+  } : { ...sharedRules },
 };

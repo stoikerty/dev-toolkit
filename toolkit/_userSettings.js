@@ -1,5 +1,7 @@
+import fs from 'fs';
 import path from 'path';
 import fileExists from 'file-exists';
+import jsonfile from 'jsonfile';
 
 import debug from './utils/debug';
 
@@ -27,6 +29,12 @@ debug('vendor', vendor);
 // eslint-disable-next-line global-require
 export const babelConfig = require(path.resolve(__dirname, '../babelrc.js'));
 
+const eslintProjectConfig = path.resolve(rootForProject, '.eslintrc');
+// eslint-disable-next-line global-require
+// export const eslintConfig = fs.readFileSync(eslintProjectConfig, 'utf8');
+// export const eslintConfig = JSON.parse(fs.readFileSync(eslintProjectConfig, 'utf8'));
+export const eslintConfig = JSON.parse(fs.readFileSync(eslintProjectConfig, 'utf8'));
+
 // environment variables & defaults
 export const env = {
   HOST: process.env.HOST || 'localhost',
@@ -52,7 +60,7 @@ export const PATHS = {
 
   manifestRootAssetPath: './src/client',
   manifest: path.resolve(buildFolder, 'manifest.json'),
-  eslintProjectConfig: path.resolve(rootForProject, '.eslintrc'),
+  eslintProjectConfig,
   scssIncludePaths: [clientRoot],
 
   clientRoot,

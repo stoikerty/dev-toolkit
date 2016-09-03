@@ -7,6 +7,7 @@ export sass from './loaders/sass';
 import {
   currentScript,
   babelConfig,
+  eslintConfig,
   cssChunkNaming,
 } from '../../_userSettings';
 
@@ -25,7 +26,7 @@ export default [
     test: /\.jsx?$/,
     loaders: [
       `babel-loader?${JSON.stringify(babelConfig)}`,
-      'eslint-loader',
+      `eslint-loader?${JSON.stringify(eslintConfig)}`,
     ],
     exclude: /(node_modules)|\.route.jsx?$|\.dynamic.jsx?$/,
   },
@@ -35,7 +36,7 @@ export default [
       // The`bundle`-loader automatically uses module directly when code is run on the server
       'bundle?lazy&name=[name]',
       `babel-loader?${JSON.stringify(babelConfig)}`,
-      'eslint-loader',
+      `eslint-loader?${JSON.stringify(eslintConfig)}`,
     ],
     exclude: /(node_modules)/,
   },
