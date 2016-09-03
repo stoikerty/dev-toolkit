@@ -45,6 +45,13 @@ dev-toolkit --build
 - extracts css from individual modules
 - hashes assets, including `jpg`, `png`, `gif` & `svg`-files
 
+#### Verify build
+Verify if static build is working correctly.
+```bash
+# Runs a minimal server that serves the build folder
+dev-toolkit --serve-static
+```
+
 #### Generate a static build with dynamic pages
 *(coming soon)*<br>
 To make use of dynamic pages and components for making your app load faster, [follow the instructions](https://github.com/stoikerty/dev-toolkit/wiki/dynamic-pages) and use the extended build command:
