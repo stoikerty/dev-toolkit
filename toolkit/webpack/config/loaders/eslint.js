@@ -14,8 +14,6 @@ const sharedRules = {
 };
 
 export default {
-  useEslintrc: false,
-
   // Override any settings from the configFile
   rules: currentScript === 'watch' ? {
     // only warn for debugging statements while developing
