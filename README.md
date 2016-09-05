@@ -15,7 +15,11 @@
 npm install -g dev-toolkit
 dev-toolkit --init my_app
 cd my_app
+```
 
+---
+
+```
 # run it via npm scripts
 npm run dev
 # or run it directly (-w or --watch)
