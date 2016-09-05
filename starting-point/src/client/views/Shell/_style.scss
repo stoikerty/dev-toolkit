@@ -8,7 +8,9 @@
   // Positioning mixin. Better have a positioned element than regretting it later...
   @include position(relative, block, 100%);
   float : left;
+  padding : $grid;
 
   // Use proto to design prototype component with random background-color & opacity
-  @include proto(4, 0.2);
+  // you will see this as yellow
+  @include proto(2, 0.2);
 }

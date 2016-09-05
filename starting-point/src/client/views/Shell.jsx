@@ -15,6 +15,7 @@ const propTypes = {
 
 const component = (props) => (
   <div className={s.shell}>
+    {'Shell'}
     {props.children}
   </div>
 );

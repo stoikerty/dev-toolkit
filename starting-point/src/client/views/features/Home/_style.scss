@@ -3,8 +3,9 @@
 .home{
   @include position(relative, block, 100%);
   float : left;
-  margin : $grid * 2;
+  margin : $grid 0 0;
   padding : $grid;
 
-  @include proto(1, 0.2);
+  // you will see this as transparent-blue
+  @include proto(1, 0.3);
 }
