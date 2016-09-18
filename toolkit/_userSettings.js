@@ -34,10 +34,10 @@ export const eslintConfig = JSON.parse(fs.readFileSync(eslintProjectConfig, 'utf
 
 // environment variables & defaults
 export const env = {
-  PROXY_HOST: process.env.PROXY_HOST || 'localhost',
-  PROXY_PORT: process.env.PROXY_PORT || 2000,
   HOST: process.env.HOST || 'localhost',
-  PORT: process.env.PORT || 3000,
+  PORT: process.env.PORT || 2000,
+  BROWSERSYNC_HOST: process.env.BROWSERSYNC_HOST || 'localhost',
+  BROWSERSYNC_PORT: process.env.BROWSERSYNC_PORT || 3000,
   VERBOSE_LOGGING: process.env.VERBOSE_LOGGING || false,
 };
 

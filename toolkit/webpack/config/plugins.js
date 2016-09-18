@@ -44,9 +44,9 @@ const developmentPlugins = [
       // BrowserSync options - see: http://www.browsersync.io/docs/options/
 
       // Use http://localhost:3000/ for development, proxy Dev Server.
-      host: env.HOST,
-      port: env.PORT,
-      proxy: `http://${env.PROXY_HOST}:${env.PROXY_PORT}/`,
+      host: env.BROWSERSYNC_HOST,
+      port: env.BROWSERSYNC_PORT,
+      proxy: `http://${env.HOST}:${env.PORT}/`,
       // Stop the browser from automatically opening.
       open: false,
       // Scrolls & Form inputs on any device will be mirrored to all others.
