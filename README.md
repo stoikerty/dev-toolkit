@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="/dev-toolkit-logo.png" alt="universal-dev-toolkit-logo" height='42'><sub><strong>v5.2.12</strong></sub>
+  <img src="/dev-toolkit-logo.png" alt="universal-dev-toolkit-logo" height='42'><sub><strong>v5.2.13</strong></sub>
 </p>
 <p align="center">
   Jump-start your <code>react</code>-powered Web App.<br/>
