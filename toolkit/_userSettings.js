@@ -53,7 +53,7 @@ const publicPath = process.env.PUBLIC_PATH || defaultPublicPath;
 export const PATHS = {
   publicFilesFolder: path.resolve(serverRoot, 'public-files'),
   templateLocation: path.resolve(serverRoot, 'views/layout.hbs'),
-  staticRender: path.resolve(serverRoot, 'staticRender'),
+  staticRender: path.resolve(serverRoot, 'staticRender.js'),
 
   manifestRootAssetPath: './src/client',
   manifest: path.resolve(buildFolder, 'manifest.json'),
