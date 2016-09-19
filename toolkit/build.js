@@ -6,7 +6,7 @@ import fileExists from 'file-exists';
 import debug from './utils/debug';
 import config from './webpack/config';
 import generateStaticFiles from './build/generateStaticFiles';
-import { scriptOptions, routes, PATHS } from './_userSettings';
+import { scriptOptions, PATHS } from './_userSettings';
 
 // delete previous build folder & compile all files necessary for serving
 rimraf(PATHS.buildFolder, (error) => {
@@ -45,7 +45,6 @@ rimraf(PATHS.buildFolder, (error) => {
           // Take index.html file and create an html-file for each route
           generateStaticFiles(
             staticRender,
-            routes,
             PATHS,
             ' ⭐️  Your build with dynamic pages is ready ⭐️'
           );
