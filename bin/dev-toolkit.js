@@ -95,7 +95,7 @@ if (argv.serve) {
   });
 }
 if (argv['serve-static']) {
-  console.log(chalk.magenta('NOTE:'), 'Not for production use.');
+  console.log(chalk.magenta('NOTE:'), 'This command is not meant for production use.');
   run({
     script: 'serveStatic',
     message: 'Serving the /build folder using a minimal server',
