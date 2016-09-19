@@ -9,6 +9,7 @@
   // Remove margin & make sure body is not transparent
   margin : 0;
   background-color : white;
+  font-family: 'Open Sans', sans-serif;
 
   // Use border-box & make sure images don't overflow.
   *{ box-sizing : border-box; }
@@ -28,4 +29,9 @@
   // make fonts look nicer
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+:global(#__bs_notify__){
+  opacity : 0.2!important;
+  pointer-events: none!important;
 }
