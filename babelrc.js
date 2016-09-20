@@ -11,5 +11,5 @@ module.exports = {
     require.resolve('babel-plugin-transform-class-properties'),
   ],
 
-  extensions: ['.jsx', '.js']
+  extensions: ['.jsx', '.js'],
 };
