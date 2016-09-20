@@ -51,9 +51,11 @@ export default {
   // Ignore some node-specific packages on the client
   node: {
     fs: 'empty',
+    net: 'empty',
+    tls: 'empty',
     path: 'empty',
-    mkdirp: 'empty',
     chalk: 'empty',
+    mkdirp: 'empty',
     fileExists: 'empty',
   },
 };
