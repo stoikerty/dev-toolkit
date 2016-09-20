@@ -5,7 +5,7 @@ import fileExists from 'file-exists';
 
 import debug from './utils/debug';
 import config from './webpack/config';
-import generateStaticFiles from './build/generateStaticFiles';
+import GenerateDynamicPages from './build/GenerateDynamicPages';
 import { scriptOptions, PATHS } from './_userSettings';
 
 // delete previous build folder & compile all files necessary for serving
@@ -21,12 +21,12 @@ rimraf(PATHS.buildFolder, (error) => {
     }
 
     if (scriptOptions.dynamic) {
-      debug('staticRender.js exists?', fileExists(PATHS.staticRender));
+      debug('dynamicRender.js exists?', fileExists(PATHS.dynamicRender));
 
-      if (!fileExists(PATHS.staticRender)) {
+      if (!fileExists(PATHS.dynamicRender)) {
         console.log(
           chalk.yellow('To make use of dynamic pages, add the file'),
-          chalk.magenta('`src/server/staticRender.js`'),
+          chalk.magenta('`src/server/dynamicRender.js`'),
           chalk.yellow('\nsee:'),
           chalk.yellow.underline('https://github.com/stoikerty/dev-toolkit/wiki/dynamic-pages'),
           '\nA regular static build was created.');
@@ -38,16 +38,16 @@ rimraf(PATHS.buildFolder, (error) => {
           // eslint-disable-next-line global-require
           require('./utils/testHelpers/setupClientApp');
           // eslint-disable-next-line global-require
-          const staticRender = require(PATHS.staticRender).default;
+          const dynamicRender = require(PATHS.dynamicRender).default;
 
           console.log('Generating', chalk.magenta('index.html'), 'for each route...');
 
           // Take index.html file and create an html-file for each route
-          generateStaticFiles(
-            staticRender,
-            PATHS,
-            ' ⭐️  Your build with dynamic pages is ready ⭐️'
-          );
+          // eslint-disable-next-line no-new
+          new GenerateDynamicPages({
+            dynamicRender,
+            paths: PATHS,
+          });
         } catch (e) {
           if (e) {
             console.log(e);

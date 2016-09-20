@@ -35,3 +35,13 @@ export default (staticRender, PATHS, message) => {
     });
   });
 };
+
+
+export default class GenerateDynamicPages {
+  constructor({ staticRender, paths }) {
+    this.staticRender = staticRender;
+    this.paths = paths;
+  }
+}
+
+// ' ⭐️  Your build with dynamic pages is ready ⭐️'
