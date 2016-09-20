@@ -31,6 +31,7 @@ import { scriptOptions, PATHS } from './_userSettings';
 
       // Take index.html file and create an html-file for each route
       DynamicPages.generatePages({
+        publicPath: PATHS.publicPath,
         dynamicRenderFile: PATHS.dynamicRenderFile,
         buildFolder: PATHS.buildFolder,
         manifestFile: PATHS.manifestFile,
