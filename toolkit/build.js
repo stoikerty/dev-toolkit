@@ -34,6 +34,7 @@ rimraf(PATHS.buildFolder, (error) => {
         dynamicRenderFile: PATHS.dynamicRenderFile,
         buildFolder: PATHS.buildFolder,
         manifestFile: PATHS.manifestFile,
+        doneCallback: () => console.log('\n ⭐️  Your build with dynamic pages is ready ⭐️'),
       });
     } else {
       console.log(' ⭐️  Your build is ready ⭐️');
