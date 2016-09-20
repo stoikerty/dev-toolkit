@@ -4,6 +4,11 @@ import fileExists from 'file-exists';
 
 import debug from './utils/debug';
 
+const requireOrNull = (requirePath) => (
+  // eslint-disable-next-line global-require
+  fileExists(requirePath) ? require(requirePath) : null
+);
+
 export const currentScript = global.toolkitScript;
 debug('currentScript', currentScript);
 
@@ -19,14 +24,42 @@ debug('rootForRequire', rootForRequire);
 export const rootForToolkit = path.resolve(__dirname, '../');
 debug('rootForToolkit', rootForToolkit);
 
-// eslint-disable-next-line global-require
-const pkg = require(path.resolve(rootForRequire, 'package.json')) || {};
+const pkg = requireOrNull(path.resolve(rootForRequire, 'package.json')) || {};
 export const vendor = pkg.toolkitSettings && pkg.toolkitSettings.vendor ?
   pkg.toolkitSettings.vendor : [];
 debug('vendor', vendor);
 
+// NOTE: There's limited support for using these custom config escape hatches. You're on your own!
+export const overrideConfig = requireOrNull(
+  path.resolve(
+    rootForRequire,
+    pkg.toolkitSettings.webpackConfigPath ?
+      pkg.toolkitSettings.webpackConfigPath : 'customWebpackConfig.js'
+  )) || {};
+debug('overrideConfig', overrideConfig);
+
 // eslint-disable-next-line global-require
-export const babelConfig = require(path.resolve(__dirname, '../babelrc.js'));
+const toolkitBabelConfig = requireOrNull(path.resolve(__dirname, '../babelrc.js')) || {};
+debug('toolkitBabelConfig', toolkitBabelConfig);
+
+// NOTE: There's limited support for using these custom config escape hatches. You're on your own!
+const overrideBabelConfig = requireOrNull(
+  path.resolve(
+    rootForRequire,
+    pkg.toolkitSettings.babelConfigPath ? pkg.toolkitSettings.babelConfigPath : 'customBabelrc.js'
+  )) || {};
+debug('overrideBabelConfig', overrideBabelConfig);
+if (overrideBabelConfig.presets) {
+  toolkitBabelConfig.presets = toolkitBabelConfig.presets.concat(overrideBabelConfig.presets);
+  delete overrideBabelConfig.presets;
+}
+if (overrideBabelConfig.plugins) {
+  toolkitBabelConfig.plugins = toolkitBabelConfig.plugins.concat(overrideBabelConfig.plugins);
+  delete overrideBabelConfig.plugins;
+}
+
+export const babelConfig = { ...toolkitBabelConfig, ...overrideBabelConfig };
+debug('babelConfig', babelConfig);
 
 const eslintProjectConfig = path.resolve(rootForProject, '.eslintrc');
 // eslint-disable-next-line global-require

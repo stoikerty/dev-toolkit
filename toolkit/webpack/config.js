@@ -8,6 +8,7 @@ import stats from './config/stats';
 import {
   PATHS,
   vendor,
+  overrideConfig,
   namingConvention,
 } from '../_userSettings';
 
@@ -58,4 +59,8 @@ export default {
     mkdirp: 'empty',
     fileExists: 'empty',
   },
+
+  // NOTE: There's limited support for using these custom config escape hatches. You're on your own!
+  //   This is an escape-hatch for overriding the webpack config with your custom one.
+  ...(overrideConfig.default ? overrideConfig.default : overrideConfig),
 };
