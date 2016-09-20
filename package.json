@@ -1,6 +1,6 @@
 {
   "name": "dev-toolkit",
-  "version": "5.2.13",
+  "version": "5.3.1",
   "description": "Javascript development toolkit for power users [ ES6, React, node-sass ]",
   "main": "index.js",
   "scripts": {
@@ -69,6 +69,7 @@
     "cross-spawn": "^4.0.0",
     "css-loader": "^0.23.1",
     "css-modules-require-hook": "^4.0.1",
+    "dynamic-pages": "^0.1.1",
     "eazy-logger": "^3.0.2",
     "errorhandler": "^1.4.3",
     "eslint": "^3.4.0",
@@ -81,7 +82,7 @@
     "eslint-plugin-react": "^6.2.0",
     "express": "^4.14.0",
     "extract-text-webpack-plugin": "^1.0.1",
-    "file-exists": "^1.0.0",
+    "file-exists": "^2.0.0",
     "file-loader": "^0.9.0",
     "files-require-hook": "^1.0.0",
     "find-port": "^2.0.1",

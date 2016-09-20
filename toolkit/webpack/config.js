@@ -8,6 +8,7 @@ import stats from './config/stats';
 import {
   PATHS,
   vendor,
+  overrideConfig,
   namingConvention,
 } from '../_userSettings';
 
@@ -47,4 +48,19 @@ export default {
 
   // How much information webpack should output
   stats,
+
+  // Ignore some node-specific packages on the client
+  node: {
+    fs: 'empty',
+    net: 'empty',
+    tls: 'empty',
+    path: 'empty',
+    chalk: 'empty',
+    mkdirp: 'empty',
+    fileExists: 'empty',
+  },
+
+  // NOTE: There's limited support for using these custom config escape hatches. You're on your own!
+  //   This is an escape-hatch for overriding the webpack config with your custom one.
+  ...(overrideConfig.default ? overrideConfig.default : overrideConfig),
 };
