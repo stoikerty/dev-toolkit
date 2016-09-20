@@ -1,6 +1,5 @@
 import rimraf from 'rimraf';
 import webpack from 'webpack';
-import chalk from 'chalk';
 import fileExists from 'file-exists';
 import DynamicPages from 'dynamic-pages';
 
@@ -9,18 +8,18 @@ import config from './webpack/config';
 import { scriptOptions, PATHS } from './_userSettings';
 
 // delete previous build folder & compile all files necessary for serving
-// rimraf(PATHS.buildFolder, (error) => {
-//   if (error) {
-//     console.log(error);
-//   }
-//
-//   const compiler = webpack(config);
-//   compiler.run((err) => {
-//     if (err) {
-//       console.log(err);
-//     }
-//
-//     if (scriptOptions.dynamic) {
+rimraf(PATHS.buildFolder, (error) => {
+  if (error) {
+    console.log(error);
+  }
+
+  const compiler = webpack(config);
+  compiler.run((err) => {
+    if (err) {
+      console.log(err);
+    }
+
+    if (scriptOptions.dynamic) {
       debug('dynamicRender.js exists?', fileExists(PATHS.dynamicRender));
 
       // Use similar setup as for a test-environment (but with NODE_ENV set to `production`)
@@ -36,8 +35,8 @@ import { scriptOptions, PATHS } from './_userSettings';
         buildFolder: PATHS.buildFolder,
         manifestFile: PATHS.manifestFile,
       });
-//     } else {
-//       console.log(' ⭐️  Your build is ready ⭐️');
-//     }
-//   });
-// });
+    } else {
+      console.log(' ⭐️  Your build is ready ⭐️');
+    }
+  });
+});

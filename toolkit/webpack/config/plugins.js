@@ -12,6 +12,7 @@ import {
   PATHS,
   env,
   currentScript,
+  scriptOptions,
   namingConvention,
   buildNamingConvention,
 } from '../../_userSettings';
@@ -76,7 +77,7 @@ const productionPlugins = [
     inject: false,
     template: PATHS.templateLocation,
 
-    reactHtml: '',
+    reactHtml: scriptOptions.dynamic ? '<!-- [[[reactHtml]]] -->' : '',
     creatingBuild: true,
     env: JSON.stringify(process.env),
   }),
