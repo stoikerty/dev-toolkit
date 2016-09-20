@@ -86,7 +86,7 @@ const productionPlugins = [
     defaultAttribute: 'sync',
   }),
   new ManifestRevisionPlugin(
-    PATHS.manifest,
+    PATHS.manifestFile,
     {
       rootAssetPath: PATHS.manifestRootAssetPath,
       ignorePaths: [],

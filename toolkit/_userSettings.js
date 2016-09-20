@@ -53,10 +53,10 @@ const publicPath = process.env.PUBLIC_PATH || defaultPublicPath;
 export const PATHS = {
   publicFilesFolder: path.resolve(serverRoot, 'public-files'),
   templateLocation: path.resolve(serverRoot, 'views/layout.hbs'),
-  dynamicRender: path.resolve(serverRoot, 'dynamicRender.js'),
+  dynamicRenderFile: path.resolve(serverRoot, 'dynamicRender.js'),
 
   manifestRootAssetPath: './src/client',
-  manifest: path.resolve(buildFolder, 'manifest.json'),
+  manifestFile: path.resolve(buildFolder, 'manifest.json'),
   eslintProjectConfig,
   scssIncludePaths: [clientRoot],
 
