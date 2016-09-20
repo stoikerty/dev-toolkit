@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="/dev-toolkit-logo.png" alt="universal-dev-toolkit-logo" height='42'><sub><strong>v5.2.13</strong></sub>
+  <img src="/dev-toolkit-logo.png" alt="universal-dev-toolkit-logo" height='42'><sub><strong>v5.3.0</strong></sub>
 </p>
 <p align="center">
   Jump-start your <code>react</code>-powered Web App.<br/>
@@ -57,7 +57,7 @@ dev-toolkit --serve-static
 ```
 
 #### Generate a static build with dynamic pages
-*(coming soon)*<br>
+*(experimental, in development)*<br>
 To make use of dynamic pages and components for making your app load faster, [follow the instructions](https://github.com/stoikerty/dev-toolkit/wiki/dynamic-pages) and use the extended build command:
 ```bash
 # This will create an index-file for each dynamic route (-d --dynamic or --build --dynamic)
@@ -70,7 +70,7 @@ dev-toolkit --build --dynamic
 ---
 
 ### Use server with server-side rendering
-*(experimental, coming soon)*<br>
+*(experimental, in development)*<br>
 You can use your project as an universal/isomorphic server-side-rendered app. For advanced users only.
 ```bash
 # Compile and run `src/server/app` (-s or --serve)
