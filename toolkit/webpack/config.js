@@ -47,4 +47,13 @@ export default {
 
   // How much information webpack should output
   stats,
+
+  // Ignore some node-specific packages on the client
+  node: {
+    fs: 'empty',
+    path: 'empty',
+    mkdirp: 'empty',
+    chalk: 'empty',
+    fileExists: 'empty',
+  },
 };
