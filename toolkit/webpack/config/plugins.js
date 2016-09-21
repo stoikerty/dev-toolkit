@@ -97,11 +97,11 @@ const productionPlugins = [
 ];
 
 // TODO: extract out
-if (process.env.COMPRESS) {
+if (process.env.USE_COMPRESSION_PLUGIN) {
   productionPlugins.push(
     new CompressionPlugin({
       asset: '[path]',
-      test: new RegExp(process.env.GZIP_UPLOAD_PATTERN),
+      test: new RegExp(process.env.COMPRESSION_PLUGIN_REGEX),
       minRatio: 0,
     })
   );

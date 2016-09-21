@@ -7,6 +7,8 @@ import stats from './config/stats';
 
 import {
   PATHS,
+  env,
+  currentScript,
   vendor,
   overrideConfig,
   namingConvention,
@@ -16,9 +18,18 @@ import {
 cssHook();
 filesHook();
 
+// This is an escape-hatch for overriding the webpack config with your custom one.
+// NOTE: There's limited support for using these custom config escape hatches. You're on your own!
+const createConfig = (config) => {
+  const override = overrideConfig && overrideConfig.default ?
+    overrideConfig.default : overrideConfig;
+  return typeof override === 'function' ?
+    override({ config, paths: PATHS, env, currentScript }) : config;
+};
+
 // Resulting webpack config
 // ---
-export default {
+export default createConfig({
   // The entry and ouput configuration for the bundle(s)
   entry: {
     app: [PATHS.clientAppEntryPoint],
@@ -59,8 +70,4 @@ export default {
     mkdirp: 'empty',
     fileExists: 'empty',
   },
-
-  // NOTE: There's limited support for using these custom config escape hatches. You're on your own!
-  //   This is an escape-hatch for overriding the webpack config with your custom one.
-  ...(overrideConfig.default ? overrideConfig.default : overrideConfig),
-};
+});

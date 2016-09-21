@@ -35,7 +35,7 @@ export const overrideConfig = requireOrNull(
     rootForRequire,
     pkg.toolkitSettings.webpackConfigPath ?
       pkg.toolkitSettings.webpackConfigPath : 'customWebpackConfig.js'
-  )) || {};
+  ));
 debug('overrideConfig', overrideConfig);
 
 // eslint-disable-next-line global-require
