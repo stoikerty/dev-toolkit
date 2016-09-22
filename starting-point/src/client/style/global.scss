@@ -9,7 +9,11 @@
   // Remove margin & make sure body is not transparent
   margin : 0;
   background-color : white;
-  font-family: 'Open Sans', sans-serif;
+  // Use 'Open Sans' font, with native font as fallback (Wordpress Default)
+  // see: https://bitsofco.de/the-new-system-font-stack/
+  font-family: 'Open Sans',
+                -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans,
+                Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 
   // Use border-box & make sure images don't overflow.
   *{ box-sizing : border-box; }
