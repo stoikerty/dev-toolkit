@@ -4,8 +4,7 @@
   "description": "Javascript development toolkit for power users [ ES6, React, node-sass ]",
   "main": "index.js",
   "scripts": {
-    "build": "babel src --out-dir dist",
-    "watch": "babel src --watch --out-dir dist",
+    "build": "node ../../.scripts/build 'dev-toolkit'",
     "prepublish": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

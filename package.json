@@ -1,0 +1,26 @@
+{
+  "name": "dev-toolkit-monorepo",
+  "version": "0.0.0",
+  "description": "Monorepo configuration for dev-toolkit",
+  "main": "index.js",
+  "scripts": {
+    "install": "node .scripts/install",
+    "build": "node .scripts/build",
+    "watch": "node .scripts/watch",
+    "publish": "node .scripts/publish",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stoikerty/dev-toolkit.git"
+  },
+  "author": "Jorge Antunes",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/stoikerty/dev-toolkit/issues"
+  },
+  "homepage": "https://github.com/stoikerty/dev-toolkit#readme",
+  "devDependencies": {
+    "babel-cli": "^6.14.0"
+  }
+}

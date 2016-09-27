@@ -4,8 +4,7 @@
   "description": "Dynamic page-loading utilities for react-router",
   "main": "dist/dynamicPages.js",
   "scripts": {
-    "build": "babel src --presets es2015 --out-dir dist",
-    "watch": "babel src --presets es2015 --watch --out-dir dist",
+    "build": "node ../../.scripts/build 'dynamic-pages'",
     "prepublish": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
