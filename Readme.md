@@ -1,3 +1,10 @@
+
+Goals & Purpose:
+- fast to setup
+- run multiple apps using the same underlying principles
+- as little configuration as necessary
+- powerful enough to run production-scale apps
+
 TODO:
 - add script for build
 - add script for watch
