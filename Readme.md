@@ -6,6 +6,15 @@ Goals & Purpose:
 - powerful enough to run production-scale apps
 - defer testing and additional setup to app
 
+Very suitable for;
+- Intermediary to advanced users
+- Creating a single-page-app from scratch
+- Migrating an old server to javascript-backed splash-page(s)
+
+Not quite suitable for:
+- Learning React as a Beginner
+- Creating small snippets of code to use in existing app
+
 TODO:
 - add script for build
 - add script for watch
