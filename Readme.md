@@ -14,9 +14,11 @@ TODO:
 - change homepage urls in package.json
 - publish both packages
 
-Additional TODO:
-- add gifs, visualizations
-- enhance documentation
+Additional TODO for better docs with animated clips:
+- gif for starting a project
+- gif for when one creates a syntax/eslint error
+- gif for testing with watch command
+- gif for generating dynamic pages
 
 Necessities:
 - install all dependencies for all packages at once
