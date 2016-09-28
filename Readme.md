@@ -4,6 +4,7 @@ Goals & Purpose:
 - run multiple apps using the same underlying principles
 - as little configuration as necessary
 - powerful enough to run production-scale apps
+- defer testing and additional setup to app
 
 TODO:
 - add script for build
@@ -12,6 +13,10 @@ TODO:
 - move readme for toolkit to root, check urls
 - change homepage urls in package.json
 - publish both packages
+
+Additional TODO:
+- add gifs, visualizations
+- enhance documentation
 
 Necessities:
 - install all dependencies for all packages at once
