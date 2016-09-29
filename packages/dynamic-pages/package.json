@@ -4,8 +4,7 @@
   "description": "Dynamic page-loading utilities for react-router",
   "main": "dist/dynamicPages.js",
   "scripts": {
-    "build": "node ../../.scripts/build 'dynamic-pages'",
-    "prepublish": "npm run build",
+    "prepublish": "mono-rail --package dynamic-pages build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
