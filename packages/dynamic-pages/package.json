@@ -1,0 +1,34 @@
+{
+  "name": "dynamic-pages",
+  "version": "0.1.2",
+  "description": "Dynamic page-loading utilities for react-router",
+  "main": "dist/dynamicPages.js",
+  "scripts": {
+    "prepublish-temp": "mono-rail --package dynamic-pages build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stoikerty/dynamic-pages.git"
+  },
+  "keywords": [
+    "react",
+    "isomorphic",
+    "react-router",
+    "dev-toolkit",
+    "universal",
+    "javascript"
+  ],
+  "author": "Jorge Antunes @stoikerty",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/stoikerty/dynamic-pages/issues"
+  },
+  "homepage": "https://github.com/stoikerty/dynamic-pages#readme",
+  "dependencies": {
+    "chalk": "^1.1.3",
+    "file-exists": "^2.0.0",
+    "lodash.foreach": "^4.5.0",
+    "mkdirp": "^0.5.1"
+  }
+}
