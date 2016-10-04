@@ -4,6 +4,7 @@
   "description": "Monorepo configuration for dev-toolkit",
   "main": "index.js",
   "scripts": {
+    "install": "mono-rail install",
     "build": "mono-rail build",
     "watch": "mono-rail watch",
     "link": "mono-rail link",
@@ -11,12 +12,18 @@
     "publish": "mono-rail publish",
     "test": "echo \"Error: no test specified\" && exit 1",
 
+    "install-all": "npm install && npm run install-toolkit && npm run install-dynamic",
+    "link-all": "npm run link-toolkit && npm run link-dynamic",
+    "unlink-all": "npm run unlink-toolkit && npm run unlink-dynamic",
+
+    "install-toolkit": "cd packages/dev-toolkit && npm install && cd ../../",
     "build-toolkit": "babel packages/dev-toolkit/src --presets es2015 --out-dir packages/dev-toolkit/dist",
     "watch-toolkit": "babel packages/dev-toolkit/src --presets es2015 --watch --out-dir packages/dev-toolkit/dist",
     "link-toolkit": "cd packages/dev-toolkit && npm link dev-toolkit && cd ../../",
     "unlink-toolkit": "cd packages/dev-toolkit && npm unlink dev-toolkit && cd ../../",
     "publish-toolkit": "cd packages/dev-toolkit && npm publish dev-toolkit && cd ../../",
 
+    "install-dynamic": "cd packages/dynamic-pages && npm install && cd ../../",
     "build-dynamic": "babel packages/dynamic-pages/src --presets es2015 --out-dir packages/dynamic-pages/dist",
     "watch-dynamic": "babel packages/dynamic-pages/src --presets es2015 --watch --out-dir packages/dynamic-pages/dist",
     "link-dynamic": "cd packages/dynamic-pages && npm link dynamic-pages && cd ../../",
