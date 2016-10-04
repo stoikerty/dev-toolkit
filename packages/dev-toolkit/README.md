@@ -157,7 +157,7 @@ dev-toolkit -v
 
 <!-- -->
 
-Fancy working on the toolkit itself? Check out [the Contributing Guidelines](/packages/dev-toolkit/CONTRIBUTING.md).
+Fancy working on the toolkit itself? Check out [the Contributing Guidelines](/CONTRIBUTING.md).
 
 ---
 
