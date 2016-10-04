@@ -1,10 +1,12 @@
 {
   "name": "dev-toolkit",
-  "version": "5.3.5",
+  "version": "5.3.6",
   "description": "Javascript development toolkit for power users [ ES6, React, node-sass ]",
   "main": "index.js",
   "scripts": {
-    "prepublish": "cd ../../ && npm run build-toolkit && cd packages/dev-toolkit",
+    "prepublish": "npm run build",
+    "build": "babel src --presets es2015 --out-dir dist",
+    "watch": "babel src --presets es2015 --watch --out-dir dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bin": {
@@ -46,13 +48,13 @@
   "homepage": "https://github.com/stoikerty/dev-toolkit#readme",
   "dependencies": {
     "autoprefixer": "^6.3.7",
-    "babel-cli": "^6.10.1",
+    "babel-cli": "^6.16.0",
     "babel-core": "^6.10.4",
     "babel-eslint": "^6.1.2",
     "babel-loader": "^6.2.4",
     "babel-plugin-transform-class-properties": "^6.10.2",
     "babel-plugin-transform-react-jsx-source": "^6.9.0",
-    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-es2015": "^6.16.0",
     "babel-preset-react": "^6.5.0",
     "babel-preset-stage-1": "^6.5.0",
     "babel-register": "^6.9.0",
@@ -68,7 +70,7 @@
     "cross-spawn": "^4.0.0",
     "css-loader": "^0.23.1",
     "css-modules-require-hook": "^4.0.1",
-    "dynamic-pages": "^0.1.1",
+    "dynamic-pages": "^0.1.4",
     "eazy-logger": "^3.0.2",
     "errorhandler": "^1.4.3",
     "eslint": "^3.4.0",

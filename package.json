@@ -4,28 +4,11 @@
   "description": "Monorepo configuration for dev-toolkit",
   "main": "index.js",
   "scripts": {
-    "install-all": "npm install && npm run install-toolkit && npm run install-dynamic",
-    "build-all": "npm run build-toolkit && npm run build-dynamic",
-    "link-all": "npm run build-all && npm run link-toolkit && npm run link-dynamic && npm run link-toolkit-dynamic",
-    "unlink-all": "npm run unlink-toolkit && npm run unlink-dynamic && npm run unlink-toolkit-dynamic",
-    "publish-all": "npm run publish-toolkit && npm run publish-dynamic",
-
-    "install-toolkit": "cd packages/dev-toolkit && npm install && cd ../../",
-    "build-toolkit": "babel packages/dev-toolkit/src --presets es2015 --out-dir packages/dev-toolkit/dist",
-    "watch-toolkit": "babel packages/dev-toolkit/src --presets es2015 --watch --out-dir packages/dev-toolkit/dist",
-    "link-toolkit": "cd packages/dev-toolkit && npm link && cd ../../",
-    "unlink-toolkit": "cd packages/dev-toolkit && npm unlink && cd ../../",
-    "publish-toolkit": "cd packages/dev-toolkit && npm publish && cd ../../",
-
-    "link-toolkit-dynamic": "cd packages/dev-toolkit && npm link dynamic-pages && cd ../../",
-    "unlink-toolkit-dynamic": "cd packages/dev-toolkit && npm unlink dynamic-pages && cd ../../",
-
-    "install-dynamic": "cd packages/dynamic-pages && npm install && cd ../../",
-    "build-dynamic": "babel packages/dynamic-pages/src --presets es2015 --out-dir packages/dynamic-pages/dist",
-    "watch-dynamic": "babel packages/dynamic-pages/src --presets es2015 --watch --out-dir packages/dynamic-pages/dist",
-    "link-dynamic": "cd packages/dynamic-pages && npm link && cd ../../",
-    "unlink-dynamic": "cd packages/dynamic-pages && npm unlink && cd ../../",
-    "publish-dynamic": "cd packages/dynamic-pages && npm publish && cd ../../"
+    "install": "lerna bootstrap",
+    "watch": "lerna exec -- npm run watch --concurrency",
+    "build": "lerna run build",
+    "publish": "lerna publish",
+    "clean": "lerna run clean"
   },
   "repository": {
     "type": "git",
@@ -38,8 +21,6 @@
   },
   "homepage": "https://github.com/stoikerty/dev-toolkit#readme",
   "devDependencies": {
-    "babel-cli": "^6.16.0",
-    "babel-preset-es2015": "^6.16.0",
-    "better-npm-run": "0.0.11"
+    "lerna": "2.0.0-beta.30"
   }
 }
