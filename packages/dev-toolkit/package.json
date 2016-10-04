@@ -1,10 +1,10 @@
 {
   "name": "dev-toolkit",
-  "version": "5.3.3",
+  "version": "5.3.5",
   "description": "Javascript development toolkit for power users [ ES6, React, node-sass ]",
   "main": "index.js",
   "scripts": {
-    "prepublish-temp": "mono-rail --package dev-toolkit build",
+    "prepublish": "cd ../../ && npm run build-toolkit && cd packages/dev-toolkit",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bin": {

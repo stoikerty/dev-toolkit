@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="/dev-toolkit-logo.png" alt="universal-dev-toolkit-logo" height='42'><sub><strong>v5.3.3</strong></sub>
+  <img src="/packages/dev-toolkit/dev-toolkit-logo.png" alt="universal-dev-toolkit-logo" height='42'>
 </p>
 <p align="center">
   Jump-start your <code>react</code>-powered Web App.<br/>
@@ -58,7 +58,7 @@ dev-toolkit --serve-static
 
 #### Generate a static build with dynamic pages
 *(experimental, in development)*<br>
-To make use of dynamic pages and components for making your app load faster, [follow the instructions](https://github.com/stoikerty/dev-toolkit/wiki/dynamic-pages) and use the extended build command:
+To make use of dynamic pages and components for making your app load faster, [follow the instructions](/packages/dynamic-pages) and use the extended build command:
 ```bash
 # This will create an index-file for each dynamic route (-d --dynamic or --build --dynamic)
 dev-toolkit --build --dynamic
@@ -157,7 +157,7 @@ dev-toolkit -v
 
 <!-- -->
 
-Fancy working on the toolkit itself? Check out [the Contributing Guidelines](/CONTRIBUTING.md).
+Fancy working on the toolkit itself? Check out [the Contributing Guidelines](/packages/dev-toolkit/CONTRIBUTING.md).
 
 ---
 
