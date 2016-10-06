@@ -4,7 +4,8 @@
   "description": "Monorepo configuration for dev-toolkit",
   "main": "index.js",
   "scripts": {
-    "install": "npm install && lerna bootstrap",
+    "install": "lerna bootstrap",
+    "link": "cd packages/dev-toolkit && npm link && cd ../dynamic-pages && npm link && cd ../..",
     "watch": "lerna exec -- npm run watch --concurrency",
     "build": "lerna run build",
     "publish": "lerna publish",
