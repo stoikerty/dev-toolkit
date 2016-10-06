@@ -6,7 +6,8 @@ Thanks for wanting to help improve the toolkit! 😃
 First, let's install and link the `dev-toolkit`. The repo contains multiple packages & [lerna](https://github.com/lerna/lerna) is the tool of choice to handle these. Have a look at the root `package.json`-file for a list of all used `npm run` commands. For the basics, you'll want to:
 - git clone [**`dev-toolkit`**](https://github.com/stoikerty/dev-toolkit) repo into a folder (example: `repos/local_modules/dev-toolkit`)
 - run `npm install` to install all the dependencies for all packages and cross-link them. This will take a bit of time ☕️
-- You now have the `dev-toolkit`-command available to you. You might also have to link a package to your project by running `npm link dev-toolkit` or `npm link dynamic-pages` inside the project folder.
+- Link a package you want to develop on to your project by running `npm link dev-toolkit` or `npm link dynamic-pages` inside the project folder.
+- If you linked the toolkit, you will now have the `dev-toolkit`-command available to you.
 
 Preparation done. 👌
 
