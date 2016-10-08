@@ -16,9 +16,6 @@ npm install -g dev-toolkit
 dev-toolkit --init my_app
 cd my_app
 ```
-
----
-
 ```
 # run it via npm scripts
 npm run dev
@@ -149,6 +146,18 @@ dev-toolkit -v
 [Autoprefixer]: https://github.com/postcss/autoprefixer
 [powered by express]: http://expressjs.com/
 [react-router]: https://github.com/reactjs/react-router
+
+
+## FAQ
+- I get an NPM warning after `--init` about `eslint-import-resolver`.
+
+The package doesn't know that we're using webpack via the dev-toolkit and since webpack is not present in the dependencies, it throws an `UNMET PEER DEPENDENCY`-warning.
+
+- The `dev-toolkit`-package is not part of the dependencies of the starting point I created with `--init`.
+
+Since you already installed `dev-toolkit` globally, it would be easier to work on multiple projects without reinstalling the `dev-toolkit`-dependencies for each project. This way when you update the toolkit with `npm install -g dev-toolkit@version`, all your projects are updated as well.
+
+You can of course still pin your project with a specific version of the toolkit by running `npm install --save-dev dev-toolkit` inside your project folder.
 
 ---
 
