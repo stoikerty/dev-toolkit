@@ -9,16 +9,13 @@
   &nbsp;&nbsp;<a href="#developer-convenience"><code>hot-reload</code></a>
 </p>
 
-### Create a new project
+## Create a new project
 ```bash
 # install & initialize new app
 npm install -g dev-toolkit
 dev-toolkit --init my_app
 cd my_app
 ```
-
----
-
 ```
 # run it via npm scripts
 npm run dev
@@ -36,14 +33,12 @@ src
     └── ...
 ```
 
-
-### Generate a static build
+## Generate a static build
 ```bash
 # Create `build`-folder with compiled files (-b or --build)
 dev-toolkit --build
 ```
 - removes previous `build`-folder
-- generates static markup for React (*coming soon*)
 - automatically uses production-builds of React and Redux
 - allows for a [custom vendor-bundle](#define-what-modules-are-bundled-into-vendorjs)
 - extracts css from individual modules
@@ -57,29 +52,29 @@ dev-toolkit --serve-static
 ```
 
 #### Generate a static build with dynamic pages
-*(experimental, in development)*<br>
-To make use of dynamic pages and components for making your app load faster, [follow the instructions](/packages/dynamic-pages) and use the extended build command:
+
+To make use of dynamic pages and components for making your app load faster use the extended build command.
+
+**For advanced users only**, [refer to this gist](https://gist.github.com/stoikerty/e26e0083f827c42690eb02ad82f1735f) for information on how to implement it.
 ```bash
 # This will create an index-file for each dynamic route (-d --dynamic or --build --dynamic)
 dev-toolkit --build --dynamic
 ```
-- html is pre-rendered and inserted into the body, awh yeah 💪
+- html is pre-rendered and inserted into the body
 - creates multiple js-bundles, one for each dynamic page
 - each `index.html` contains a `script`-link to the `app` bundle and the page-bundle
 - scripts use `async` and `defer`-attributes as appropriate
 - each subsequent page can be pre-cached and loaded on demand
 
----
+## Use server with server-side rendering
 
-### Use server with server-side rendering
-*(experimental, in development)*<br>
-You can use your project as an universal/isomorphic server-side-rendered app. For advanced users only.
+You can use your project as an universal/isomorphic server-side-rendered app.<br>**For advanced users only.**
 ```bash
 # Compile and run `src/server/app` (-s or --serve)
 dev-toolkit --serve
 ```
 
-### Misc
+## Misc
 
 ###### Check version
 ```bash
@@ -99,8 +94,7 @@ dev-toolkit -v
 },
 ```
 
----
-### Features
+## Features
 
 ###### Compatibility
 
@@ -149,6 +143,18 @@ dev-toolkit -v
 [Autoprefixer]: https://github.com/postcss/autoprefixer
 [powered by express]: http://expressjs.com/
 [react-router]: https://github.com/reactjs/react-router
+
+
+## FAQ
+- *I get an NPM warning after `--init` about `eslint-import-resolver`.*
+
+The package doesn't know that we're using webpack via the dev-toolkit and since webpack is not present in the dependencies, it throws an `UNMET PEER DEPENDENCY`-warning.
+
+- *The `dev-toolkit`-package is not part of the dependencies of the starting point I created with `--init`.*
+
+Since you already installed `dev-toolkit` globally, it would be easier to work on multiple projects without reinstalling the `dev-toolkit`-dependencies for each project. This way when you update the toolkit with `npm install -g dev-toolkit@version`, all your projects are updated as well.
+
+You can of course still pin your project with a specific version of the toolkit by running `npm install --save-dev dev-toolkit` inside your project folder.
 
 ---
 
