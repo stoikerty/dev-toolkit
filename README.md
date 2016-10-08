@@ -44,14 +44,14 @@ dev-toolkit --build
 - extracts css from individual modules
 - hashes assets, including `jpg`, `png`, `gif` & `svg`-files
 
-#### Verify build
+### Verify build
 Verify if static build is working correctly.
 ```bash
 # Runs a minimal server that serves the build folder (--static or --serve-static)
 dev-toolkit --serve-static
 ```
 
-#### Generate a static build with dynamic pages
+### Generate a static build with dynamic pages
 
 To make use of dynamic pages and components for making your app load faster use the extended build command.
 
@@ -76,13 +76,13 @@ dev-toolkit --serve
 
 ## Misc
 
-###### Check version
+#### Check version
 ```bash
 # Check Version (-v or --version)
 dev-toolkit -v
 ```
 
-###### Define what modules are bundled into `vendor.js`
+#### Define what modules are bundled into `vendor.js`
 ```js
 // in your package.json, add `toolkitSettings` section
 "toolkitSettings": {
@@ -96,20 +96,20 @@ dev-toolkit -v
 
 ## Features
 
-###### Compatibility
+##### Compatibility
 
 - Multiplatform: Windows, OSX, Linux
 - Node.js `last tested version 5.10.1`
 - NPM `last tested version 3.8.3`
 
-###### Javascript Basics
+##### Javascript Basics
 
 - [React]
 - [ES2015 / ES6]
 - [root-relative imports with `src/...`]
 - [ESLint]
 
-###### Developer Convenience
+##### Developer Convenience
 
 - [Browsersync]
 - [Vanilla HMR, webpack's hot-reload]
@@ -118,13 +118,13 @@ dev-toolkit -v
 - automatic asset-hashing during build, custom `vendor.js`
 - support for various file-formats:<br>  `css`, `scss`<br>  `js`, `jsx`, `json`<br>  `jpg`, `png`, `gif`, `svg`
 
-###### Powerful CSS Tools
+##### Powerful CSS Tools
 
 - [Autoprefixer]
 - [sass / scss]
 - [css-modules]
 
-###### Server-tools for Universal Apps
+##### Server-tools for Universal Apps
 
 - your own server app in `src/server/app`
 - [powered by express]
