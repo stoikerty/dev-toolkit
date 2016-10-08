@@ -9,7 +9,7 @@
   &nbsp;&nbsp;<a href="#developer-convenience"><code>hot-reload</code></a>
 </p>
 
-### Create a new project
+## Create a new project
 ```bash
 # install & initialize new app
 npm install -g dev-toolkit
@@ -33,8 +33,7 @@ src
     └── ...
 ```
 
-
-### Generate a static build
+## Generate a static build
 ```bash
 # Create `build`-folder with compiled files (-b or --build)
 dev-toolkit --build
@@ -66,9 +65,7 @@ dev-toolkit --build --dynamic
 - scripts use `async` and `defer`-attributes as appropriate
 - each subsequent page can be pre-cached and loaded on demand
 
----
-
-### Use server with server-side rendering
+## Use server with server-side rendering
 *(experimental, in development)*<br>
 You can use your project as an universal/isomorphic server-side-rendered app. For advanced users only.
 ```bash
@@ -76,7 +73,7 @@ You can use your project as an universal/isomorphic server-side-rendered app. Fo
 dev-toolkit --serve
 ```
 
-### Misc
+## Misc
 
 ###### Check version
 ```bash
@@ -96,8 +93,7 @@ dev-toolkit -v
 },
 ```
 
----
-### Features
+## Features
 
 ###### Compatibility
 
@@ -149,11 +145,11 @@ dev-toolkit -v
 
 
 ## FAQ
-- I get an NPM warning after `--init` about `eslint-import-resolver`.
+- *I get an NPM warning after `--init` about `eslint-import-resolver`.*
 
 The package doesn't know that we're using webpack via the dev-toolkit and since webpack is not present in the dependencies, it throws an `UNMET PEER DEPENDENCY`-warning.
 
-- The `dev-toolkit`-package is not part of the dependencies of the starting point I created with `--init`.
+- *The `dev-toolkit`-package is not part of the dependencies of the starting point I created with `--init`.*
 
 Since you already installed `dev-toolkit` globally, it would be easier to work on multiple projects without reinstalling the `dev-toolkit`-dependencies for each project. This way when you update the toolkit with `npm install -g dev-toolkit@version`, all your projects are updated as well.
 
