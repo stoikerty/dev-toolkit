@@ -1,4 +1,4 @@
-#### Dynamic Pages <small>v0.1.2</small>
+#### Dynamic Pages
 
 See [this gist](https://gist.github.com/stoikerty/e26e0083f827c42690eb02ad82f1735f) for how to implement. Similar to [PRPL](https://www.polymer-project.org/1.0/toolbox/server)
 
