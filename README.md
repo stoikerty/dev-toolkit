@@ -39,7 +39,6 @@ src
 dev-toolkit --build
 ```
 - removes previous `build`-folder
-- generates static markup for React (*coming soon*)
 - automatically uses production-builds of React and Redux
 - allows for a [custom vendor-bundle](#define-what-modules-are-bundled-into-vendorjs)
 - extracts css from individual modules
@@ -53,21 +52,23 @@ dev-toolkit --serve-static
 ```
 
 #### Generate a static build with dynamic pages
-*(experimental, in development)*<br>
-To make use of dynamic pages and components for making your app load faster, [follow the instructions](/packages/dynamic-pages) and use the extended build command:
+
+To make use of dynamic pages and components for making your app load faster use the extended build command.
+
+**For advanced users only**, [refer to this gist](https://gist.github.com/stoikerty/e26e0083f827c42690eb02ad82f1735f) for information on how to implement it.
 ```bash
 # This will create an index-file for each dynamic route (-d --dynamic or --build --dynamic)
 dev-toolkit --build --dynamic
 ```
-- html is pre-rendered and inserted into the body, awh yeah 💪
+- html is pre-rendered and inserted into the body
 - creates multiple js-bundles, one for each dynamic page
 - each `index.html` contains a `script`-link to the `app` bundle and the page-bundle
 - scripts use `async` and `defer`-attributes as appropriate
 - each subsequent page can be pre-cached and loaded on demand
 
 ## Use server with server-side rendering
-*(experimental, in development)*<br>
-You can use your project as an universal/isomorphic server-side-rendered app. For advanced users only.
+
+You can use your project as an universal/isomorphic server-side-rendered app.<br>**For advanced users only.**
 ```bash
 # Compile and run `src/server/app` (-s or --serve)
 dev-toolkit --serve
