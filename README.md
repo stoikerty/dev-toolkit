@@ -67,7 +67,7 @@ dev-toolkit --build --dynamic
 - each subsequent page can be pre-cached and loaded on demand
 
 ## Setting up tests
-You'll need to import the webpack config for running tests, [refer to this gist](https://gist.github.com/stoikerty/a202280147910b63a20e167dc4778fb8) for the setup. You'll be able to write your tests in ES2015, just like the rest of your app. Single tests can also be run in a watch-mode with the `npm run test-single [TEST_DESCRIPTION]`-command.
+You'll need to import the webpack config for running tests, [refer to this gist](https://gist.github.com/stoikerty/a202280147910b63a20e167dc4778fb8) for the setup. You'll be able to write your tests in ES2015, just like the rest of your app. Single tests can also be run in a watch-mode with the `npm run test-single`-command.
 
 ## Use server with server-side rendering
 

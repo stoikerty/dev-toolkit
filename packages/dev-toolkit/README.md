@@ -44,18 +44,18 @@ dev-toolkit --build
 - extracts css from individual modules
 - hashes assets, including `jpg`, `png`, `gif` & `svg`-files
 
-#### Verify build
+### Verify build
 Verify if static build is working correctly.
 ```bash
 # Runs a minimal server that serves the build folder (--static or --serve-static)
 dev-toolkit --serve-static
 ```
 
-#### Generate a static build with dynamic pages
+### Generate a static build with dynamic pages
 
 To make use of dynamic pages and components for making your app load faster use the extended build command.
 
-**For advanced users only**, [refer to this gist](https://gist.github.com/stoikerty/e26e0083f827c42690eb02ad82f1735f) for information on how to implement it.
+**For advanced users only**, [refer to this gist](https://gist.github.com/stoikerty/40a668e8fd4e2919034fd1eed2252bcb) for information on how to implement it.
 ```bash
 # This will create an index-file for each dynamic route (-d --dynamic or --build --dynamic)
 dev-toolkit --build --dynamic
@@ -65,6 +65,9 @@ dev-toolkit --build --dynamic
 - each `index.html` contains a `script`-link to the `app` bundle and the page-bundle
 - scripts use `async` and `defer`-attributes as appropriate
 - each subsequent page can be pre-cached and loaded on demand
+
+## Setting up tests
+You'll need to import the webpack config for running tests, [refer to this gist](https://gist.github.com/stoikerty/a202280147910b63a20e167dc4778fb8) for the setup. You'll be able to write your tests in ES2015, just like the rest of your app. Single tests can also be run in a watch-mode with the `npm run test-single`-command.
 
 ## Use server with server-side rendering
 
@@ -76,13 +79,13 @@ dev-toolkit --serve
 
 ## Misc
 
-###### Check version
+#### Check version
 ```bash
 # Check Version (-v or --version)
 dev-toolkit -v
 ```
 
-###### Define what modules are bundled into `vendor.js`
+#### Define what modules are bundled into `vendor.js`
 ```js
 // in your package.json, add `toolkitSettings` section
 "toolkitSettings": {
@@ -96,20 +99,20 @@ dev-toolkit -v
 
 ## Features
 
-###### Compatibility
+##### Compatibility
 
 - Multiplatform: Windows, OSX, Linux
 - Node.js `last tested version 5.10.1`
 - NPM `last tested version 3.8.3`
 
-###### Javascript Basics
+##### Javascript Basics
 
 - [React]
 - [ES2015 / ES6]
 - [root-relative imports with `src/...`]
 - [ESLint]
 
-###### Developer Convenience
+##### Developer Convenience
 
 - [Browsersync]
 - [Vanilla HMR, webpack's hot-reload]
@@ -118,13 +121,13 @@ dev-toolkit -v
 - automatic asset-hashing during build, custom `vendor.js`
 - support for various file-formats:<br>  `css`, `scss`<br>  `js`, `jsx`, `json`<br>  `jpg`, `png`, `gif`, `svg`
 
-###### Powerful CSS Tools
+##### Powerful CSS Tools
 
 - [Autoprefixer]
 - [sass / scss]
 - [css-modules]
 
-###### Server-tools for Universal Apps
+##### Server-tools for Universal Apps
 
 - your own server app in `src/server/app`
 - [powered by express]

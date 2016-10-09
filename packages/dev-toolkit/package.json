@@ -1,6 +1,6 @@
 {
   "name": "dev-toolkit",
-  "version": "5.3.7",
+  "version": "5.3.8",
   "description": "Javascript development toolkit for power users [ ES6, React, node-sass ]",
   "main": "index.js",
   "scripts": {
