@@ -55,7 +55,7 @@ dev-toolkit --serve-static
 
 To make use of dynamic pages and components for making your app load faster use the extended build command.
 
-**For advanced users only**, [refer to this gist](https://gist.github.com/stoikerty/e26e0083f827c42690eb02ad82f1735f) for information on how to implement it.
+**For advanced users only**, [refer to this gist](https://gist.github.com/stoikerty/40a668e8fd4e2919034fd1eed2252bcb) for information on how to implement it.
 ```bash
 # This will create an index-file for each dynamic route (-d --dynamic or --build --dynamic)
 dev-toolkit --build --dynamic
@@ -65,6 +65,9 @@ dev-toolkit --build --dynamic
 - each `index.html` contains a `script`-link to the `app` bundle and the page-bundle
 - scripts use `async` and `defer`-attributes as appropriate
 - each subsequent page can be pre-cached and loaded on demand
+
+## Setting up tests
+You'll need to import the webpack config for running tests, [refer to this gist](https://gist.github.com/stoikerty/a202280147910b63a20e167dc4778fb8) for the setup. You'll be able to write your tests in ES2015, just like the rest of your app. Single tests can also be run in a watch-mode with the `npm run test-single [TEST_DESCRIPTION]`-command.
 
 ## Use server with server-side rendering
 
