@@ -120,10 +120,14 @@ export default new class GenerateFiles {
     let result = html;
     const data = JSON.parse(manifestData);
     const assets = data.assets;
+    const isWin = process && process.platform === 'win32';
 
     each(assets, (value, key) => {
       // TODO: use rootAssetPath?
-      result = result.replace(`src/client/${key}`, value);
+      const path = `src/client/${key}`;
+      const normalizedPath = isWin ? path.replace(/\//g, '\\') : path;
+      // TODO: check for publicPath?
+      result = result.replace(normalizedPath, `/${value}`);
     });
 
     return result;
