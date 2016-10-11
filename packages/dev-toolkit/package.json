@@ -1,6 +1,6 @@
 {
   "name": "dev-toolkit",
-  "version": "5.3.10",
+  "version": "5.3.11",
   "description": "Development Toolkit for React Veterans",
   "main": "index.js",
   "scripts": {
