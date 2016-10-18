@@ -79,7 +79,7 @@ const productionPlugins = [
 
     reactHtml: scriptOptions.dynamic ? '<!-- [[[reactHtml]]] -->' : '',
     creatingBuild: true,
-    env: JSON.stringify(process.env),
+    env: process.env,
   }),
   new ScriptExtHtmlWebpackPlugin({
     async: ['app'],
