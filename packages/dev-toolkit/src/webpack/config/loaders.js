@@ -12,8 +12,8 @@ import {
 const styleLoaders = [
   `css-loader?modules&importLoaders=1&localIdentName=${cssChunkNaming}`,
   'postcss-loader',
-  'sass-loader',
 ];
+const sassLoaders = styleLoaders.concat(['sass-loader']);
 
 export eslint from './loaders/eslint';
 export postcss from './loaders/postcss';
@@ -51,10 +51,18 @@ export default [
   // Use separate style-tags for development,
   // extract CSS into one file for production.
   currentScript === 'watch' ? {
-    test: /\.scss$/,
+    test: /\.css$/,
     loaders: ['style-loader'].concat(styleLoaders),
   } : {
-    test: /\.scss$/,
+    test: /\.css$/,
     loader: ExtractTextPlugin.extract('style-loader', styleLoaders),
+  },
+  // Also allow css to be used
+  currentScript === 'watch' ? {
+    test: /\.scss$/,
+    loaders: ['style-loader'].concat(sassLoaders),
+  } : {
+    test: /\.scss$/,
+    loader: ExtractTextPlugin.extract('style-loader', sassLoaders),
   },
 ];
