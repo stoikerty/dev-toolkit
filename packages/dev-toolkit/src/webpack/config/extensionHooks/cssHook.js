@@ -24,6 +24,15 @@ const preprocessCss = (cssFileData, cssFilePath) => {
 };
 
 export default () => {
+  // Allow vanilla css-modules
+  cssHook({
+    extensions: ['.css'],
+
+    // Share naming-convention of `css-loader`
+    generateScopedName: cssChunkNaming,
+  });
+
+  // Separate processing for scss
   cssHook({
     extensions: ['.scss'],
 

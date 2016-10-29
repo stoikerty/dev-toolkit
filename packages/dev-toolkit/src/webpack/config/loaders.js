@@ -57,7 +57,7 @@ export default [
     test: /\.css$/,
     loader: ExtractTextPlugin.extract('style-loader', styleLoaders),
   },
-  // Also allow css to be used
+  // Allow scss to be used as well
   currentScript === 'watch' ? {
     test: /\.scss$/,
     loaders: ['style-loader'].concat(sassLoaders),
