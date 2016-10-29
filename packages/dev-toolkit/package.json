@@ -1,6 +1,6 @@
 {
   "name": "dev-toolkit",
-  "version": "5.3.12",
+  "version": "5.3.13",
   "description": "Development Toolkit for React Veterans",
   "main": "index.js",
   "scripts": {
@@ -98,7 +98,7 @@
     "method-override": "^2.3.6",
     "ncp": "^2.0.0",
     "node-jsx-babel": "^0.14.2",
-    "node-sass": "^3.8.0",
+    "node-sass": "^3.10.1",
     "postcss-loader": "^0.9.1",
     "progress-bar-webpack-plugin": "^1.8.0",
     "rimraf": "^2.5.4",
