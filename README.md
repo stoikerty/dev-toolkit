@@ -161,12 +161,9 @@ You can of course still pin your project with a specific version of the toolkit 
 
 ---
 
-[![Codewake](https://www.codewake.com/badges/ask_question.svg)](https://www.codewake.com/p/dev-toolkit)
-[![Join the chat at https://gitter.im/stoikerty/dev-toolkit](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/stoikerty/dev-toolkit?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-
 <!-- -->
 
-Fancy working on the toolkit itself? Check out [the Contributing Guidelines](/CONTRIBUTING.md).
+**Questions? Bugs? Suggestions?** Create [a new issue](https://github.com/stoikerty/dev-toolkit/issues/new) or submit a PR!<br>Check out [the Contributing Guidelines](/CONTRIBUTING.md) for information on how to work on the toolkit itself.
 
 ---
 
