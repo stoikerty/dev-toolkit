@@ -12,9 +12,33 @@ import fileExists from 'file-exists';
 
 // Compile all files necessary for serving
 export default new class GenerateFiles {
+  setupDynamicRenderFile({ dynamicRenderFile }) {
+    this.dynamicRender = null;
+
+    if (!fileExists(dynamicRenderFile)) {
+      console.log(
+        chalk.yellow('To make use of dynamic pages, add the `dynamicRender.js`-file'),
+        chalk.yellow('\nsee:'),
+        chalk.yellow.underline('https://github.com/stoikerty/dev-toolkit/wiki/dynamic-pages'),
+        '\nCreating a regular static build.');
+    } else {
+      try {
+        // The expression `'' + ` is a webpack hack to avoid an error when compiling for the client.
+        // "the request of a dependency is an expression"
+        // see: https://github.com/webpack/webpack/issues/196
+        //      https://github.com/webpack/webpack/issues/198
+        // eslint-disable-next-line global-require
+        this.dynamicRender = require('' + dynamicRenderFile).default;
+      } catch (e) {
+        if (e) {
+          console.log(e);
+        }
+      }
+    }
+  }
+
   run({
     publicPath,
-    dynamicRenderFile,
     buildFolder,
     manifestFile,
     definedRoutes,
@@ -23,29 +47,15 @@ export default new class GenerateFiles {
     doneCallback,
   }) {
     this.publicPath = publicPath;
-    this.dynamicRender = dynamicRenderFile;
     this.buildFolder = buildFolder;
     this.indexHtml = path.resolve(buildFolder, 'index.html');
     this.getComponentName = getComponentName;
     this.hasPathParameters = hasPathParameters;
     this.doneCallback = doneCallback;
 
-    if (!fileExists(dynamicRenderFile)) {
-      console.log(
-        chalk.yellow('To make use of dynamic pages, add the `dynamicRender.js`-file'),
-        chalk.yellow('\nsee:'),
-        chalk.yellow.underline('https://github.com/stoikerty/dev-toolkit/wiki/dynamic-pages'),
-        '\nA regular static build was created.');
-    } else {
+    if (this.dynamicRender) {
       try {
         console.log('Generating', chalk.magenta('index.html'), 'for each route...');
-
-        // The expression `'' + ` is a webpack hack to avoid an error when compiling for the client.
-        // "the request of a dependency is an expression"
-        // see: https://github.com/webpack/webpack/issues/196
-        //      https://github.com/webpack/webpack/issues/198
-        // eslint-disable-next-line global-require
-        this.dynamicRender = require('' + dynamicRenderFile).default;
 
         // Take index.html file and create an html-file for each route
         fs.readFile(manifestFile, 'utf8', (manifestError, manifestData) => {

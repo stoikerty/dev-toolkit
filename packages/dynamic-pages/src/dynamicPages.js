@@ -9,6 +9,7 @@ import GenerateFiles from './dynamicPages/generateFiles';
 //   - what about images that are not lazily loaded?
 //       Possible solution could be to use `images-require-hook` instead of filesHook
 //       see: https://github.com/ptshih/images-require-hook
+// # find a way to separate server-only packages inside `generateFiles` from being bundled on client
 
 export default new class DynamicPages {
   constructor() {
@@ -182,11 +183,13 @@ export default new class DynamicPages {
 
   // The Dynamic Page Generator
   // NOTE: Server-usage only
-  generatePages({ publicPath, dynamicRenderFile, buildFolder, manifestFile, doneCallback }) {
+  importDynamicRenderFile({ dynamicRenderFile }) {
+    GenerateFiles.setupDynamicRenderFile({ dynamicRenderFile });
+  }
+  generatePages({ publicPath, buildFolder, manifestFile, doneCallback }) {
     if (!this.isClient) {
       GenerateFiles.run({
         publicPath,
-        dynamicRenderFile,
         buildFolder,
         manifestFile,
         definedRoutes: this.definedRoutes,
