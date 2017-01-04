@@ -1,6 +1,6 @@
 {
   "name": "dev-toolkit",
-  "version": "5.4.1",
+  "version": "5.5",
   "description": "Development Toolkit for React Veterans",
   "main": "index.js",
   "scripts": {
@@ -70,7 +70,7 @@
     "cross-spawn": "^4.0.0",
     "css-loader": "^0.23.1",
     "css-modules-require-hook": "^4.0.1",
-    "dynamic-pages": "^0.1.9",
+    "dynamic-pages": "^0.2",
     "eazy-logger": "^3.0.2",
     "errorhandler": "^1.4.3",
     "eslint": "^3.4.0",

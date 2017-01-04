@@ -13,6 +13,19 @@ rimraf(PATHS.buildFolder, (error) => {
     console.log(error);
   }
 
+  if (scriptOptions.dynamic) {
+    // Use similar setup as for a test-environment (but with NODE_ENV set to `production`)
+    // eslint-disable-next-line global-require
+    require('./utils/testHelpers/setupDOM');
+
+    debug('dynamicRender.js exists?', fileExists(PATHS.dynamicRender));
+    // The external render file needs to be imported before compilation, in case any stubs exist
+    DynamicPages.importDynamicRenderFile({ dynamicRenderFile: PATHS.dynamicRenderFile });
+
+    // eslint-disable-next-line global-require
+    require('./utils/testHelpers/setupClientApp');
+  }
+
   const compiler = webpack(config);
   compiler.run((err) => {
     if (err) {
@@ -20,18 +33,9 @@ rimraf(PATHS.buildFolder, (error) => {
     }
 
     if (scriptOptions.dynamic) {
-      debug('dynamicRender.js exists?', fileExists(PATHS.dynamicRender));
-
-      // Use similar setup as for a test-environment (but with NODE_ENV set to `production`)
-      // eslint-disable-next-line global-require
-      require('./utils/testHelpers/setupDOM');
-      // eslint-disable-next-line global-require
-      require('./utils/testHelpers/setupClientApp');
-
       // Take index.html file and create an html-file for each route
       DynamicPages.generatePages({
         publicPath: PATHS.publicPath,
-        dynamicRenderFile: PATHS.dynamicRenderFile,
         buildFolder: PATHS.buildFolder,
         manifestFile: PATHS.manifestFile,
         doneCallback: () => console.log('\n ⭐️  Your build with dynamic pages is ready ⭐️'),

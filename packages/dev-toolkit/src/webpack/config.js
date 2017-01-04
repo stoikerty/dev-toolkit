@@ -53,7 +53,7 @@ export default createConfig({
   postcss,
   eslint,
 
-  //  Manage directories for dependencies with `resolve` & `resolveLoader`
+  // Manage directories for dependencies with `resolve` & `resolveLoader`
   resolve,
   resolveLoader,
 

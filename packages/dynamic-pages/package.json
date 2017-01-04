@@ -1,6 +1,6 @@
 {
   "name": "dynamic-pages",
-  "version": "0.1.9",
+  "version": "0.2",
   "description": "Dynamic page-loading utilities for react-router",
   "main": "dist/dynamicPages.js",
   "scripts": {
