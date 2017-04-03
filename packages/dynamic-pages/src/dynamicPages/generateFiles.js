@@ -124,34 +124,41 @@ export default new class GenerateFiles {
 
   createPagesFromCompiledData({ manifestData, indexData }) {
     return new Promise((resolve) => {
-      const promises = this.definedRoutes.map(({ renderPath, components }) =>
-        this.createPage({ renderPath, components, manifestData, indexData }));
+      const promises = this.definedRoutes.map(({ renderPath, components, dynamicData }) =>
+        this.createPage({ renderPath, components, dynamicData, manifestData, indexData }));
 
       Promise.all(promises).then(resolve);
     });
   }
 
-  createPage({ renderPath, components, manifestData, indexData }) {
+  createPage({ renderPath, components, dynamicData, manifestData, indexData }) {
     return new Promise((resolve) => {
       const afterRouteRender = ({ routePath }) => {
         if (this.afterRouteRender) {
           console.log(chalk.blue('⇢'), ` afterRouteRender (${chalk.blue(renderPath)})`);
-          this.afterRouteRender({ renderPath, components, manifestData, indexData, routePath })
-            .then(resolve);
+          this.afterRouteRender({
+            renderPath,
+            components,
+            dynamicData,
+            manifestData,
+            indexData,
+            routePath
+          }).then(resolve);
         } else {
           resolve();
         }
       };
 
+      // Only render routes that have no parameters
       if (!this.hasPathParameters(renderPath)) {
         if (this.beforeRouteRender) {
           console.log(chalk.blue('⇥'), ` beforeRouteRender (${chalk.blue(renderPath)})`);
           this.beforeRouteRender({ renderPath, components, manifestData, indexData }).then(() =>
-            this.renderRoute({ renderPath, components, manifestData, indexData })
+            this.renderRoute({ renderPath, components, dynamicData, manifestData, indexData })
               .then(afterRouteRender)
           );
         } else {
-          this.renderRoute({ renderPath, components, manifestData, indexData })
+          this.renderRoute({ renderPath, components, dynamicData, manifestData, indexData })
             .then(afterRouteRender);
         }
       } else {
