@@ -28,7 +28,15 @@ export default new class GenerateFiles {
         // see: https://github.com/webpack/webpack/issues/196
         //      https://github.com/webpack/webpack/issues/198
         // eslint-disable-next-line global-require
-        this.dynamicRender = require('' + dynamicRenderFile).default;
+        this.dynamicRender =
+          require('' + dynamicRenderFile).default
+          || require('' + dynamicRenderFile).onRouteRender;
+
+        this.beforeRender = require('' + dynamicRenderFile).beforeRender;
+        this.afterRender = require('' + dynamicRenderFile).afterRender;
+
+        this.beforeRouteRender = require('' + dynamicRenderFile).beforeRouteRender;
+        this.afterRouteRender = require('' + dynamicRenderFile).afterRouteRender;
       } catch (e) {
         if (e) {
           console.log(e);
@@ -37,7 +45,19 @@ export default new class GenerateFiles {
     }
   }
 
-  run({
+  run(options) {
+    const { definedRoutes } = options;
+
+    if (this.beforeRender) {
+      console.log(chalk.blue('↪'), ` beforeRender`);
+      this.beforeRender({ definedRoutes }).then(() => this.render(options));
+    } else {
+      console.log('nope - this.beforeRender: ', this.beforeRender);
+      this.render(options);
+    }
+  }
+
+  render({
     publicPath,
     buildFolder,
     manifestFile,
@@ -45,7 +65,7 @@ export default new class GenerateFiles {
     getComponentName,
     hasPathParameters,
     doneCallback,
-  }) {
+  }){
     this.publicPath = publicPath;
     this.buildFolder = buildFolder;
     this.indexHtml = path.resolve(buildFolder, 'index.html');
@@ -60,15 +80,33 @@ export default new class GenerateFiles {
         // Take index.html file and create an html-file for each route
         fs.readFile(manifestFile, 'utf8', (manifestError, manifestData) => {
           if (manifestError) throw manifestError;
-          fs.readFile(this.indexHtml, 'utf8', (readError, data) => {
+          fs.readFile(this.indexHtml, 'utf8', (readError, indexData) => {
             if (readError) throw readError;
             each(definedRoutes, ({ renderPath, components }, index) => {
               const callback = (definedRoutes.length - 1) === index ? this.doneCallback : null;
 
               if (!this.hasPathParameters(renderPath)) {
-                this.generateFile({ renderPath, components, manifestData, data, callback });
+                if (this.beforeRouteRender) {
+                  console.log(chalk.blue('⇥'), ` beforeRouteRender ${renderPath}`);
+                  this.beforeRouteRender({ renderPath, components, manifestData }).then(() =>
+                    this.generateFile({ renderPath, components, manifestData, indexData, callback })
+                  );
+                } else {
+                  console.log('nope - this.beforeRouteRender: ', this.beforeRouteRender);
+                  this.generateFile({ renderPath, components, manifestData, indexData, callback });
+                }
               } else {
-                if (callback) callback();
+                if (callback) {
+
+                  if (this.afterRender) {
+                    console.log(chalk.blue('↪'), ` afterRender`);
+                    console.log('yup - this.afterRender: ', this.afterRender);
+                    this.afterRender({ definedRoutes });
+                  } else {
+                    callback();
+                    console.log('nope - this.afterRender: ', this.afterRender);
+                  }
+                }
               }
             });
           });
@@ -110,17 +148,41 @@ export default new class GenerateFiles {
             componentPaths,
             additionalData,
           });
+          console.log(chalk.blue('⇢'), ` writing file`);
 
           fs.writeFile(path.resolve(routePath, 'index.html'), completeHtml, (writeError) => {
             if (writeError) {
               throw writeError;
             }
-            if (callback) callback();
+            console.log(chalk.blue('⇢'), ` written file`);
+
+            if (this.afterRouteRender) {
+              console.log(chalk.blue('⇢'), ` afterRouteRender`);
+              this.afterRouteRender({ renderPath, components, manifestData, routePath }).then(
+                () => callback ? callback() : null
+              );
+            } else {
+              console.log('nope - this.afterRouteRender: ', this.afterRouteRender);
+              if (callback) {
+                callback();
+              }
+            }
           });
         } else {
           // eslint-disable-next-line no-console
           console.log(`Route "${renderPath}" doesn't exist, rendering resulted in \`null\`.`);
-          if (callback) callback();
+
+          if (this.afterRouteRender) {
+            console.log(chalk.blue('⇢'), ` afterRouteRender`);
+            this.afterRouteRender({ renderPath, components, manifestData, routePath }).then(
+              () => callback ? callback() : null
+            );
+          } else {
+            console.log('nope - this.afterRouteRender: ', this.afterRouteRender);
+            if (callback) {
+              callback();
+            }
+          }
         }
       }
     });
