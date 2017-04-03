@@ -119,7 +119,7 @@ export default new class GenerateFiles {
     }
   }
 
-  generateFile({ renderPath, components, manifestData, data, callback }) {
+  generateFile({ renderPath, components, manifestData, indexData, callback }) {
     const routePath = path.resolve(this.buildFolder, renderPath.substring(1));
     const names = (() => {
       let componentNames = '';
@@ -130,34 +130,37 @@ export default new class GenerateFiles {
     })();
 
     // eslint-disable-next-line max-len, no-console
-    console.log(chalk.blue('>'), `Generating route ${chalk.magenta(renderPath)} with: ${names}`);
+    console.log(chalk.blue('>'), `2-Generating route ${chalk.magenta(renderPath)} with: ${names}`);
 
     mkdirp(routePath, (mkdirError) => {
+      console.log('created directory');
       if (mkdirError) {
         // eslint-disable-next-line no-console
         console.error(mkdirError);
       } else {
+        console.log('writing file');
         const { reactHtml, additionalData } = this.dynamicRender(renderPath);
+        console.log(chalk.blue('⇢'), ' writing file');
 
         if (reactHtml) {
           const htmlWithAssets = this.convertAssetPaths(manifestData, reactHtml);
           const componentPaths = this.extractComponentPaths({ manifestData, components });
           const completeHtml = this.injectMarkupIntoTemplate({
-            data,
+            indexData,
             htmlWithAssets,
             componentPaths,
             additionalData,
           });
-          console.log(chalk.blue('⇢'), ` writing file`);
+          console.log(chalk.blue('⇢⇢'), ' writing file');
 
           fs.writeFile(path.resolve(routePath, 'index.html'), completeHtml, (writeError) => {
             if (writeError) {
               throw writeError;
             }
-            console.log(chalk.blue('⇢'), ` written file`);
+            console.log(chalk.blue('⇢'), ' written file');
 
             if (this.afterRouteRender) {
-              console.log(chalk.blue('⇢'), ` afterRouteRender`);
+              console.log(chalk.blue('⇢'), ' afterRouteRender');
               this.afterRouteRender({ renderPath, components, manifestData, routePath }).then(
                 () => callback ? callback() : null
               );
@@ -222,12 +225,12 @@ export default new class GenerateFiles {
     return extractedPaths;
   }
 
-  injectMarkupIntoTemplate({ data, htmlWithAssets, componentPaths, additionalData }) {
+  injectMarkupIntoTemplate({ indexData, htmlWithAssets, componentPaths, additionalData }) {
     const dynamicComponents = componentPaths.map(dynamicComponentPath => (
       `<script src="${this.publicPath}${dynamicComponentPath}"></script>`
     )).join('\n\t\t');
 
-    let formattedData = data.replace(
+    let formattedData = indexData.replace(
       '<!-- [[[reactHtml]]] -->',
       htmlWithAssets
     ).replace(
