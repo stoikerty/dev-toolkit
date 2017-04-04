@@ -1,3 +1,5 @@
+/* eslint-disable-file no-console, global-require */
+
 import fs from 'fs';
 import path from 'path';
 import each from 'lodash.foreach';
@@ -12,6 +14,15 @@ import fileExists from 'file-exists';
 
 // Compile all files necessary for serving
 export default new class GenerateFiles {
+  constructor() {
+    this.readManifestFile = this.readManifestFile.bind(this);
+    this.readIndexHtml = this.readIndexHtml.bind(this);
+    this.createPagesFromCompiledData = this.createPagesFromCompiledData.bind(this);
+    this.createPage = this.createPage.bind(this);
+    this.renderRoute = this.renderRoute.bind(this);
+    this.writeFile = this.writeFile.bind(this);
+  }
+
   setupDynamicRenderFile({ dynamicRenderFile }) {
     this.dynamicRender = null;
 
@@ -27,8 +38,12 @@ export default new class GenerateFiles {
         // "the request of a dependency is an expression"
         // see: https://github.com/webpack/webpack/issues/196
         //      https://github.com/webpack/webpack/issues/198
-        // eslint-disable-next-line global-require
         this.dynamicRender = require('' + dynamicRenderFile).default;
+        this.onRouteRender = require('' + dynamicRenderFile).onRouteRender;
+        this.beforeRender = require('' + dynamicRenderFile).beforeRender;
+        this.afterRender = require('' + dynamicRenderFile).afterRender;
+        this.beforeRouteRender = require('' + dynamicRenderFile).beforeRouteRender;
+        this.afterRouteRender = require('' + dynamicRenderFile).afterRouteRender;
       } catch (e) {
         if (e) {
           console.log(e);
@@ -37,7 +52,7 @@ export default new class GenerateFiles {
     }
   }
 
-  run({
+  startRendering({
     publicPath,
     buildFolder,
     manifestFile,
@@ -46,33 +61,41 @@ export default new class GenerateFiles {
     hasPathParameters,
     doneCallback,
   }) {
+    // save given options for later
     this.publicPath = publicPath;
     this.buildFolder = buildFolder;
-    this.indexHtml = path.resolve(buildFolder, 'index.html');
+    this.manifestFile = manifestFile;
+    this.definedRoutes = definedRoutes;
     this.getComponentName = getComponentName;
     this.hasPathParameters = hasPathParameters;
     this.doneCallback = doneCallback;
 
-    if (this.dynamicRender) {
+    if (this.beforeRender) {
+      console.log(chalk.blue('↩'), ` beforeRender`);
+      this.beforeRender({ definedRoutes }).then(() => this.renderRoutes());
+    } else {
+      this.renderRoutes();
+    }
+  }
+
+  renderRoutes(){
+    if (this.dynamicRender || this.onRouteRender) {
       try {
         console.log('Generating', chalk.magenta('index.html'), 'for each route...');
 
-        // Take index.html file and create an html-file for each route
-        fs.readFile(manifestFile, 'utf8', (manifestError, manifestData) => {
-          if (manifestError) throw manifestError;
-          fs.readFile(this.indexHtml, 'utf8', (readError, data) => {
-            if (readError) throw readError;
-            each(definedRoutes, ({ renderPath, components }, index) => {
-              const callback = (definedRoutes.length - 1) === index ? this.doneCallback : null;
-
-              if (!this.hasPathParameters(renderPath)) {
-                this.generateFile({ renderPath, components, manifestData, data, callback });
-              } else {
-                if (callback) callback();
+        this.readManifestFile()
+          .then(this.readIndexHtml)
+          .then(this.createPagesFromCompiledData)
+          .then(() => {
+            if (this.afterRender) {
+              console.log(chalk.blue('↪'), ` afterRender`);
+              this.afterRender({ definedRoutes: this.definedRoutes });
+            } else {
+              if (this.doneCallback) {
+                this.doneCallback();
               }
-            });
+            }
           });
-        });
       } catch (e) {
         if (e) {
           console.log(e);
@@ -81,48 +104,135 @@ export default new class GenerateFiles {
     }
   }
 
-  generateFile({ renderPath, components, manifestData, data, callback }) {
-    const routePath = path.resolve(this.buildFolder, renderPath.substring(1));
-    const names = (() => {
-      let componentNames = '';
-      each(components, (component, index) => {
-        componentNames += chalk.magenta(this.getComponentName(component)) + ', ';
+  readManifestFile() {
+    return new Promise((resolve) => {
+      fs.readFile(this.manifestFile, 'utf8', (error, manifestData) => {
+        if (error) throw error;
+        resolve({ manifestData });
       });
-      return componentNames.slice(0, -2);
-    })();
+    });
+  }
 
-    // eslint-disable-next-line max-len, no-console
-    console.log(chalk.blue('>'), `Generating route ${chalk.magenta(renderPath)} with: ${names}`);
+  readIndexHtml({ manifestData }) {
+    return new Promise((resolve) => {
+      fs.readFile(path.resolve(this.buildFolder, 'index.html'), 'utf8', (error, indexData) => {
+        if (error) throw error;
+        resolve({ manifestData, indexData });
+      });
+    });
+  }
 
-    mkdirp(routePath, (mkdirError) => {
-      if (mkdirError) {
-        // eslint-disable-next-line no-console
-        console.error(mkdirError);
-      } else {
-        const { reactHtml, additionalData } = this.dynamicRender(renderPath);
+  createPagesFromCompiledData({ manifestData, indexData }) {
+    return new Promise((resolve) => {
+      const promises = this.definedRoutes.map(({ renderPath, components, dynamicData }) =>
+        this.createPage({ renderPath, components, dynamicData, manifestData, indexData }));
 
-        if (reactHtml) {
-          const htmlWithAssets = this.convertAssetPaths(manifestData, reactHtml);
-          const componentPaths = this.extractComponentPaths({ manifestData, components });
-          const completeHtml = this.injectMarkupIntoTemplate({
-            data,
-            htmlWithAssets,
-            componentPaths,
-            additionalData,
-          });
+      Promise.all(promises).then(resolve);
+    });
+  }
 
-          fs.writeFile(path.resolve(routePath, 'index.html'), completeHtml, (writeError) => {
-            if (writeError) {
-              throw writeError;
-            }
-            if (callback) callback();
-          });
+  createPage({ renderPath, components, dynamicData, manifestData, indexData }) {
+    return new Promise((resolve) => {
+      const afterRouteRender = ({ routePath }) => {
+        if (this.afterRouteRender) {
+          console.log(chalk.gray('↦'), ` afterRouteRender (${chalk.blue(renderPath)})`);
+          this.afterRouteRender({
+            renderPath,
+            components,
+            dynamicData,
+            manifestData,
+            indexData,
+            routePath,
+          }).then(resolve);
         } else {
-          // eslint-disable-next-line no-console
-          console.log(`Route "${renderPath}" doesn't exist, rendering resulted in \`null\`.`);
-          if (callback) callback();
+          resolve();
         }
+      };
+
+      // Only render routes that have no parameters
+      if (!this.hasPathParameters(renderPath)) {
+        if (this.beforeRouteRender) {
+          console.log(chalk.gray('⇥'), ` beforeRouteRender (${chalk.blue(renderPath)})`);
+          this.beforeRouteRender({
+            renderPath,
+            components,
+            dynamicData,
+            manifestData,
+            indexData,
+          }).then(() =>
+            this.renderRoute({ renderPath, components, dynamicData, manifestData, indexData })
+            .then(afterRouteRender)
+          );
+        } else {
+          this.renderRoute({ renderPath, components, dynamicData, manifestData, indexData })
+            .then(afterRouteRender);
+        }
+      } else {
+        resolve();
       }
+    })
+  }
+
+  renderRoute({ renderPath, components, dynamicData, manifestData, indexData }) {
+    return new Promise((resolve) => {
+      const routePath = path.resolve(this.buildFolder, renderPath.substring(1));
+      const names = (() => {
+        let componentNames = '';
+        each(components, (component, index) => {
+          componentNames += chalk.magenta(this.getComponentName(component)) + ', ';
+        });
+        return componentNames.slice(0, -2);
+      })();
+
+      mkdirp(routePath, (mkdirError) => {
+        if (mkdirError) {
+          console.error(mkdirError);
+        } else {
+          const renderAndResolve = ({ reactHtml, additionalData }) => {
+            if (reactHtml) {
+              const htmlWithAssets = this.convertAssetPaths(manifestData, reactHtml);
+              const componentPaths = this.extractComponentPaths({ manifestData, components });
+              const completeHtml = this.injectMarkupIntoTemplate({
+                indexData,
+                htmlWithAssets,
+                componentPaths,
+                additionalData,
+              });
+              this.writeFile({ routePath, completeHtml }).then(() => resolve({ routePath }))
+            } else {
+              console.log(
+                `Route "${renderPath}" doesn't exist, rendering resulted in \`null\`.`,
+                'No HTML was rendered.'
+              );
+              resolve({ routePath });
+            }
+          };
+
+          if (this.dynamicRender) {
+            // synchronous rendering
+            console.log(
+              chalk.blue('>'), `Rendering route ${chalk.magenta(renderPath)} with: ${names}`);
+            const { reactHtml, additionalData } = this.dynamicRender(renderPath, dynamicData);
+            renderAndResolve({ reactHtml, additionalData });
+          } else if (this.onRouteRender) {
+            // asynchronous rendering, expects a promise
+            console.log(
+              chalk.blue('⤳'), ` onRouteRender ${chalk.magenta(renderPath)} with: ${names}`);
+            this.onRouteRender(renderPath, dynamicData).then(renderAndResolve);
+          }
+        }
+      });
+    });
+  }
+
+  writeFile({ routePath, completeHtml }) {
+    return new Promise((resolve) => {
+      fs.writeFile(path.resolve(routePath, 'index.html'), completeHtml, (writeError) => {
+        if (writeError) {
+          throw writeError;
+        }
+        resolve();
+      });
     });
   }
 
@@ -160,12 +270,12 @@ export default new class GenerateFiles {
     return extractedPaths;
   }
 
-  injectMarkupIntoTemplate({ data, htmlWithAssets, componentPaths, additionalData }) {
+  injectMarkupIntoTemplate({ indexData, htmlWithAssets, componentPaths, additionalData }) {
     const dynamicComponents = componentPaths.map(dynamicComponentPath => (
       `<script src="${this.publicPath}${dynamicComponentPath}"></script>`
     )).join('\n\t\t');
 
-    let formattedData = data.replace(
+    let formattedData = indexData.replace(
       '<!-- [[[reactHtml]]] -->',
       htmlWithAssets
     ).replace(

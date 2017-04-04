@@ -74,8 +74,8 @@ export default new class DynamicPages {
   }
 
   // Save the route and returns needed props to react-router
-  defineRoute({ renderPath, components }) {
-    this.definedRoutes.push({ renderPath, components });
+  defineRoute({ renderPath, components, dynamicData }) {
+    this.definedRoutes.push({ renderPath, components, dynamicData });
 
     // Make it work with react-router by returning necessary props
     // see: https://github.com/ReactTraining/react-router/blob/master/docs/guides/DynamicRouting.md
@@ -188,7 +188,7 @@ export default new class DynamicPages {
   }
   generatePages({ publicPath, buildFolder, manifestFile, doneCallback }) {
     if (!this.isClient) {
-      GenerateFiles.run({
+      GenerateFiles.startRendering({
         publicPath,
         buildFolder,
         manifestFile,
