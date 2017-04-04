@@ -79,7 +79,7 @@ export default new class GenerateFiles {
   }
 
   renderRoutes(){
-    if (this.onRouteRender || this.dynamicRender) {
+    if (this.dynamicRender || this.onRouteRender) {
       try {
         console.log('Generating', chalk.magenta('index.html'), 'for each route...');
 
@@ -202,17 +202,17 @@ export default new class GenerateFiles {
             }
           };
 
-          if (this.onRouteRender) {
-            console.log(
-              chalk.blue('⤳'), ` onRouteRender ${chalk.magenta(renderPath)} with: ${names}`);
-            // asynchronous, expects a promise
-            this.onRouteRender(renderPath, dynamicData).then(renderAndResolve);
-          } else {
+          if (this.dynamicRender) {
+            // synchronous rendering
             console.log(
               chalk.blue('>'), `Rendering route ${chalk.magenta(renderPath)} with: ${names}`);
-            // synchronous
             const { reactHtml, additionalData } = this.dynamicRender(renderPath, dynamicData);
             renderAndResolve({ reactHtml, additionalData });
+          } else if (this.onRouteRender) {
+            // asynchronous rendering, expects a promise
+            console.log(
+              chalk.blue('⤳'), ` onRouteRender ${chalk.magenta(renderPath)} with: ${names}`);
+            this.onRouteRender(renderPath, dynamicData).then(renderAndResolve);
           }
         }
       });
