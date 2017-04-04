@@ -39,9 +39,9 @@ export default new class GenerateFiles {
         // see: https://github.com/webpack/webpack/issues/196
         //      https://github.com/webpack/webpack/issues/198
         this.dynamicRender = require('' + dynamicRenderFile).default;
+        this.onRouteRender = require('' + dynamicRenderFile).onRouteRender;
         this.beforeRender = require('' + dynamicRenderFile).beforeRender;
         this.afterRender = require('' + dynamicRenderFile).afterRender;
-
         this.beforeRouteRender = require('' + dynamicRenderFile).beforeRouteRender;
         this.afterRouteRender = require('' + dynamicRenderFile).afterRouteRender;
       } catch (e) {
@@ -71,7 +71,7 @@ export default new class GenerateFiles {
     this.doneCallback = doneCallback;
 
     if (this.beforeRender) {
-      console.log(chalk.blue('↪'), ` beforeRender`);
+      console.log(chalk.blue('↩'), ` beforeRender`);
       this.beforeRender({ definedRoutes }).then(() => this.renderRoutes());
     } else {
       this.renderRoutes();
@@ -79,7 +79,7 @@ export default new class GenerateFiles {
   }
 
   renderRoutes(){
-    if (this.dynamicRender) {
+    if (this.onRouteRender || this.dynamicRender) {
       try {
         console.log('Generating', chalk.magenta('index.html'), 'for each route...');
 
@@ -135,7 +135,7 @@ export default new class GenerateFiles {
     return new Promise((resolve) => {
       const afterRouteRender = ({ routePath }) => {
         if (this.afterRouteRender) {
-          console.log(chalk.blue('⇢'), ` afterRouteRender (${chalk.blue(renderPath)})`);
+          console.log(chalk.gray('↦'), ` afterRouteRender (${chalk.blue(renderPath)})`);
           this.afterRouteRender({
             renderPath,
             components,
@@ -152,7 +152,7 @@ export default new class GenerateFiles {
       // Only render routes that have no parameters
       if (!this.hasPathParameters(renderPath)) {
         if (this.beforeRouteRender) {
-          console.log(chalk.blue('⇥'), ` beforeRouteRender (${chalk.blue(renderPath)})`);
+          console.log(chalk.gray('⇥'), ` beforeRouteRender (${chalk.blue(renderPath)})`);
           this.beforeRouteRender({ renderPath, components, manifestData, indexData }).then(() =>
             this.renderRoute({ renderPath, components, dynamicData, manifestData, indexData })
               .then(afterRouteRender)
@@ -167,7 +167,7 @@ export default new class GenerateFiles {
     })
   }
 
-  renderRoute({ renderPath, components, manifestData, indexData }) {
+  renderRoute({ renderPath, components, dynamicData, manifestData, indexData }) {
     return new Promise((resolve) => {
       const routePath = path.resolve(this.buildFolder, renderPath.substring(1));
       const names = (() => {
@@ -178,30 +178,41 @@ export default new class GenerateFiles {
         return componentNames.slice(0, -2);
       })();
 
-      console.log(chalk.blue('>'), `Rendering route ${chalk.magenta(renderPath)} with: ${names}`);
-
       mkdirp(routePath, (mkdirError) => {
         if (mkdirError) {
           console.error(mkdirError);
         } else {
-          const { reactHtml, additionalData } = this.dynamicRender(renderPath);
+          const renderAndResolve = ({ reactHtml, additionalData }) => {
+            if (reactHtml) {
+              const htmlWithAssets = this.convertAssetPaths(manifestData, reactHtml);
+              const componentPaths = this.extractComponentPaths({ manifestData, components });
+              const completeHtml = this.injectMarkupIntoTemplate({
+                indexData,
+                htmlWithAssets,
+                componentPaths,
+                additionalData,
+              });
+              this.writeFile({ routePath, completeHtml }).then(() => resolve({ routePath }))
+            } else {
+              console.log(
+                `Route "${renderPath}" doesn't exist, rendering resulted in \`null\`.`,
+                'No HTML was rendered.'
+              );
+              resolve({ routePath });
+            }
+          };
 
-          if (reactHtml) {
-            const htmlWithAssets = this.convertAssetPaths(manifestData, reactHtml);
-            const componentPaths = this.extractComponentPaths({ manifestData, components });
-            const completeHtml = this.injectMarkupIntoTemplate({
-              indexData,
-              htmlWithAssets,
-              componentPaths,
-              additionalData,
-            });
-            this.writeFile({ routePath, completeHtml }).then(() => resolve({ routePath }))
+          if (this.onRouteRender) {
+            console.log(
+              chalk.blue('⤳'), ` onRouteRender ${chalk.magenta(renderPath)} with: ${names}`);
+            // asynchronous, expects a promise
+            this.onRouteRender(renderPath, dynamicData).then(renderAndResolve);
           } else {
             console.log(
-              `Route "${renderPath}" doesn't exist, rendering resulted in \`null\`.`,
-              'No HTML was rendered.'
-            );
-            resolve({ routePath });
+              chalk.blue('>'), `Rendering route ${chalk.magenta(renderPath)} with: ${names}`);
+            // synchronous
+            const { reactHtml, additionalData } = this.dynamicRender(renderPath, dynamicData);
+            renderAndResolve({ reactHtml, additionalData });
           }
         }
       });
