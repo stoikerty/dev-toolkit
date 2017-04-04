@@ -159,7 +159,6 @@ export default new class GenerateFiles {
             dynamicData,
             manifestData,
             indexData,
-            routePath,
           }).then(() =>
             this.renderRoute({ renderPath, components, dynamicData, manifestData, indexData })
             .then(afterRouteRender)
