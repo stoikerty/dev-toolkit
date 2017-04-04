@@ -142,7 +142,7 @@ export default new class GenerateFiles {
             dynamicData,
             manifestData,
             indexData,
-            routePath
+            routePath,
           }).then(resolve);
         } else {
           resolve();
@@ -153,9 +153,16 @@ export default new class GenerateFiles {
       if (!this.hasPathParameters(renderPath)) {
         if (this.beforeRouteRender) {
           console.log(chalk.gray('⇥'), ` beforeRouteRender (${chalk.blue(renderPath)})`);
-          this.beforeRouteRender({ renderPath, components, manifestData, indexData }).then(() =>
+          this.beforeRouteRender({
+            renderPath,
+            components,
+            dynamicData,
+            manifestData,
+            indexData,
+            routePath,
+          }).then(() =>
             this.renderRoute({ renderPath, components, dynamicData, manifestData, indexData })
-              .then(afterRouteRender)
+            .then(afterRouteRender)
           );
         } else {
           this.renderRoute({ renderPath, components, dynamicData, manifestData, indexData })
