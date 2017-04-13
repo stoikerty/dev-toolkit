@@ -21,7 +21,19 @@ export sass from './loaders/sass';
 
 export default [
   { test: /\.hbs$/, loader: 'handlebars-loader' },
-  { test: /\.json$/, loader: 'json-loader' },
+  {
+    test: /\.json$/,
+    loader: 'json-loader',
+    exclude: /(node_modules)|\.dynamic.json?$/,
+  },
+  {
+    test: /\.dynamic.json?$/,
+    loaders: [
+      // The`bundle`-loader automatically uses module directly when code is run on the server
+      'bundle?lazy&name=[name]',
+      'json-loader',
+    ],
+  },
   {
     test: /\.jsx?$/,
     loaders: [
