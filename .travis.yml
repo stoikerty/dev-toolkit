@@ -2,3 +2,7 @@ language: node_js
 node_js:
   - "node"
   - "7"
+script:
+  - cd packages/dev-toolkit
+  - yarn
+  - yarn test
