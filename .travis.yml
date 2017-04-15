@@ -1,0 +1,13 @@
+language: node_js
+node_js:
+  - 7.8.0
+sudo: false
+before_install:
+  - curl -o- -L https://yarnpkg.com/install.sh | bash
+  - export PATH=$HOME/.yarn/bin:$PATH
+cache:
+  yarn: true
+env:
+  - DEV_TOOLKIT=packages/dev-toolkit
+script:
+  - cd $DEV_TOOLKIT && yarn && yarn test
