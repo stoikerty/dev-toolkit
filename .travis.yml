@@ -1,8 +1,7 @@
 language: node_js
 node_js:
-  - "node"
-  - "7"
+  - 7
+env:
+  - DEV_TOOLKIT=packages/dev-toolkit
 script:
-  - cd packages/dev-toolkit
-  - yarn
-  - yarn test
+  - cd $DEV_TOOLKIT && yarn && yarn test
