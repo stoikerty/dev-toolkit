@@ -1,0 +1,66 @@
+{
+  "name": "dev-toolkit",
+  "version": "6.0.0-alpha-1",
+  "description": "Development Toolkit for React Veterans",
+  "main": "index.js",
+  "scripts": {
+    "prepublish": "npm run build",
+    "build": "babel src --out-dir dist",
+    "watch": "babel src --watch --out-dir dist",
+    "test": "bnr test",
+    "test-single": "bnr test --watch --grep",
+    "lint": "eslint --config .eslintrc src"
+  },
+  "betterScripts": {
+    "test": {
+      "command": "mocha --opts .mocha.opts",
+      "env": {
+        "NODE_ENV": "test",
+        "NODE_PATH": "."
+      }
+    }
+  },
+  "bin": {
+    "dev-toolkit": "src/bin/dev-toolkit.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stoikerty/dev-toolkit.git"
+  },
+  "keywords": [
+    "stoikerty",
+    "webpack",
+    "sass",
+    "react",
+    "browserify",
+    "gulp",
+    "moonboots",
+    "middleman",
+    "stk-toolkit",
+    "universal-dev-toolkit",
+    "dev-toolkit",
+    "create-react-app"
+  ],
+  "author": "Jorge Antunes @stoikerty",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/stoikerty/dev-toolkit/issues"
+  },
+  "homepage": "https://github.com/stoikerty/dev-toolkit#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "babel-cli": "^6.22.2",
+    "babel-plugin-dynamic-import-node": "^1.0.0",
+    "babel-preset-es2015": "^6.22.0",
+    "babel-preset-es2016": "^6.22.0",
+    "babel-preset-es2017": "^6.22.0",
+    "better-npm-run": "^0.0.14",
+    "chai": "^3.5.0",
+    "cross-spawn": "^5.0.1",
+    "dirty-chai": "^1.2.2",
+    "eslint": "^3.13.0",
+    "eslint-config-airbnb-base": "^11.0.1",
+    "eslint-plugin-import": "^2.2.0",
+    "mocha": "^3.2.0"
+  }
+}
