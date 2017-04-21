@@ -218,7 +218,8 @@ export default new class GenerateFiles {
             // asynchronous rendering, expects a promise
             console.log(
               chalk.blue('⤳'), ` onRouteRender ${chalk.magenta(renderPath)} with: ${names}`);
-            this.onRouteRender(renderPath, dynamicData).then(renderAndResolve);
+            this.onRouteRender({ renderPath, components, dynamicData, manifestData, indexData })
+            .then(renderAndResolve);
           }
         }
       });
