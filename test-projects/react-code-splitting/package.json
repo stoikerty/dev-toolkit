@@ -1,0 +1,16 @@
+{
+  "scripts": {
+    "start": "neutrino start --use neutrino-preset-react",
+    "build": "neutrino build --use neutrino-preset-react"
+  },
+  "devDependencies": {
+    "neutrino": "^5.7.0",
+    "neutrino-preset-react": "^5.7.0",
+    "react-hot-loader": "3.0.0-beta.6"
+  },
+  "dependencies": {
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "react-router-dom": "^4.1.1"
+  }
+}
