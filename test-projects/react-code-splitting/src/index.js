@@ -1,3 +1,6 @@
+// NOTE: sample project from
+// https://hackernoon.com/code-splitting-for-react-router-with-webpack-and-hmr-bb509968e86f
+
 import React from 'react';
 import { render } from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
