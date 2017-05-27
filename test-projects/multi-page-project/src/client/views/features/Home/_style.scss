@@ -1,0 +1,11 @@
+@import 'style/config';
+
+.home{
+  @include position(relative, block, 100%);
+  float : left;
+  margin : $grid 0 0;
+  padding : $grid;
+
+  // you will see this as transparent-blue
+  @include proto(1, 0.3);
+}
