@@ -1,0 +1,17 @@
+{
+  "ignore": [
+    "server/app.js"
+  ],
+  "presets": [
+    ["env", {
+      "targets": {
+        "node": "current"
+      },
+      "loose": true
+    }],
+    "react"
+  ],
+  "plugins": [
+    "transform-export-extensions"
+  ]
+}
