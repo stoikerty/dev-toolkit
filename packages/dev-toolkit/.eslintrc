@@ -14,7 +14,7 @@
       }
     ],
     "import/extensions": [
-      "error",
+      "off",
       "never"
     ]
   },
