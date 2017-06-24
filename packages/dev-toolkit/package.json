@@ -16,7 +16,7 @@
     "test": {
       "command": "mocha --opts .mocha.opts",
       "env": {
-        "NODE_ENV": "test",
+        "TOOLKIT_TEST": "true",
         "NODE_PATH": "."
       }
     }
