@@ -31,8 +31,7 @@ describe('dev-toolkit', () => {
   it('outputs current version when given `-v` or `--version` argument', () => {
   });
 
-  it('runs the watch script when given `-w` or `--watch` argument', () => {
-    const runCommand = sandbox.spy();
+  describe('runs the watch script', () => {
     const processedArgs = yargs.alias('w', 'watch').parse(['dev-toolkit', '-w']);
     const expectedOutput = {
       script: 'watch',
@@ -40,10 +39,17 @@ describe('dev-toolkit', () => {
       args: [processedArgs.watch],
     };
 
-    devToolkit({ cmdArgs: ['dev-toolkit', '-w'], runCommand });
-    expect(runCommand.calledWith(expectedOutput)).to.equal(true);
+    it('when given `-w` argument', () => {
+      const runCommand = sandbox.spy();
 
-    devToolkit({ cmdArgs: ['dev-toolkit', '--watch'], runCommand });
-    expect(runCommand.calledWith(expectedOutput)).to.equal(true);
+      devToolkit({ cmdArgs: ['dev-toolkit', '-w'], runCommand });
+      expect(runCommand.calledWith(expectedOutput)).to.equal(true);
+    });
+    it('when given `--watch` argument', () => {
+      const runCommand = sandbox.spy();
+
+      devToolkit({ cmdArgs: ['dev-toolkit', '--watch'], runCommand });
+      expect(runCommand.calledWith(expectedOutput)).to.equal(true);
+    });
   });
 });
