@@ -6,7 +6,17 @@
   "parser": "babel-eslint",
 
   "rules": {
-    "import/no-extraneous-dependencies": 0
+    "import/no-extraneous-dependencies": 0,
+    "import/no-unresolved": [
+      "error",
+      {
+        "ignore": [ "^dist/" ]
+      }
+    ],
+    "import/extensions": [
+      "error",
+      "never"
+    ]
   },
 
   "env": {
