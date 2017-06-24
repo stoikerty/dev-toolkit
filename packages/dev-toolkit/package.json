@@ -61,7 +61,7 @@
     "chai": "^3.5.0",
     "cross-spawn": "^5.0.1",
     "dirty-chai": "^1.2.2",
-    "eslint": "^3.13.0",
+    "eslint": "^3.4.0",
     "eslint-config-airbnb-base": "^11.0.1",
     "eslint-plugin-import": "^2.2.0",
     "mocha": "^3.2.0",
