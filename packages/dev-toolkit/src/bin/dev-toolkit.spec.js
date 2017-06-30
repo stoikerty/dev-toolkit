@@ -85,8 +85,8 @@ describe('dev-toolkit', () => {
     });
   });
 
-  describe('runs the serve script', () => {
-    const processedArgs = yargs.alias('s', 'serve').parse(['dev-toolkit', '--static']);
+  describe('runs the serveStatic script', () => {
+    const processedArgs = yargs.alias('static', 'serve-static').parse(['dev-toolkit', '--static']);
     const expectedOutput = {
       script: 'serveStatic',
       message: 'Serving the /build folder using a minimal server',
