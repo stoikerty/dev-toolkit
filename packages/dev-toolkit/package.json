@@ -10,7 +10,7 @@
     "test": "bnr test",
     "test-single": "bnr test --watch --grep",
     "lint": "eslint --config .eslintrc src",
-    "test-dev-toolkit": "npm run build && node dist/bin/dev-toolkit.js"
+    "test-minimal": "cd ./starting-point/minimal && node ../../dist/bin/dev-toolkit.js"
   },
   "betterScripts": {
     "test": {
