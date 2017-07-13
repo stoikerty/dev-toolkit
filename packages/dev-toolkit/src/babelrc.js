@@ -5,7 +5,7 @@ export default {
     require.resolve('babel-preset-es2015'),
     require.resolve('babel-preset-es2016'),
     require.resolve('babel-preset-es2017'),
-    // require.resolve('babel-preset-stage-1'),
+    require.resolve('babel-preset-stage-1'),
     // require.resolve('babel-preset-react'),
   ],
   plugins: [
