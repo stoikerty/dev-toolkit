@@ -5,6 +5,5 @@ bootstrap().then(() => {
   global.toolkitScript = 'watch';
   global.scriptOptions = {};
 
-  console.log(`run ${global.toolkitScript} command`);
   import(`../../commands/${global.toolkitScript}`);
 });
