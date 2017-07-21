@@ -4,30 +4,23 @@ import path from 'path';
 
 import debug from './debug';
 
-export default (options) => {
-  console.log(chalk.magenta(`[ ${options.script} ]`), `- ${options.message}\n`);
+export default ({ script, message, args }) => {
+  console.log(chalk.magenta(`[ ${script} ]`), `- ${message}\n`);
 
   const isWin = process.platform === 'win32';
   const currentPath = path.resolve(process.cwd());
   const devToolkitPath = path.resolve(__dirname, 'dev-toolkit.js');
+  const scriptToCall = path.resolve(__dirname, `../scripts/${script}.js`);
 
   debug('Platform', process.platform);
   debug('NODE_PATH', process.env.NODE_PATH);
   debug('currentPath', currentPath);
   debug('devToolkitPath', devToolkitPath);
   debug('');
-
-  debug('running Script:', options.script);
-  let args = [path.resolve(__dirname, `../scripts/${options.script}.js`)];
-  debug('in folder:', args[0]);
-
-  debug('...with options:', options);
-  debug('...with arguments:', options.args);
-  args = args.concat(options.args);
-
-  // Add color support for dependency-modules like `chalk`
-  args.push('--color');
-
+  debug('running Script:', script);
+  debug('using file:', scriptToCall);
+  debug('...with options:', { script, message, args });
+  debug('...with arguments:', args);
   debug(chalk.magenta('---'));
 
   // Forward all environment variables to `spawn` so they can be used within the toolkit
@@ -49,7 +42,14 @@ export default (options) => {
   // https://lostechies.com/derickbailey/2014/02/20/how-i-work-around-the-require-problem-in-nodejs/
   spawn(
     'node',
-    args,
+    [
+      // spawn needs to know our script
+      scriptToCall,
+      // we append any existing arguments to run the script with
+      ...args,
+      // and add color support for dependency-modules like `chalk`
+      '--color',
+    ],
     {
       env: spawnEnv,
 
