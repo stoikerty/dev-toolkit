@@ -7,10 +7,11 @@ import webpackHotMiddleware from 'webpack-hot-middleware';
 import { serverAppEntryPoint } from '../webpack/projectSettings';
 import config from '../webpack/config';
 
-const help = ({ warning, instruction, link }) => {
+const help = ({ warning, instruction, link, error }) => {
   console.log(chalk.yellow(warning));
   console.log(chalk.green(instruction));
-  console.log(chalk.gray(`see: https://github.com/stoikerty${link}`), '\n');
+  console.log(chalk.gray(`see: https://github.com/stoikerty${link}`));
+  console.log(chalk.gray('error trace:'), error, '\n');
 };
 
 // Use our own server
@@ -32,8 +33,9 @@ import(serverAppEntryPoint).then((server) => {
   server.use(webpackHotMiddleware(compiler));
 
   server.start();
-}).catch(() => help({
+}).catch(error => help({
   warning: 'You need a server app entry point.',
   instruction: 'Add the file `src/server/index.js`',
   link: '/dev-toolkit#custom-server',
+  error,
 }));

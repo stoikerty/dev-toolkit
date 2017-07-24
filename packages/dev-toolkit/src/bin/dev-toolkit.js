@@ -3,8 +3,8 @@
 import yargs from 'yargs';
 import chalk from 'chalk';
 
-import debug from './utils/debug';
 import runCommandWithSpawn from './utils/runCommandWithSpawn';
+import debug from '../utilities/debug';
 import pkg from '../../package.json';
 
 const devToolkit = ({ cmdArgs, runCommand }) => {

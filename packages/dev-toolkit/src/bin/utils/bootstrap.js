@@ -1,7 +1,7 @@
 import chalk from 'chalk';
 // import jsxHook from 'node-jsx-babel';
 
-import debug from './debug';
+import debug from '../../utilities/debug';
 import babelConfig from '../../babelrc';
 
 export default () =>

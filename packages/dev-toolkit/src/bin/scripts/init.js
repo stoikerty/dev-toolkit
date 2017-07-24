@@ -4,7 +4,7 @@ import chalk from 'chalk';
 import path from 'path';
 // import fse from 'fs-extra';
 
-import debug from '../utils/debug';
+import debug from '../../utilities/debug';
 
 const appName = process.argv[2];
 

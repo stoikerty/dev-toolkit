@@ -5,7 +5,7 @@ export const isDev = !isProd;
 
 export const projectRoot = process.cwd();
 export const buildFolder = path.resolve(projectRoot, 'build');
-export const serverAppEntryPoint = path.join(projectRoot, 'src/server/index');
+export const serverAppEntryPoint = path.join(projectRoot, 'src/server/index.js');
 
 export const entryPoint = './src/client/index.js';
 export const defaultPublicPath = '/';
