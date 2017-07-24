@@ -35,7 +35,7 @@ import(serverAppEntryPoint).then((server) => {
   server.start();
 }).catch(error => help({
   warning: 'You need a server app entry point.',
-  instruction: 'Add the file `src/server/index.js`',
+  instruction: 'Do you have the file `src/server/index.js`?',
   link: '/dev-toolkit#custom-server',
   error,
 }));
