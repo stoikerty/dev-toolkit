@@ -1,5 +1,7 @@
 import path from 'path';
 
+export babelConfig from '../babelrc';
+
 export const isProd = process.env.NODE_ENV === 'production';
 export const isDev = !isProd;
 

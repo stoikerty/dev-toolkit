@@ -1,5 +1,5 @@
 import path from 'path';
-import { DefinePlugin, HotModuleReplacementPlugin } from 'webpack';
+import { DefinePlugin, HotModuleReplacementPlugin, NoErrorsPlugin } from 'webpack';
 
 import {
   isProd,
@@ -9,6 +9,7 @@ import {
   entryPoint,
   defaultPublicPath,
   publicPath,
+  babelConfig,
 } from './projectSettings';
 
 export default {
@@ -23,9 +24,12 @@ export default {
   },
   module: {
     loaders: [{
-      test: /\.js$/,
-      exclude: /node_modules/,
-      loader: 'babel-loader',
+      test: /\.jsx?$/,
+      loaders: [
+        `babel-loader?${JSON.stringify(babelConfig)}`,
+        // `eslint-loader?${JSON.stringify(eslintConfig)}`,
+      ],
+      exclude: /(node_modules)|\.route.jsx?$|\.dynamic.jsx?$/,
     }],
   },
   plugins: [
@@ -34,6 +38,7 @@ export default {
     }),
   ].concat(isProd ? [] : [
     new HotModuleReplacementPlugin(),
+    new NoErrorsPlugin(),
   ]),
   resolve: {
     alias: {

@@ -14,7 +14,7 @@ console.log(chalk.grey('Importing Server App…'));
 import(serverAppEntryPoint).then((module) => {
   const server = module.default;
 
-  console.log(chalk.grey('Start compiling with Webpack…'));
+  console.log(chalk.grey('Starting Webpack…'));
 
   // Compile with middleware for hot-reloading
   const compiler = webpack(
@@ -26,13 +26,13 @@ import(serverAppEntryPoint).then((module) => {
         app: ['webpack-hot-middleware/client'].concat(config.entry.app),
       },
     },
-    (error) => {
-      if (error) {
-        console.log(chalk.red('Webpack Error:'), error, '\n');
+    (webpackError) => {
+      if (webpackError) {
+        console.log(chalk.red('Webpack Error:'), webpackError, '\n');
       }
 
       console.log(
-        chalk.grey('Attach dev-middleware & hot-middleware…'),
+        chalk.grey('Compiling initial bundle…'),
         '\n',
       );
 
@@ -40,24 +40,40 @@ import(serverAppEntryPoint).then((module) => {
         compiler,
         { noInfo: true, publicPath: config.output.publicPath },
       );
+      const webpackHotMiddlewareInstance = webpackHotMiddleware(compiler);
 
       webpackDevMiddlewareInstance.waitUntilValid(() => {
-        console.log(
-          chalk.green('\n✔️  Initial compilation has finished.'),
-          chalk.grey('\nStarting your Server App…'),
-          '\n',
-        );
+        console.log(chalk.green('\n✔️  Initial compilation has finished.'));
+        console.log(chalk.grey('Attaching dev-middleware & hot-middleware…'));
+        try {
+          server.use(webpackDevMiddlewareInstance);
+          server.use(webpackHotMiddlewareInstance);
+        } catch (error) {
+          help({
+            warning: 'Your server needs a `.use`-method for attaching webpack middleware.',
+            instruction: 'Example: `use(...options) { this.express.use(...options); }`',
+            link: '/dev-toolkit#custom-server',
+            error,
+          });
+        }
 
-        server.use(webpackDevMiddlewareInstance);
-        server.use(webpackHotMiddleware(compiler));
-        server.start();
+        console.log(chalk.grey('Starting your Server App…'), '\n');
+        try {
+          server.start();
+        } catch (error) {
+          help({
+            warning: 'Your server needs a `.start`-method.',
+            instruction: 'Example: `start() { this.express.listen(2000); }`',
+            link: '/dev-toolkit#custom-server',
+            error,
+          });
+        }
       });
     },
   );
 }).catch((error) => {
-  if (!fileExists(serverAppEntryPoint)) {
+  if (fileExists(serverAppEntryPoint)) {
     // It's possible that we will catch compilation/import-errors, so log those directly
-    console.log(error);
     console.log(chalk.red('Error:'), error, '\n');
   } else {
     help({
