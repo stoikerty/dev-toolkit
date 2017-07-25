@@ -1,6 +1,7 @@
 /* eslint-disable import/no-dynamic-require, global-require */
 import chalk from 'chalk';
 import webpack from 'webpack';
+import fileExists from 'file-exists';
 import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
 
@@ -32,8 +33,15 @@ import(serverAppEntryPoint).then((server) => {
   server.use(webpackHotMiddleware(compiler));
 
   server.start();
-}).catch(() => help({
-  warning: 'You need a server app entry point.',
-  instruction: 'Add the file `src/server/index.js`',
-  link: '/dev-toolkit#custom-server',
-}));
+}).catch((error) => {
+  if (!fileExists(serverAppEntryPoint)) {
+    // It's possible that we will catch compilation-errors, so just log those directly
+    console.log(chalk.red('Error:'), error, '\n');
+  } else {
+    help({
+      warning: 'You need a server app entry point.',
+      instruction: 'Add the file `src/server/index.js`',
+      link: '/dev-toolkit#custom-server',
+    });
+  }
+});

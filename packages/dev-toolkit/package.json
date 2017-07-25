@@ -50,6 +50,7 @@
   "homepage": "https://github.com/stoikerty/dev-toolkit#readme",
   "dependencies": {
     "babel-preset-stage-1": "^6.24.1",
+    "file-exists": "^4.0.0",
     "sinon": "^2.3.5",
     "sinon-chai": "^2.11.0",
     "webpack": "^3.1.0",
