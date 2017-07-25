@@ -43,7 +43,7 @@ import(serverAppEntryPoint).then((module) => {
       const webpackHotMiddlewareInstance = webpackHotMiddleware(compiler);
 
       webpackDevMiddlewareInstance.waitUntilValid(() => {
-        console.log(chalk.green('\n✔️  Initial compilation has finished.'));
+        console.log(chalk.green('\n✨  Initial compilation has finished.'));
         console.log(chalk.grey('Attaching dev-middleware & hot-middleware…'));
         try {
           server.use(webpackDevMiddlewareInstance);
