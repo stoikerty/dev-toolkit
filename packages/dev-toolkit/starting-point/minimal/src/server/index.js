@@ -2,8 +2,6 @@ import express from 'express';
 import hbs from 'express-handlebars';
 import path from 'path';
 
-import { isDev } from 'src/settings';
-
 // Unlike the client app, the server app can only ever be run on the server,
 // we therefore have direct access to Node-specific things like `process`
 const serverPort = process.env.SERVER_PORT || 2000;
@@ -11,14 +9,9 @@ const rootDirectory = process.cwd();
 const buildDir = path.join(rootDirectory, 'build');
 const serverViews = `${rootDirectory}/src/server/views`;
 
-export default class {
+export default new class {
   constructor() {
     this.express = express();
-
-    // Start up server immediately if we're not using the server via webpack
-    if (!isDev) {
-      this.start();
-    }
   }
 
   // Ability to launch server later (allows webpack to bind middleware before start)
@@ -55,4 +48,4 @@ export default class {
   use(...middlewareOptions) {
     this.express.use(...middlewareOptions);
   }
-}
+}();

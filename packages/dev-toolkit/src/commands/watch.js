@@ -7,36 +7,57 @@ import webpackHotMiddleware from 'webpack-hot-middleware';
 
 import { serverAppEntryPoint } from '../webpack/projectSettings';
 import config from '../webpack/config';
+import { help } from '../utilities';
 
-const help = ({ warning, instruction, link, error }) => {
-  console.log(chalk.yellow(warning));
-  console.log(chalk.green(instruction));
-  console.log(chalk.gray(`see: https://github.com/stoikerty${link}`));
-  console.log(chalk.gray('error trace:'), error, '\n');
-};
+console.log(chalk.grey('Importing Server App…'));
 
-// Use our own server
-import(serverAppEntryPoint).then((server) => {
+import(serverAppEntryPoint).then((module) => {
+  const server = module.default;
+
+  console.log(chalk.grey('Start compiling with Webpack…'));
+
   // Compile with middleware for hot-reloading
-  const compiler = webpack({
-    ...config,
-    devtool: 'source-map',
-    entry: {
-      ...config.entry,
-      app: ['webpack-hot-middleware/client'].concat(config.entry.app),
+  const compiler = webpack(
+    {
+      ...config,
+      devtool: 'source-map',
+      entry: {
+        ...config.entry,
+        app: ['webpack-hot-middleware/client'].concat(config.entry.app),
+      },
     },
-  });
+    (error) => {
+      if (error) {
+        console.log(chalk.red('Webpack Error:'), error, '\n');
+      }
 
-  server.use(webpackDevMiddleware(
-    compiler,
-    { noInfo: true, publicPath: config.output.publicPath },
-  ));
-  server.use(webpackHotMiddleware(compiler));
+      console.log(
+        chalk.grey('Attach dev-middleware & hot-middleware…'),
+        '\n',
+      );
 
-  server.start();
+      const webpackDevMiddlewareInstance = webpackDevMiddleware(
+        compiler,
+        { noInfo: true, publicPath: config.output.publicPath },
+      );
+
+      webpackDevMiddlewareInstance.waitUntilValid(() => {
+        console.log(
+          chalk.green('\n✔️  Initial compilation has finished.'),
+          chalk.grey('\nStarting your Server App…'),
+          '\n',
+        );
+
+        server.use(webpackDevMiddlewareInstance);
+        server.use(webpackHotMiddleware(compiler));
+        server.start();
+      });
+    },
+  );
 }).catch((error) => {
   if (!fileExists(serverAppEntryPoint)) {
-    // It's possible that we will catch compilation-errors, so just log those directly
+    // It's possible that we will catch compilation/import-errors, so log those directly
+    console.log(error);
     console.log(chalk.red('Error:'), error, '\n');
   } else {
     help({
