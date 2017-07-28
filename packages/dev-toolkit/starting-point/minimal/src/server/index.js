@@ -26,6 +26,10 @@ export default new class {
     // We tell express that it should serve all files statically
     this.express.use(express.static(buildDir));
 
+    this.express.use((req, res) => {
+      res.status(200).render('layout');
+    });
+
     // A simple health-check endpoint to see if the server is alive
     this.express.get('/health', (req, res) => {
       res.send('OK');
