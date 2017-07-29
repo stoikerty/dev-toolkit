@@ -6,13 +6,17 @@ import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
 
 import { serverAppEntryPoint } from '../webpack/projectSettings';
-import config from '../webpack/config';
+import generateConfig from '../webpack/config';
 import { help } from '../utilities';
 
 console.log(chalk.grey('Importing Server App…'));
 
 import(serverAppEntryPoint).then((module) => {
   const server = module.default;
+  let webpackAssets = {};
+  const config = generateConfig({
+    getWebpackAssets: (assets) => { webpackAssets = assets; return JSON.stringify(assets); },
+  });
 
   console.log(chalk.grey('Starting Webpack…'));
 
@@ -59,11 +63,11 @@ import(serverAppEntryPoint).then((module) => {
 
         console.log(chalk.grey('Starting your Server App…'), '\n');
         try {
-          server.start();
+          server.start({ assets: webpackAssets });
         } catch (error) {
           help({
             warning: 'Your server needs a `.start`-method.',
-            instruction: 'Example: `start() { this.express.listen(2000); }`',
+            instruction: 'Example: `start({ generatedAssets }) { this.express.listen(2000); }`',
             link: '/dev-toolkit#custom-server',
             error,
           });

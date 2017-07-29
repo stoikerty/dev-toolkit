@@ -1,4 +1,5 @@
 import path from 'path';
+import AssetsPlugin from 'assets-webpack-plugin';
 import { DefinePlugin, HotModuleReplacementPlugin, NoErrorsPlugin } from 'webpack';
 
 import {
@@ -12,7 +13,7 @@ import {
   babelConfig,
 } from './projectSettings';
 
-export default {
+export default ({ getWebpackAssets }) => ({
   entry: {
     app: [entryPoint],
   },
@@ -33,7 +34,16 @@ export default {
     }],
   },
   plugins: [
+    new AssetsPlugin({
+      prettyPrint: true,
+      filename: 'assets-manifest.json',
+      includeManifest: 'rawOutput',
+      processOutput: getWebpackAssets,
+    }),
     new DefinePlugin({
+      buildSettings: {
+        env: JSON.stringify(process.env),
+      },
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
     }),
   ].concat(isProd ? [] : [
@@ -45,4 +55,4 @@ export default {
       src: path.resolve(projectRoot, 'src'),
     },
   },
-};
+});

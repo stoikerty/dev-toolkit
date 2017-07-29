@@ -4,7 +4,8 @@ import domready from 'domready';
 
 const hotReRender = () => {
   // Dynamically require module inline for hot-reloading
-  import('./views/Shell').then((Shell) => {
+  import('./views/Shell').then((module) => {
+    const Shell = module.default;
     ReactDOM.render(
       <Shell />,
       document.querySelector('[data-jshook~="app-body"]'),

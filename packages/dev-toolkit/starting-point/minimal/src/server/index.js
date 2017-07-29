@@ -15,7 +15,7 @@ export default new class {
   }
 
   // Ability to launch server later (allows webpack to bind middleware before start)
-  start() {
+  start({ assets }) {
     // We're using handlebars as the renderer for the layout.hbs-file in `src/server/views`
     this.express.engine('hbs', hbs({ extname: 'hbs' }));
     this.express.set('views', serverViews);
@@ -26,8 +26,10 @@ export default new class {
     // We tell express that it should serve all files statically
     this.express.use(express.static(buildDir));
 
+    console.log('server assets: ', assets);
+
     this.express.use((req, res) => {
-      res.status(200).render('layout');
+      res.status(200).render('layout', { assets });
     });
 
     // A simple health-check endpoint to see if the server is alive
