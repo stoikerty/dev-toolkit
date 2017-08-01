@@ -25,6 +25,9 @@ export const rootForToolkit = path.resolve(__dirname, '../');
 debug('rootForToolkit', rootForToolkit);
 
 const pkg = requireOrNull(path.resolve(rootForRequire, 'package.json')) || {};
+export const sharedEnvs = pkg.toolkitSettings && pkg.toolkitSettings.sharedEnvs ?
+  pkg.toolkitSettings.sharedEnvs : ['NODE_ENV'];
+debug('sharedEnvs', sharedEnvs);
 export const vendor = pkg.toolkitSettings && pkg.toolkitSettings.vendor ?
   pkg.toolkitSettings.vendor : [];
 debug('vendor', vendor);

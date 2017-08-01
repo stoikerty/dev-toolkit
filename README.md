@@ -87,12 +87,23 @@ dev-toolkit -v
 
 #### Define what modules are bundled into `vendor.js`
 ```js
-// in your package.json, add `toolkitSettings` section
+// in your package.json, add `vendor` in `toolkitSettings` section
 "toolkitSettings": {
   "vendor": [
     "react",
     "react-dom",
     "react-router"
+  ]
+},
+```
+
+#### Define what environment variables are available on client
+```js
+// in your package.json, add `sharedEnvs` in `toolkitSettings` section
+"toolkitSettings": {
+  "sharedEnvs": [
+    "NODE_ENV",
+    "API_DOMAIN"
   ]
 },
 ```

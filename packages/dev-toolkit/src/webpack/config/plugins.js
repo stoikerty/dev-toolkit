@@ -11,11 +11,16 @@ import ManifestRevisionPlugin from 'manifest-revision-webpack-plugin';
 import {
   PATHS,
   env,
+  sharedEnvs,
   currentScript,
   scriptOptions,
   namingConvention,
   buildNamingConvention,
 } from '../../_userSettings';
+
+const extractedSharedEnvs = Object.keys(process.env)
+  .filter(key => sharedEnvs.indexOf(key) !== -1)
+  .reduce((obj, key) => ({ [key]: process.env[key], ...obj }), {});
 
 const sharedPlugins = [
   new ProgressBarPlugin({ width: 40 }),
@@ -28,9 +33,9 @@ const sharedPlugins = [
       ? 'production'
       : process.env.NODE_ENV
     ),
-    // All other environment variables are passed through via `buildSettings`
+    // All other environment variables are passed through via `buildSettings` if defined in `sharedEnvs`
     buildSettings: {
-      env: JSON.stringify(process.env),
+      env: JSON.stringify(extractedSharedEnvs),
     },
   }),
 ];
