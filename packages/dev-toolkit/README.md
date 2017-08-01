@@ -99,7 +99,8 @@ dev-toolkit -v
 
 #### Define what environment variables are available on client
 ```js
-// in your package.json, add `sharedEnvs` in `toolkitSettings` section
+// In your package.json, add `sharedEnvs` in `toolkitSettings` section.
+// The named variables will be available on the client via an exposed global `buildSettings.env`
 "toolkitSettings": {
   "sharedEnvs": [
     "NODE_ENV",
