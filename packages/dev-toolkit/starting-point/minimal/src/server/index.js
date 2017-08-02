@@ -26,8 +26,6 @@ export default new class {
     // We tell express that it should serve all files statically
     this.express.use(express.static(buildDir));
 
-    console.log('server assets: ', assets);
-
     this.express.use((req, res) => {
       res.status(200).render('layout', { assets });
     });
