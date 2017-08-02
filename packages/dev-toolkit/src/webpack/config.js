@@ -35,9 +35,7 @@ export default ({ getWebpackAssets }) => ({
   },
   plugins: [
     new AssetsPlugin({
-      prettyPrint: true,
       filename: 'assets-manifest.json',
-      includeManifest: 'rawOutput',
       processOutput: getWebpackAssets,
     }),
     new DefinePlugin({
