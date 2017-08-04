@@ -1,10 +1,14 @@
-import chalk from 'chalk';
+import log from './log';
 
-export default ({ warning, instruction, link, error }) => {
-  console.log(chalk.yellow(warning));
-  console.log(chalk.green(instruction));
-  console.log(chalk.gray(`see: https://github.com/stoikerty${link}`), '\n');
-  console.log(chalk.gray('error trace:'), error, '\n');
+export default ({ displayedWhen, warning, instruction, link, error }) => {
+  if (displayedWhen) {
+    log({ message: warning, type: 'warning' });
+    log({ message: instruction, type: 'success' });
+    log({ message: `see: https://github.com/stoikerty${link}\n` });
+    log({ error });
 
-  process.exit();
+    process.exit();
+  } else {
+    log({ error });
+  }
 };

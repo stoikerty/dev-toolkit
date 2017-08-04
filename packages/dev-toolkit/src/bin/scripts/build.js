@@ -1,10 +1,9 @@
 #!/usr/bin/env node
-import '../utils/bootstrap';
+import bootstrap from '../utils/bootstrap';
 
-global.toolkitScript = 'build';
-global.scriptOptions = {
-  dynamic: process.argv[2] === 'dynamic',
-};
+bootstrap().then(() => {
+  global.toolkitScript = 'build';
+  global.scriptOptions = {};
 
-console.log('run build command');
-// require('../../commands/build');
+  import(`../../commands/${global.toolkitScript}`);
+});

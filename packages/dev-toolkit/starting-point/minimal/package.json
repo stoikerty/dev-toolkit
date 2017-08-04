@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "dev-toolkit --watch",
-    "build": "dev-toolkit --build"
+    "build": "NODE_ENV=production dev-toolkit --build"
   },
   "author": "",
   "license": "ISC",
