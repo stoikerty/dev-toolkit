@@ -21,55 +21,53 @@ import(serverAppEntryPoint).then((module) => {
   log({ message: 'Starting Webpack…' });
 
   // Compile with middleware for hot-reloading
-  const compiler = webpack(
-    {
-      ...config,
-      devtool: 'source-map',
-      entry: {
-        ...config.entry,
-        app: ['webpack-hot-middleware/client'].concat(config.entry.app),
-      },
+  const compiler = webpack({
+    ...config,
+    devtool: 'source-map',
+    entry: {
+      ...config.entry,
+      app: ['webpack-hot-middleware/client'].concat(config.entry.app),
     },
-    (webpackError) => {
-      log({ error: webpackError });
-      log({ message: 'Compiling initial bundle…\n' });
+  });
 
-      const webpackDevMiddlewareInstance =
-        webpackDevMiddleware(compiler, { noInfo: true, publicPath: config.output.publicPath });
-      const webpackHotMiddlewareInstance = webpackHotMiddleware(compiler);
+  log({ message: 'Compiling initial bundle…\n' });
 
-      webpackDevMiddlewareInstance.waitUntilValid(() => {
-        log({ message: '\n✨  Initial compilation has finished.', type: 'success' });
-
-        log({ message: 'Attaching dev-middleware & hot-middleware…' });
-        try {
-          server.use(webpackDevMiddlewareInstance);
-          server.use(webpackHotMiddlewareInstance);
-        } catch (error) {
-          help({
-            displayedWhen: server && (typeof server.use !== 'function'),
-            warning: 'Your server needs a `use`-method for attaching webpack middleware.',
-            instruction: 'Example: `use(...options) { this.express.use(...options); }`',
-            link: '/dev-toolkit#custom-server',
-            error,
-          });
-        }
-
-        log({ message: 'Starting your Server App…\n' });
-        try {
-          server.start({ assets: webpackAssets });
-        } catch (error) {
-          help({
-            displayedWhen: server && (typeof server.start !== 'function'),
-            warning: 'Your server needs a `start`-method.',
-            instruction: 'Example: `start({ generatedAssets }) { this.express.listen(2000); }`',
-            link: '/dev-toolkit#custom-server',
-            error,
-          });
-        }
-      });
-    },
+  const webpackDevMiddlewareInstance = webpackDevMiddleware(
+    compiler,
+    { noInfo: true, publicPath: config.output.publicPath },
   );
+  const webpackHotMiddlewareInstance = webpackHotMiddleware(compiler);
+
+  webpackDevMiddlewareInstance.waitUntilValid(() => {
+    log({ message: '\n✨  Initial compilation has finished.', type: 'success' });
+
+    log({ message: 'Attaching dev-middleware & hot-middleware…' });
+    try {
+      server.use(webpackDevMiddlewareInstance);
+      server.use(webpackHotMiddlewareInstance);
+    } catch (error) {
+      help({
+        displayedWhen: server && (typeof server.use !== 'function'),
+        warning: 'Your server needs a `use`-method for attaching webpack middleware.',
+        instruction: 'Example: `use(...options) { this.express.use(...options); }`',
+        link: '/dev-toolkit#custom-server',
+        error,
+      });
+    }
+
+    log({ message: 'Starting your Server App…\n' });
+    try {
+      server.start({ assets: webpackAssets });
+    } catch (error) {
+      help({
+        displayedWhen: server && (typeof server.start !== 'function'),
+        warning: 'Your server needs a `start`-method.',
+        instruction: 'Example: `start({ generatedAssets }) { this.express.listen(2000); }`',
+        link: '/dev-toolkit#custom-server',
+        error,
+      });
+    }
+  });
 }).catch((error) => {
   help({
     displayedWhen: !fs.existsSync(serverAppEntryPoint),
