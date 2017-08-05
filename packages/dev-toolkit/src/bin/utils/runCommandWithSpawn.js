@@ -2,7 +2,7 @@ import spawn from 'cross-spawn';
 import chalk from 'chalk';
 import path from 'path';
 
-import debug from '../../utilities/debug';
+import { debug, log } from '../../utilities';
 
 export default ({ script, message, args }) => {
   const isWin = process.platform === 'win32';
@@ -41,7 +41,7 @@ export default ({ script, message, args }) => {
   debug('...with arguments:', args);
   debug(chalk.magenta('---'));
 
-  console.log('\n', chalk.magenta(`[ ${script} ]`), `- ${message}\n`);
+  log({ message, title: script, useSeparator: true });
   spawn(
     'node',
     [

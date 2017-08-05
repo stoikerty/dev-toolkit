@@ -55,7 +55,7 @@ import(serverAppEntryPoint).then((module) => {
       });
     }
 
-    log({ message: 'Starting your Server App…\n' });
+    log({ message: 'Starting your Server App…\n', useSeparator: true });
     try {
       server.start({ assets: webpackAssets });
     } catch (error) {

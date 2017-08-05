@@ -37,7 +37,7 @@ import(serverAppEntryPoint).then((module) => {
           log({ error: compilerError });
           log({ message: '\n✨  Finished compiling Assets.\n', type: 'success' });
 
-          log({ message: 'Rendering html using Server App…' });
+          log({ message: 'Rendering html using Server App… ', useSeparator: true });
           help({
             displayedWhen: server && (typeof server.render !== 'function'),
             warning: 'Your server needs a `render`-method to create a build.',
@@ -52,7 +52,7 @@ import(serverAppEntryPoint).then((module) => {
             link: '/dev-toolkit#custom-server',
           });
           renderPromise.then(() => {
-            log({ message: '\n ⭐️  Your build is ready ⭐️\n', type: 'success' });
+            log({ message: '\n⭐️  Your build is ready ⭐️\n', type: 'success' });
           }).catch(error => log({ error }));
         });
       },
