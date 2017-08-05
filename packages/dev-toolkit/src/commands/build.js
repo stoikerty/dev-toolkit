@@ -52,7 +52,7 @@ import(serverAppEntryPoint).then((module) => {
             link: '/dev-toolkit#custom-server',
           });
           renderPromise.then(() => {
-            log({ message: '\n ⭐️  Your build is ready ⭐️', type: 'success' });
+            log({ message: '\n ⭐️  Your build is ready ⭐️\n', type: 'success' });
           }).catch(error => log({ error }));
         });
       },

@@ -1,6 +1,6 @@
 import path from 'path';
 import AssetsPlugin from 'assets-webpack-plugin';
-import { DefinePlugin, HotModuleReplacementPlugin, NoErrorsPlugin } from 'webpack';
+import { DefinePlugin, HotModuleReplacementPlugin, NoEmitOnErrorsPlugin } from 'webpack';
 
 import {
   devToolkitRoot,
@@ -51,7 +51,7 @@ export default ({ getWebpackAssets, createBuild } = { createBuild: true }) => {
       }),
     ] : []).concat(createBuild ? [] : [
       new HotModuleReplacementPlugin(),
-      new NoErrorsPlugin(),
+      new NoEmitOnErrorsPlugin(),
     ]),
     resolve: {
       alias: {

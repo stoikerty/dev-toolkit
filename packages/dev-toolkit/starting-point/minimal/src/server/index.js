@@ -64,11 +64,11 @@ export default new class {
   }
 
   // Generated html is written to html file in build folder
-  writeHtml({ html, buildFolder, resolve, reject }){
+  writeHtml({ html, buildFolder, resolve, reject }) {
     fs.writeFile(
       path.join(buildFolder, 'index.html'),
       html,
-      error => error ? reject(error) : resolve()
+      error => (error ? reject(error) : resolve()),
     );
   }
 
