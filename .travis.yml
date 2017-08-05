@@ -4,8 +4,12 @@ node_js:
 sudo: false
 env:
   - DEV_TOOLKIT=packages/dev-toolkit
+  - BABEL_RUNNER=../../packages/babel-runner
 script:
   - cd $DEV_TOOLKIT
   - npm i
   - npm run test
+  - npm run lint
+  - cd $BABEL_RUNNER
+  - npm i
   - npm run lint

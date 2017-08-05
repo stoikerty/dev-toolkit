@@ -1,0 +1,39 @@
+{
+  "name": "babel-runner",
+  "version": "1.0.0",
+  "description": "Helper for integrating babel config & node hooks",
+  "main": "index.js",
+  "scripts": {
+    "prepublish": "npm run build",
+    "build": "babel src --out-dir dist",
+    "watch": "babel src --watch --out-dir dist",
+    "lint": "eslint --config .eslintrc src",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stoikerty/dev-toolkit/tree/master/packages/babel-runner"
+  },
+  "keywords": [
+    "babel",
+    "node-hooks",
+    "require-hooks",
+    "babelrc",
+    "babel-register",
+    "babel-config"
+  ],
+  "author": "Jorge Antunes @stoikerty",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-eslint": "^7.2.3",
+    "babel-preset-latest": "^6.24.1",
+    "babel-preset-stage-1": "^6.24.1",
+    "eslint": "^4.4.0",
+    "eslint-config-airbnb-base": "^11.0.1",
+    "eslint-plugin-import": "^2.2.0"
+  },
+  "dependencies": {
+    "babel-register": "^6.24.1"
+  }
+}
