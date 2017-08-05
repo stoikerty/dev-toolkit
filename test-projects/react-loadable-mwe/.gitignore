@@ -1,6 +1,0 @@
-*.log
-*.pid*
-.sass-cache
-.yarn-integrity
-node_modules
-npm-debug.log*
