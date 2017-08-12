@@ -24,7 +24,7 @@ export default ({ message, type, title, useSeparator }) => {
   if (useSeparator) {
     console.log(outputMessage);
     console.log(
-      chalk.grey('·'.repeat(stringLength(outputMessage) + (hasLinebreakAtEnd ? 1 : 0))),
+      chalk.grey('܅'.repeat(stringLength(outputMessage) + (hasLinebreakAtEnd ? 1 : 0))),
       hasLinebreakAtEnd ? '\n' : '',
     );
   } else {
