@@ -10,6 +10,7 @@
     "test": "bnr test",
     "test-single": "bnr test --watch --grep",
     "lint": "eslint --config .eslintrc src",
+    "quick-link": "cd ../babel-runner/ && npm link && cd ../dev-toolkit/",
     "test-minimal": "npm run build && cd ./starting-points/minimal && node ../../dist/bin/index.js"
   },
   "betterScripts": {
@@ -51,6 +52,7 @@
   "dependencies": {
     "assets-webpack-plugin": "^3.5.1",
     "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-runner": "1.0.0",
     "babel-preset-latest": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-1": "^6.24.1",

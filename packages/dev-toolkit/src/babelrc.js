@@ -1,3 +1,4 @@
+console.log('resolve: ', require.resolve('babel-preset-es2015'));
 export default {
   babelrc: false,
 

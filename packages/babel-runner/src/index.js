@@ -1,19 +1,31 @@
 import path from 'path';
+import { sync as fileExists } from 'file-exists';
 
-module.exports = ({ babelrc, nodeHooks }) => {
-  const babelConfig = path.resolve(process.cwd(), babelrc);
+const projectFolder = process.cwd();
+const defaultBabelrcJson = path.resolve(projectFolder, 'babelrc.json');
+const defaultBabelrcJS = path.resolve(projectFolder, 'babelrc.js');
+const defaultNodeHooks = path.resolve(projectFolder, 'nodeHooks.js');
 
-  // Teach Node how to use babel compilation, using babelrc config defined in root
-  require('babel-register')(babelConfig);
-
-  // Teach Node how to import other filetypes, such as .scss or .png
-  if (nodeHooks) {
-    require(path.resolve(process.cwd(), nodeHooks));
+export default ({ babelrc, nodeHooks, fileToRun } = {}) => {
+  // Teach Node how to import other filetypes, such as .scss .jsx or .png
+  if (nodeHooks && fileExists(nodeHooks)) {
+    require(nodeHooks);
+  } else if (fileExists(defaultNodeHooks)) {
+    require(defaultNodeHooks);
   }
 
-  // Run a specified file when optional argument `--run` is given
-  const options = process.argv.slice(2);
-  if (options[0] === '--run') {
-    require(path.resolve(process.cwd(), options[1]));
+  // Teach Node how to use babel compilation, using explicitly specified babelrc
+  if (babelrc && fileExists(babelrc)) {
+    require('babel-register')(require(babelrc));
+  } else if (fileExists(defaultBabelrcJson)) {
+    require('babel-register')(defaultBabelrcJson);
+  } else if (fileExists(defaultBabelrcJS)) {
+    require('babel-register')(require(defaultBabelrcJS));
+  }
+  console.log('\n\n----\n\n', babelrc, fileExists(babelrc));
+
+  if (fileToRun) {
+    // rely on Node error if file doesn't exist
+    require(fileToRun);
   }
 };

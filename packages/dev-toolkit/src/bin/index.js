@@ -3,45 +3,49 @@ import yargs from 'yargs';
 import spawn from 'cross-spawn';
 import chalk from 'chalk';
 import path from 'path';
+import babelRunner from 'babel-runner';
 
 import { log } from '../utilities';
 import pkg from '../../package.json';
 
 const runCommand = ({ command, message, args }) => {
-  log({ title: command, message, useSeparator: true });
-  spawn(
-    'node',
-    [
-      // Run command via bootstrapped node environment
-      path.resolve(__dirname, 'bootstrap.js'),
-      // We append any existing arguments to run the command with
-      ...args,
-      // And add color support for dependency-modules like `chalk`
-      '--color',
-    ],
-    {
-      env: {
-        // Transfer existing environment variables to called command
-        ...process.env,
+  if (command === 'run') {
+    babelRunner();
+  } else {
+    log({ title: command, message, useSeparator: true });
+    spawn(
+      'node',
+      [
+        // Run dev-toolkit command via bootstrapped node environment
+        path.resolve(__dirname, 'bootstrap.js'),
+        // We append any existing arguments to run the command with
+        ...args,
+        // And add color support for dependency-modules like `chalk`
+        '--color',
+      ],
+      {
+        env: {
+          // Transfer existing environment variables to called command
+          ...process.env,
 
-        // Toolkit-related environment variables
-        TOOLKIT_COMMAND: command,
-        // TOOLKIT_BABEL_RC: babelrc,
-        // TOOLKIT_NODE_HOOKS: nodeHooks,
+          // Toolkit-related environment variables
+          TOOLKIT_COMMAND: command,
 
-        // Make sure node knows about root-relative imports by giving setting the current path
-        NODE_PATH: path.resolve(process.cwd()),
+          // Make sure node knows about root-relative imports by giving setting the current path
+          NODE_PATH: path.resolve(process.cwd()),
+        },
+
+        // OSX will throw error if shell is not set
+        shell: process.platform !== 'win32',
+        stdio: 'inherit',
       },
-
-      // OSX will throw error if shell is not set
-      shell: process.platform !== 'win32',
-      stdio: 'inherit',
-    },
-  );
+    );
+  }
 };
 
 const devToolkit = ({ cmdArgs }) => {
   const processedArgs = yargs
+    .alias('r', 'run')
     .alias('w', 'watch')
     .alias('b', 'build')
     .alias('i', 'init')
@@ -54,7 +58,13 @@ const devToolkit = ({ cmdArgs }) => {
     log({ message: `\n\n[${chalk.magenta(`${pkg.name} v${pkg.version}`)}]\n\n` });
   }
 
-  // runs corresponding command inside `src/commands`-folder
+  // Runs corresponding command inside `src/commands`-folder
+  if (processedArgs.run) {
+    runCommand({
+      command: 'run',
+      args: [processedArgs.run],
+    });
+  }
   if (processedArgs.watch) {
     runCommand({
       command: 'watch',
