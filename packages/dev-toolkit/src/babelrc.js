@@ -1,5 +1,4 @@
-console.log('resolve: ', require.resolve('babel-preset-es2015'));
-export default {
+module.exports = {
   babelrc: false,
 
   presets: [

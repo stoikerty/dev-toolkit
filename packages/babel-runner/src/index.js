@@ -22,7 +22,6 @@ export default ({ babelrc, nodeHooks, fileToRun } = {}) => {
   } else if (fileExists(defaultBabelrcJS)) {
     require('babel-register')(require(defaultBabelrcJS));
   }
-  console.log('\n\n----\n\n', babelrc, fileExists(babelrc));
 
   if (fileToRun) {
     // rely on Node error if file doesn't exist
