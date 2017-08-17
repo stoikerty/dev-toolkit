@@ -26,14 +26,26 @@ export default ({ getWebpackAssets, createBuild } = { createBuild: true }) => {
       publicPath: createBuild ? publicPath : defaultPublicPath,
     },
     module: {
-      loaders: [{
-        test: /\.jsx?$/,
-        loaders: [
-          `babel-loader?${JSON.stringify(babelConfig)}`,
-          // `eslint-loader?${JSON.stringify(eslintConfig)}`,
-        ],
-        exclude: /(node_modules)|\.route.jsx?$|\.dynamic.jsx?$/,
-      }],
+      loaders: [
+        {
+          test: /\.jsx?$/,
+          loaders: [
+            `babel-loader?${JSON.stringify(babelConfig)}`,
+            // `eslint-loader?${JSON.stringify(eslintConfig)}`,
+          ],
+          exclude: /(node_modules)|\.route.jsx?$|\.dynamic.jsx?$/,
+        },
+        {
+          test: /\.route.jsx?$|\.dynamic.jsx?$/,
+          loaders: [
+            // The`bundle`-loader automatically uses module directly when code is run on the server
+            'bundle-loader?lazy&name=[name]',
+            `babel-loader?${JSON.stringify(babelConfig)}`,
+            // `eslint-loader?${JSON.stringify(eslintConfig)}`,
+          ],
+          exclude: /(node_modules)/,
+        },
+      ],
     },
     plugins: [
       new DefinePlugin({

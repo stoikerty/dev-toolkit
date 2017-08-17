@@ -54,6 +54,7 @@
     "babel-preset-latest": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-1": "^6.24.1",
+    "bundle-loader": "^0.5.5",
     "jsx-control-statements": "^3.2.5",
     "sinon": "^2.3.5",
     "sinon-chai": "^2.11.0",
