@@ -21,23 +21,26 @@
     "babel",
     "node-hooks",
     "require-hooks",
+    "universal",
+    "universal javascript",
+    "isomorphic",
     "babelrc",
     "babel-register",
-    "babel-config"
+    "babel config"
   ],
   "author": "Jorge Antunes @stoikerty",
   "license": "MIT",
   "devDependencies": {
     "babel-cli": "^6.24.1",
     "babel-eslint": "^7.2.3",
-    "babel-preset-latest": "^6.24.1",
+    "babel-preset-env": "^1.6.0",
     "babel-preset-stage-1": "^6.24.1",
     "eslint": "^4.4.0",
     "eslint-config-airbnb-base": "^11.0.1",
     "eslint-plugin-import": "^2.2.0"
   },
   "dependencies": {
-    "babel-register": "^6.24.1",
+    "babel-register": "^6.26.0",
     "file-exists": "^4.0.0"
   }
 }

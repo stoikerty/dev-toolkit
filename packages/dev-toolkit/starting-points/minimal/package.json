@@ -16,10 +16,16 @@
     ]
   },
   "dependencies": {
+    "babel-plugin-dynamic-import-node": "^1.0.2",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-1": "^6.24.1",
     "compression": "^1.6.2",
     "domready": "^1.0.8",
     "express": "^4.15.3",
     "express-handlebars": "^3.0.0",
+    "jsx-control-statements": "^3.2.5",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "serve-static": "^1.12.3"

@@ -1,4 +1,4 @@
 {
-  "presets": ["latest", "stage-1"],
+  "presets": ["env", "stage-1"],
   "plugins": ["dynamic-import-node"]
 }

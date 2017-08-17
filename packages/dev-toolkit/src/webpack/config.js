@@ -1,6 +1,7 @@
 import path from 'path';
 import AssetsPlugin from 'assets-webpack-plugin';
 import { DefinePlugin, HotModuleReplacementPlugin, NoEmitOnErrorsPlugin } from 'webpack';
+import { babelrc } from 'babel-runner';
 
 import {
   devToolkitRoot,
@@ -9,7 +10,6 @@ import {
   entryPoint,
   defaultPublicPath,
   publicPath,
-  babelConfig,
 } from './projectSettings';
 
 export default ({ getWebpackAssets, createBuild } = { createBuild: true }) => {
@@ -30,7 +30,7 @@ export default ({ getWebpackAssets, createBuild } = { createBuild: true }) => {
         {
           test: /\.jsx?$/,
           loaders: [
-            `babel-loader?${JSON.stringify(babelConfig)}`,
+            `babel-loader?${JSON.stringify(babelrc)}`,
             // `eslint-loader?${JSON.stringify(eslintConfig)}`,
           ],
           exclude: /(node_modules)|\.route.jsx?$|\.dynamic.jsx?$/,
@@ -40,7 +40,7 @@ export default ({ getWebpackAssets, createBuild } = { createBuild: true }) => {
           loaders: [
             // The`bundle`-loader automatically uses module directly when code is run on the server
             'bundle-loader?lazy&name=[name]',
-            `babel-loader?${JSON.stringify(babelConfig)}`,
+            `babel-loader?${JSON.stringify(babelrc)}`,
             // `eslint-loader?${JSON.stringify(eslintConfig)}`,
           ],
           exclude: /(node_modules)/,
