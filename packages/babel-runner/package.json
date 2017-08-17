@@ -2,13 +2,16 @@
   "name": "babel-runner",
   "version": "1.0.0",
   "description": "Helper for integrating babel config & node hooks",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "prepublish": "npm run build",
     "build": "babel src --out-dir dist",
     "watch": "babel src --watch --out-dir dist",
     "lint": "eslint --config .eslintrc src",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "babel-runner": "dist/bin/index.js"
   },
   "repository": {
     "type": "git",
@@ -34,6 +37,7 @@
     "eslint-plugin-import": "^2.2.0"
   },
   "dependencies": {
-    "babel-register": "^6.24.1"
+    "babel-register": "^6.24.1",
+    "file-exists": "^4.0.0"
   }
 }

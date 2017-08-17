@@ -3,31 +3,9 @@ import yargs from 'yargs';
 
 import sandbox from 'dist/utilities/testHelpers/sandbox';
 
-import devToolkit from './dev-toolkit';
+import { devToolkit } from './index';
 
 describe('dev-toolkit', () => {
-  const previousEnv = process.env.TOOLKIT_DEBUG;
-  sandbox.use(before, after);
-
-  afterEach(() => {
-    process.env.TOOLKIT_DEBUG = previousEnv;
-  });
-
-  describe('runs the toolkit in debug-mode', () => {
-    it('when given `-d` argument', () => {
-      const runCommand = sandbox.spy();
-
-      devToolkit({ cmdArgs: ['dev-toolkit', '-d'], runCommand });
-      expect(process.env.TOOLKIT_DEBUG).to.equal('true');
-    });
-    it('when given `--debug` argument', () => {
-      const runCommand = sandbox.spy();
-
-      devToolkit({ cmdArgs: ['dev-toolkit', '--debug'], runCommand });
-      expect(process.env.TOOLKIT_DEBUG).to.equal('true');
-    });
-  });
-
   describe('outputs current version', () => {
     it('when given `-v` argument', () => {
       sandbox.spy(console, 'log');
