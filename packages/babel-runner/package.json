@@ -5,6 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "prepublish": "npm run build",
+    "publish-beta": "npm publish --tag beta",
     "build": "babel src --out-dir dist",
     "watch": "babel src --watch --out-dir dist",
     "lint": "eslint --config .eslintrc src",
