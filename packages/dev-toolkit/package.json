@@ -1,10 +1,10 @@
 {
   "name": "dev-toolkit",
-  "version": "6.0.0-alpha-1",
+  "version": "6.0.0-beta-1",
   "description": "Development Toolkit for React Veterans",
   "main": "index.js",
   "scripts": {
-    "prepublish": "npm run build",
+    "prepare": "npm run build",
     "build": "babel src --out-dir dist",
     "watch": "babel src --watch --out-dir dist",
     "test": "bnr test",
@@ -54,7 +54,7 @@
     "babel-plugin-dynamic-import-node": "^1.0.2",
     "babel-preset-env": "^1.6.0",
     "babel-preset-stage-1": "^6.24.1",
-    "babel-runner": "1.0.0",
+    "babel-runner": "0.0.0-beta-1",
     "bundle-loader": "^0.5.5",
     "sinon": "^2.4.1",
     "sinon-chai": "^2.13.0",
