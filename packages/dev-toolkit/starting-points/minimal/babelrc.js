@@ -10,6 +10,5 @@ module.exports = {
   plugins: [
     'babel-plugin-dynamic-import-node',
     'babel-plugin-transform-class-properties',
-    'jsx-control-statements',
   ].map(require.resolve),
 };
