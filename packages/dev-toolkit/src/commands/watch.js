@@ -1,5 +1,5 @@
 /* eslint-disable import/no-dynamic-require, global-require */
-import fs from 'fs';
+import { pathExistsSync } from 'fs-extra';
 import webpack from 'webpack';
 import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
@@ -70,7 +70,7 @@ import(serverAppEntryPoint).then((module) => {
   });
 }).catch((error) => {
   help({
-    displayedWhen: !fs.existsSync(serverAppEntryPoint),
+    displayedWhen: !pathExistsSync(serverAppEntryPoint),
     warning: 'You need a server app entry point.',
     instruction: 'Do you have the file `src/server/index.js`?',
     link: '/dev-toolkit#custom-server',

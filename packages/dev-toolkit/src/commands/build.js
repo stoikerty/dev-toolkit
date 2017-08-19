@@ -1,7 +1,6 @@
 /* eslint-disable import/no-dynamic-require, global-require */
-import fs from 'fs';
 import webpack from 'webpack';
-import rimraf from 'rimraf';
+import { pathExistsSync, emptyDir } from 'fs-extra';
 
 import { serverAppEntryPoint, buildFolder } from '../webpack/projectSettings';
 import generateConfig from '../webpack/config';
@@ -15,8 +14,8 @@ import(serverAppEntryPoint).then((module) => {
   log({ message: 'Deleting previous build folder…' });
 
   // delete previous build folder & compile all files necessary for serving
-  rimraf(buildFolder, (rimrafError) => {
-    log({ error: rimrafError });
+  emptyDir(buildFolder, (error) => {
+    log({ error });
 
     let webpackAssets = {};
     const config = generateConfig({
@@ -60,7 +59,7 @@ import(serverAppEntryPoint).then((module) => {
   });
 }).catch((error) => {
   help({
-    displayedWhen: !fs.existsSync(serverAppEntryPoint),
+    displayedWhen: !pathExistsSync(serverAppEntryPoint),
     warning: 'You need a server app entry point.',
     instruction: 'Do you have the file `src/server/index.js`?',
     link: '/dev-toolkit#custom-server',

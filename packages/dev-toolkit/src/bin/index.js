@@ -55,7 +55,7 @@ const devToolkit = ({ cmdArgs }) => {
 
   // Outputs current version number from `package.json`
   if (processedArgs.v || processedArgs.version) {
-    log({ message: `\n\n[${chalk.magenta(`${pkg.name} v${pkg.version}`)}]\n\n` });
+    log({ title: 'version', message: `You are running ${chalk.green(`${pkg.name} v${pkg.version}`)}\n` });
   }
 
   // Runs corresponding command inside `src/commands`-folder
