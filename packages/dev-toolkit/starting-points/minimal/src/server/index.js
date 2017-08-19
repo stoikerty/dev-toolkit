@@ -52,24 +52,20 @@ export default new class {
   }
 
   // Rendering of the html on build happens through this render-method
-  render({ assets, buildFolder }) {
+  preRender({ assets, buildFolder }) {
     return new Promise((resolve, reject) => {
       // Here handlebars is used to generate the html, but you can use any other method
       this.handlebarsInstance
         .render(path.join(serverViews, 'layout.hbs'), { assets })
         .then((html) => {
-          this.writeHtml({ html, buildFolder, resolve, reject });
+          // Generated html is written to html file in build folder
+          fs.writeFile(
+            path.join(buildFolder, 'index.html'),
+            html,
+            error => (error ? reject(error) : resolve()),
+          );
         });
     });
-  }
-
-  // Generated html is written to html file in build folder
-  writeHtml({ html, buildFolder, resolve, reject }) {
-    fs.writeFile(
-      path.join(buildFolder, 'index.html'),
-      html,
-      error => (error ? reject(error) : resolve()),
-    );
   }
 
   // Bind the express middleware so webpack can use it to attach the dev-server middleware,

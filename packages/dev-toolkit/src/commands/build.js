@@ -38,21 +38,21 @@ import(serverAppEntryPoint).then((module) => {
 
           log({ message: 'Rendering html using Server App… ', useSeparator: true });
           help({
-            displayedWhen: server && (typeof server.render !== 'function'),
-            warning: 'Your server needs a `render`-method to create a build.',
-            instruction: 'Example: `render({ assets, buildFolder }) { return new Promise(() => { ... }); }`',
+            displayedWhen: server && (typeof server.preRender !== 'function'),
+            warning: 'Your server needs a `preRender`-method to create a build.',
+            instruction: 'Example: `preRender({ assets, buildFolder }) { return new Promise(() => { ... }); }`',
             link: '/dev-toolkit#custom-server',
           });
-          const renderPromise = server.render({ assets: webpackAssets, buildFolder });
+          const renderPromise = server.preRender({ assets: webpackAssets, buildFolder });
           help({
             displayedWhen: typeof renderPromise.then !== 'function',
-            warning: 'The server `render`-method must return a Promise to say it\'s finished.',
-            instruction: 'Example: `render({ assets, buildFolder }) { return new Promise(() => { ... }); }`',
+            warning: 'The server `preRender`-method must return a Promise to say it\'s finished.',
+            instruction: 'Example: `preRender({ assets, buildFolder }) { return new Promise(() => { ... }); }`',
             link: '/dev-toolkit#custom-server',
           });
           renderPromise.then(() => {
             log({ message: '\n⭐️  Your build is ready ⭐️\n', type: 'success' });
-          }).catch(error => log({ error }));
+          }).catch(buildError => log({ error: buildError }));
         });
       },
     );
