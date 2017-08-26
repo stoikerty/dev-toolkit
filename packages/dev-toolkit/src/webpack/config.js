@@ -50,7 +50,10 @@ export default ({ getWebpackAssets, createBuild } = { createBuild: true }) => {
     plugins: [
       new DefinePlugin({
         buildSettings: {
-          // env: JSON.stringify(extractedSharedEnvs),
+          env: JSON.stringify({
+            NODE_ENV: process.env.NODE_ENV,
+            // extract remaining env variables
+          }),
         },
         'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
       }),

@@ -6,6 +6,7 @@
   "rules": {
     "no-multiple-empty-lines": [ "error", { "max": 1 } ],
     "import/no-extraneous-dependencies": 0,
+    "react/jsx-filename-extension": 0,
     "import/no-unresolved": [ "error", { "ignore": [ "src/" ] } ]
   },
 

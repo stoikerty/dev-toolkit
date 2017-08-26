@@ -3,6 +3,8 @@ import expressHandlebars from 'express-handlebars';
 import path from 'path';
 import fs from 'fs';
 
+import { isDev } from 'src/settings';
+
 // Unlike the client app, the server app can only ever be run on Node.js
 // we therefore have direct access to Node-specific things like `process`
 const serverPort = process.env.SERVER_PORT || 2000;
@@ -27,7 +29,9 @@ export default new class {
   // Ability to launch server later (allows webpack to bind middleware before start)
   start({ assets }) {
     // We tell express to serve all files statically
-    this.express.use(express.static(buildDir));
+    if (!isDev) {
+      this.express.use(express.static(buildDir));
+    }
 
     // Render the layout-file on any incoming requests
     this.express.use((req, res) => {
