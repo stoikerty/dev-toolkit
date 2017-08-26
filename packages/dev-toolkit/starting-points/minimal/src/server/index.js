@@ -3,7 +3,7 @@ import expressHandlebars from 'express-handlebars';
 import path from 'path';
 import fs from 'fs';
 
-// Unlike the client app, the server app can only ever be run on the server,
+// Unlike the client app, the server app can only ever be run on Node.js
 // we therefore have direct access to Node-specific things like `process`
 const serverPort = process.env.SERVER_PORT || 2000;
 const rootDirectory = process.cwd();
