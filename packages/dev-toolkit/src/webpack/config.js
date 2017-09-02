@@ -4,12 +4,13 @@ import { DefinePlugin, HotModuleReplacementPlugin, NoEmitOnErrorsPlugin } from '
 import { babelrc } from 'babel-runner';
 
 import {
-  devToolkitRoot,
   projectRoot,
   buildFolder,
   entryPoint,
   defaultPublicPath,
   publicPath,
+  assetsFolder,
+  assetsManifestName,
 } from './projectSettings';
 
 export default ({ getWebpackAssets, createBuild } = { createBuild: true }) => {
@@ -60,8 +61,8 @@ export default ({ getWebpackAssets, createBuild } = { createBuild: true }) => {
     ].concat(getWebpackAssets ? [
       new AssetsPlugin({
         // Ignore the generated file by putting it into the `dist`-folder
-        path: path.resolve(devToolkitRoot, 'dist'),
-        filename: 'assets-manifest.json',
+        path: assetsFolder,
+        filename: assetsManifestName,
         processOutput: getWebpackAssets,
       }),
     ] : []).concat(createBuild ? [] : [

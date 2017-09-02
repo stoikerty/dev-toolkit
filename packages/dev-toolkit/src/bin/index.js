@@ -32,7 +32,7 @@ const runCommand = ({ command, message, args }) => {
           TOOLKIT_COMMAND: command,
 
           // Make sure node knows about root-relative imports by giving setting the current path
-          NODE_PATH: path.resolve(process.cwd()),
+          // NODE_PATH: path.resolve(process.cwd()),
         },
 
         // OSX will throw error if shell is not set

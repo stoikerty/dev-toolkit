@@ -3,22 +3,26 @@ import expressHandlebars from 'express-handlebars';
 import path from 'path';
 import fs from 'fs';
 
-import { isDev } from 'src/settings';
+import { isClient } from 'src/settings';
 
-// Unlike the client app, the server app can only ever be run on Node.js
+// Unlike the client app, the server app can only ever be run in Node.js
 // we therefore have direct access to Node-specific things like `process`
 const serverPort = process.env.SERVER_PORT || 2000;
-const rootDirectory = process.cwd();
-const buildDir = path.join(rootDirectory, 'build');
-const serverViews = `${rootDirectory}/src/server/views`;
+const projectDirectory = process.cwd();
+const serverViews = `${projectDirectory}/src/server/views`;
 
 export default new class {
   constructor() {
+    // Let dev-toolkit know about express by setting `this.express`,
+    // this allows dev-toolkit to attach the dev-server middleware to webpack
     this.express = express();
+
+    console.log(`rendering on ${isClient ? 'Client' : 'Server'}`);
 
     // Handlebars is used for server-rendering the html template in `src/server/views`
     this.handlebarsInstance = expressHandlebars.create();
-    // We also use it in express
+
+    // Use Handlebars as the view engine in express
     this.express.engine('hbs', this.handlebarsInstance.engine);
     this.express.set('views', serverViews).set('view engine', 'hbs');
 
@@ -26,13 +30,8 @@ export default new class {
     this.express.disable('x-powered-by');
   }
 
-  // Ability to launch server later (allows webpack to bind middleware before start)
+  // Ability to launch server later (allows dev-toolkit to bind webpack-middleware before start)
   start({ assets }) {
-    // We tell express to serve all files statically
-    if (!isDev) {
-      this.express.use(express.static(buildDir));
-    }
-
     // Render the layout-file on any incoming requests
     this.express.use((req, res) => {
       res.status(200).render('layout', { assets });
@@ -58,7 +57,7 @@ export default new class {
   // Rendering of the html on build happens through this render-method
   preRender({ assets, buildFolder }) {
     return new Promise((resolve, reject) => {
-      // Here handlebars is used to generate the html, but you can use any other method
+      // Here handlebars is used to generate the html without express
       this.handlebarsInstance
         .render(path.join(serverViews, 'layout.hbs'), { assets })
         .then((html) => {
@@ -70,11 +69,5 @@ export default new class {
           );
         });
     });
-  }
-
-  // Bind the express middleware so webpack can use it to attach the dev-server middleware,
-  // this method should redirect to & act in the same way as the express `use`-method.
-  use(...middlewareOptions) {
-    this.express.use(...middlewareOptions);
   }
 }();

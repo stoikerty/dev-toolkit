@@ -3,12 +3,6 @@
 
 module.exports = {
   presets: [
-    'babel-preset-env',
-    'babel-preset-stage-1',
-    'babel-preset-react',
-  ].map(require.resolve),
-  plugins: [
-    'babel-plugin-dynamic-import-node',
-    'babel-plugin-transform-class-properties',
-  ].map(require.resolve),
+    require.resolve('babel-preset-dev-toolkit'),
+  ],
 };

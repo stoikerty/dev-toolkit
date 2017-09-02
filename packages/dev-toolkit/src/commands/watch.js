@@ -12,6 +12,7 @@ log({ message: 'Importing Server App…' });
 
 import(serverAppEntryPoint).then((module) => {
   const server = module.default;
+
   let webpackAssets = {};
   const config = generateConfig({
     getWebpackAssets: (assets) => { webpackAssets = assets; return JSON.stringify(assets); },
@@ -43,13 +44,13 @@ import(serverAppEntryPoint).then((module) => {
 
     log({ message: 'Attaching dev-middleware & hot-middleware…' });
     try {
-      server.use(webpackDevMiddlewareInstance);
-      server.use(webpackHotMiddlewareInstance);
+      server.express.use(webpackDevMiddlewareInstance);
+      server.express.use(webpackHotMiddlewareInstance);
     } catch (error) {
       help({
-        displayedWhen: server && (typeof server.use !== 'function'),
-        warning: 'Your server needs a `use`-method for attaching webpack middleware.',
-        instruction: 'Example: `use(...options) { this.express.use(...options); }`',
+        displayedWhen: server && !server.express,
+        warning: 'Your server needs a `this.express` to be set for attaching webpack middleware.',
+        instruction: 'Example: `constructor() { this.express = express(); }`',
         link: '/dev-toolkit#custom-server',
         error,
       });

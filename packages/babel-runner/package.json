@@ -27,7 +27,7 @@
     "isomorphic",
     "babelrc",
     "babel-register",
-    "babel config"
+    "dev-toolkit"
   ],
   "author": "Jorge Antunes @stoikerty",
   "license": "MIT",
