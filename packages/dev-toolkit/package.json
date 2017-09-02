@@ -11,7 +11,7 @@
     "test-single": "bnr test --watch --grep",
     "lint": "eslint --config .eslintrc src",
     "quicklink": "cd ../babel-runner/ && npm run build && cd ../dev-toolkit/",
-    "test-minimal": "npm run build && cd ./starting-points/minimal && node ../../dist/bin/index.js"
+    "test-minimal": "bnr test-minimal"
   },
   "betterScripts": {
     "test": {
@@ -19,6 +19,13 @@
       "env": {
         "TOOLKIT_TEST": "true",
         "NODE_PATH": "."
+      }
+    },
+    "test-minimal": {
+      "command": "npm run build && cd $MINIMAL_EXAMPLE && node $DEV_TOOLKIT_BINARY",
+      "env": {
+        "MINIMAL_EXAMPLE": "../../examples/minimal",
+        "DEV_TOOLKIT_BINARY": "../../packages/dev-toolkit/dist/bin/index.js"
       }
     }
   },
