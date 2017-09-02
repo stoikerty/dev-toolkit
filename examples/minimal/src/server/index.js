@@ -3,13 +3,14 @@ import expressHandlebars from 'express-handlebars';
 import path from 'path';
 import fs from 'fs';
 
+import RootComponent from 'src/client/RootComponent';
 import { isClient } from 'src/settings';
 
 // Unlike the client app, the server app can only ever be run in Node.js
 // we therefore have direct access to Node-specific things like `process`
 const serverPort = process.env.SERVER_PORT || 2000;
 const projectDirectory = process.cwd();
-const serverViews = `${projectDirectory}/src/server/views`;
+const serverViews = path.resolve(projectDirectory, '/src/server/views');
 
 export default new class {
   constructor() {
@@ -32,9 +33,12 @@ export default new class {
 
   // Ability to launch server later (allows dev-toolkit to bind webpack-middleware before start)
   start({ assets }) {
-    // Render the layout-file on any incoming requests
+    // Render the template-file on any incoming requests
     this.express.use((req, res) => {
-      res.status(200).render('layout', { assets });
+      res.status(200).render(
+        'template',
+        { assets, html: renderToString(<RootComponent />)
+      });
     });
 
     // Provide a simple health-check endpoint to see if the server is alive
@@ -59,7 +63,10 @@ export default new class {
     return new Promise((resolve, reject) => {
       // Here handlebars is used to generate the html without express
       this.handlebarsInstance
-        .render(path.join(serverViews, 'layout.hbs'), { assets })
+        .render(
+          path.join(serverViews, 'template.hbs'),
+          { assets, html: renderToString(<RootComponent />)
+        })
         .then((html) => {
           // Generated html is written to html file in build folder
           fs.writeFile(

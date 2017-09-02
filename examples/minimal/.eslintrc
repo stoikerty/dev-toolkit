@@ -4,17 +4,11 @@
   ],
   "parser": "babel-eslint",
   "rules": {
-    "no-multiple-empty-lines": [ "error", { "max": 1 } ],
-    "import/no-extraneous-dependencies": 0,
     "react/jsx-filename-extension": 0
   },
   "settings": {
     "import/resolver": {
       "babel-module": {}
     }
-  },
-
-  "env": {
-    "browser": true
   }
 }
