@@ -2,6 +2,8 @@ import express from 'express';
 import expressHandlebars from 'express-handlebars';
 import path from 'path';
 import fs from 'fs';
+import React from 'react';
+import { renderToString } from 'react-dom/server';
 
 import RootComponent from 'src/client/RootComponent';
 import { isClient } from 'src/settings';
@@ -10,15 +12,13 @@ import { isClient } from 'src/settings';
 // we therefore have direct access to Node-specific things like `process`
 const serverPort = process.env.SERVER_PORT || 2000;
 const projectDirectory = process.cwd();
-const serverViews = path.resolve(projectDirectory, '/src/server/views');
+const serverViews = path.resolve(projectDirectory, 'src/server/views');
 
 export default new class {
   constructor() {
     // Let dev-toolkit know about express by setting `this.express`,
     // this allows dev-toolkit to attach the dev-server middleware to webpack
     this.express = express();
-
-    console.log(`rendering on ${isClient ? 'Client' : 'Server'}`);
 
     // Handlebars is used for server-rendering the html template in `src/server/views`
     this.handlebarsInstance = expressHandlebars.create();
@@ -61,7 +61,7 @@ export default new class {
   // Rendering of the html on build happens through this render-method
   preRender({ assets, buildFolder }) {
     return new Promise((resolve, reject) => {
-      // Here handlebars is used to generate the html without express
+      // Here handlebars is used to generate the html without express and without webpack
       this.handlebarsInstance
         .render(
           path.join(serverViews, 'template.hbs'),

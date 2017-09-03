@@ -4,6 +4,7 @@ import { DefinePlugin, HotModuleReplacementPlugin, NoEmitOnErrorsPlugin } from '
 import { babelrc } from 'babel-runner';
 
 import {
+  devToolkitRoot,
   projectRoot,
   buildFolder,
   entryPoint,
@@ -70,9 +71,25 @@ export default ({ getWebpackAssets, createBuild } = { createBuild: true }) => {
       new NoEmitOnErrorsPlugin(),
     ]),
     resolve: {
-      alias: {
-        src: path.resolve(projectRoot, 'src'),
-      },
+      // alias: {
+      //   src: path.resolve(projectRoot, 'src'),
+      // },
+      modules: [
+        // Resolve dev-toolkit related modules like 'webpack-hot-middleware/client'
+        path.resolve(devToolkitRoot, 'node_modules'),
+        // Resolve all other modules from client app
+        path.resolve(projectRoot, 'node_modules'),
+        'node_modules',
+      ],
+    },
+    resolveLoader: {
+      modules: [
+        // Resolve dev-toolkit related webpack loaders like 'babel-loader'
+        path.resolve(devToolkitRoot, 'node_modules'),
+        // Resolve webpack loaders related to project
+        path.resolve(projectRoot, 'node_modules'),
+        'node_modules',
+      ],
     },
   };
 };

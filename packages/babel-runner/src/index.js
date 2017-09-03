@@ -1,5 +1,4 @@
 import path from 'path';
-import fs from 'fs';
 import { sync as fileExists } from 'file-exists';
 
 const projectFolder = process.cwd();
@@ -19,15 +18,14 @@ export const babelrc = (() => {
   const defaultBabelrcJson = path.resolve(projectFolder, '.babelrc');
 
   if (fileExists(defaultBabelrcJson)) {
-    return JSON.parse(fs.readFileSync(defaultBabelrcJson, 'utf8'));
+    // No need to read the file, we can use babel-register's automatic `.babelrc`-finding "feature"
+    return {};
   } else if (fileExists(defaultBabelrcJS)) {
+    // We read a file which expects all presets & plugins to be resolved with `require.resolve`
     return require(defaultBabelrcJS);
-  } else if (pkgConfig.babelrc) {
-    if (pkgConfig.babelrc.match('.js$')) {
-      return require(pkgConfig.babelrc);
-    }
-
-    return JSON.parse(fs.readFileSync(pkgConfig.babelrc, 'utf8'));
+  } else if (pkgConfig.babelrc && pkgConfig.babelrc.match('.js$') && fileExists(pkgConfig.babelrc)) {
+    // Use the `babelrc.js`-file defined in package.json
+    return require(pkgConfig.babelrc);
   }
 
   return null;
@@ -48,6 +46,6 @@ export default ({ fileToRun } = {}) => {
 
   if (fileToRun) {
     // rely on Node error if file doesn't exist
-    require(fileToRun);
+    require(path.resolve(process.cwd(), fileToRun));
   }
 };

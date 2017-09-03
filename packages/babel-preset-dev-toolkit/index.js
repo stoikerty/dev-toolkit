@@ -5,12 +5,14 @@
 
 module.exports = {
   presets: [
+    require.resolve('babel-preset-env'),
+    // Use create-react-app default
     require.resolve('babel-preset-react-app'),
   ],
   plugins: [
-    // Sane if-statements
+    // Sane if-statements for React
     require.resolve('jsx-control-statements'),
-    // allows root-relative imports
+    // Allow root-relative imports for client & server
     [
       require.resolve('babel-plugin-module-resolver'), {
         root: ['.'],
