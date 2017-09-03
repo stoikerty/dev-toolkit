@@ -4,13 +4,11 @@ import path from 'path';
 import fs from 'fs';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
-
-import RootComponent from 'src/client/RootComponent';
-import { isClient } from 'src/settings';
+import decache from 'decache';
 
 // Unlike the client app, the server app can only ever be run in Node.js
 // we therefore have direct access to Node-specific things like `process`
-const serverPort = process.env.SERVER_PORT || 2000;
+const serverPort = process.env.SERVER_PORT || 3000;
 const projectDirectory = process.cwd();
 const serverViews = path.resolve(projectDirectory, 'src/server/views');
 
@@ -35,9 +33,13 @@ export default new class {
   start({ assets }) {
     // Render the template-file on any incoming requests
     this.express.use((req, res) => {
+      // Remove Client App from cache (cheap server-side Hot-Reload)
+      decache('src/client/RootComponent');
+      // Load newest version of Client App via RootComponent
+      const RootComponent = require('src/client/RootComponent').default;
       res.status(200).render(
         'template',
-        { assets, html: renderToString(<RootComponent />)
+        { assets, renderedHtml: renderToString(<RootComponent />)
       });
     });
 
@@ -60,13 +62,15 @@ export default new class {
 
   // Rendering of the html on build happens through this render-method
   preRender({ assets, buildFolder }) {
+    // Load Client App via RootComponent
+    const RootComponent = require('src/client/RootComponent').default;
     return new Promise((resolve, reject) => {
       // Here handlebars is used to generate the html without express and without webpack
       this.handlebarsInstance
         .render(
           path.join(serverViews, 'template.hbs'),
-          { assets, html: renderToString(<RootComponent />)
-        })
+          { assets, renderedHtml: renderToString(<RootComponent />) }
+        )
         .then((html) => {
           // Generated html is written to html file in build folder
           fs.writeFile(

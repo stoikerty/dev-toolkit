@@ -8,10 +8,12 @@ export const projectRoot = process.cwd();
 export const buildFolder = path.resolve(projectRoot, 'build');
 export const serverAppEntryPoint = path.resolve(projectRoot, 'src/server/index.js');
 
-export const assetsFolder = path.resolve(devToolkitRoot, 'dist');
+export const assetsManifestFolder = path.resolve(devToolkitRoot, 'dist');
 export const assetsManifestName = 'assets-manifest.json';
-export const assetsManifestFile = path.resolve(assetsFolder, assetsManifestName);
+export const assetsManifestFile = path.resolve(assetsManifestFolder, assetsManifestName);
 
 export const entryPoint = './src/client/index.js';
-export const defaultPublicPath = '/';
-export const publicPath = process.env.PUBLIC_PATH || defaultPublicPath;
+// Make sure leading slash & trailing slash is present (otherwise source-map won't work)
+export const publicPath = (process.env.ASSETS_PATH || '/assets').replace(/^\/?/, '/').replace(/\/?$/, '/');
+// Remove leading slash from public path to create correct file-path
+export const assetsPath = path.resolve(buildFolder, publicPath.replace(/^\//, ''));

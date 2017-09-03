@@ -6,11 +6,10 @@ import { babelrc } from 'babel-runner';
 import {
   devToolkitRoot,
   projectRoot,
-  buildFolder,
+  assetsPath,
   entryPoint,
-  defaultPublicPath,
   publicPath,
-  assetsFolder,
+  assetsManifestFolder,
   assetsManifestName,
 } from './projectSettings';
 
@@ -22,10 +21,10 @@ export default ({ getWebpackAssets, createBuild } = { createBuild: true }) => {
       app: [entryPoint],
     },
     output: {
-      path: buildFolder,
+      path: assetsPath,
       filename: `${namingConvention}.js`,
       chunkFilename: `${namingConvention}.js`,
-      publicPath: createBuild ? publicPath : defaultPublicPath,
+      publicPath,
     },
     module: {
       loaders: [
@@ -62,7 +61,7 @@ export default ({ getWebpackAssets, createBuild } = { createBuild: true }) => {
     ].concat(getWebpackAssets ? [
       new AssetsPlugin({
         // Ignore the generated file by putting it into the `dist`-folder
-        path: assetsFolder,
+        path: assetsManifestFolder,
         filename: assetsManifestName,
         processOutput: getWebpackAssets,
       }),
@@ -71,9 +70,6 @@ export default ({ getWebpackAssets, createBuild } = { createBuild: true }) => {
       new NoEmitOnErrorsPlugin(),
     ]),
     resolve: {
-      // alias: {
-      //   src: path.resolve(projectRoot, 'src'),
-      // },
       modules: [
         // Resolve dev-toolkit related modules like 'webpack-hot-middleware/client'
         path.resolve(devToolkitRoot, 'node_modules'),
