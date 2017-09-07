@@ -16,7 +16,8 @@
     "import/extensions": [
       "off",
       "never"
-    ]
+    ],
+    "arrow-parens": [2, "always"]
   },
 
   "env": {

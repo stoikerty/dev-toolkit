@@ -1,5 +1,5 @@
 // Shared settings between client and server.
-
+//
 // A global handed over by a webpack plugin allows us to retrieve environment variables.
 // eslint-disable-next-line no-undef
 const creatingBuild = typeof buildSettings !== typeof undefined;

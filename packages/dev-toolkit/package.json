@@ -5,13 +5,11 @@
   "main": "index.js",
   "scripts": {
     "prepare": "npm run build",
-    "build": "babel src --out-dir dist",
+    "build": "babel src --out-dir dist && node ./dist/copy-examples",
     "watch": "babel src --watch --out-dir dist",
     "test": "bnr test",
     "test-single": "bnr test --watch --grep",
-    "lint": "eslint --config .eslintrc src",
-    "quicklink": "cd ../babel-runner/ && npm run build && cd ../dev-toolkit/",
-    "test-minimal": "bnr test-minimal"
+    "lint": "eslint --config .eslintrc src"
   },
   "betterScripts": {
     "test": {
@@ -65,10 +63,13 @@
     "babel-runner": "0.0.0-beta-2",
     "bundle-loader": "^0.5.5",
     "cross-spawn": "^5.0.1",
+    "decomment": "^0.9.0",
     "fs-extra": "^4.0.1",
+    "klaw-sync": "^3.0.0",
     "sinon": "^2.4.1",
     "sinon-chai": "^2.13.0",
     "string-length": "^2.0.0",
+    "strip-comments": "^0.4.4",
     "webpack": "^3.5.5",
     "webpack-dev-middleware": "^1.12.0",
     "webpack-hot-middleware": "^2.18.2",

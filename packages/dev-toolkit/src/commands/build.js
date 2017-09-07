@@ -52,7 +52,7 @@ import(serverAppEntryPoint).then((module) => {
           });
           renderPromise.then(() => {
             log({ message: '\n⭐️  Your build is ready ⭐️\n', type: 'success' });
-          }).catch(buildError => log({ error: buildError }));
+          }).catch((buildError) => log({ error: buildError }));
         });
       },
     );

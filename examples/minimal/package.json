@@ -1,20 +1,12 @@
 {
   "name": "dev-toolkit-starter",
   "version": "1.0.0",
-  "description": "dev-toolkit starting point",
-  "main": "index.js",
+  "description": "universal app",
   "scripts": {
     "dev": "NODE_ENV=development dev-toolkit --watch",
     "build": "NODE_ENV=production dev-toolkit --build"
   },
   "author": "",
-  "license": "ISC",
-  "toolkitSettings": {
-    "vendor": [
-      "react",
-      "react-dom"
-    ]
-  },
   "devDependencies": {
     "babel-preset-dev-toolkit": "0.0.0-beta-2",
     "decache": "^4.1.0",
