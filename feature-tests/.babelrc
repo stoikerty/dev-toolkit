@@ -1,4 +1,11 @@
 {
   "presets": ["env", "stage-1"],
-  "plugins": ["dynamic-import-node"]
+  "plugins": [
+    "dynamic-import-node",
+    [
+      "module-resolver", {
+        "root": ["."]
+      }
+    ]
+  ]
 }

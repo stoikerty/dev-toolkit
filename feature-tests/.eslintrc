@@ -8,6 +8,11 @@
   "rules": {
     "arrow-parens": [2, "always"]
   },
+  "settings": {
+    "import/resolver": {
+      "babel-module": {}
+    }
+  },
 
   "env": {
     "mocha": true

@@ -7,15 +7,17 @@
     "build": "NODE_ENV=production dev-toolkit --build"
   },
   "author": "",
-  "devDependencies": {
-    "babel-preset-dev-toolkit": "0.0.0-beta-3",
-    "decache": "^4.1.0",
-    "dev-toolkit": "6.0.0-beta-7"
-  },
   "dependencies": {
     "express": "^4.15.4",
     "express-handlebars": "^3.0.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1"
+  },
+  "devDependencies": {
+    "babel-preset-dev-toolkit": "0.0.0-beta-3",
+    "decache": "^4.1.0",
+    "dev-toolkit": "6.0.0-beta-7",
+    "eslint-import-resolver-babel-module": "^3.0.0",
+    "eslint-plugin-import": "^2.7.0"
   }
 }

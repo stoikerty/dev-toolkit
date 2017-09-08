@@ -2,19 +2,22 @@
   "name": "dev-toolkit-feature-tests",
   "version": "0.0.0",
   "scripts": {
-    "test": "mocha --compilers js:babel-core/register --require testHelpers/setupTests.js 'packages/**/*.spec.js' 'examples/**/*.spec.js' --timeout 30000",
+    "test": "mocha --compilers js:babel-core/register 'packages/**/*.spec.js' 'examples/**/*.spec.js' --timeout 30000",
     "lint": "eslint ."
   },
   "devDependencies": {},
   "dependencies": {
     "babel-eslint": "^7.2.3",
     "babel-plugin-dynamic-import-node": "^1.0.2",
+    "babel-plugin-module-resolver": "^2.7.1",
     "babel-preset-env": "^1.6.0",
     "babel-preset-stage-1": "^6.24.1",
     "babel-register": "^6.26.0",
     "chai": "^4.1.2",
+    "empty-dir": "^0.2.1",
     "eslint": "^3.4.0",
     "eslint-config-airbnb-base": "^11.3.1",
+    "eslint-import-resolver-babel-module": "^3.0.0",
     "eslint-plugin-import": "^2.7.0",
     "fs-extra": "^4.0.1",
     "mocha": "^3.5.0",
