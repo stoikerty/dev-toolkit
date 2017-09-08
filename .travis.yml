@@ -2,7 +2,7 @@ language: node_js
 sudo: false
 script:
   - npm i
-  - npm run boostrap
+  - npm run bootstrap
   - cd examples/minimal
   - npm run build
   - cd ../..
