@@ -2,6 +2,7 @@ import { expect } from 'chai';
 import path from 'path';
 import { ensureDirSync, removeSync } from 'fs-extra';
 import shell from 'shelljs';
+import time from 'to-time';
 
 const rootDir = path.resolve(__dirname);
 const devToolkitDir = path.resolve(rootDir, '../../../packages/dev-toolkit');
@@ -26,5 +27,5 @@ describe('dev-toolkit installation', () => {
     expect(testPkg.dependencies[pkg.name]).to.not.equal(undefined);
     expect(testPkg.dependencies[pkg.name]).to.equal(`^${pkg.version}`);
     done();
-  });
+  }).timeout(time('2 minutes'));
 });

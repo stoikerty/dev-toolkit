@@ -4,6 +4,7 @@
 
 dist/
 build/
+temporary-test-dir/
 
 #############
 ## Node
