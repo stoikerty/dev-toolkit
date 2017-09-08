@@ -2,10 +2,10 @@
   "name": "dev-toolkit-project",
   "version": "0.0.0",
   "scripts": {
-    "bootstrap": "lerna bootstrap"
+    "bootstrap": "lerna bootstrap",
+    "fix-permissions": "chmod 555 packages/dev-toolkit/dist/bin/* packages/babel-runner/dist/bin/*"
   },
   "devDependencies": {
-    "lerna": "^2.1.2",
-    "better-npm-run": "^0.1.0"
+    "lerna": "^2.1.2"
   }
 }
