@@ -2,7 +2,7 @@
   "name": "dev-toolkit-feature-tests",
   "version": "0.0.0",
   "scripts": {
-    "test": "mocha --compilers js:babel-core/register --require testHelpers/setupTests.js 'examples/**/*.spec.js' 'packages/**/*.spec.js' --timeout 30000",
+    "test": "mocha --compilers js:babel-core/register --require testHelpers/setupTests.js 'packages/**/*.spec.js' 'examples/**/*.spec.js' --timeout 30000",
     "lint": "eslint ."
   },
   "devDependencies": {},
