@@ -1,8 +1,9 @@
 language: node_js
 sudo: false
 script:
-  - echo 'Run feature tests'
+  - echo '- Run feature tests -'
   - cd feature-tests
   - npm i && npm run test
-  - echo 'Make sure bootstrapping the project works'
+  - echo '- Make sure bootstrapping the project works -'
+  - cd ..
   - npm i && npm run bootstrap
