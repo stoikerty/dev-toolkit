@@ -1,9 +1,13 @@
 import path from 'path';
-import { copySync, removeSync, readFile, outputFile } from 'fs-extra';
+import { ensureDirSync, copySync, removeSync, readFile, outputFile } from 'fs-extra';
 import klawSync from 'klaw-sync';
 import decomment from 'decomment';
 
-const rootDir = path.resolve(__dirname, '../../../');
+import { log } from '../utilities';
+
+log({ title: 'examples', message: 'Copy examples for dev-toolkit distribution', useSeparator: true });
+
+const rootDir = path.resolve(__dirname, '../../../../');
 const inputFolder = path.resolve(rootDir, 'examples');
 const examples = path.resolve(__dirname, 'examples');
 const examplesWithoutComments = path.resolve(__dirname, 'examples-no-comment');
@@ -38,11 +42,17 @@ const removeCommentsFromJSFiles = ({ directory }) => {
   });
 };
 
+log({ message: 'Copying examples into dist folder...' });
 removeSync(examples);
+ensureDirSync(examples);
 copySync(inputFolder, examples, { filter: ignoreDevFolders });
 removeDevFiles({ directory: examples });
 
+log({ message: 'Creating an examples-folder in dist that has comments stripped out...' });
 removeSync(examplesWithoutComments);
+ensureDirSync(examplesWithoutComments);
 copySync(inputFolder, examplesWithoutComments, { filter: ignoreDevFolders });
 removeDevFiles({ directory: examplesWithoutComments });
 removeCommentsFromJSFiles({ directory: examplesWithoutComments });
+
+log({ message: 'Finished examples task.', useSeparator: true });

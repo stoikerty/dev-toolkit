@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "prepare": "npm run build",
-    "build": "babel src --out-dir dist && node ./dist/copy-examples",
+    "build": "babel src --out-dir dist && node ./dist/postinstall-prepare/copy-examples",
     "watch": "babel src --watch --out-dir dist",
     "test": "bnr test",
     "test-single": "bnr test --watch --grep",
