@@ -11,6 +11,7 @@ import decache from 'decache';
 const serverPort = process.env.SERVER_PORT || 3000;
 const projectDirectory = process.cwd();
 const serverViews = path.resolve(projectDirectory, 'src/server/views');
+const rootComponentPath = path.resolve(projectDirectory, 'src/client/RootComponent');
 
 export default new class {
   constructor() {
@@ -34,9 +35,9 @@ export default new class {
     // Render the template-file on any incoming requests
     this.express.use((req, res) => {
       // Remove Client App from cache (cheap server-side Hot-Reload)
-      decache('src/client/RootComponent');
+      decache(rootComponentPath);
       // Load newest version of Client App via RootComponent
-      const RootComponent = require('src/client/RootComponent').default;
+      const RootComponent = require(rootComponentPath).default;
       res.status(200).render(
         'template',
         { assets, renderedHtml: renderToString(<RootComponent />)
@@ -63,7 +64,7 @@ export default new class {
   // Rendering of the html on build happens through this render-method
   preRender({ assets, buildFolder }) {
     // Load Client App via RootComponent
-    const RootComponent = require('src/client/RootComponent').default;
+    const RootComponent = require(rootComponentPath).default;
     return new Promise((resolve, reject) => {
       // Here handlebars is used to generate the html without express and without webpack
       this.handlebarsInstance

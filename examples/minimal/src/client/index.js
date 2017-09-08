@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+// NOTE: This File is only run on the client. The server imports `RootComponent` directly.
+
 const hotReRender = () => {
   // Dynamically require module inline for hot-reloading
   const RootComponent = require('./RootComponent').default;
