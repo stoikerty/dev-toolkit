@@ -3,6 +3,7 @@ sudo: false
 script:
   - npm i
   - npm run bootstrap
+  - npm run fix-permissions
   - cd examples/minimal
   - npm run build
   - cd ../..
