@@ -8,9 +8,9 @@
   },
   "author": "",
   "devDependencies": {
-    "babel-preset-dev-toolkit": "0.0.0-beta-2",
+    "babel-preset-dev-toolkit": "0.0.0-beta-3",
     "decache": "^4.1.0",
-    "dev-toolkit": "6.0.0-beta-5"
+    "dev-toolkit": "6.0.0-beta-7"
   },
   "dependencies": {
     "express": "^4.15.4",
