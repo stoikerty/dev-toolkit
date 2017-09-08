@@ -5,7 +5,7 @@ import decomment from 'decomment';
 
 import { log } from '../utilities';
 
-log({ title: 'examples', message: 'Copy examples for dev-toolkit distribution', useSeparator: true });
+log({ title: 'prepare', message: 'Copy examples into dev-toolkit distribution', useSeparator: true });
 
 const rootDir = path.resolve(__dirname, '../../../../');
 const inputFolder = path.resolve(rootDir, 'examples');
@@ -55,4 +55,4 @@ copySync(inputFolder, examplesWithoutComments, { filter: ignoreDevFolders });
 removeDevFiles({ directory: examplesWithoutComments });
 removeCommentsFromJSFiles({ directory: examplesWithoutComments });
 
-log({ message: 'Finished examples task.', useSeparator: true });
+log({ message: 'Finished examples task\n', useSeparator: true });
