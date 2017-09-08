@@ -2,7 +2,9 @@
   "name": "dev-toolkit-project",
   "version": "0.0.0",
   "scripts": {
+    "start": "npm run delete-dist && npm run bootstrap && npm run fix-permissions",
     "bootstrap": "lerna bootstrap",
+    "delete-dist": "rm -rf packages/dev-toolkit/dist/bin packages/babel-runner/dist/bin",
     "fix-permissions": "chmod 555 packages/dev-toolkit/dist/bin/* packages/babel-runner/dist/bin/*"
   },
   "devDependencies": {
