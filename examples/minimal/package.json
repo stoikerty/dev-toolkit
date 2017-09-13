@@ -16,7 +16,7 @@
   "devDependencies": {
     "babel-preset-dev-toolkit": "0.0.0-beta-3",
     "decache": "^4.1.0",
-    "dev-toolkit": "6.0.0-beta-7",
+    "dev-toolkit": "6.0.0-beta-9",
     "eslint-import-resolver-babel-module": "^3.0.0",
     "eslint-plugin-import": "^2.7.0"
   }
