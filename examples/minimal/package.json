@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "universal app",
   "scripts": {
-    "dev": "NODE_ENV=development dev-toolkit --watch",
-    "build": "NODE_ENV=production dev-toolkit --build"
+    "dev": "NODE_ENV=development dev-toolkit watch",
+    "build": "NODE_ENV=production dev-toolkit build"
   },
   "author": "",
   "dependencies": {
@@ -16,7 +16,7 @@
   "devDependencies": {
     "babel-preset-dev-toolkit": "0.0.0-beta-3",
     "decache": "^4.1.0",
-    "dev-toolkit": "6.0.0-beta-9",
+    "dev-toolkit": "6.0.0-beta-10",
     "eslint-import-resolver-babel-module": "^3.0.0",
     "eslint-plugin-import": "^2.7.0"
   }

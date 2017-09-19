@@ -7,17 +7,18 @@ import babelRunner from 'babel-runner';
 import { log } from '../utilities';
 
 const runCommand = ({ command, message, args }) => {
+  log({ title: command, message, useSeparator: true });
   if (command === 'run') {
+    // TODO: pass filename into babel runner
     babelRunner();
   } else {
-    log({ title: command, message, useSeparator: true });
     spawn(
       'node',
       [
         // Run dev-toolkit command via bootstrapped node environment
         path.resolve(__dirname, 'bootstrap.js'),
         // We append any existing arguments to run the command with
-        ...args,
+        ...args || [],
         // And add color support for dependency-modules like `chalk`
         '--color',
       ],
@@ -49,10 +50,9 @@ const devToolkit = ({ cmdArgs }) => {
       command: 'build',
       aliases: ['build', 'b'],
       desc: 'Generates a static build',
-      handler: (argv) => (runCommand({
+      handler: () => (runCommand({
         command: 'build',
         message: 'Generating a static build',
-        argv,
       })),
     })
 
@@ -60,10 +60,9 @@ const devToolkit = ({ cmdArgs }) => {
       command: 'version',
       aliases: ['version', 'v'],
       desc: 'Outputs current version number',
-      handler: (argv) => (runCommand({
+      handler: () => (runCommand({
         command: 'version',
         message: 'Output current version number',
-        argv,
       })),
     })
 
@@ -71,67 +70,26 @@ const devToolkit = ({ cmdArgs }) => {
       command: 'watch',
       aliases: ['watch', 'w'],
       desc: 'Watches files for development',
-      handler: (argv) => (runCommand({
+      handler: () => (runCommand({
         command: 'watch',
         message: 'Watching files for development',
-        argv,
+      })),
+    })
+
+    .command({
+      command: 'run',
+      aliases: ['run', 'r'],
+      desc: 'Runs a file with defined babel & nodeHooks configuration',
+      handler: () => (runCommand({
+        command: 'run',
+        message: 'Run file with universal configuration',
       })),
     })
 
     .help()
     .argv;
 
-    // .alias('b', 'build')
-    // .alias('i', 'init')
-    // .alias('s', 'serve')
-    // .alias('v', 'version')
-    // .alias('w', 'watch')
-    // .alias('r', 'run')
-  yargs
-    .parse(cmdArgs);
-
-  // Runs corresponding command inside `src/commands`-folder
-  // if (processedArgs.build) {
-  //   runCommand({
-  //     command: 'build',
-  //     message: 'Creating a static build',
-  //     args: [processedArgs],
-  //   });
-  // }
-  // if (processedArgs.init) {
-  //   runCommand({
-  //     command: 'init',
-  //     message: 'Initializing new project',
-  //     args: [processedArgs.init],
-  //   });
-  // }
-  // if (processedArgs.serve) {
-  //   runCommand({
-  //     command: 'serve',
-  //     message: 'Watching files for development',
-  //     args: [processedArgs.serve],
-  //   });
-  // }
-  // if (processedArgs.version) {
-  //   runCommand({
-  //     command: 'version',
-  //     message: 'Output current version number',
-  //     args: [processedArgs.version],
-  //   });
-  // }
-  // if (processedArgs.watch) {
-  //   runCommand({
-  //     command: 'watch',
-  //     message: 'Watching files for development',
-  //     args: [processedArgs.watch],
-  //   });
-  // }
-  // if (processedArgs.run) {
-  //   runCommand({
-  //     command: 'run',
-  //     args: [processedArgs.run],
-  //   });
-  // }
+  yargs.parse(cmdArgs);
 };
 
 // Run toolkit immediately using yargs if we're not testing it
