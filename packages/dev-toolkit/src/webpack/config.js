@@ -60,7 +60,6 @@ export default ({ getWebpackAssets, createBuild } = { createBuild: true }) => {
       }),
     ].concat(getWebpackAssets ? [
       new AssetsPlugin({
-        // Ignore the generated file by putting it into the `dist`-folder
         path: assetsManifestFolder,
         filename: assetsManifestName,
         processOutput: getWebpackAssets,

@@ -8,7 +8,7 @@ export const projectRoot = process.cwd();
 export const buildFolder = path.resolve(projectRoot, 'build');
 export const serverAppEntryPoint = path.resolve(projectRoot, 'src/server/index.js');
 
-export const assetsManifestFolder = path.resolve(devToolkitRoot, 'dist');
+export const assetsManifestFolder = buildFolder;
 export const assetsManifestName = 'assets-manifest.json';
 export const assetsManifestFile = path.resolve(assetsManifestFolder, assetsManifestName);
 
