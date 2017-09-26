@@ -17,3 +17,5 @@ export const entryPoint = './src/client/index.js';
 export const publicPath = (process.env.ASSETS_PATH || '/assets').replace(/^\/?/, '/').replace(/\/?$/, '/');
 // Remove leading slash from public path to create correct file-path
 export const assetsPath = path.resolve(buildFolder, publicPath.replace(/^\//, ''));
+
+export const userSettingsPath = path.resolve(projectRoot, 'dev-toolkit.config.js');

@@ -1,5 +1,5 @@
-import logMessage from './log/message';
-import logError from './log/error';
+import logMessage from './message';
+import logError from './error';
 
 export default ({ message, error, type, title, useSeparator }) => {
   if (message) {

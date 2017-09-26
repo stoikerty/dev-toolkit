@@ -13,10 +13,11 @@ import {
   assetsManifestName,
 } from './projectSettings';
 
-export default ({ getWebpackAssets, createBuild } = { createBuild: true }) => {
+export default ({ getWebpackAssets, createBuild, userSettings } = { createBuild: true }) => {
   const namingConvention = createBuild ? '[name].[chunkhash]' : '[name]';
 
-  return {
+  // Allow completely extending webpack with `webpack.customize`
+  return userSettings.customize({
     entry: {
       app: [entryPoint],
     },
@@ -46,7 +47,10 @@ export default ({ getWebpackAssets, createBuild } = { createBuild: true }) => {
           ],
           exclude: /(node_modules)/,
         },
-      ],
+      ].concat(
+        // Add any user settings from `webpack.loaders`
+        userSettings.loaders,
+      ),
     },
     plugins: [
       new DefinePlugin({
@@ -67,7 +71,10 @@ export default ({ getWebpackAssets, createBuild } = { createBuild: true }) => {
     ] : []).concat(createBuild ? [] : [
       new HotModuleReplacementPlugin(),
       new NoEmitOnErrorsPlugin(),
-    ]),
+    ]).concat(
+      // Add any user settings from `webpack.plugins`
+      userSettings.plugins,
+    ),
     resolve: {
       modules: [
         // Resolve dev-toolkit related modules like 'webpack-hot-middleware/client'
@@ -86,5 +93,7 @@ export default ({ getWebpackAssets, createBuild } = { createBuild: true }) => {
         'node_modules',
       ],
     },
-  };
+  }, {
+    createBuild,
+  });
 };
