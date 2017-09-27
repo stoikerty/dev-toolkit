@@ -37,10 +37,12 @@ export default new class {
       // Remove Client App from cache (cheap server-side Hot-Reload)
       decache(rootComponentPath);
       // Load newest version of Client App via RootComponent
-      const RootComponent = require(rootComponentPath).default;
-      res.status(200).render(
-        'template',
-        { assets, renderedHtml: renderToString(<RootComponent />)
+      import(rootComponentPath).then((module) => {
+        const RootComponent = module.default;
+        res.status(200).render(
+          'template',
+          { assets, renderedHtml: renderToString(<RootComponent />)
+        });
       });
     });
 

@@ -10,6 +10,8 @@ module.exports = {
     require.resolve('babel-preset-react-app'),
   ],
   plugins: [
+    // Support `import()`-statement
+    require.resolve('babel-plugin-dynamic-import-node'),
     // Sane if-statements for React
     require.resolve('jsx-control-statements'),
     // Allow root-relative imports for client & server

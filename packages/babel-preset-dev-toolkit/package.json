@@ -1,6 +1,6 @@
 {
   "name": "babel-preset-dev-toolkit",
-  "version": "0.0.0-beta-3",
+  "version": "0.0.0-beta-5",
   "description": "Uses create-react-app default, adds sane if-statements & root-relative imports",
   "main": "index.js",
   "scripts": {
@@ -24,6 +24,7 @@
   "author": "Jorge Antunes @stoikerty",
   "license": "MIT",
   "dependencies": {
+    "babel-plugin-dynamic-import-node": "^1.1.0",
     "babel-plugin-module-resolver": "^2.7.1",
     "babel-preset-env": "^1.6.0",
     "babel-preset-react-app": "^3.0.2",
