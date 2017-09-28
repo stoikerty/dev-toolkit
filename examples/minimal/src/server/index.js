@@ -5,6 +5,7 @@ import fs from 'fs';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
 import decache from 'decache';
+import { isDev, isProd, usePreRender } from 'dev-toolkit/settings';
 
 // Unlike the client app, the server app can only ever be run in Node.js
 // we therefore have direct access to Node-specific things like `process`
@@ -31,25 +32,36 @@ export default new class {
   }
 
   // Ability to launch server later (allows dev-toolkit to bind webpack-middleware before start)
-  start({ assets }) {
-    // Render the template-file on any incoming requests
-    this.express.use((req, res) => {
-      // Remove Client App from cache (cheap server-side Hot-Reload)
-      decache(rootComponentPath);
-      // Load newest version of Client App via RootComponent
-      import(rootComponentPath).then((module) => {
-        const RootComponent = module.default;
-        res.status(200).render(
-          'template',
-          { assets, renderedHtml: renderToString(<RootComponent />)
-        });
-      });
-    });
-
+  start({ assets, buildFolder }) {
     // Provide a simple health-check endpoint to see if the server is alive
     this.express.get('/health', (req, res) => {
       res.send('OK');
     });
+
+    // Make assets in build folder available to the client.
+    // In development, the `webpack-dev-middleware` used by dev-toolkit takes care of this.
+    if (!isDev) {
+      this.express.use(express.static(buildFolder));
+    }
+
+    // By default, dev-toolkit serves the build folder with pre-rendered files.
+    if (isDev || (isProd && !usePreRender)) {
+      // Render the template-file on any incoming requests
+      this.express.use((req, res) => {
+        // Remove Client App from cache (cheap server-side Hot-Reload)
+        if (isDev) {
+          decache(rootComponentPath);
+        }
+        // Load newest version of Client App via RootComponent
+        import(rootComponentPath).then((module) => {
+          const RootComponent = module.default;
+          res.status(200).render(
+            'template',
+            { assets, renderedHtml: renderToString(<RootComponent />)
+          });
+        });
+      });
+    }
 
     // Run the express server by listening on the specified port
     this.serverInstance = this.express.listen(serverPort, () => {
@@ -63,7 +75,7 @@ export default new class {
     this.serverInstance.close();
   }
 
-  // Rendering of the html on build happens through this render-method
+  // Rendering of the html on build happens through this preRender-method
   preRender({ assets, buildFolder }) {
     // Load Client App via RootComponent
     const RootComponent = require(rootComponentPath).default;

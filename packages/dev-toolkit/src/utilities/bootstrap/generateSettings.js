@@ -1,6 +1,20 @@
+import extractedSharedEnvs from './extractedSharedEnvs';
+
 export default (settings = {}) => {
   const webpack = settings.webpack || {};
   const devToolkit = settings.devToolkit || {};
+
+  const sharedEnvs = {
+    // extract only explicitly declared environment variables from `process.env`
+    ...extractedSharedEnvs({
+      withEnvs: devToolkit.sharedEnvs && Array.isArray(devToolkit.sharedEnvs)
+        ? devToolkit.sharedEnvs : [],
+      fromEnvs: process.env,
+    }),
+    // make NODE_ENV always available
+    NODE_ENV: process.env.NODE_ENV,
+  };
+
   return {
     webpack: {
       loaders: webpack.loaders && Array.isArray(webpack.loaders)
@@ -11,8 +25,9 @@ export default (settings = {}) => {
         ? webpack.customize : (config) => config,
     },
     devToolkit: {
-      preRender: (typeof devToolkit.preRender === 'boolean')
-        ? devToolkit.preRender : true,
+      usePreRender: (typeof devToolkit.usePreRender === 'boolean')
+        ? devToolkit.usePreRender : true,
+      sharedEnvs,
     },
   };
 };

@@ -1,6 +1,6 @@
 import path from 'path';
 import AssetsPlugin from 'assets-webpack-plugin';
-import { DefinePlugin, HotModuleReplacementPlugin, NoEmitOnErrorsPlugin } from 'webpack';
+import { DefinePlugin, HotModuleReplacementPlugin, NoEmitOnErrorsPlugin, optimize } from 'webpack';
 import { babelrc } from 'babel-runner';
 
 import {
@@ -13,11 +13,11 @@ import {
   assetsManifestName,
 } from './projectSettings';
 
-export default ({ getWebpackAssets, createBuild, userSettings } = { createBuild: true }) => {
-  const namingConvention = createBuild ? '[name].[chunkhash]' : '[name]';
+export default ({ getWebpackAssets, creatingBuild, userSettings } = { creatingBuild: true }) => {
+  const namingConvention = creatingBuild ? '[name].[chunkhash]' : '[name]';
 
   // Allow completely extending webpack with `webpack.customize`
-  return userSettings.customize({
+  return userSettings.webpack.customize({
     entry: {
       app: [entryPoint],
     },
@@ -49,17 +49,13 @@ export default ({ getWebpackAssets, createBuild, userSettings } = { createBuild:
         },
       ].concat(
         // Add any user settings from `webpack.loaders`
-        userSettings.loaders,
+        userSettings.webpack.loaders,
       ),
     },
     plugins: [
       new DefinePlugin({
-        buildSettings: {
-          env: JSON.stringify({
-            NODE_ENV: process.env.NODE_ENV,
-            // extract remaining env variables
-          }),
-        },
+        devToolkitSettings: JSON.stringify(userSettings.devToolkit),
+        // React & Redux rely on this to be set explicitly
         'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
       }),
     ].concat(getWebpackAssets ? [
@@ -68,12 +64,14 @@ export default ({ getWebpackAssets, createBuild, userSettings } = { createBuild:
         filename: assetsManifestName,
         processOutput: getWebpackAssets,
       }),
-    ] : []).concat(createBuild ? [] : [
+    ] : []).concat(creatingBuild ? [
+      new optimize.UglifyJsPlugin(),
+    ] : [
       new HotModuleReplacementPlugin(),
       new NoEmitOnErrorsPlugin(),
     ]).concat(
       // Add any user settings from `webpack.plugins`
-      userSettings.plugins,
+      userSettings.webpack.plugins,
     ),
     resolve: {
       modules: [
@@ -94,6 +92,6 @@ export default ({ getWebpackAssets, createBuild, userSettings } = { createBuild:
       ],
     },
   }, {
-    createBuild,
+    creatingBuild,
   });
 };

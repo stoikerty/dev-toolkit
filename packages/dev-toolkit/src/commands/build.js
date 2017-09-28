@@ -6,7 +6,7 @@ import { buildFolder } from '../webpack/projectSettings';
 import generateConfig from '../webpack/config';
 import { help, log, bootstrap } from '../utilities';
 
-bootstrap().then(({ server, settings }) => {
+bootstrap().then(({ server, userSettings }) => {
   log({ message: 'Deleting previous build folder…' });
 
   // delete previous build folder & compile all files necessary for serving
@@ -15,9 +15,9 @@ bootstrap().then(({ server, settings }) => {
 
     let webpackAssets = {};
     const config = generateConfig({
+      creatingBuild: true,
       getWebpackAssets: (assets) => { webpackAssets = assets; return JSON.stringify(assets); },
-      createBuild: true,
-      userSettings: settings.webpack,
+      userSettings,
     });
 
     log({ message: 'Starting Webpack…' });
@@ -33,7 +33,7 @@ bootstrap().then(({ server, settings }) => {
           log({ message: '\n✨  Finished compiling Assets.\n', type: 'success' });
           const showSuccessMessage = () => log({ message: '\n⭐️  Your build is ready ⭐️\n', type: 'success' });
 
-          if (settings.devToolkit.preRender) {
+          if (userSettings.devToolkit.usePreRender) {
             log({ message: 'Rendering html using Server App… ', useSeparator: true });
             help({
               displayedWhen: server && (typeof server.preRender !== 'function'),

@@ -5,21 +5,22 @@ import { buildFolder, assetsManifestFile } from '../webpack/projectSettings';
 import { help, log, bootstrap } from '../utilities';
 
 bootstrap().then(({ server }) => {
-  // We tell express to serve from build folder when used without webpack
-  server.use(server.static(buildFolder));
-
-  const webpackAssets = () => {
+  const getWebpackAssets = new Promise((resolve) => {
     if (pathExistsSync(assetsManifestFile)) {
-      // read manifest file
-      return {};
+      import(assetsManifestFile).then((json) => {
+        resolve({ assets: json });
+      }).catch((error) => {
+        log({ message: 'Couldn\'t read `assets-manifest.json`', error });
+      });
+    } else {
+      log({ message: '`assets-manifest.json` not found. ' });
+      resolve({ assets: {} });
     }
-
-    return {};
-  };
+  });
 
   log({ message: 'Starting your Server App…\n', useSeparator: true });
   try {
-    server.start({ assets: webpackAssets });
+    getWebpackAssets.then(({ assets }) => server.start({ assets, buildFolder }));
   } catch (error) {
     help({
       displayedWhen: server && (typeof server.start !== 'function'),

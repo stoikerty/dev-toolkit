@@ -43,6 +43,7 @@ const runCommand = ({ command, message, args }) => {
 };
 
 const devToolkit = ({ cmdArgs }) => {
+  // eslint-disable-next-line no-unused-expressions
   yargs
     .usage('\nUsage: dev-toolkit <command> [options]')
 
@@ -73,6 +74,16 @@ const devToolkit = ({ cmdArgs }) => {
       handler: () => (runCommand({
         command: 'watch',
         message: 'Watching files for development',
+      })),
+    })
+
+    .command({
+      command: 'serve',
+      aliases: ['serve', 's'],
+      desc: 'Serves the app',
+      handler: () => (runCommand({
+        command: 'serve',
+        message: 'Serving app with `start`-method',
       })),
     })
 

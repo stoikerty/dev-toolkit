@@ -1,19 +1,13 @@
-// Shared settings between client and server.
-//
-// A global handed over by a webpack plugin allows us to retrieve environment variables.
-// eslint-disable-next-line no-undef
-const creatingBuild = typeof buildSettings !== typeof undefined;
-
-// If we're not creating a build, we're server-rendering the client app.
-// Therefore we'll want to use `process.env` instead of the build settings.
-// eslint-disable-next-line no-undef
-const env = creatingBuild ? buildSettings.env : process.env;
+// Get environment variables shared between the client & server
+// NOTE: `NODE_ENV` is available by default but for security reasons, all other
+// environment variables must be declared explicitly in `dev-toolkit.config.js`.
+import { sharedEnvs } from 'dev-toolkit/settings';
 
 // Assign booleans for each environment we might be in
-export const isProd = env.NODE_ENV === 'production';
-export const isDev = env.NODE_ENV === 'development';
-export const isTest = env.NODE_ENV === 'test';
+export const isProd = sharedEnvs.NODE_ENV === 'production';
+export const isDev = sharedEnvs.NODE_ENV === 'development';
 
-// Detect whether the client-app is being rendered on the client or on the server
-export const isServer = !creatingBuild && !isTest;
-export const isClient = !isServer;
+// Example of explicitly declared env which will be bundled into client-bundle.
+// Make sure you understand how these envs flow through the app & into the client.
+// Hint: Try running `npm run dev` and compare output with `npm run start`
+export const customEnvContent = sharedEnvs.MY_CUSTOM_ENV;

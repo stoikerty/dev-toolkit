@@ -3,15 +3,16 @@ import webpack from 'webpack';
 import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
 
+import { buildFolder } from '../webpack/projectSettings';
 import generateConfig from '../webpack/config';
 import { help, log, bootstrap } from '../utilities';
 
-bootstrap().then(({ server, settings }) => {
+bootstrap().then(({ server, userSettings }) => {
   let webpackAssets = {};
   const config = generateConfig({
+    creatingBuild: false,
     getWebpackAssets: (assets) => { webpackAssets = assets; return JSON.stringify(assets); },
-    createBuild: false,
-    userSettings: settings.webpack,
+    userSettings,
   });
 
   log({ message: 'Starting Webpack…' });
@@ -53,7 +54,7 @@ bootstrap().then(({ server, settings }) => {
 
     log({ message: 'Starting your Server App…\n', useSeparator: true });
     try {
-      server.start({ assets: webpackAssets });
+      server.start({ assets: webpackAssets, buildFolder });
     } catch (error) {
       help({
         displayedWhen: server && (typeof server.start !== 'function'),

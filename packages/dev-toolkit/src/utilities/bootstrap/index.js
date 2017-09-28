@@ -1,6 +1,7 @@
 import { pathExistsSync } from 'fs-extra';
 
 import generateSettings from './generateSettings';
+import defineGlobalDevToolkitSettings from './defineGlobalDevToolkitSettings';
 import importServerApp from './importServerApp';
 import log from '../log';
 import { userSettingsPath } from '../../webpack/projectSettings';
@@ -9,16 +10,14 @@ export default () => new Promise((resolve) => {
   if (pathExistsSync(userSettingsPath)) {
     log({ message: 'Using settings from `dev-toolkit.config.js`…' });
     import(userSettingsPath).then((module) => {
-      // We're expecting a Node.js module here declared with `module.exports`
-      const settings = module;
-
-      importServerApp().then(({ server }) => {
-        resolve({ server, settings: generateSettings(settings) });
-      });
+      // We're expecting a classic Node.js module declared with `module.exports`
+      const userSettings = generateSettings(module);
+      defineGlobalDevToolkitSettings({ settings: userSettings.devToolkit });
+      importServerApp().then(({ server }) => resolve({ server, userSettings }));
     });
   } else {
-    importServerApp().then(({ server }) => {
-      resolve({ server, settings: generateSettings() });
-    });
+    const userSettings = generateSettings();
+    defineGlobalDevToolkitSettings({ settings: userSettings.devToolkit });
+    importServerApp().then(({ server }) => resolve({ server, userSettings }));
   }
 });
