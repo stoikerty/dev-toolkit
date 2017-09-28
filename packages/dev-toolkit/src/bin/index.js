@@ -48,6 +48,16 @@ const devToolkit = ({ cmdArgs }) => {
     .usage('\nUsage: dev-toolkit <command> [options]')
 
     .command({
+      command: 'init',
+      aliases: ['init', 'i'],
+      desc: 'Initializes a new project',
+      handler: () => (runCommand({
+        command: 'init',
+        message: 'Initializing a new project',
+      })),
+    })
+
+    .command({
       command: 'build',
       aliases: ['build', 'b'],
       desc: 'Generates a static build',
