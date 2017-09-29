@@ -28,7 +28,7 @@ const runCommand = ({ command, message, args }) => {
           ...process.env,
 
           // Toolkit-related environment variables
-          TOOLKIT_COMMAND: command,
+          DEV_TOOLKIT_COMMAND: command,
 
           // Make sure node knows about root-relative imports by giving setting the current path
           // NODE_PATH: path.resolve(process.cwd()),
