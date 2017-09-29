@@ -5,7 +5,7 @@ import { isProd, isDev, customEnvContent } from 'src/settings';
 // Use this as the entry-point for your app.
 export default () => (
   <div>
-    {'App View runnings in:'}<br/>
+    {'App View running in:'}<br/>
     {`Production? ${isProd}`}<br/>
     {`Development? ${isDev}`}<br/>
     <br/>
