@@ -6,7 +6,7 @@ bootstrap().then(({ server }) => {
   try {
     getWebpackAssets().then(({ assets }) => {
       preRender({ server, webpackAssets: assets, buildFolder })
-        .then(log({ message: '\n⭐️  PreRender finished ⭐️\n', type: 'success' }));
+        .then(() => log({ message: '\n⭐️  PreRender finished ⭐️\n', type: 'success' }));
     });
   } catch (error) {
     log({ message: 'Unable to preRender', error });
