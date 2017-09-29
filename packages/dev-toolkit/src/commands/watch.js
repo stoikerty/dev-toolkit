@@ -1,4 +1,3 @@
-/* eslint-disable import/no-dynamic-require, global-require */
 import webpack from 'webpack';
 import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';

@@ -98,6 +98,16 @@ const devToolkit = ({ cmdArgs }) => {
     })
 
     .command({
+      command: 'preRender',
+      aliases: ['preRender', 'p'],
+      desc: 'preRender the app',
+      handler: () => (runCommand({
+        command: 'preRender',
+        message: 'Pre-rendering app with `preRender`-method',
+      })),
+    })
+
+    .command({
       command: 'run',
       aliases: ['run', 'r'],
       desc: 'Runs a file with defined babel & nodeHooks configuration',
