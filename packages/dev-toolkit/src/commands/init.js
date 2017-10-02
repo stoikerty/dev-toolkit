@@ -1,3 +1,6 @@
+import fs from 'fs';
+
+import { generatedExamples } from '../webpack/projectSettings';
 import { log } from '../utilities';
 
 console.log('');
@@ -12,3 +15,13 @@ log({ message: '(global path).../node_modules/dev-toolkit/dist/postinstall-prepa
 
 // ensureDirSync(examples);
 // copySync(inputFolder, examples, { filter: ignoreDevFolders });
+
+console.log('\n\noptions: ', global.options);
+
+const extractExampleFromArgs = (argv) => {
+  console.log(argv);
+  // get list of available examples from `generated-examples` folder
+  const dirs = fs.readdirSync(generatedExamples)
+    .filter((file) => fs.statSync(path.join(generatedExamples, file)).isDirectory());
+  console.log('examples: ', dirs);
+};

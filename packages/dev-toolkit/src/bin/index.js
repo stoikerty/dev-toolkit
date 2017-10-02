@@ -1,44 +1,52 @@
 #!/usr/bin/env node
 import yargs from 'yargs';
-import spawn from 'cross-spawn';
-import path from 'path';
+// import spawn from 'cross-spawn';
+// import path from 'path';
 import babelRunner from 'babel-runner';
 
 import { log } from '../utilities';
 
-const runCommand = ({ command, message, args }) => {
+const runCommand = ({ command, message, options, argv }) => {
   log({ title: command, message, useSeparator: true });
+
+  console.log('options: ', options);
+  console.log('argv: ', argv);
+
   if (command === 'run') {
     // TODO: pass filename into babel runner
     babelRunner();
   } else {
-    spawn(
-      'node',
-      [
-        // Run dev-toolkit command via bootstrapped node environment
-        path.resolve(__dirname, 'bootstrap.js'),
-        // We append any existing arguments to run the command with
-        ...args || [],
-        // And add color support for dependency-modules like `chalk`
-        '--color',
-      ],
-      {
-        env: {
-          // Transfer existing environment variables to called command
-          ...process.env,
+    process.env.DEV_TOOLKIT_COMMAND = command;
+    global.options = options;
+    require('./bootstrap');
 
-          // Toolkit-related environment variables
-          DEV_TOOLKIT_COMMAND: command,
+    // spawn(
+    //   'node',
+    //   [
+    //     // Run dev-toolkit command via bootstrapped node environment
+    //     path.resolve(__dirname, 'bootstrap.js'),
+    //     // We append any existing arguments to run the command with
+    //     [JSON.stringify(options)],
+    //     // And add color support for dependency-modules like `chalk`
+    //     '--color',
+    //   ],
+    //   {
+    //     env: {
+    //       // Transfer existing environment variables to called command
+    //       ...process.env,
 
-          // Make sure node knows about root-relative imports by giving setting the current path
-          // NODE_PATH: path.resolve(process.cwd()),
-        },
+    //       // Toolkit-related environment variables
+    //       DEV_TOOLKIT_COMMAND: command,
 
-        // OSX will throw error if shell is not set
-        shell: process.platform !== 'win32',
-        stdio: 'inherit',
-      },
-    );
+    //       // Make sure node knows about root-relative imports by giving setting the current path
+    //       // NODE_PATH: path.resolve(process.cwd()),
+    //     },
+
+    //     // OSX will throw error if shell is not set
+    //     shell: process.platform !== 'win32',
+    //     stdio: 'inherit',
+    //   },
+    // );
   }
 };
 
@@ -51,7 +59,14 @@ const devToolkit = ({ cmdArgs }) => {
       command: 'init',
       aliases: ['init', 'i'],
       desc: 'Initializes a new project',
-      handler: () => (runCommand({
+      handler: (argv) => (runCommand({
+        argv,
+        options: {
+          projectName: argv._[1],
+          example: argv.example || false,
+          silent: argv.silent || false,
+          skipComments: argv.skipComments || false,
+        },
         command: 'init',
         message: 'Initializing a new project',
       })),
@@ -61,7 +76,11 @@ const devToolkit = ({ cmdArgs }) => {
       command: 'build',
       aliases: ['build', 'b'],
       desc: 'Generates a static build',
-      handler: () => (runCommand({
+      handler: (argv) => (runCommand({
+        options: {
+          silent: argv.silent || false,
+          skipPreRender: argv.skipPreRender || false,
+        },
         command: 'build',
         message: 'Generating a static build',
       })),
@@ -72,6 +91,7 @@ const devToolkit = ({ cmdArgs }) => {
       aliases: ['version', 'v'],
       desc: 'Outputs current version number',
       handler: () => (runCommand({
+        options: {},
         command: 'version',
         message: 'Output current version number',
       })),
@@ -81,7 +101,10 @@ const devToolkit = ({ cmdArgs }) => {
       command: 'watch',
       aliases: ['watch', 'w'],
       desc: 'Watches files for development',
-      handler: () => (runCommand({
+      handler: (argv) => (runCommand({
+        options: {
+          silent: argv.silent || false,
+        },
         command: 'watch',
         message: 'Watching files for development',
       })),
@@ -91,7 +114,10 @@ const devToolkit = ({ cmdArgs }) => {
       command: 'serve',
       aliases: ['serve', 's'],
       desc: 'Serves the app',
-      handler: () => (runCommand({
+      handler: (argv) => (runCommand({
+        options: {
+          silent: argv.silent || false,
+        },
         command: 'serve',
         message: 'Serving app with `start`-method',
       })),
@@ -101,7 +127,10 @@ const devToolkit = ({ cmdArgs }) => {
       command: 'preRender',
       aliases: ['preRender', 'p'],
       desc: 'preRender the app',
-      handler: () => (runCommand({
+      handler: (argv) => (runCommand({
+        options: {
+          silent: argv.silent || false,
+        },
         command: 'preRender',
         message: 'Pre-rendering app with `preRender`-method',
       })),
@@ -112,6 +141,7 @@ const devToolkit = ({ cmdArgs }) => {
       aliases: ['run', 'r'],
       desc: 'Runs a file with defined babel & nodeHooks configuration',
       handler: () => (runCommand({
+        options: {},
         command: 'run',
         message: 'Run file with universal configuration',
       })),

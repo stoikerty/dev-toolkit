@@ -3,14 +3,14 @@ import { ensureDirSync, copySync, removeSync, readFile, outputFile } from 'fs-ex
 import klawSync from 'klaw-sync';
 import decomment from 'decomment';
 
+import {
+  originalExamples,
+  generatedExamples,
+  generatedExamplesWithoutComments,
+} from '../webpack/projectSettings';
 import { log } from '../utilities';
 
 log({ title: 'prepare', message: 'Copy examples into dev-toolkit distribution', useSeparator: true });
-
-const rootDir = path.resolve(__dirname, '../../../../');
-const inputFolder = path.resolve(rootDir, 'examples');
-const examples = path.resolve(__dirname, 'examples');
-const examplesWithoutComments = path.resolve(__dirname, 'examples-no-comment');
 
 const ignoreDevFolders = (item) =>
   (item.indexOf('node_modules') < 0) && (item.indexOf('build') < 0);
@@ -43,16 +43,16 @@ const removeCommentsFromJSFiles = ({ directory }) => {
 };
 
 log({ message: 'Copying examples into dist folder...' });
-removeSync(examples);
-ensureDirSync(examples);
-copySync(inputFolder, examples, { filter: ignoreDevFolders });
-removeDevFiles({ directory: examples });
+removeSync(generatedExamples);
+ensureDirSync(generatedExamples);
+copySync(originalExamples, generatedExamples, { filter: ignoreDevFolders });
+removeDevFiles({ directory: generatedExamples });
 
 log({ message: 'Creating an examples-folder in dist that has comments stripped out...' });
-removeSync(examplesWithoutComments);
-ensureDirSync(examplesWithoutComments);
-copySync(inputFolder, examplesWithoutComments, { filter: ignoreDevFolders });
-removeDevFiles({ directory: examplesWithoutComments });
-removeCommentsFromJSFiles({ directory: examplesWithoutComments });
+removeSync(generatedExamplesWithoutComments);
+ensureDirSync(generatedExamplesWithoutComments);
+copySync(originalExamples, generatedExamplesWithoutComments, { filter: ignoreDevFolders });
+removeDevFiles({ directory: generatedExamplesWithoutComments });
+removeCommentsFromJSFiles({ directory: generatedExamplesWithoutComments });
 
 log({ message: 'Finished examples task\n', useSeparator: true });
