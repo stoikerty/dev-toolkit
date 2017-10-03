@@ -1,27 +1,45 @@
-import fs from 'fs';
+import { statSync, readdirSync } from 'fs';
+import { ensureDirSync, copySync } from 'fs-extra';
+import { white } from 'chalk';
+import path from 'path';
+import spawn from 'cross-spawn';
 
-import { generatedExamples } from '../webpack/projectSettings';
-import { log } from '../utilities';
+import { generatedExamples, generatedExamplesWithoutComments } from '../webpack/projectSettings';
+import { log, spinner } from '../utilities';
 
-console.log('');
-log({ type: 'warning', message: 'init command isn\'t finished yet' });
-log({ message: '\nFor now, copy boilerplate files manually from...' });
-log({ message: '(global path).../node_modules/dev-toolkit/dist/postinstall-prepare/examples' });
-log({ message: '\nor alternatively (for files without comments) copy from...' });
-log({ message: '(global path).../node_modules/dev-toolkit/dist/postinstall-prepare/examples-no-comment\n' });
-
-// import path from 'path';
-// import { ensureDirSync, copySync } from 'fs-extra';
-
-// ensureDirSync(examples);
-// copySync(inputFolder, examples, { filter: ignoreDevFolders });
-
-console.log('\n\noptions: ', global.options);
-
-const extractExampleFromArgs = (argv) => {
-  console.log(argv);
-  // get list of available examples from `generated-examples` folder
-  const dirs = fs.readdirSync(generatedExamples)
-    .filter((file) => fs.statSync(path.join(generatedExamples, file)).isDirectory());
-  console.log('examples: ', dirs);
+const getExamplesList = ({ folder }) => {
+  const onlyDirectories = (file) => statSync(path.join(folder, file)).isDirectory();
+  return readdirSync(generatedExamples).filter(onlyDirectories);
 };
+const examplesList = getExamplesList({ folder: generatedExamples });
+const exampleExists = ({ name }) => examplesList.indexOf(name) > -1;
+
+const { example, projectName, skipComments } = global.options;
+
+if (exampleExists({ name: example })) {
+  const inputFolder = path.resolve(
+    skipComments ? generatedExamplesWithoutComments : generatedExamples,
+    example,
+  );
+  const projectFolder = path.resolve(process.cwd(), projectName);
+
+  ensureDirSync(projectFolder);
+  copySync(inputFolder, projectFolder);
+  log({ message: `Created project using ${white(example)} example files.` });
+
+  spinner.start({ message: `Installing NPM Dependencies for ${white(projectName)}` });
+  spawn('npm', ['install'], { cwd: projectFolder }).on('close', (code) => {
+    spinner.stop();
+
+    if (code === 0) {
+      log({ type: 'success', message: `Dependencies for ${projectName} have been installed.` });
+      log({ message: `Get started by running \`${white(`cd ${projectName} && npm run dev`)}\``, useSeparator: true });
+    } else {
+      log({ type: 'warning', message: `Failed to install Dependencies for ${projectName}.` });
+    }
+  });
+} else {
+  log({ type: 'warning', message: `Example files for '${example}' don't exist.` });
+  log({ message: 'Use one of the following examples:' });
+  examplesList.forEach((exampleName) => log({ message: `• ${exampleName}` }));
+}

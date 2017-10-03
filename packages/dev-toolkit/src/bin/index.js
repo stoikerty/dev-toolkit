@@ -1,16 +1,11 @@
 #!/usr/bin/env node
 import yargs from 'yargs';
-// import spawn from 'cross-spawn';
-// import path from 'path';
 import babelRunner from 'babel-runner';
 
 import { log } from '../utilities';
 
-const runCommand = ({ command, message, options, argv }) => {
+const runCommand = ({ command, message, options }) => {
   log({ title: command, message, useSeparator: true });
-
-  console.log('options: ', options);
-  console.log('argv: ', argv);
 
   if (command === 'run') {
     // TODO: pass filename into babel runner
