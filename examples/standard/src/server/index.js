@@ -75,16 +75,16 @@ export default new class {
 
   // Rendering of the html on build happens through this preRender-method
   preRender({ assets, buildFolder }) {
-    // Load Client App via RootComponent
-    const RootComponent = require(rootComponentPath).default;
+    // return a Promise to dev-toolkit
     return new Promise((resolve, reject) => {
-      // Here handlebars is used to generate the html without express and without webpack
-      this.handlebarsInstance
-        .render(
+      // Load Client App via RootComponent
+      import(rootComponentPath).then((module) => {
+        const RootComponent = module.default;
+        // Here handlebars is used to generate the html without express and without webpack
+        this.handlebarsInstance.render(
           path.join(serverViews, 'template.hbs'),
           { assets, renderedHtml: renderToString(<RootComponent />) }
-        )
-        .then((html) => {
+        ).then((html) => {
           // Generated html is written to html file in build folder
           fs.writeFile(
             path.join(buildFolder, 'index.html'),
@@ -92,6 +92,7 @@ export default new class {
             error => (error ? reject(error) : resolve()),
           );
         });
+      })
     });
   }
 }();

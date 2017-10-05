@@ -4,8 +4,7 @@ import path from 'path';
 import fs from 'fs';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
-import decache from 'decache';
-import { isDev, isProd, usePreRender } from 'dev-toolkit/settings';
+import { isDev } from 'dev-toolkit/settings';
 
 // Unlike the client app, the server app can only ever be run in Node.js
 // we therefore have direct access to Node-specific things like `process`
@@ -32,29 +31,13 @@ export default new class {
     // Provide a simple health-check endpoint to see if the server is alive
     this.express.get('/health', (req, res) => res.send('OK'));
 
-    // Make assets in build folder available to the client.
-    // In development, the `webpack-dev-middleware` used by dev-toolkit takes care of this.
-    if (!isDev) {
+    if (isDev) {
+      // Render template with no prerendered html in development mode
+      this.express.use((req, res) =>
+        res.status(200).render('template', { assets, renderedHtml: '' }));
+    } else {
+      // Make assets in build folder available to the client.
       this.express.use(express.static(buildFolder));
-    }
-
-    // By default, dev-toolkit serves the build folder with pre-rendered files.
-    if (isDev || (isProd && !usePreRender)) {
-      // Render the template-file on any incoming requests
-      this.express.use((req, res) => {
-        // Remove Client App from cache (cheap server-side Hot-Reload)
-        if (isDev) {
-          decache(rootComponentPath);
-        }
-        // Load newest version of Client App via RootComponent
-        import(rootComponentPath).then((module) => {
-          const RootComponent = module.default;
-          res.status(200).render(
-            'template',
-            { assets, renderedHtml: renderToString(<RootComponent />)
-          });
-        });
-      });
     }
 
     // Run the express server by listening on the specified port
@@ -64,23 +47,18 @@ export default new class {
     });
   }
 
-  // A way to stop and shut-down the server, you might need this for things like e2e-tests
-  stop() {
-    this.serverInstance.close();
-  }
-
   // Rendering of the html on build happens through this preRender-method
   preRender({ assets, buildFolder }) {
-    // Load Client App via RootComponent
-    const RootComponent = require(rootComponentPath).default;
+    // return a Promise to dev-toolkit
     return new Promise((resolve, reject) => {
-      // Here handlebars is used to generate the html without express and without webpack
-      this.handlebarsInstance
-        .render(
+      // Load Client App via RootComponent
+      import(rootComponentPath).then((module) => {
+        const RootComponent = module.default;
+        // Here handlebars is used to generate the html without express and without webpack
+        this.handlebarsInstance.render(
           path.join(serverViews, 'template.hbs'),
           { assets, renderedHtml: renderToString(<RootComponent />) }
-        )
-        .then((html) => {
+        ).then((html) => {
           // Generated html is written to html file in build folder
           fs.writeFile(
             path.join(buildFolder, 'index.html'),
@@ -88,6 +66,7 @@ export default new class {
             error => (error ? reject(error) : resolve()),
           );
         });
+      })
     });
   }
 }();

@@ -8,18 +8,19 @@ const handlebarsInstance = expressHandlebars.create().engine;
 
 // This file is called individually via programmatic usage in `handler.js`
 export default ({ assets, buildFolder }) => {
-  // Load Client App via RootComponent
-  const RootComponent = require(rootComponentPath).default;
+  // return a Promise to dev-toolkit
   return new Promise((resolve, reject) => {
-    // Here handlebars is used to generate the html without express and without webpack
-    handlebarsInstance
-      .render(
+    // Load Client App via RootComponent
+    import(rootComponentPath).then((module) => {
+      const RootComponent = module.default;
+      // Here handlebars is used to generate the html without express and without webpack
+      this.handlebarsInstance.render(
         path.join(serverViews, 'template.hbs'),
         { assets, renderedHtml: renderToString(<RootComponent />) }
-      )
-      .then((html) => {
+      ).then((html) => {
         // Generated html is written to html file in build folder
         console.log('html: ', html);
       });
+    })
   });
 };

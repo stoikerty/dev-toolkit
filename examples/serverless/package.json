@@ -1,10 +1,10 @@
 {
-  "name": "dev-toolkit-starter",
+  "name": "dev-toolkit-serverless-example",
   "version": "1.0.0",
   "description": "universal app",
   "scripts": {
     "start": "npm run build && npm run serve",
-    "dev": "NODE_ENV=development SERVER_PORT=3000 dev-toolkit watch",
+    "dev": "NODE_ENV=development dev-toolkit watch",
     "build": "NODE_ENV=production dev-toolkit build",
     "serve": "NODE_ENV=production SERVER_PORT=8080 dev-toolkit serve"
   },

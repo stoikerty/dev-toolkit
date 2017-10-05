@@ -1,10 +1,10 @@
 {
-  "name": "dev-toolkit-starter",
+  "name": "dev-toolkit-minimal-example",
   "version": "1.0.0",
   "description": "universal app",
   "scripts": {
     "start": "npm run build && npm run serve",
-    "dev": "NODE_ENV=development SERVER_PORT=3000 dev-toolkit watch",
+    "dev": "NODE_ENV=development dev-toolkit watch",
     "build": "NODE_ENV=production dev-toolkit build",
     "serve": "NODE_ENV=production SERVER_PORT=8080 dev-toolkit serve"
   },
@@ -17,7 +17,6 @@
   },
   "devDependencies": {
     "babel-preset-dev-toolkit": "0.0.0-beta-5",
-    "decache": "^4.1.0",
     "dev-toolkit": "6.0.0-beta-27"
   }
 }
