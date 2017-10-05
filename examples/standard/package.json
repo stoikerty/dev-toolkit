@@ -4,8 +4,9 @@
   "description": "universal app",
   "scripts": {
     "start": "npm run build && npm run serve",
-    "dev": "NODE_ENV=development dev-toolkit watch",
+    "dev": "NODE_ENV=development MY_CUSTOM_ENV=foo dev-toolkit watch",
     "build": "NODE_ENV=production dev-toolkit build",
+    "serverless-example": "node handler.js",
     "serve": "NODE_ENV=production SERVER_PORT=8080 dev-toolkit serve"
   },
   "author": "",

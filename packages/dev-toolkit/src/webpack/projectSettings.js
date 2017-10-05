@@ -9,6 +9,7 @@ export const generatedExamples =
   path.resolve(devToolkitDistribution, 'generated-examples/original');
 export const generatedExamplesWithoutComments =
   path.resolve(devToolkitDistribution, 'generated-examples/skipped-comments');
+export const defaultExample = 'standard';
 
 // User Project Related Folders & Settings
 export const projectRoot = process.cwd();

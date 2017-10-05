@@ -7,8 +7,12 @@ import { renderToString } from 'react-dom/server';
 import decache from 'decache';
 import { isDev, isProd, usePreRender } from 'dev-toolkit/settings';
 
-const serverViews = path.resolve(process.cwd(), 'src/server/views');
-const rootComponentPath = path.resolve(process.cwd(), 'src/client/RootComponent');
+// Unlike the client app, the server app can only ever be run in Node.js
+// we therefore have direct access to Node-specific things like `process`
+const serverPort = process.env.SERVER_PORT || 3000;
+const projectDirectory = process.cwd();
+const serverViews = path.resolve(projectDirectory, 'src/server/views');
+const rootComponentPath = path.resolve(projectDirectory, 'src/client/RootComponent');
 
 export default new class {
   constructor() {
@@ -22,6 +26,9 @@ export default new class {
     // Use Handlebars as the view engine in express
     this.express.engine('hbs', this.handlebarsInstance.engine);
     this.express.set('views', serverViews).set('view engine', 'hbs');
+
+    // Prevent express from sending powered-by header
+    this.express.disable('x-powered-by');
   }
 
   // Ability to launch server later (allows dev-toolkit to bind webpack-middleware before start)
@@ -55,9 +62,9 @@ export default new class {
     }
 
     // Run the express server by listening on the specified port
-    this.serverInstance = this.express.listen(process.env.SERVER_PORT, () => {
+    this.serverInstance = this.express.listen(serverPort, () => {
       // eslint-disable-next-line no-console
-      console.log(`Server is listening on port ${process.env.SERVER_PORT}`);
+      console.log(`Server is listening on port ${serverPort}`);
     });
   }
 

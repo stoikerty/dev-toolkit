@@ -1,6 +1,6 @@
 A collection of examples of how dev-toolkit can be used.
 
-## minimal
+## standard
 If you want to start a project from scratch, this is your best starting point.
 This example contains no routing, it will give you out of the box:
 - simple client app with
@@ -10,5 +10,10 @@ This example contains no routing, it will give you out of the box:
   - rendering the layout on request
   - pre-rendering the layout to an html file
 - `settings.js`-file to be shared between client & server with
-  - exported `isServer` & `isClient` to know wich rendering-mode the client-app is in
-  - exported env's (customize which ones are passed through in dev-toolkit's config-file)
+  - example usage of `sharedEnvs` via `dev-toolit/settings`
+- `dev-toolkit.config.js`-file which contains
+  - usePreRender set to `false` (default)
+  - example usage with `MY_CUSTOM_ENV` environment variable
+- `handler.js`-file serverless-type mini-example which contains
+  - example usage of `dev-toolkit` programmatic API usage
+
