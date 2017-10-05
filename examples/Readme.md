@@ -17,3 +17,11 @@ This example contains no routing, it will give you out of the box:
 - `handler.js`-file serverless-type mini-example which contains
   - example usage of `dev-toolkit` programmatic API usage
 
+## minimal
+Stripped out example with server-render & pre-render
+
+## serverless
+Example using dev-toolkit programmatically for usage with cloud-functions/lambdas in a serverless scenario.
+
+## with-scss
+## npm-package?
