@@ -7,10 +7,9 @@
   "scripts": {
     "prepare": "npm run build",
     "publish-beta": "npm publish --tag beta",
-    "build": "babel src --out-dir dist && node ./dist/postinstall-prepare/copy-examples",
+    "build": "babel src --out-dir dist && node ./dist/postinstall-prepare/copy-templates",
     "watch": "babel src --watch --out-dir dist",
     "test": "bnr test",
-    "test-single": "bnr test --watch --grep",
     "lint": "eslint --config .eslintrc src"
   },
   "betterScripts": {
@@ -19,13 +18,6 @@
       "env": {
         "TOOLKIT_TEST": "true",
         "NODE_PATH": "."
-      }
-    },
-    "test-minimal": {
-      "command": "npm run build && cd $MINIMAL_EXAMPLE && node $DEV_TOOLKIT_BINARY",
-      "env": {
-        "MINIMAL_EXAMPLE": "../../examples/minimal",
-        "DEV_TOOLKIT_BINARY": "../../packages/dev-toolkit/dist/bin/index.js"
       }
     }
   },
@@ -85,11 +77,11 @@
     "dirty-chai": "^1.2.2",
     "eslint": "^3.4.0",
     "eslint-config-airbnb-base": "^11.3.1",
-    "eslint-config-prettier": "^2.6.0",
+    "eslint-config-prettier": "2.6.0",
     "eslint-plugin-import": "^2.7.0",
-    "eslint-plugin-prettier": "^2.3.1",
+    "eslint-plugin-prettier": "2.3.1",
     "mocha": "^3.5.0",
-    "prettier": "^1.7.4",
+    "prettier": "1.7.4",
     "sinon": "^3.2.1",
     "sinon-chai": "^2.13.0"
   }

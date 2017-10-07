@@ -11,4 +11,4 @@ npm run fix-permissions
 ```
 
 # Making changes
-When you make a change inside `packages` you need to run `npm run boostrap` to install, build & link the packages together. This will also link the packages with all the examples. If you only make changes in the `examples`-folder, it's unlikely you'll have to re-run bootstrap.
+When you make a change inside `packages` you need to run `npm run boostrap` to install, build & link the packages together. This will also link the packages with all the templates. If you only make changes in the `templates`-folder, it's unlikely you'll have to re-run bootstrap.

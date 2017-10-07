@@ -1,5 +1,5 @@
 {
-  "name": "dev-toolkit-serverless-example",
+  "name": "dev-toolkit-minimal-template",
   "version": "1.0.0",
   "description": "universal app",
   "scripts": {
@@ -18,7 +18,6 @@
   },
   "devDependencies": {
     "babel-preset-dev-toolkit": "0.0.0-beta-7",
-    "decache": "^4.1.0",
     "prettier": "1.7.4"
   }
 }

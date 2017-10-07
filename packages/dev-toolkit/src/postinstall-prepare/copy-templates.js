@@ -4,15 +4,15 @@ import klawSync from 'klaw-sync';
 import decomment from 'decomment';
 
 import {
-  originalExamples,
-  generatedExamples,
-  generatedExamplesWithoutComments,
+  originalTemplates,
+  generatedTemplates,
+  generatedTemplatesWithoutComments,
 } from '../webpack/projectSettings';
 import { log } from '../utilities';
 
 log({
   title: 'prepare',
-  message: 'Copy examples into dev-toolkit distribution',
+  message: 'Copy templates into dev-toolkit distribution',
   useSeparator: true,
 });
 
@@ -45,17 +45,17 @@ const removeCommentsFromJSFiles = ({ directory }) => {
   });
 };
 
-log({ message: 'Copying examples into dist folder...' });
-removeSync(generatedExamples);
-ensureDirSync(generatedExamples);
-copySync(originalExamples, generatedExamples, { filter: ignoreDevFolders });
-removeDevFiles({ directory: generatedExamples });
+log({ message: 'Copying templates into dist folder...' });
+removeSync(generatedTemplates);
+ensureDirSync(generatedTemplates);
+copySync(originalTemplates, generatedTemplates, { filter: ignoreDevFolders });
+removeDevFiles({ directory: generatedTemplates });
 
-log({ message: 'Creating an examples-folder in dist that has comments stripped out...' });
-removeSync(generatedExamplesWithoutComments);
-ensureDirSync(generatedExamplesWithoutComments);
-copySync(originalExamples, generatedExamplesWithoutComments, { filter: ignoreDevFolders });
-removeDevFiles({ directory: generatedExamplesWithoutComments });
-removeCommentsFromJSFiles({ directory: generatedExamplesWithoutComments });
+log({ message: 'Creating an templates-folder in dist that has comments stripped out...' });
+removeSync(generatedTemplatesWithoutComments);
+ensureDirSync(generatedTemplatesWithoutComments);
+copySync(originalTemplates, generatedTemplatesWithoutComments, { filter: ignoreDevFolders });
+removeDevFiles({ directory: generatedTemplatesWithoutComments });
+removeCommentsFromJSFiles({ directory: generatedTemplatesWithoutComments });
 
-log({ message: 'Finished examples task\n', useSeparator: true });
+log({ message: 'Finished templates task\n', useSeparator: true });

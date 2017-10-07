@@ -4,16 +4,16 @@ import path from 'path';
 export const devToolkitRoot = path.resolve(__dirname, '../../');
 export const devToolkitDistribution = path.resolve(devToolkitRoot, 'dist');
 export const gitRepoRoot = path.resolve(devToolkitRoot, '../../');
-export const originalExamples = path.resolve(gitRepoRoot, 'examples');
-export const generatedExamples = path.resolve(
+export const originalTemplates = path.resolve(gitRepoRoot, 'templates');
+export const generatedTemplates = path.resolve(
   devToolkitDistribution,
-  'generated-examples/original',
+  'generated-templates/original',
 );
-export const generatedExamplesWithoutComments = path.resolve(
+export const generatedTemplatesWithoutComments = path.resolve(
   devToolkitDistribution,
-  'generated-examples/skipped-comments',
+  'generated-templates/skipped-comments',
 );
-export const defaultExample = 'standard';
+export const defaultTemplate = 'standard';
 
 // User Project Related Folders & Settings
 export const projectRoot = process.cwd();

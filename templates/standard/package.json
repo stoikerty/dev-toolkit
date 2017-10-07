@@ -1,10 +1,10 @@
 {
-  "name": "dev-toolkit-minimal-example",
+  "name": "dev-toolkit-standard-template",
   "version": "1.0.0",
   "description": "universal app",
   "scripts": {
     "start": "npm run build && npm run serve",
-    "dev": "NODE_ENV=development dev-toolkit watch",
+    "dev": "NODE_ENV=development MY_CUSTOM_ENV=foo dev-toolkit watch",
     "build": "NODE_ENV=production dev-toolkit build",
     "serve": "NODE_ENV=production SERVER_PORT=8080 dev-toolkit serve"
   },
@@ -17,7 +17,18 @@
     "react-dom": "^16.0.0"
   },
   "devDependencies": {
+    "babel-eslint": "8.0.1",
     "babel-preset-dev-toolkit": "0.0.0-beta-7",
+    "decache": "^4.1.0",
+    "eslint": "^4.8.0",
+    "eslint-config-airbnb": "^16.0.0",
+    "eslint-config-dev-toolkit": "0.0.0-beta-2",
+    "eslint-config-prettier": "2.6.0",
+    "eslint-import-resolver-babel-module": "3.0.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-prettier": "2.3.1",
+    "eslint-plugin-react": "^7.4.0",
     "prettier": "1.7.4"
   }
 }

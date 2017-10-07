@@ -49,101 +49,99 @@ const devToolkit = ({ cmdArgs }) => {
   // eslint-disable-next-line no-unused-expressions
   yargs
     .usage('\nUsage: dev-toolkit <command> [options]')
-
     .command({
       command: 'init',
       aliases: ['init', 'i'],
       desc: 'Initializes a new project',
-      handler: (argv) => (runCommand({
-        argv,
-        options: {
-          projectName: argv._[1],
-          example: argv.example || false,
-          silent: argv.silent || false,
-          skipComments: argv.skipComments || false,
-        },
-        command: 'init',
-        message: 'Initializing a new project',
-      })),
+      handler: argv =>
+        runCommand({
+          argv,
+          options: {
+            projectName: argv._[1],
+            template: argv.template || false,
+            silent: argv.silent || false,
+            skipComments: argv.skipComments || false,
+          },
+          command: 'init',
+          message: 'Initializing a new project',
+        }),
     })
-
     .command({
       command: 'build',
       aliases: ['build', 'b'],
       desc: 'Generates a static build',
-      handler: (argv) => (runCommand({
-        options: {
-          silent: argv.silent || false,
-          skipPreRender: argv.skipPreRender || false,
-        },
-        command: 'build',
-        message: 'Generating a static build',
-      })),
+      handler: argv =>
+        runCommand({
+          options: {
+            silent: argv.silent || false,
+            skipPreRender: argv.skipPreRender || false,
+          },
+          command: 'build',
+          message: 'Generating a static build',
+        }),
     })
-
     .command({
       command: 'version',
       aliases: ['version', 'v'],
       desc: 'Outputs current version number',
-      handler: () => (runCommand({
-        options: {},
-        command: 'version',
-        message: 'Output current version number',
-      })),
+      handler: () =>
+        runCommand({
+          options: {},
+          command: 'version',
+          message: 'Output current version number',
+        }),
     })
-
     .command({
       command: 'watch',
       aliases: ['watch', 'w'],
       desc: 'Watches files for development',
-      handler: (argv) => (runCommand({
-        options: {
-          silent: argv.silent || false,
-        },
-        command: 'watch',
-        message: 'Watching files for development',
-      })),
+      handler: argv =>
+        runCommand({
+          options: {
+            silent: argv.silent || false,
+          },
+          command: 'watch',
+          message: 'Watching files for development',
+        }),
     })
-
     .command({
       command: 'serve',
       aliases: ['serve', 's'],
       desc: 'Serves the app',
-      handler: (argv) => (runCommand({
-        options: {
-          silent: argv.silent || false,
-        },
-        command: 'serve',
-        message: 'Serving app with `start`-method',
-      })),
+      handler: argv =>
+        runCommand({
+          options: {
+            silent: argv.silent || false,
+          },
+          command: 'serve',
+          message: 'Serving app with `start`-method',
+        }),
     })
-
     .command({
       command: 'preRender',
       aliases: ['preRender', 'p'],
       desc: 'preRender the app',
-      handler: (argv) => (runCommand({
-        options: {
-          silent: argv.silent || false,
-        },
-        command: 'preRender',
-        message: 'Pre-rendering app with `preRender`-method',
-      })),
+      handler: argv =>
+        runCommand({
+          options: {
+            silent: argv.silent || false,
+          },
+          command: 'preRender',
+          message: 'Pre-rendering app with `preRender`-method',
+        }),
     })
-
     .command({
       command: 'run',
       aliases: ['run', 'r'],
       desc: 'Runs a file with defined babel & nodeHooks configuration',
-      handler: () => (runCommand({
-        options: {},
-        command: 'run',
-        message: 'Run file with universal configuration',
-      })),
+      handler: () =>
+        runCommand({
+          options: {},
+          command: 'run',
+          message: 'Run file with universal configuration',
+        }),
     })
-
-    .help()
-    .argv;
+    .help().argv;
 
   yargs.parse(cmdArgs);
 };

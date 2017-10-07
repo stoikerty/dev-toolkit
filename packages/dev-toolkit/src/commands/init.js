@@ -5,41 +5,41 @@ import path from 'path';
 import spawn from 'cross-spawn';
 
 import {
-  generatedExamples,
-  generatedExamplesWithoutComments,
-  defaultExample,
+  generatedTemplates,
+  generatedTemplatesWithoutComments,
+  defaultTemplate,
 } from '../webpack/projectSettings';
 import { log, spinner } from '../utilities';
 
-const { example, projectName, skipComments } = global.options;
+const { template, projectName, skipComments } = global.options;
 
-const getExamplesList = ({ folder }) => {
+const getTemplatesList = ({ folder }) => {
   const onlyDirectories = file => statSync(path.join(folder, file)).isDirectory();
-  return readdirSync(generatedExamples).filter(onlyDirectories);
+  return readdirSync(generatedTemplates).filter(onlyDirectories);
 };
-const examplesList = getExamplesList({ folder: generatedExamples });
-const exampleExists = examplesList.indexOf(example) > -1;
-const exampleName = exampleExists ? example : defaultExample;
+const templatesList = getTemplatesList({ folder: generatedTemplates });
+const templateExists = templatesList.indexOf(template) > -1;
+const templateName = templateExists ? template : defaultTemplate;
 
-if (example && !exampleExists) {
-  log({ type: 'warning', message: `Example files for '${example}' don't exist.` });
-  log({ message: 'You can use one of the following examples:' });
-  examplesList.forEach(name => log({ message: `• ${name}` }));
+if (template && !templateExists) {
+  log({ type: 'warning', message: `template files for '${template}' don't exist.` });
+  log({ message: 'You can use one of the following templates:' });
+  templatesList.forEach(name => log({ message: `• ${name}` }));
   log({
-    message: '\nProject will be initialized using default example files.',
+    message: `\nProject will be initialized using default template files (${defaultTemplate}).`,
     useSeparator: true,
   });
 }
 
 const inputFolder = path.resolve(
-  skipComments ? generatedExamplesWithoutComments : generatedExamples,
-  exampleName,
+  skipComments ? generatedTemplatesWithoutComments : generatedTemplates,
+  templateName,
 );
 const projectFolder = path.resolve(process.cwd(), projectName);
 
 ensureDirSync(projectFolder);
 copySync(inputFolder, projectFolder);
-log({ message: `Created project using ${white(exampleName)} example-files in:` });
+log({ message: `Created project using ${white(templateName)} template in:` });
 log({ message: `${projectFolder}\n` });
 
 spinner.start({ message: `Installing NPM Dependencies for ${white(projectName)}` });

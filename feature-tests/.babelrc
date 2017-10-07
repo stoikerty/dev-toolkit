@@ -3,7 +3,8 @@
   "plugins": [
     "dynamic-import-node",
     [
-      "module-resolver", {
+      "module-resolver",
+      {
         "root": ["."]
       }
     ]

@@ -1,8 +1,5 @@
 {
   "lerna": "2.1.2",
-  "packages": [
-    "packages/*",
-    "examples/*"
-  ],
+  "packages": ["packages/*", "templates/*"],
   "version": "independent"
 }

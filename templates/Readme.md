@@ -1,8 +1,12 @@
-A collection of examples of how dev-toolkit can be used.
+A collection of templates of how dev-toolkit can be used.
+Each one of these templates can be initialized from the command-line with:
+```bash
+dev-toolkit init my_project --template [template-name]
+```
 
 ## standard
 If you want to start a project from scratch, this is your best starting point.
-This example contains no routing, it will give you out of the box:
+This template contains no routing, it will give you out of the box:
 - simple client app with
   - hot-reload for development
   - 1 view called `App.js`
@@ -26,6 +30,8 @@ Stripped out example with only server-rendering
 ## serverless
 Example using dev-toolkit programmatically for usage with cloud-functions/lambdas in a serverless scenario.
 
+## with-mocha
+## with-jest
 ## with-scss
 ## with-glamorous
 ## with-styled-components
