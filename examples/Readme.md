@@ -18,10 +18,16 @@ This example contains no routing, it will give you out of the box:
   - example usage of `dev-toolkit` programmatic API usage
 
 ## minimal
-Stripped out example with server-render & pre-render
+Stripped out example with pre-render
+
+## server-render-only
+Stripped out example with only server-rendering
 
 ## serverless
 Example using dev-toolkit programmatically for usage with cloud-functions/lambdas in a serverless scenario.
 
 ## with-scss
-## npm-package?
+## with-glamorous
+## with-styled-components
+
+## as exported npm-package?
