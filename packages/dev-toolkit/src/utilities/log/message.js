@@ -2,7 +2,7 @@ import chalk from 'chalk';
 import stringLength from 'string-length';
 
 export default ({ message, type, title, useSeparator }) => {
-  const hasLinebreakAtEnd = message.lastIndexOf('\n') === (message.length - 1);
+  const hasLinebreakAtEnd = message.lastIndexOf('\n') === message.length - 1;
   let outputMessage = hasLinebreakAtEnd ? message.substring(0, message.lastIndexOf('\n')) : message;
   // console.log('hasLinebreakAtEnd: ', hasLinebreakAtEnd);
 
@@ -28,9 +28,6 @@ export default ({ message, type, title, useSeparator }) => {
       hasLinebreakAtEnd ? '\n' : '',
     );
   } else {
-    console.log(
-      outputMessage,
-      hasLinebreakAtEnd ? '\n' : '',
-    );
+    console.log(outputMessage, hasLinebreakAtEnd ? '\n' : '');
   }
 };

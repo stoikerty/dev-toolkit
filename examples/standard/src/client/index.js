@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom';
 
 const hotReRender = () => {
   // Dynamically require module inline for hot-reloading
-  import('./RootComponent').then((module) => {
+  import('./RootComponent').then(module => {
     const RootComponent = module.default;
     // Render the newly required module to the DOM
     ReactDOM.hydrate(<RootComponent />, document.querySelector('[data-jshook~="app-body"]'));

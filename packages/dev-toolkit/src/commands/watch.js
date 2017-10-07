@@ -10,7 +10,10 @@ bootstrap().then(({ server, userSettings }) => {
   let webpackAssets = {};
   const config = generateConfig({
     creatingBuild: false,
-    getWebpackAssets: (assets) => { webpackAssets = assets; return JSON.stringify(assets); },
+    getWebpackAssets: assets => {
+      webpackAssets = assets;
+      return JSON.stringify(assets);
+    },
     userSettings,
   });
 
@@ -28,10 +31,10 @@ bootstrap().then(({ server, userSettings }) => {
 
   log({ message: 'Compiling initial bundle…\n' });
 
-  const webpackDevMiddlewareInstance = webpackDevMiddleware(
-    compiler,
-    { noInfo: true, publicPath: config.output.publicPath },
-  );
+  const webpackDevMiddlewareInstance = webpackDevMiddleware(compiler, {
+    noInfo: true,
+    publicPath: config.output.publicPath,
+  });
   const webpackHotMiddlewareInstance = webpackHotMiddleware(compiler);
 
   webpackDevMiddlewareInstance.waitUntilValid(() => {
@@ -56,7 +59,7 @@ bootstrap().then(({ server, userSettings }) => {
       server.start({ assets: webpackAssets, buildFolder });
     } catch (error) {
       help({
-        displayedWhen: server && (typeof server.start !== 'function'),
+        displayedWhen: server && typeof server.start !== 'function',
         warning: 'Your server needs a `start`-method.',
         instruction: 'Example: `start({ assets }) { this.express.listen(2000); }`',
         link: '/dev-toolkit#custom-server',

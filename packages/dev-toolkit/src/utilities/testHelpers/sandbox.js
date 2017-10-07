@@ -10,8 +10,12 @@ class Sandbox {
   }
 
   use(beforeCallback, afterCallback) {
-    beforeCallback(() => { this.useSandbox = true; });
-    afterCallback(() => { this.useSandbox = false; });
+    beforeCallback(() => {
+      this.useSandbox = true;
+    });
+    afterCallback(() => {
+      this.useSandbox = false;
+    });
   }
   create() {
     if (this.useGlobalSandbox || this.useSandbox) {

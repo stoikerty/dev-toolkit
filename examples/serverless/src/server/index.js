@@ -35,11 +35,11 @@ export default new class {
           decache(rootComponentPath);
         }
         // Load newest version of Client App via RootComponent
-        import(rootComponentPath).then((module) => {
+        import(rootComponentPath).then(module => {
           const RootComponent = module.default;
-          res.status(200).render(
-            'template',
-            { assets, renderedHtml: renderToString(<RootComponent />)
+          res.status(200).render('template', {
+            assets,
+            renderedHtml: renderToString(<RootComponent />),
           });
         });
       });

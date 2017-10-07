@@ -1,25 +1,18 @@
 {
-  "extends": [
-    "airbnb-base"
-  ],
-
+  "extends": ["airbnb-base", "prettier"],
   "parser": "babel-eslint",
-
+  "plugins": ["prettier"],
   "rules": {
+    "prettier/prettier": "error",
     "import/no-extraneous-dependencies": 0,
     "import/no-unresolved": [
       "error",
       {
-        "ignore": [ "^dist/" ]
+        "ignore": ["^dist/"]
       }
     ],
-    "import/extensions": [
-      "off",
-      "never"
-    ],
-    "arrow-parens": [2, "always"]
+    "import/extensions": ["off", "never"]
   },
-
   "env": {
     "mocha": true
   }

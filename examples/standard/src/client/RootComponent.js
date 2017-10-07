@@ -10,9 +10,7 @@ import App from './views/App';
 console.log(`Client App has run on ${isClient ? 'Client' : 'Server'}...`);
 
 const displayName = 'RootComponent';
-const component = () => (
-  <App />
-);
+const component = () => <App />;
 
 component.displayName = displayName;
 export default component;

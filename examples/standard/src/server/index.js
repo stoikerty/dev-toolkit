@@ -51,11 +51,11 @@ export default new class {
           decache(rootComponentPath);
         }
         // Load newest version of Client App via RootComponent
-        import(rootComponentPath).then((module) => {
+        import(rootComponentPath).then(module => {
           const RootComponent = module.default;
-          res.status(200).render(
-            'template',
-            { assets, renderedHtml: renderToString(<RootComponent />)
+          res.status(200).render('template', {
+            assets,
+            renderedHtml: renderToString(<RootComponent />),
           });
         });
       });
@@ -78,21 +78,23 @@ export default new class {
     // return a Promise to dev-toolkit
     return new Promise((resolve, reject) => {
       // Load Client App via RootComponent
-      import(rootComponentPath).then((module) => {
+      import(rootComponentPath).then(module => {
         const RootComponent = module.default;
         // Here handlebars is used to generate the html without express and without webpack
-        this.handlebarsInstance.render(
-          path.join(serverViews, 'template.hbs'),
-          { assets, renderedHtml: renderToString(<RootComponent />) }
-        ).then((html) => {
-          // Generated html is written to html file in build folder
-          fs.writeFile(
-            path.join(buildFolder, 'index.html'),
-            html,
-            error => (error ? reject(error) : resolve()),
-          );
-        });
-      })
+        this.handlebarsInstance
+          .render(path.join(serverViews, 'template.hbs'), {
+            assets,
+            renderedHtml: renderToString(<RootComponent />),
+          })
+          .then(html => {
+            // Generated html is written to html file in build folder
+            fs.writeFile(
+              path.join(buildFolder, 'index.html'),
+              html,
+              error => (error ? reject(error) : resolve())
+            );
+          });
+      });
     });
   }
 }();

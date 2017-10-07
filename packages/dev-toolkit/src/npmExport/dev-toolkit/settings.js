@@ -8,12 +8,14 @@ export const creatingBuild = typeof devToolkitSettings !== typeof undefined;
 
 // If we're not creating a build, we're server-rendering the client app.
 // Therefore we'll want to use `process.env` instead of the build settings.
-export const sharedEnvs =
-  creatingBuild ? devToolkitSettings.sharedEnvs : global.__devToolkitSettings.sharedEnvs;
+export const sharedEnvs = creatingBuild
+  ? devToolkitSettings.sharedEnvs
+  : global.__devToolkitSettings.sharedEnvs;
 
 // Make usePreRender setting available
-export const usePreRender =
-  creatingBuild ? devToolkitSettings.usePreRender : global.__devToolkitSettings.usePreRender;
+export const usePreRender = creatingBuild
+  ? devToolkitSettings.usePreRender
+  : global.__devToolkitSettings.usePreRender;
 
 // Assign booleans for each environment we might be in
 export const isProd = sharedEnvs.NODE_ENV === 'production';

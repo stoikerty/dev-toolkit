@@ -7,6 +7,6 @@
     "fix-permissions": "chmod 777 packages/dev-toolkit/dist/bin/* packages/babel-runner/dist/bin/*"
   },
   "devDependencies": {
-    "lerna": "^2.1.2"
+    "lerna": "^2.4.0"
   }
 }
