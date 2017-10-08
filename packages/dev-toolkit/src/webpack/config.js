@@ -15,6 +15,14 @@ import {
 
 export default ({ getWebpackAssets, creatingBuild, userSettings } = { creatingBuild: true }) => {
   const namingConvention = creatingBuild ? '[name].[chunkhash]' : '[name]';
+  const customizationOptions = {
+    projectRoot,
+    creatingBuild,
+    namingConvention,
+    assetsPath,
+    publicPath,
+    babelrc,
+  };
 
   // Allow completely extending webpack with `webpack.customize`
   return userSettings.webpack.customize(
@@ -32,10 +40,7 @@ export default ({ getWebpackAssets, creatingBuild, userSettings } = { creatingBu
         loaders: [
           {
             test: /\.jsx?$/,
-            loaders: [
-              `babel-loader?${JSON.stringify(babelrc)}`,
-              // `eslint-loader?${JSON.stringify(eslintConfig)}`,
-            ],
+            loaders: [`babel-loader?${JSON.stringify(babelrc)}`],
             exclude: /(node_modules)|\.route.jsx?$|\.dynamic.jsx?$/,
           },
           {
@@ -44,13 +49,12 @@ export default ({ getWebpackAssets, creatingBuild, userSettings } = { creatingBu
               // `bundle`-loader automatically uses module directly when code is run on the server
               'bundle-loader?lazy&name=[name]',
               `babel-loader?${JSON.stringify(babelrc)}`,
-              // `eslint-loader?${JSON.stringify(eslintConfig)}`,
             ],
             exclude: /(node_modules)/,
           },
         ].concat(
           // Add any user settings from `webpack.loaders`
-          userSettings.webpack.loaders,
+          userSettings.webpack.loaders(customizationOptions),
         ),
       },
       plugins: [
@@ -78,7 +82,7 @@ export default ({ getWebpackAssets, creatingBuild, userSettings } = { creatingBu
         )
         .concat(
           // Add any user settings from `webpack.plugins`
-          userSettings.webpack.plugins,
+          userSettings.webpack.plugins(customizationOptions),
         ),
       resolve: {
         modules: [
@@ -99,8 +103,7 @@ export default ({ getWebpackAssets, creatingBuild, userSettings } = { creatingBu
         ],
       },
     },
-    {
-      creatingBuild,
-    },
+
+    customizationOptions,
   );
 };

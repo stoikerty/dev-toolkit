@@ -17,8 +17,10 @@ export default (settings = {}) => {
 
   return {
     webpack: {
-      loaders: webpack.loaders && Array.isArray(webpack.loaders) ? webpack.loaders : [],
-      plugins: webpack.lugins && Array.isArray(webpack.lugins) ? webpack.lugins : [],
+      loaders:
+        webpack.loaders && typeof webpack.loaders === 'function' ? webpack.loaders : () => [],
+      plugins:
+        webpack.plugins && typeof webpack.plugins === 'function' ? webpack.plugins : () => [],
       customize:
         webpack.customize && typeof webpack.customize === 'function'
           ? webpack.customize

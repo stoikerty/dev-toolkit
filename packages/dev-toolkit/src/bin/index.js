@@ -60,7 +60,7 @@ const devToolkit = ({ cmdArgs }) => {
             projectName: argv._[1],
             template: argv.template || false,
             silent: argv.silent || false,
-            skipComments: argv.skipComments || false,
+            skipComments: argv.skipComments || argv['skip-comments'] || false,
           },
           command: 'init',
           message: 'Initializing a new project',
@@ -74,7 +74,8 @@ const devToolkit = ({ cmdArgs }) => {
         runCommand({
           options: {
             silent: argv.silent || false,
-            skipPreRender: argv.skipPreRender || false,
+            skipPreRender:
+              argv.skipPreRender || argv['skip-prerender'] || argv['skip-pre-render'] || false,
           },
           command: 'build',
           message: 'Generating a static build',
@@ -82,7 +83,7 @@ const devToolkit = ({ cmdArgs }) => {
     })
     .command({
       command: 'version',
-      aliases: ['version', 'v'],
+      aliases: ['version', 'v', '-v'],
       desc: 'Outputs current version number',
       handler: () =>
         runCommand({
