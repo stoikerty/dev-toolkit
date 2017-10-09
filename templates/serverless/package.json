@@ -10,6 +10,8 @@
   },
   "author": "",
   "dependencies": {
+    "babel-preset-dev-toolkit": "0.0.0-beta-7",
+    "clear-module": "^2.1.0",
     "dev-toolkit": "6.0.0-beta-30",
     "express": "^4.15.5",
     "express-handlebars": "^3.0.0",
@@ -17,8 +19,6 @@
     "react-dom": "^16.0.0"
   },
   "devDependencies": {
-    "babel-preset-dev-toolkit": "0.0.0-beta-7",
-    "decache": "^4.1.0",
     "prettier": "1.7.4"
   }
 }

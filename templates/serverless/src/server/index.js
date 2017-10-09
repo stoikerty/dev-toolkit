@@ -4,7 +4,7 @@ import path from 'path';
 import fs from 'fs';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
-import decache from 'decache';
+import clearModule from 'clear-module';
 import { isDev } from 'dev-toolkit/settings';
 
 // Unlike the client app, the server app can only ever be run in Node.js
@@ -32,7 +32,7 @@ export default new class {
       this.express.use((req, res) => {
         // Remove Client App from cache (cheap server-side Hot-Reload)
         if (isDev) {
-          decache(rootComponentPath);
+          clearModule(rootComponentPath);
         }
         // Load newest version of Client App via RootComponent
         import(rootComponentPath).then(module => {

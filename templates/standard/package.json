@@ -10,6 +10,9 @@
   },
   "author": "",
   "dependencies": {
+    "babel-preset-dev-toolkit": "0.0.0-beta-7",
+    "clear-module": "^2.1.0",
+    "css-modules-require-hook": "^4.2.2",
     "dev-toolkit": "6.0.0-beta-30",
     "express": "^4.15.5",
     "express-handlebars": "^3.0.0",
@@ -18,9 +21,7 @@
   },
   "devDependencies": {
     "babel-eslint": "8.0.1",
-    "babel-preset-dev-toolkit": "0.0.0-beta-7",
     "css-loader": "^0.28.7",
-    "decache": "^4.1.0",
     "eslint": "^4.8.0",
     "eslint-config-airbnb": "^16.0.0",
     "eslint-config-dev-toolkit": "0.0.0-beta-2",
