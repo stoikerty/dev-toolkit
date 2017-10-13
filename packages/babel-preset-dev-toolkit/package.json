@@ -1,16 +1,14 @@
 {
   "name": "babel-preset-dev-toolkit",
-  "version": "0.0.0-beta-7",
-  "description":
-    "Uses create-react-app default, adds sane if-statements & root-relative imports",
+  "version": "1.0.0-beta-1",
+  "description": "Uses create-react-app default, adds sane if-statements & root-relative imports",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url":
-      "https://github.com/stoikerty/dev-toolkit/tree/master/packages/babel-preset-dev-toolkit"
+    "url": "https://github.com/stoikerty/dev-toolkit/tree/master/packages/babel-preset-dev-toolkit"
   },
   "keywords": [
     "babel",

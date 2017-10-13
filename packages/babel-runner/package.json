@@ -1,6 +1,6 @@
 {
   "name": "babel-runner",
-  "version": "0.0.0-beta-3",
+  "version": "1.0.0-beta-1",
   "description": "Helper for integrating babel config & node hooks",
   "main": "dist/index.js",
   "scripts": {
