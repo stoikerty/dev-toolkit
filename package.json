@@ -3,12 +3,13 @@
   "version": "0.0.0",
   "scripts": {
     "bootstrap": "lerna bootstrap",
-    "bootstrap-fix": "lerna bootstrap && chmod 777 packages/dev-toolkit/dist/bin/* packages/babel-runner/dist/bin/*",
+    "bootstrap-fix":
+      "lerna bootstrap && chmod 777 packages/dev-toolkit/dist/bin/* packages/babel-runner/dist/bin/*",
     "full-clean": "npm run safe-clean && npm run unsafe-clean && npm run root-clean",
-    "safe-clean": "del './**/node_modules' './**/dist' './**/build' './**/_temp-cache' '!./node_modules'",
+    "safe-clean":
+      "del './**/node_modules' './**/dist' './**/build' './**/_temp-cache' '!./node_modules'",
     "unsafe-clean": "del './**/package-lock.json'",
     "root-clean": "del './node_modules'",
-    "delete-dist": "rm -rf packages/dev-toolkit/dist/bin packages/babel-runner/dist/bin",
     "fix-permissions": "chmod 777 packages/dev-toolkit/dist/bin/* packages/babel-runner/dist/bin/*"
   },
   "devDependencies": {
