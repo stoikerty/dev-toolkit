@@ -10,7 +10,7 @@
     "build": "babel src --out-dir dist && node ./dist/postinstall-prepare/copy-templates",
     "watch": "babel src --watch --out-dir dist",
     "test": "bnr test",
-    "lint": "eslint --config .eslintrc src"
+    "lint": "prettier --write './**/*.js' && eslint --config .eslintrc src"
   },
   "betterScripts": {
     "test": {
