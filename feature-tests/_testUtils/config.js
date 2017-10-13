@@ -6,7 +6,7 @@ import shell from 'shelljs';
 export const rootDir = path.resolve(__dirname, '../../');
 
 const rootCacheDirectory = path.resolve(rootDir, 'feature-tests/_temp-cache');
-export const createCacheDir = (name) => {
+export const createCacheDir = name => {
   const cacheDir = path.resolve(rootCacheDirectory, `${name}-cache`);
   ensureDirSync(cacheDir);
   shell.cd(cacheDir);

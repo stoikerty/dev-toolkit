@@ -34,6 +34,7 @@ Example using dev-toolkit programmatically for usage with cloud-functions/lambda
 ## with-jest
 ## with-scss
 ## with-glamorous
+## with-dynamic-routes
 ## with-styled-components
 
 ## as exported npm-package?

@@ -7,7 +7,7 @@ import { isClient } from 'dev-toolkit/settings';
 import App from './views/App';
 
 // This should log both on the client and the server, remove once you understand how it works.
-console.log(`Client App has run on ${isClient ? 'Client' : 'Server'}...`);
+console.log(`Client App has run on ${isClient ? 'Client' : 'Server'}... (remove-me)`);
 
 const displayName = 'RootComponent';
 const component = () => <App />;
