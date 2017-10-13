@@ -6,8 +6,10 @@ import time from 'to-time';
 export default ({ testDir, pkg }) => {
   describe(`local installation using \`npm install ${pkg.name}@${pkg.version}\``, () => {
     it('proceeds sucessfully', done => {
+      // create a blank npm project
       shell.exec('npm init -y', { silent: true });
-      shell.exec(`npm install ${pkg.name}@${pkg.version}`, { silent: true }, code => {
+      // install current version
+      shell.exec(`npm install ${pkg.name}@${pkg.version} --save`, { silent: true }, code => {
         expect(code, 'Exit code').to.equal(0);
         done();
       });
