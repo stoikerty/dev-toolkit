@@ -4,7 +4,9 @@ Each one of these templates can be initialized from the command-line with:
 dev-toolkit init my_project --template [template-name]
 ```
 
-## standard
+## Ready Templates
+
+#### standard
 If you want to start a project from scratch, this is your best starting point.
 This template contains no routing, it will give you out of the box:
 - simple client app with
@@ -21,20 +23,27 @@ This template contains no routing, it will give you out of the box:
 - `handler.js`-file serverless-type mini-example which contains
   - example usage of `dev-toolkit` programmatic API usage
 
-## minimal
+#### minimal
 Stripped out example with pre-render
 
-## server-render-only
-Stripped out example with only server-rendering
+#### with-sass
+Example using sass/scss with custom webpack configuration and node-hooks
 
-## serverless
+---
+
+## WIP Templates
+
+#### serverless
 Example using dev-toolkit programmatically for usage with cloud-functions/lambdas in a serverless scenario.
 
-## with-mocha
-## with-jest
-## with-scss
-## with-glamorous
-## with-dynamic-routes
-## with-styled-components
+---
 
-## as exported npm-package?
+## Planned Templates
+
+#### with-mocha
+#### with-jest
+#### with-glamorous
+#### with-dynamic-routes
+#### with-styled-components
+
+#### as exported npm-package?
