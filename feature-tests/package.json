@@ -2,8 +2,8 @@
   "name": "dev-toolkit-feature-tests",
   "version": "0.0.0",
   "scripts": {
-    "test": "mocha --compilers js:babel-core/register 'packages/**/*.spec.js' 'templates/**/*.spec.js' --timeout 30000",
-    "lint": "eslint ."
+    "test": "mocha --compilers js:babel-core/register 'index.spec.js' --timeout 30000",
+    "lint": "prettier --write './**/*.js' && eslint './**/*.js'"
   },
   "dependencies": {
     "babel-eslint": "^7.2.3",

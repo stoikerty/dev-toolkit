@@ -3,7 +3,7 @@ import { ensureDirSync, removeSync } from 'fs-extra';
 import emptyDir from 'empty-dir';
 import shell from 'shelljs';
 
-export const rootDir = path.resolve(__dirname, '../../');
+export const rootDir = path.resolve(process.cwd(), '../');
 
 const rootCacheDirectory = path.resolve(rootDir, 'feature-tests/_temp-cache');
 export const createCacheDir = name => {
