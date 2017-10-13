@@ -1,47 +1,25 @@
 #!/usr/bin/env node
+/* eslint-disable no-underscore-dangle */
 import yargs from 'yargs';
+import path from 'path';
 import babelRunner from 'babel-runner';
 
 import { log } from '../utilities';
 
 const runCommand = ({ command, message, options }) => {
+  // Pass options down to specific command
+  global.__devToolkitCommandOptions = options;
+
   log({ title: command, message, useSeparator: true });
 
+  // Run a given command
   if (command === 'run') {
-    // TODO: pass filename into babel runner
-    babelRunner();
+    // `run` uses `babelRunner`, we import it directly so `babelRunner` doesn't run twice
+    import(path.resolve(__dirname, '../commands/run'));
   } else {
-    process.env.DEV_TOOLKIT_COMMAND = command;
-    global.options = options;
-    require('./bootstrap');
-
-    // spawn(
-    //   'node',
-    //   [
-    //     // Run dev-toolkit command via bootstrapped node environment
-    //     path.resolve(__dirname, 'bootstrap.js'),
-    //     // We append any existing arguments to run the command with
-    //     [JSON.stringify(options)],
-    //     // And add color support for dependency-modules like `chalk`
-    //     '--color',
-    //   ],
-    //   {
-    //     env: {
-    //       // Transfer existing environment variables to called command
-    //       ...process.env,
-
-    //       // Toolkit-related environment variables
-    //       DEV_TOOLKIT_COMMAND: command,
-
-    //       // Make sure node knows about root-relative imports by giving setting the current path
-    //       // NODE_PATH: path.resolve(process.cwd()),
-    //     },
-
-    //     // OSX will throw error if shell is not set
-    //     shell: process.platform !== 'win32',
-    //     stdio: 'inherit',
-    //   },
-    // );
+    babelRunner({
+      fileToRun: path.resolve(__dirname, `../commands/${command}`),
+    });
   }
 };
 
@@ -55,7 +33,6 @@ const devToolkit = ({ cmdArgs }) => {
       desc: 'Initializes a new project',
       handler: argv =>
         runCommand({
-          argv,
           options: {
             projectName: argv._[1],
             template: argv.template || false,
@@ -135,9 +112,12 @@ const devToolkit = ({ cmdArgs }) => {
       command: 'run',
       aliases: ['run', 'r'],
       desc: 'Runs a file with defined babel & nodeHooks configuration',
-      handler: () =>
+      handler: argv =>
         runCommand({
-          options: {},
+          options: {
+            silent: argv.silent || false,
+            fileName: argv._[1] || '',
+          },
           command: 'run',
           message: 'Run file with universal configuration',
         }),

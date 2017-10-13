@@ -11,8 +11,9 @@ import { isDev, isProd, usePreRender } from 'dev-toolkit/settings';
 // we therefore have direct access to Node-specific things like `process`
 const serverPort = process.env.SERVER_PORT || 3000;
 const projectDirectory = process.cwd();
+const clientFolder = path.resolve(projectDirectory, 'src/client');
 const serverViews = path.resolve(projectDirectory, 'src/server/views');
-const rootComponentPath = path.resolve(projectDirectory, 'src/client/RootComponent');
+const rootComponentPath = path.resolve(clientFolder, 'RootComponent');
 
 export default new class {
   constructor() {
@@ -48,7 +49,9 @@ export default new class {
       this.express.use((req, res) => {
         // Remove Client App from cache (cheap server-side Hot-Reload)
         if (isDev) {
-          clearModule(rootComponentPath);
+          // NOTE: We need to explicitly clear all the modules in the client directory.
+          // It's a nice to have. Not guaranteed to always work, take it with a grain of salt.
+          clearModule.match(new RegExp(`^${clientFolder}`, 'i'));
         }
         // Load newest version of Client App via RootComponent
         import(rootComponentPath).then(module => {

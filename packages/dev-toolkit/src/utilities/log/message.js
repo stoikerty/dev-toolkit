@@ -4,7 +4,6 @@ import stringLength from 'string-length';
 export default ({ message, type, title, useSeparator }) => {
   const hasLinebreakAtEnd = message.lastIndexOf('\n') === message.length - 1;
   let outputMessage = hasLinebreakAtEnd ? message.substring(0, message.lastIndexOf('\n')) : message;
-  // console.log('hasLinebreakAtEnd: ', hasLinebreakAtEnd);
 
   switch (type) {
     case 'success':

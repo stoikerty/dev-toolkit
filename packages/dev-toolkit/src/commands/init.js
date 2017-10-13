@@ -11,7 +11,10 @@ import {
 } from '../webpack/projectSettings';
 import { log, spinner } from '../utilities';
 
-const { template, projectName, skipComments } = global.options;
+/* eslint-disable no-underscore-dangle */
+const template = global.__devToolkitCommandOptions.template || '';
+const projectName = global.__devToolkitCommandOptions.projectName || 'my_app';
+const skipComments = global.__devToolkitCommandOptions.skipComments || false;
 
 const getTemplatesList = ({ folder }) => {
   const onlyDirectories = file => statSync(path.join(folder, file)).isDirectory();

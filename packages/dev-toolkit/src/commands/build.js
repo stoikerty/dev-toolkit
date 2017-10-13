@@ -5,6 +5,9 @@ import { buildFolder } from '../webpack/projectSettings';
 import generateConfig from '../webpack/config';
 import { log, bootstrap, preRender } from '../utilities';
 
+// eslint-disable-next-line no-underscore-dangle
+const skipPreRender = global.__devToolkitCommandOptions.skipPreRender || false;
+
 bootstrap().then(({ server, userSettings }) => {
   const showSuccessMessage = () =>
     log({ message: '\n⭐️  Your build is ready ⭐️\n', type: 'success' });
@@ -36,7 +39,7 @@ bootstrap().then(({ server, userSettings }) => {
         log({ error: compilerError });
         log({ message: '\n✨  Finished compiling Assets.\n', type: 'success' });
 
-        if (userSettings.devToolkit.usePreRender) {
+        if (userSettings.devToolkit.usePreRender && !skipPreRender) {
           preRender({ server, webpackAssets, buildFolder }).then(showSuccessMessage);
         } else {
           showSuccessMessage();

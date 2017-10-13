@@ -8,7 +8,7 @@ export default () => (
     {'App with Sass'}
     <br />
     <br />
-    <span className={s.newColor}>{'so '}</span>
+    <span className={s.color1}>{'so '}</span>
     <span className={s.color2}>{'colorful '}</span>
     <span className={s.color3}>{'! '}</span>
     <br />

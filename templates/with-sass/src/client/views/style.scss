@@ -26,15 +26,19 @@
     transform: translateX(0px);
   }
   20% {
+    opacity: 0.7;
     transform: translateY(1px) scale(0.99);
   }
   30% {
+    opacity: 0.9;
     transform: translateX(-2px) scale(1.01);
   }
   70% {
+    opacity: 0.7;
     transform: translateX(1px) scale(0.98);
   }
   80% {
+    opacity: 1;
     transform: translateY(-2px) scale(1.02);
   }
   100% {

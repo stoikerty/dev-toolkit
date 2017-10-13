@@ -1,6 +1,10 @@
+/* eslint-disable no-underscore-dangle */
+import path from 'path';
+import babelRunner from 'babel-runner';
+
 import { log } from '../../utilities';
 
-export default ({ command, envs }) => {
+export default ({ command, envs, options }) => {
   log({
     title: 'programmatic-usage',
     message: `Running command \`${command}\``,
@@ -13,8 +17,10 @@ export default ({ command, envs }) => {
     return null;
   });
 
-  // Set the command for bootstrap to pick it up
-  process.env.DEV_TOOLKIT_COMMAND = command;
+  // Pass options down to specific command
+  global.__devToolkitCommandOptions = options;
 
-  import('../../bin/bootstrap');
+  babelRunner({
+    fileToRun: path.resolve(__dirname, `../commands/${command}`),
+  });
 };
