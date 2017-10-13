@@ -13,6 +13,7 @@ export default ({ testDir, pkg }) => {
         expect(code, 'Exit code').to.equal(0);
         done();
       });
+      // make sure it doesn't take longer than specified time
     }).timeout(time('2 minutes').ms());
 
     it('puts dev-toolkit in the dependencies', done => {
