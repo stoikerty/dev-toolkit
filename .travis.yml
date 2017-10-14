@@ -3,20 +3,11 @@ sudo: false
 
 jobs:
   include:
-    - stage: Install Dependencies
-      script:
-        - npm install
-        - cd feature-tests
-        - npm install
-
-    - stage: Run feature-tests.
+    - stage: Run feature-tests & lint
       script:
         - cd feature-tests
+        - npm install
         - npm run test
-
-    - stage: Lint the feature-tests
-      script:
-        - cd feature-tests
         - npm run lint
 
     - stage: Lint packages & templates
@@ -25,5 +16,4 @@ jobs:
 
     - stage: Test bootstrapping the project
       script:
-        - npm run safe-clean
         - npm run bootstrap
