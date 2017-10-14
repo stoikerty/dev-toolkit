@@ -4,7 +4,7 @@ import time from 'to-time';
 
 import { runDevToolkitCli } from 'src/utils';
 
-const enableOutputLogging = false;
+const enableOutputLogging = true;
 const logOutput = output => {
   if (enableOutputLogging) {
     console.log(chalk.blue(output));
