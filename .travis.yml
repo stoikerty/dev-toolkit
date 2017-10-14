@@ -10,60 +10,70 @@ jobs:
         - npm install
         - npm run test
 
+    - stage: Testing dev-toolkit...
       env: Lint feature-tests
       script:
         - cd feature-tests
         - npm install
         - npm run lint
 
+    - stage: Testing dev-toolkit...
       env: Lint packages/babel-preset-dev-toolkit
       script:
         - cd packages/babel-preset-dev-toolkit
         - npm install
         - npm run lint
 
+    - stage: Testing dev-toolkit...
       env: Lint packages/babel-runner
       script:
         - cd packages/babel-runner
         - npm install
         - npm run lint
 
+    - stage: Testing dev-toolkit...
       env: Lint packages/dev-toolkit
       script:
         - cd packages/dev-toolkit
         - npm install
         - npm run lint
 
+    - stage: Testing dev-toolkit...
       env: Lint packages/eslint-config-dev-toolkit
       script:
         - cd packages/eslint-config-dev-toolkit
         - npm install
         - npm run lint
 
+    - stage: Testing dev-toolkit...
       env: Lint templates/standard
       script:
         - cd templates/standard
         - npm install
         - npm run lint
 
+    - stage: Testing dev-toolkit...
       env: Lint templates/minimal
       script:
         - cd templates/minimal
         - npm install
         - npm run lint
 
+    - stage: Testing dev-toolkit...
       env: Lint templates/with-sass
       script:
         - cd templates/with-sass
         - npm install
         - npm run lint
 
+    - stage: Testing dev-toolkit...
       env: Lint templates/serverless
       script:
         - cd templates/serverless
         - npm install
         - npm run lint
 
+    - stage: Testing dev-toolkit...
       env: Test bootstrapping the project
       script:
         - npm install
