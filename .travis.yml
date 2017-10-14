@@ -12,8 +12,10 @@ jobs:
 
     - stage: Lint packages & templates
       script:
+        - npm install
         - npm run lint-all
 
     - stage: Test bootstrapping the project
       script:
+        - npm install
         - npm run bootstrap
