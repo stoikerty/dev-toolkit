@@ -1,9 +1,32 @@
 language: node_js
 sudo: false
 script:
-  - echo '- Run feature tests -'
+  - echo '' \
+    && echo '┌────────────────────────────────────────────────────────────┐' \
+    && echo '│   Install Root Project Dependencies                        │' \
+    && echo '└────────────────────────────────────────────────────────────┘'
+  - npm install
   - cd feature-tests
-  - npm i && npm run test
-  - echo '- Make sure bootstrapping the project works -'
+  - npm install
+
+  - echo '' \
+    && echo '┌────────────────────────────────────────────────────────────┐' \
+    && echo '│   Run feature-tests. `dev-toolkit`-installation etc...     │' \
+    && echo '└────────────────────────────────────────────────────────────┘'
+  - npm run test
   - cd ..
-  - npm i && npm run bootstrap
+
+  - echo '' \
+    && echo '┌────────────────────────────────────────────────────────────┐' \
+    && echo '│   Lint all the things!                                     │' \
+    && echo '└────────────────────────────────────────────────────────────┘'
+  - npm run lint
+  - cd ..
+  - npm run lint-all
+
+  - echo '' \
+    && echo '┌────────────────────────────────────────────────────────┐' \
+    && echo '│   Make sure bootstrapping the project works            │' \
+    && echo '└────────────────────────────────────────────────────────┘'
+  - npm run safe-clean
+  - npm run bootstrap
