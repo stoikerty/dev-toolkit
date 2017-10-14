@@ -1,14 +1,14 @@
-export default ({ testDir, pkg }) => {
+export default () => {
   describe('templates: ', () => {
-    try {
-      import('./standard').then(module => {
+    import('./standard')
+      .then(module => {
         const standard = module.default;
         describe('standard', () => {
-          standard({ testDir, pkg });
+          standard();
         });
+      })
+      .catch(e => {
+        console.log(e);
       });
-    } catch (e) {
-      console.log(e);
-    }
   });
 };

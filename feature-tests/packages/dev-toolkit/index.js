@@ -1,9 +1,9 @@
 import installation from './installation';
 import { version } from './commands';
 
-export default ({ testDir, pkg }) => {
-  describe('dev-toolkit', () => {
-    installation({ testDir, pkg });
+export default ({ pkg }) => {
+  describe('`dev-toolkit` npm-package', () => {
+    installation({ pkg });
     version({ pkg });
   });
 };

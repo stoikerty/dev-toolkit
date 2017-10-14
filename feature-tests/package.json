@@ -2,7 +2,7 @@
   "name": "dev-toolkit-feature-tests",
   "version": "0.0.0",
   "scripts": {
-    "test": "mocha --compilers js:babel-core/register 'index.spec.js' --timeout 30000",
+    "test": "mocha --require 'testUtils/babel-register.js' 'index.spec.js' --timeout 30000",
     "lint": "prettier --write './**/*.js' && eslint './**/*.js'"
   },
   "dependencies": {
@@ -12,8 +12,8 @@
     "babel-preset-env": "^1.6.0",
     "babel-preset-stage-1": "^6.24.1",
     "babel-register": "^6.26.0",
+    "babel-runner": "^1.0.0-beta-2",
     "chai": "^4.1.2",
-    "empty-dir": "^0.2.1",
     "eslint": "^3.4.0",
     "eslint-config-airbnb-base": "^11.3.1",
     "eslint-config-prettier": "2.6.0",
