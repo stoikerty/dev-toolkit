@@ -1,6 +1,7 @@
 language: node_js
 sudo: false
-install: false
+install:
+  - echo 'skip installation'
 
 jobs:
   include:
