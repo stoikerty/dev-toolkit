@@ -1,5 +1,3 @@
-import time from 'to-time';
-
 // Add your template to this array for it to be tested
 const templates = ['minimal', 'standard', 'with-sass', 'serverless'];
 const defaultTemplate = 'standard';
@@ -13,7 +11,7 @@ export default () => {
           const template = module.default;
           describe(`the ${name}-template:`, () => {
             template({ name, isDefault: name === defaultTemplate });
-          }).timeout(time('2 minutes').ms());
+          });
         })
         .catch(e => {
           console.log("combined template-tests couldn't load:\n", e);

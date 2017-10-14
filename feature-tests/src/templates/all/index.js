@@ -1,5 +1,6 @@
 import { expect } from 'chai';
 import chalk from 'chalk';
+import time from 'to-time';
 
 import { runDevToolkitCli } from 'src/utils';
 
@@ -20,7 +21,7 @@ export default ({ name, isDefault } = { isDefault: false }) => {
         logOutput(output);
         done();
       });
-    });
+    }).timeout(time('2 minutes').ms());
     it(`skipping comments, with specified template ${name}`, done => {
       runDevToolkitCli({
         command: `init ${name}_app_no_comment --template ${name} --skipComments`,
@@ -29,7 +30,7 @@ export default ({ name, isDefault } = { isDefault: false }) => {
         logOutput(output);
         done();
       });
-    });
+    }).timeout(time('2 minutes').ms());
 
     if (isDefault) {
       it('with no specified template, including comments', done => {
