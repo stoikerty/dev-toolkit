@@ -13,7 +13,8 @@ const logOutput = output => {
 
 export default ({ name, isDefault } = { isDefault: false }) => {
   describe('can be used to initialize a new app', () => {
-    it(`including comments, with specified template ${name}`, done => {
+    // Optional templates can take up to 2 minutes to install
+    it(`including comments, with specified template '${name}'`, done => {
       runDevToolkitCli({
         command: `init ${name}_app --template ${name}`,
       }).then(({ exitCode, output }) => {
@@ -21,8 +22,8 @@ export default ({ name, isDefault } = { isDefault: false }) => {
         logOutput(output);
         done();
       });
-    }).timeout(time('1 minutes').ms());
-    it(`skipping comments, with specified template ${name}`, done => {
+    }).timeout(time('2 minutes').ms());
+    it(`skipping comments, with specified template '${name}'"`, done => {
       runDevToolkitCli({
         command: `init ${name}_app_no_comment --template ${name} --skipComments`,
       }).then(({ exitCode, output }) => {
@@ -30,9 +31,10 @@ export default ({ name, isDefault } = { isDefault: false }) => {
         logOutput(output);
         done();
       });
-    }).timeout(time('1 minutes').ms());
+    }).timeout(time('2 minutes').ms());
 
     if (isDefault) {
+      // Default template should take max. 1 minutes to install
       it('with no specified template, including comments', done => {
         runDevToolkitCli({
           command: `init ${name}_default_app --skipComments`,

@@ -1,5 +1,5 @@
 // Add your template to this array for it to be tested
-const templates = ['minimal', 'standard', 'with-sass', 'serverless'];
+const templates = ['standard', 'minimal', 'with-sass', 'serverless'];
 const defaultTemplate = 'standard';
 
 export default () => {
@@ -9,8 +9,9 @@ export default () => {
       import('./all')
         .then(module => {
           const template = module.default;
-          describe(`the ${name}-template:`, () => {
-            template({ name, isDefault: name === defaultTemplate });
+          const isDefault = name === defaultTemplate;
+          describe(`the ${name}-template${isDefault ? ' (default template)' : ''}:`, () => {
+            template({ name, isDefault });
           });
         })
         .catch(e => {
