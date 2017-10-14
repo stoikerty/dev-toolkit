@@ -3,39 +3,27 @@ sudo: false
 
 jobs:
   include:
-    - stage: Install Root Deps
+    - stage: Install Dependencies
       script:
-        - echo '' \
-          && echo '┌────────────────────────────────────────────────────────────┐' \
-          && echo '│   Install Root Project Dependencies                        │' \
-          && echo '└────────────────────────────────────────────────────────────┘'
         - npm install
         - cd feature-tests
         - npm install
 
-    - stage: Feature Tests
+    - stage: Run feature-tests.
       script:
-        - echo '' \
-          && echo '┌────────────────────────────────────────────────────────────┐' \
-          && echo '│   Run feature-tests. `dev-toolkit`-installation etc...     │' \
-          && echo '└────────────────────────────────────────────────────────────┘'
+        - cd feature-tests
         - npm run test
 
-    - stage: Linting
+    - stage: Lint the feature-tests
       script:
-        - echo '' \
-          && echo '┌────────────────────────────────────────────────────────────┐' \
-          && echo '│   Lint all the things!                                     │' \
-          && echo '└────────────────────────────────────────────────────────────┘'
+        - cd feature-tests
         - npm run lint
-        - cd ..
+
+    - stage: Lint packages & templates
+      script:
         - npm run lint-all
 
-    - stage: Bootstrapping
+    - stage: Test bootstrapping the project
       script:
-        - echo '' \
-          && echo '┌────────────────────────────────────────────────────────┐' \
-          && echo '│   Make sure bootstrapping the project works            │' \
-          && echo '└────────────────────────────────────────────────────────┘'
         - npm run safe-clean
         - npm run bootstrap
