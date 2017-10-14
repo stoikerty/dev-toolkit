@@ -1,32 +1,41 @@
 language: node_js
 sudo: false
-script:
-  - echo '' \
-    && echo '┌────────────────────────────────────────────────────────────┐' \
-    && echo '│   Install Root Project Dependencies                        │' \
-    && echo '└────────────────────────────────────────────────────────────┘'
-  - npm install
-  - cd feature-tests
-  - npm install
 
-  - echo '' \
-    && echo '┌────────────────────────────────────────────────────────────┐' \
-    && echo '│   Run feature-tests. `dev-toolkit`-installation etc...     │' \
-    && echo '└────────────────────────────────────────────────────────────┘'
-  - npm run test
-  - cd ..
+jobs:
+  include:
+    - stage: Install Root Deps
+      script:
+        - echo '' \
+          && echo '┌────────────────────────────────────────────────────────────┐' \
+          && echo '│   Install Root Project Dependencies                        │' \
+          && echo '└────────────────────────────────────────────────────────────┘'
+        - npm install
+        - cd feature-tests
+        - npm install
 
-  - echo '' \
-    && echo '┌────────────────────────────────────────────────────────────┐' \
-    && echo '│   Lint all the things!                                     │' \
-    && echo '└────────────────────────────────────────────────────────────┘'
-  - npm run lint
-  - cd ..
-  - npm run lint-all
+    - stage: Feature Tests
+      script:
+        - echo '' \
+          && echo '┌────────────────────────────────────────────────────────────┐' \
+          && echo '│   Run feature-tests. `dev-toolkit`-installation etc...     │' \
+          && echo '└────────────────────────────────────────────────────────────┘'
+        - npm run test
 
-  - echo '' \
-    && echo '┌────────────────────────────────────────────────────────┐' \
-    && echo '│   Make sure bootstrapping the project works            │' \
-    && echo '└────────────────────────────────────────────────────────┘'
-  - npm run safe-clean
-  - npm run bootstrap
+    - stage: Linting
+      script:
+        - echo '' \
+          && echo '┌────────────────────────────────────────────────────────────┐' \
+          && echo '│   Lint all the things!                                     │' \
+          && echo '└────────────────────────────────────────────────────────────┘'
+        - npm run lint
+        - cd ..
+        - npm run lint-all
+
+    - stage: Bootstrapping
+      script:
+        - echo '' \
+          && echo '┌────────────────────────────────────────────────────────┐' \
+          && echo '│   Make sure bootstrapping the project works            │' \
+          && echo '└────────────────────────────────────────────────────────┘'
+        - npm run safe-clean
+        - npm run bootstrap
