@@ -3,7 +3,7 @@ sudo: false
 
 jobs:
   include:
-    stage: Testing dev-toolkit...
+    - stage: Testing dev-toolkit...
     - env: Run feature-tests
       script:
         - cd feature-tests
