@@ -5,6 +5,7 @@ jobs:
   include:
     - stage: Testing dev-toolkit...
       env: Run feature-tests
+      install: false
       script:
         - cd feature-tests
         - npm install
@@ -17,6 +18,7 @@ jobs:
 
     - stage: Testing dev-toolkit...
       env: Lint feature-tests
+      install: false
       script:
         - cd feature-tests
         - npm install
@@ -24,6 +26,7 @@ jobs:
 
     - stage: Testing dev-toolkit...
       env: Lint packages
+      install: false
       script:
         - cd packages/babel-preset-dev-toolkit
         - npm install
@@ -46,6 +49,7 @@ jobs:
 
     - stage: Testing dev-toolkit...
       env: Lint templates
+      install: false
       script:
         - cd templates/standard
         - npm install
