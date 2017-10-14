@@ -1,6 +1,6 @@
 {
   "name": "babel-runner",
-  "version": "1.0.0-beta-1",
+  "version": "1.0.0-beta-2",
   "description": "Helper for integrating babel config & node hooks",
   "main": "dist/index.js",
   "scripts": {
@@ -8,7 +8,7 @@
     "publish-beta": "npm publish --tag beta",
     "build": "babel src --out-dir dist",
     "watch": "babel src --watch --out-dir dist",
-    "lint": "eslint --config .eslintrc src",
+    "lint": "prettier --write './**/*.js' && eslint --config .eslintrc src",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bin": {

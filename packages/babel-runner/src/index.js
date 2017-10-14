@@ -9,7 +9,9 @@ const pkgConfig = packageJson['babel-runner'] || {};
 // Retrieve Paths for babelrc & node hooks from default locations or from package.json
 
 export const nodeHooksPath = (() => {
-  const filePath = pkgConfig.nodeHooks ? pkgConfig.nodeHooks : path.resolve(projectFolder, 'nodeHooks.js');
+  const filePath = pkgConfig.nodeHooks
+    ? pkgConfig.nodeHooks
+    : path.resolve(projectFolder, 'nodeHooks.js');
   return fileExists(filePath) ? filePath : null;
 })();
 
@@ -23,7 +25,11 @@ export const babelrc = (() => {
   } else if (fileExists(defaultBabelrcJS)) {
     // We read a file which expects all presets & plugins to be resolved with `require.resolve`
     return require(defaultBabelrcJS);
-  } else if (pkgConfig.babelrc && pkgConfig.babelrc.match('.js$') && fileExists(pkgConfig.babelrc)) {
+  } else if (
+    pkgConfig.babelrc &&
+    pkgConfig.babelrc.match('.js$') &&
+    fileExists(pkgConfig.babelrc)
+  ) {
     // Use the `babelrc.js`-file defined in package.json
     return require(pkgConfig.babelrc);
   }
@@ -32,8 +38,7 @@ export const babelrc = (() => {
 })();
 
 // Run babel and include node-hooks
-
-export default ({ fileToRun } = {}) => {
+const babelRunner = ({ fileToRun } = {}) => {
   // Teach Node how to import other filetypes, such as .scss .jsx or .png
   if (nodeHooksPath) {
     require(nodeHooksPath);
@@ -49,3 +54,6 @@ export default ({ fileToRun } = {}) => {
     require(path.resolve(process.cwd(), fileToRun));
   }
 };
+
+module.exports = babelRunner;
+module.exports.default = babelRunner;
