@@ -4,8 +4,8 @@ sudo: false
 jobs:
   include:
     - stage: dev-toolkit
-    - env: Run feature-tests & lint
       script:
+        - env: Run feature-tests & lint
         - echo 'Run feature-tests & lint'
         - cd feature-tests
         - npm install
