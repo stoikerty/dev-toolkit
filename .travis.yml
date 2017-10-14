@@ -4,67 +4,67 @@ sudo: false
 jobs:
   include:
     - stage: Testing dev-toolkit...
-    - env: Run feature-tests
+      env: Run feature-tests
       script:
         - cd feature-tests
         - npm install
         - npm run test
 
-    - env: Lint feature-tests
+      env: Lint feature-tests
       script:
         - cd feature-tests
         - npm install
         - npm run lint
 
-    - env: Lint packages/babel-preset-dev-toolkit
+      env: Lint packages/babel-preset-dev-toolkit
       script:
         - cd packages/babel-preset-dev-toolkit
         - npm install
         - npm run lint
 
-    - env: Lint packages/babel-runner
+      env: Lint packages/babel-runner
       script:
         - cd packages/babel-runner
         - npm install
         - npm run lint
 
-    - env: Lint packages/dev-toolkit
+      env: Lint packages/dev-toolkit
       script:
         - cd packages/dev-toolkit
         - npm install
         - npm run lint
 
-    - env: Lint packages/eslint-config-dev-toolkit
+      env: Lint packages/eslint-config-dev-toolkit
       script:
         - cd packages/eslint-config-dev-toolkit
         - npm install
         - npm run lint
 
-    - env: Lint templates/standard
+      env: Lint templates/standard
       script:
         - cd templates/standard
         - npm install
         - npm run lint
 
-    - env: Lint templates/minimal
+      env: Lint templates/minimal
       script:
         - cd templates/minimal
         - npm install
         - npm run lint
 
-    - env: Lint templates/with-sass
+      env: Lint templates/with-sass
       script:
         - cd templates/with-sass
         - npm install
         - npm run lint
 
-    - env: Lint templates/serverless
+      env: Lint templates/serverless
       script:
         - cd templates/serverless
         - npm install
         - npm run lint
 
-    - env: Test bootstrapping the project
+      env: Test bootstrapping the project
       script:
         - npm install
         - npm run bootstrap
