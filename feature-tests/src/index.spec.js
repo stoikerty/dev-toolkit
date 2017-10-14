@@ -1,6 +1,6 @@
 import path from 'path';
 
-import { rootDir, createCacheDir, cleanCacheDir } from 'testUtils/config';
+import { rootDir, createCacheDir, cleanCacheDir } from 'src/utils';
 import packageDevToolkit from './packages/dev-toolkit';
 import templates from './templates';
 

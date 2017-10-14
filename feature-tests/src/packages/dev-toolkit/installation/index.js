@@ -3,7 +3,7 @@ import path from 'path';
 import shell from 'shelljs';
 import time from 'to-time';
 
-import { cacheDir } from 'testUtils/config';
+import { cacheDir } from 'src/utils';
 
 export default ({ pkg }) => {
   describe(`local installation using \`npm install ${pkg.name}@${pkg.version}\``, () => {

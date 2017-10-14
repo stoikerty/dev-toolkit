@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 
-import { runDevToolkitCli } from 'testUtils/config';
+import { runDevToolkitCli } from 'src/utils';
 
 export default ({ pkg }) => {
   describe('command: `dev-toolkit version`', () => {

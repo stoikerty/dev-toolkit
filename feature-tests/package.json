@@ -2,28 +2,29 @@
   "name": "dev-toolkit-feature-tests",
   "version": "0.0.0",
   "scripts": {
-    "test": "mocha --require 'testUtils/babel-register.js' 'index.spec.js' --timeout 30000",
+    "test": "mocha --require babel-register.js 'src/index.spec.js' --timeout 30000",
     "lint": "prettier --write './**/*.js' && eslint './**/*.js'"
   },
   "dependencies": {
-    "babel-eslint": "^7.2.3",
     "babel-plugin-dynamic-import-node": "^1.0.2",
     "babel-plugin-module-resolver": "^2.7.1",
     "babel-preset-env": "^1.6.0",
-    "babel-preset-stage-1": "^6.24.1",
-    "babel-register": "^6.26.0",
     "babel-runner": "^1.0.0-beta-2",
     "chai": "^4.1.2",
-    "eslint": "^3.4.0",
-    "eslint-config-airbnb-base": "^11.3.1",
-    "eslint-config-prettier": "2.6.0",
-    "eslint-import-resolver-babel-module": "^3.0.0",
-    "eslint-plugin-import": "^2.7.0",
-    "eslint-plugin-prettier": "2.3.1",
     "fs-extra": "^4.0.1",
     "mocha": "^3.5.0",
     "prettier": "1.7.4",
     "shelljs": "^0.7.8",
     "to-time": "^1.0.2"
+  },
+  "devDependencies": {
+    "babel-eslint": "^7.2.3",
+    "eslint": "^3.4.0",
+    "eslint-config-airbnb-base": "^11.3.1",
+    "eslint-config-dev-toolkit": "^1.0.0-beta-1",
+    "eslint-config-prettier": "2.6.0",
+    "eslint-import-resolver-babel-module": "^3.0.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-prettier": "2.3.1"
   }
 }
