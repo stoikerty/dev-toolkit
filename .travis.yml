@@ -3,7 +3,8 @@ sudo: false
 
 jobs:
   include:
-    - stage: parallel
+    - stage: dev-toolkit
+    - env: NAME='Run feature-tests & lint'
       script:
         - echo 'Run feature-tests & lint'
         - cd feature-tests
@@ -11,13 +12,15 @@ jobs:
         - npm run test
         - npm run lint
 
-    - stage: parallel
+    - stage: dev-toolkit
+    - env: NAME='Lint packages & templates'
       script:
         - echo 'Lint packages & templates'
         - npm install
         - npm run lint-all
 
-    - stage: parallel
+    - stage: dev-toolkit
+    - env: NAME='Test bootstrapping the project'
       script:
         - echo 'Test bootstrapping the project'
         - npm install
