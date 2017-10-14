@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-dev-toolkit",
-  "version": "1.0.0-beta-1",
+  "version": "1.0.0-beta-2",
   "description": "essential eslint config for dev-toolkit",
   "main": "index.js",
   "scripts": {
@@ -28,7 +28,7 @@
   "peerDependencies": {
     "babel-eslint": ">= 8",
     "eslint": ">= 4",
-    "eslint-import-resolver-babel-module": ">= 3",
+    "eslint-import-resolver-babel-module": ">= 2",
     "eslint-plugin-import": ">= 2.7",
     "eslint-plugin-react": ">= 7"
   },
