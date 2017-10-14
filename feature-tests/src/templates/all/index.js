@@ -41,7 +41,7 @@ export default ({ name, isDefault } = { isDefault: false }) => {
           logOutput(output);
           done();
         });
-      });
+      }).timeout(time('2 minutes').ms());
       it('with no specified template, skipping comments', done => {
         runDevToolkitCli({
           command: `init ${name}_default_app_no_comment --skipComments`,
@@ -50,7 +50,7 @@ export default ({ name, isDefault } = { isDefault: false }) => {
           logOutput(output);
           done();
         });
-      });
+      }).timeout(time('2 minutes').ms());
     }
   });
 };
