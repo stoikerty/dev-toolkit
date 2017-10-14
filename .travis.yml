@@ -1,11 +1,11 @@
 language: node_js
 sudo: false
+install: false
 
 jobs:
   include:
     - stage: Testing dev-toolkit...
       env: Run feature-tests
-      install: false
       script:
         - cd feature-tests
         - npm install
@@ -14,11 +14,11 @@ jobs:
     - stage: Testing dev-toolkit...
       env: Test bootstrapping the project
       script:
+        - npm install
         - npm run bootstrap
 
     - stage: Testing dev-toolkit...
       env: Lint feature-tests
-      install: false
       script:
         - cd feature-tests
         - npm install
@@ -26,7 +26,6 @@ jobs:
 
     - stage: Testing dev-toolkit...
       env: Lint packages
-      install: false
       script:
         - cd packages/babel-preset-dev-toolkit
         - npm install
@@ -49,7 +48,6 @@ jobs:
 
     - stage: Testing dev-toolkit...
       env: Lint templates
-      install: false
       script:
         - cd templates/standard
         - npm install
