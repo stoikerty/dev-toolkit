@@ -3,32 +3,68 @@ sudo: false
 
 jobs:
   include:
-    - stage: Testing dev-toolkit...
-      env: Run feature-tests
+    stage: Testing dev-toolkit...
+    - env: Run feature-tests
       script:
-        - echo 'Run feature-tests & lint'
         - cd feature-tests
         - npm install
         - npm run test
 
-    - stage: Testing dev-toolkit...
-      env: Lint feature-tests
+    - env: Lint feature-tests
       script:
-        - echo 'Run feature-tests & lint'
         - cd feature-tests
         - npm install
         - npm run lint
 
-    - stage: Testing dev-toolkit...
-      env: Lint packages & templates
+    - env: Lint packages/babel-preset-dev-toolkit
       script:
-        - echo 'Lint packages & templates'
+        - cd packages/babel-preset-dev-toolkit
         - npm install
-        - npm run lint-all
+        - npm run lint
 
-    - stage: Testing dev-toolkit...
-      env: Test bootstrapping the project
+    - env: Lint packages/babel-runner
       script:
-        - echo 'Test bootstrapping the project'
+        - cd packages/babel-runner
+        - npm install
+        - npm run lint
+
+    - env: Lint packages/dev-toolkit
+      script:
+        - cd packages/dev-toolkit
+        - npm install
+        - npm run lint
+
+    - env: Lint packages/eslint-config-dev-toolkit
+      script:
+        - cd packages/eslint-config-dev-toolkit
+        - npm install
+        - npm run lint
+
+    - env: Lint templates/standard
+      script:
+        - cd templates/standard
+        - npm install
+        - npm run lint
+
+    - env: Lint templates/minimal
+      script:
+        - cd templates/minimal
+        - npm install
+        - npm run lint
+
+    - env: Lint templates/with-sass
+      script:
+        - cd templates/with-sass
+        - npm install
+        - npm run lint
+
+    - env: Lint templates/serverless
+      script:
+        - cd templates/serverless
+        - npm install
+        - npm run lint
+
+    - env: Test bootstrapping the project
+      script:
         - npm install
         - npm run bootstrap
