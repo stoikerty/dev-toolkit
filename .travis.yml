@@ -3,23 +3,30 @@ sudo: false
 
 jobs:
   include:
-    - stage: CI for dev-toolkit
-      env: Run feature-tests & lint
+    - stage: Testing dev-toolkit...
+      env: Run feature-tests
       script:
         - echo 'Run feature-tests & lint'
         - cd feature-tests
         - npm install
         - npm run test
+
+    - stage: Testing dev-toolkit...
+      env: Lint feature-tests
+      script:
+        - echo 'Run feature-tests & lint'
+        - cd feature-tests
+        - npm install
         - npm run lint
 
-    - stage: CI for dev-toolkit
+    - stage: Testing dev-toolkit...
       env: Lint packages & templates
       script:
         - echo 'Lint packages & templates'
         - npm install
         - npm run lint-all
 
-    - stage: CI for dev-toolkit
+    - stage: Testing dev-toolkit...
       env: Test bootstrapping the project
       script:
         - echo 'Test bootstrapping the project'
