@@ -17,7 +17,7 @@ export default ({ pkg }) => {
         done();
       });
       // make sure it doesn't take longer than specified time
-    }).timeout(time('2 minutes').ms());
+    }).timeout(time('1 minutes').ms());
 
     it('puts dev-toolkit in `package.json` dependencies', done => {
       import(path.resolve(cacheDir, 'package.json')).then(testPkg => {
