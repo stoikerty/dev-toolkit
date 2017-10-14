@@ -3,19 +3,22 @@ sudo: false
 
 jobs:
   include:
-    - stage: Run feature-tests & lint
+    - stage: parallel
       script:
+        - echo 'Run feature-tests & lint'
         - cd feature-tests
         - npm install
         - npm run test
         - npm run lint
 
-    - stage: Lint packages & templates
+    - stage: parallel
       script:
+        - echo 'Lint packages & templates'
         - npm install
         - npm run lint-all
 
-    - stage: Test bootstrapping the project
+    - stage: parallel
       script:
+        - echo 'Test bootstrapping the project'
         - npm install
         - npm run bootstrap
