@@ -29,5 +29,8 @@
     "babel-preset-env": "^1.6.0",
     "babel-preset-react-app": "^3.0.2",
     "jsx-control-statements": "^3.2.6"
+  },
+  "devDependencies": {
+    "prettier": "^1.7.4"
   }
 }
