@@ -1,8 +1,20 @@
 'use strict';
 
+// Warn Users to make sure we don't have an invalid `NODE_ENV`
+var env = process.env.BABEL_ENV || process.env.NODE_ENV;
+if (env !== 'development' && env !== 'test' && env !== 'production') {
+  throw new Error(
+    'Using `babel-preset-dev-toolkit` requires that you specify `NODE_ENV` or ' +
+      '`BABEL_ENV` environment variables. Valid values are "development", ' +
+      '"test", and "production". Instead, received: ' +
+      JSON.stringify(env) +
+      ".\nNOTE: `babel-preset-dev-toolkit` uses facebook's `babel-preset-react-app`" +
+      ' under the hood which has the same requirement.\n\n',
+  );
+}
+
 // Use require.resolve to prevent issues when using npm link
 // see: https://github.com/babel/babel-loader/issues/149
-
 module.exports = {
   presets: [
     require.resolve('babel-preset-env'),

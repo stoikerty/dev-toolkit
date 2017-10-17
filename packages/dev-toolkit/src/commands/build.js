@@ -28,13 +28,12 @@ bootstrap().then(({ server, userSettings }) => {
       userSettings,
     });
 
-    log({ message: 'Starting Webpack…' });
+    log({ message: 'Start Webpack & compile assets…' });
 
     // Compile with middleware for hot-reloading
     const compiler = webpack(config, webpackError => {
       log({ error: webpackError });
 
-      log({ message: 'Compiling Assets with Webpack…' });
       compiler.run(compilerError => {
         log({ error: compilerError });
         log({ message: '\n✨  Finished compiling Assets.\n', type: 'success' });

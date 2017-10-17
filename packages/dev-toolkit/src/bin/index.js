@@ -1,27 +1,7 @@
 #!/usr/bin/env node
-/* eslint-disable no-underscore-dangle */
 import yargs from 'yargs';
-import path from 'path';
-import babelRunner from 'babel-runner';
 
-import { log } from '../utilities';
-
-const runCommand = ({ command, message, options }) => {
-  // Pass options down to specific command
-  global.__devToolkitCommandOptions = options;
-
-  log({ title: command, message, useSeparator: true });
-
-  // Run a given command
-  if (command === 'run') {
-    // `run` uses `babelRunner`, we import it directly so `babelRunner` doesn't run twice
-    import(path.resolve(__dirname, '../commands/run'));
-  } else {
-    babelRunner({
-      fileToRun: path.resolve(__dirname, `../commands/${command}`),
-    });
-  }
-};
+import { runCommand } from '../utilities';
 
 const devToolkit = ({ cmdArgs }) => {
   // eslint-disable-next-line no-unused-expressions
@@ -34,6 +14,7 @@ const devToolkit = ({ cmdArgs }) => {
       handler: argv =>
         runCommand({
           options: {
+            programmatic: false,
             projectName: argv._[1],
             template: argv.template || false,
             silent: argv.silent || false,
@@ -50,6 +31,7 @@ const devToolkit = ({ cmdArgs }) => {
       handler: argv =>
         runCommand({
           options: {
+            programmatic: false,
             silent: argv.silent || false,
             skipPreRender:
               argv.skipPreRender || argv['skip-prerender'] || argv['skip-pre-render'] || false,
@@ -64,7 +46,9 @@ const devToolkit = ({ cmdArgs }) => {
       desc: 'Outputs current version number',
       handler: () =>
         runCommand({
-          options: {},
+          options: {
+            programmatic: false,
+          },
           command: 'version',
           message: 'Output current version number',
         }),
@@ -76,6 +60,7 @@ const devToolkit = ({ cmdArgs }) => {
       handler: argv =>
         runCommand({
           options: {
+            programmatic: false,
             silent: argv.silent || false,
           },
           command: 'watch',
@@ -89,6 +74,7 @@ const devToolkit = ({ cmdArgs }) => {
       handler: argv =>
         runCommand({
           options: {
+            programmatic: false,
             silent: argv.silent || false,
           },
           command: 'serve',
@@ -97,11 +83,12 @@ const devToolkit = ({ cmdArgs }) => {
     })
     .command({
       command: 'preRender',
-      aliases: ['preRender', 'p'],
+      aliases: ['preRender', 'prerender', 'pre-render', 'p'],
       desc: 'preRender the app',
       handler: argv =>
         runCommand({
           options: {
+            programmatic: false,
             silent: argv.silent || false,
           },
           command: 'preRender',
@@ -109,17 +96,19 @@ const devToolkit = ({ cmdArgs }) => {
         }),
     })
     .command({
-      command: 'run',
-      aliases: ['run', 'r'],
-      desc: 'Runs a file with defined babel & nodeHooks configuration',
+      command: 'bootstrap',
+      aliases: ['bootstrap'],
+      desc:
+        'Bootstraps a file with defined babel & nodeHooks configuration and makes dev-toolkit settings available for import',
       handler: argv =>
         runCommand({
           options: {
+            programmatic: false,
             silent: argv.silent || false,
-            fileName: argv._[1] || '',
+            file: argv.file || '',
           },
-          command: 'run',
-          message: 'Run file with universal configuration',
+          command: 'bootstrap',
+          message: 'Bootstrap with universal configuration & dev-toolkit settings',
         }),
     })
     .help().argv;

@@ -9,7 +9,7 @@
     "babel-plugin-dynamic-import-node": "^1.0.2",
     "babel-plugin-module-resolver": "^2.7.1",
     "babel-preset-env": "^1.6.0",
-    "babel-runner": "^1.0.0-beta-2",
+    "babel-runner": "^1.0.0-beta-5",
     "chai": "^4.1.2",
     "fs-extra": "^4.0.1",
     "mocha": "^3.5.0",

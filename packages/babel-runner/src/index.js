@@ -7,15 +7,13 @@ const packageJson = fileExists(packageJsonPath) ? require(packageJsonPath) : {};
 const pkgConfig = packageJson['babel-runner'] || {};
 
 // Retrieve Paths for babelrc & node hooks from default locations or from package.json
-
-export const nodeHooksPath = (() => {
+const nodeHooksPath = (() => {
   const filePath = pkgConfig.nodeHooks
     ? pkgConfig.nodeHooks
     : path.resolve(projectFolder, 'nodeHooks.js');
   return fileExists(filePath) ? filePath : null;
 })();
-
-export const babelrc = (() => {
+const babelrc = (() => {
   const defaultBabelrcJS = path.resolve(projectFolder, 'babelrc.js');
   const defaultBabelrcJson = path.resolve(projectFolder, '.babelrc');
 
@@ -57,3 +55,4 @@ const babelRunner = ({ fileToRun } = {}) => {
 
 module.exports = babelRunner;
 module.exports.default = babelRunner;
+module.exports.babelrc = babelrc;
