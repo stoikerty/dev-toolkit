@@ -11,7 +11,7 @@
     "lint": "prettier --write './**/*.js'"
   },
   "dependencies": {
-    "babel-preset-dev-toolkit": "1.0.0-beta-4",
+    "babel-preset-dev-toolkit": "1.0.0-beta-5",
     "cross-env": "^5.0.5",
     "dev-toolkit": "6.0.0-beta-43",
     "express": "^4.15.5",

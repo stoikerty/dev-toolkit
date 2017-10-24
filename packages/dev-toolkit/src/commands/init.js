@@ -36,7 +36,7 @@ if (template && !templateExists) {
 
 const inputFolder = path.resolve(
   skipComments ? generatedTemplatesWithoutComments : generatedTemplates,
-  templateName,
+  templateName
 );
 const projectFolder = path.resolve(process.cwd(), projectName);
 

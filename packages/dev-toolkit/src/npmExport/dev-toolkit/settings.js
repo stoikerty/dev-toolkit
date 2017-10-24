@@ -9,7 +9,7 @@ export const creatingBuild = typeof devToolkitSettings !== typeof undefined;
 // Warn if the initial node-command wasn't spawned via the `dev-toolkit`-cli
 if (!creatingBuild && typeof global.__devToolkitSettings === typeof undefined) {
   console.log(
-    '\n⚠️  Could not get shared dev-toolkit settings. Are you using the `dev-toolkit`-cli?\n',
+    '\n⚠️  Could not get shared dev-toolkit settings. Are you using the `dev-toolkit`-cli?\n'
   );
 }
 

@@ -9,7 +9,7 @@ if (env !== 'development' && env !== 'test' && env !== 'production') {
       '"test", and "production". Instead, received: ' +
       JSON.stringify(env) +
       ".\nNOTE: `babel-preset-dev-toolkit` uses facebook's `babel-preset-react-app`" +
-      ' under the hood which has the same requirement.\n\n',
+      ' under the hood which has the same requirement.\n\n'
   );
 }
 

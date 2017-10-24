@@ -54,7 +54,7 @@ export default ({ getWebpackAssets, creatingBuild, userSettings } = { creatingBu
           },
         ].concat(
           // Add any user settings from `webpack.loaders`
-          userSettings.webpack.loaders(customizationOptions),
+          userSettings.webpack.loaders(customizationOptions)
         ),
       },
       plugins: [
@@ -73,16 +73,16 @@ export default ({ getWebpackAssets, creatingBuild, userSettings } = { creatingBu
                   processOutput: getWebpackAssets,
                 }),
               ]
-            : [],
+            : []
         )
         .concat(
           creatingBuild
             ? [new optimize.UglifyJsPlugin()]
-            : [new HotModuleReplacementPlugin(), new NoEmitOnErrorsPlugin()],
+            : [new HotModuleReplacementPlugin(), new NoEmitOnErrorsPlugin()]
         )
         .concat(
           // Add any user settings from `webpack.plugins`
-          userSettings.webpack.plugins(customizationOptions),
+          userSettings.webpack.plugins(customizationOptions)
         ),
       resolve: {
         modules: [
@@ -104,6 +104,6 @@ export default ({ getWebpackAssets, creatingBuild, userSettings } = { creatingBu
       },
     },
 
-    customizationOptions,
+    customizationOptions
   );
 };

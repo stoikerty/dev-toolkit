@@ -7,11 +7,11 @@ export const gitRepoRoot = path.resolve(devToolkitRoot, '../../');
 export const originalTemplates = path.resolve(gitRepoRoot, 'templates');
 export const generatedTemplates = path.resolve(
   devToolkitDistribution,
-  'generated-templates/original',
+  'generated-templates/original'
 );
 export const generatedTemplatesWithoutComments = path.resolve(
   devToolkitDistribution,
-  'generated-templates/skipped-comments',
+  'generated-templates/skipped-comments'
 );
 export const defaultTemplate = 'standard';
 

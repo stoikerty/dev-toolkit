@@ -23,7 +23,7 @@ export const runDevToolkitCli = ({ command, directory } = { directory: cacheDir 
       shell.exec(
         `./node_modules/.bin/dev-toolkit ${command}`,
         { silent: true },
-        (exitCode, output) => resolve({ exitCode, output }),
+        (exitCode, output) => resolve({ exitCode, output })
       );
     } catch (e) {
       console.log('Unable to runDevToolkitCli. ', e);
