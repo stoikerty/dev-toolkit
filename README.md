@@ -9,7 +9,7 @@
   &nbsp;&nbsp;<a href="#developer-convenience"><code>hot-reload</code></a>
 </p>
 
-## Test out the latest beta version!
+## Try out the latest beta 😄
 Version 6 will be less opinionated and useful for more use-cases such as serverless. I'm looking to release v6 before the end of 2017.
 
 Please try it out and post feedback in https://github.com/stoikerty/dev-toolkit/pull/39 or open an issue.
@@ -28,6 +28,8 @@ dev-toolkit init [my_project] [--template template_name] [--skipComments]
 - `standard` - done & ready (default)
 - `with-sass` - done but you might encounter bugs
 - `serverless` - in progress
+
+---
 
 ## Create a new project
 ```bash
