@@ -9,6 +9,26 @@
   &nbsp;&nbsp;<a href="#developer-convenience"><code>hot-reload</code></a>
 </p>
 
+## Test out the latest beta version!
+Version 6 will be less opinionated and useful for more use-cases such as serverless. I'm looking to release v6 before the end of 2017.
+
+Please try it out and post feedback in https://github.com/stoikerty/dev-toolkit/pull/39 or open an issue.
+
+Latest beta version: `dev-toolkit@6.0.0-beta-44`
+```bash
+# Install the latest version
+npm install -g devtoolkit@6.0.0-beta-44
+
+# Initialize a project. Optional name, template, comments
+dev-toolkit init [my_project] [--template template_name] [--skipComments]
+```
+
+*Available templates:*
+- `minimal` - done & ready
+- `standard` - done & ready (default)
+- `with-sass` - done but you might encounter bugs
+- `serverless` - in progress
+
 ## Create a new project
 ```bash
 # install & initialize new app
