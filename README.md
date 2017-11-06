@@ -17,7 +17,7 @@ Please try it out and post feedback in https://github.com/stoikerty/dev-toolkit/
 Latest beta version: `dev-toolkit@6.0.0-beta-44`
 ```bash
 # Install the latest version
-npm install -g devtoolkit@6.0.0-beta-44
+npm install -g dev-toolkit@6.0.0-beta-44
 
 # Initialize a project. Optional name, template, comments
 dev-toolkit init [my_project] [--template template_name] [--skipComments]
