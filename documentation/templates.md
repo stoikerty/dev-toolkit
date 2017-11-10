@@ -1,12 +1,20 @@
+# dev-toolkit Templates
 A collection of templates of how dev-toolkit can be used.
 Each one of these templates can be initialized from the command-line with:
 ```bash
 dev-toolkit init my_project --template [template-name]
 ```
 
-## Ready Templates
+## Shared Structure
+...
+- server / client split
 
-#### standard
+## Available Templates
+
+### minimal (default)
+Stripped out example with pre-render
+
+### standard (suggested)
 If you want to start a project from scratch, this is your best starting point.
 This template contains no routing, it will give you out of the box:
 - simple client app with
@@ -23,27 +31,26 @@ This template contains no routing, it will give you out of the box:
 - `handler.js`-file serverless-type mini-example which contains
   - example usage of `dev-toolkit` programmatic API usage
 
-#### minimal
-Stripped out example with pre-render
-
-#### with-sass
-Example using sass/scss with custom webpack configuration and node-hooks
-
 ---
 
 ## WIP Templates
 
-#### serverless
+### with-sass
+Example using sass/scss with custom webpack configuration and node-hooks
+
+### serverless
 Example using dev-toolkit programmatically for usage with cloud-functions/lambdas in a serverless scenario.
 
 ---
 
 ## Planned Templates
 
-#### with-mocha
-#### with-jest
-#### with-glamorous
-#### with-dynamic-routes
-#### with-styled-components
+### with-react-router
+### with-redux
+### with-mocha
+### with-jest
+### with-glamorous
+### with-dynamic-routes
+### with-styled-components
 
-#### as exported npm-package?
+### as exported npm-package?

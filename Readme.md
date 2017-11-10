@@ -1,8 +1,9 @@
 <h1 align="center">dev-toolkit</h1>
 <p align="center">
-Jump-start your `react`-powered Web App<br />
-<sub>Designed for Veterans</sub>
+Jump-start your `react`-powered Universal App<br />
+<em>Designed for Veterans</em>
 </p>
+<br />
 
 `dev-toolkit` provides you with an easy and quick way to get started with a server-rendered & pre-rendered app. After creating your starting point with the `init` command, you get full customizeability out of the box.
 
