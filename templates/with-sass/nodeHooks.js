@@ -5,7 +5,7 @@ const path = require('path');
 const sass = require('node-sass');
 
 // Retrieve settings that are shared between node-hooks and webpack
-const scssIncludePaths = require('./dev-toolkit.config').scssIncludePaths;
+const includePaths = require('./dev-toolkit.config').includePaths;
 const cssChunkNaming = require('./dev-toolkit.config').cssChunkNaming;
 
 // Make node understand sass-files by hooking into the file extension
@@ -21,7 +21,7 @@ cssHook({
       data: cssFileData,
       // Include any paths that are part of the config,
       // as well as the current path where css-file resides.
-      includePaths: [].concat(scssIncludePaths).concat([path.dirname(cssFilePath)]),
+      includePaths: [].concat(includePaths).concat([path.dirname(cssFilePath)]),
     }).css;
   },
 });
