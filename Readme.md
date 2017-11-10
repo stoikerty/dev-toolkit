@@ -1,7 +1,7 @@
 <h1 align="center">dev-toolkit</h1>
 <p align="center">
 Jump-start your `react`-powered Web App<br />
-<small>Designed for Veterans</small>
+<sub>Designed for Veterans</sub>
 </p>
 
 `dev-toolkit` provides you with an easy and quick way to get started with a server-rendered & pre-rendered app. After creating your starting point with the `init` command, you get full customizeability out of the box.
@@ -14,7 +14,7 @@ $ npm install -g dev-toolkit
 ```
 
 ```bash
-# Initialize a project. Optional name, template, comments
+# Initialize a project with optional name, template, comments
 $ dev-toolkit init [project_name] [--template template_name] [--skip-comments]
 ```
 
