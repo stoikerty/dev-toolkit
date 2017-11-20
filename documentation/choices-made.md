@@ -1,3 +1,22 @@
+- mention specific examples for each section to improve usefulness
+
+# Choices made in this project
+
+`dev-toolkit` is in reality much simpler than many people realize at first sight. There are a number of reasons why this came to be.
+
+This project has gone through many iterations, from using gulp and later webpack in the form of a boilerplate, to finally becoming a cli-tool with webpack under the hood.
+
+## Universal Usage
+Pre-Rendering & Server-rendering is central to `dev-toolkit`. By default pre-rendering is enabled, because of the massive performance gains that can be achieved using it. If you only use server-rendering on a per-request basis, you can disable pre-rendering entirely [using `dev-toolkit.config.js`](#link-extending).
+
+Server-rendering itself is a complicated topic since any of the code used on the client can and will also be run on the server. Doing so introduces a great amount of moving parts and in order for any starting point to be truly useful, the essential parts of the server-rendering aspect [are exposed in different ways](#link-how-it-works).
+
+## Simplicity
+Although universal usage...
+
+## Usefulness
+
+## Reducing or eliminating lock-in
 
 ## Prescribed by dev-toolkit
 - universal usage

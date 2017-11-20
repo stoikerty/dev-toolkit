@@ -5,9 +5,9 @@ Jump-start your `react`-powered Universal App<br />
 </p>
 <br />
 
-`dev-toolkit` provides you with an easy and quick way to get started with a server-rendered & pre-rendered app. After creating your starting point with the `init` command, you get full customizeability out of the box.
+`dev-toolkit` provides you with an easy and quick way to get started with a pre-rendered & server-rendered app. After creating your starting point with the `init` command, you get full customizeability out of the box.
 
-Make sure to check out [the choices made in this project](#link), the [list of available templates](#link) and the [contributing guide](#link).
+Make sure you understand [how `dev-toolkit` works](#link), check out [the choices made in this project](#link), the [list of available templates](#link) and the [contributing guide](#link).
 
 ## Quick Start - using a template
 ```bash
