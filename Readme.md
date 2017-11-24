@@ -1,13 +1,13 @@
 <h1 align="center">dev-toolkit</h1>
 <p align="center">
-<strong>Jump-start your <code>react</code>-powered Universal App</strong><br />
+Jump-start your <code>react</code>-powered Universal App<br />
 <em>Designed for Veterans</em>
 </p>
 <br />
 
 `dev-toolkit` provides you with an easy and quick way to get started with a pre-rendered & server-rendered app. After creating your starting point with the `init` command, you get full customizeability out of the box.
 
-## Quick Start - using a template
+### Quick Start - using a template
 ```bash
 $ npm install -g dev-toolkit
 ```
@@ -17,7 +17,7 @@ $ npm install -g dev-toolkit
 $ dev-toolkit init [project_name] [--template template_name] [--skip-comments]
 ```
 
-### List of available templates
+#### List of available templates
 - `standard` (default)
 - `minimal`
 - `with-sass`
@@ -53,7 +53,7 @@ $ npm run test
 ```
 
 
-## Roadmap
+### Roadmap
 - Improved docs
 - Using your own (external) template - under consideration
 - Eject feature - under consideration
