@@ -9,6 +9,12 @@ Jump-start your <code>react</code>-powered Universal App<br />
 server-rendered app. After creating your starting point with the `init` command, you get full
 customizeability out of the box.
 
+[![Travis branch](https://img.shields.io/travis/stoikerty/dev-toolkit/master.svg?style=flat-square)](https://github.com/stoikerty/dev-toolkit)
+[![npm](https://img.shields.io/npm/v/dev-toolkit.svg?style=flat-square)](https://www.npmjs.com/package/dev-toolkit)
+[![npm](https://img.shields.io/npm/dm/dev-toolkit.svg?style=flat-square)](https://www.npmjs.com/package/dev-toolkit)
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
+[![Twitter](https://img.shields.io/twitter/url/https/github.com/stoikerty/dev-toolkit.svg?style=social)](https://twitter.com/intent/tweet?text=An%20easy%20and%20quick%20way%20to%20start%20a%20pre-rendered%20and%20server-rendered%20%23react%20app!%20https%3A%2F%2Fgithub.com%2Fstoikerty%2Fdev-toolkit)
+
 ### Quick Start
 
 ```bash
