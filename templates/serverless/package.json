@@ -1,0 +1,26 @@
+{
+  "name": "dev-toolkit-serverless-template",
+  "version": "1.0.0",
+  "description": "universal app",
+  "author": "",
+  "scripts": {
+    "start": "npm run build && npm run serve",
+    "dev": "cross-env NODE_ENV=development dev-toolkit watch",
+    "build": "cross-env NODE_ENV=production dev-toolkit build",
+    "serve": "cross-env NODE_ENV=production SERVER_PORT=8080 dev-toolkit serve",
+    "lint": "prettier --write './**/*.js'"
+  },
+  "dependencies": {
+    "babel-preset-dev-toolkit": "1.0.0",
+    "clear-module": "^2.1.0",
+    "cross-env": "^5.0.5",
+    "dev-toolkit": "6.0.2",
+    "express": "^4.15.5",
+    "express-handlebars": "^3.0.0",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0"
+  },
+  "devDependencies": {
+    "prettier": "1.7.4"
+  }
+}

@@ -1,1 +1,1 @@
-module.exports = require('./dist/src/settings');
+module.exports = require('./dist/npmExport/dev-toolkit/settings');

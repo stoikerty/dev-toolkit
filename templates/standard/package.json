@@ -1,0 +1,48 @@
+{
+  "name": "dev-toolkit-standard-template",
+  "version": "1.0.0",
+  "description": "universal app",
+  "author": "",
+  "scripts": {
+    "start": "npm run build && npm run serve",
+    "dev": "better-npm-run development",
+    "build": "better-npm-run create-build",
+    "serve": "better-npm-run run-server",
+    "lint": "prettier --write './**/*.js'"
+  },
+  "betterScripts": {
+    "development": {
+      "command": "dev-toolkit watch",
+      "env": {
+        "NODE_ENV": "development",
+        "MY_CUSTOM_ENV": "foo"
+      }
+    },
+    "create-build": {
+      "command": "dev-toolkit build",
+      "env": {
+        "NODE_ENV": "production"
+      }
+    },
+    "run-server": {
+      "command": "dev-toolkit serve",
+      "env": {
+        "NODE_ENV": "production",
+        "SERVER_PORT": "8080"
+      }
+    }
+  },
+  "dependencies": {
+    "babel-preset-dev-toolkit": "1.0.0",
+    "better-npm-run": "^0.1.0",
+    "clear-module": "^2.1.0",
+    "dev-toolkit": "6.0.2",
+    "express": "^4.15.5",
+    "express-handlebars": "^3.0.0",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0"
+  },
+  "devDependencies": {
+    "prettier": "1.7.4"
+  }
+}

@@ -1,27 +1,23 @@
 {
-  "name": "dev-toolkit-monorepo",
+  "name": "dev-toolkit-project",
   "version": "0.0.0",
-  "description": "Monorepo configuration for dev-toolkit",
-  "main": "index.js",
   "scripts": {
-    "install": "lerna bootstrap",
-    "link": "cd packages/dev-toolkit && npm link && cd ../dynamic-pages && npm link && cd ../..",
-    "watch": "lerna exec -- npm run watch --concurrency",
-    "build": "lerna run build",
-    "publish": "lerna publish",
-    "clean": "lerna run clean"
+    "bootstrap": "lerna bootstrap",
+    "bootstrap-fix": "lerna bootstrap && chmod 777 packages/dev-toolkit/dist/bin/* packages/babel-runner/dist/bin/*",
+    "lint-all": "lerna exec -- npm install && lerna run lint",
+    "full-clean": "npm run safe-clean && npm run root-clean",
+    "root-clean": "del './node_modules'",
+    "safe-clean": "npm run sc-packages && npm run sc-templates && npm run sc-other",
+    "sc-packages": "del './packages/**/node_modules' './packages/**/dist' './packages/**/build'",
+    "sc-templates": "del './templates/**/node_modules' './templates/**/dist' './templates/**/build'",
+    "sc-other": "del './feature-tests/**/_temp-cache'",
+    "unsafe-clean": "del './**/package-lock.json'",
+    "fix-permissions": "chmod 777 packages/dev-toolkit/dist/bin/* packages/babel-runner/dist/bin/*"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/stoikerty/dev-toolkit.git"
-  },
-  "author": "Jorge Antunes",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/stoikerty/dev-toolkit/issues"
-  },
-  "homepage": "https://github.com/stoikerty/dev-toolkit#readme",
   "devDependencies": {
-    "lerna": "2.0.0-beta.30"
+    "lerna": "^2.4.0"
+  },
+  "dependencies": {
+    "del-cli": "^1.1.0"
   }
 }

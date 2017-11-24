@@ -1,0 +1,102 @@
+// Some example styles written in sass
+// (remove-me)
+
+@keyframes wiggle-up-down {
+  0% {
+    transform: translateY(0px);
+  }
+  20% {
+    transform: translateY(-7px) rotate(-6deg) scale(0.8);
+  }
+  40% {
+    transform: translateY(-7px) rotate(8deg) scale(1);
+  }
+  70% {
+    transform: translateY(-7px) rotate(-5deg) scale(1.05);
+  }
+  80% {
+    transform: translateY(0px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+@keyframes wiggle-left-right {
+  0% {
+    transform: translateX(0px);
+  }
+  20% {
+    opacity: 0.7;
+    transform: translateY(1px) scale(0.99);
+  }
+  30% {
+    opacity: 0.9;
+    transform: translateX(-2px) scale(1.01);
+  }
+  70% {
+    opacity: 0.7;
+    transform: translateX(1px) scale(0.98);
+  }
+  80% {
+    opacity: 1;
+    transform: translateY(-2px) scale(1.02);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}
+@keyframes wiggle-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  60% {
+    transform: rotate(8deg) scale(2.4);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.app {
+  .color1 {
+    color: #2980b9;
+  }
+  .color2 {
+    color: #f39c12;
+  }
+  .color3 {
+    color: #95a5a6;
+  }
+  .color4 {
+    color: #e74c3c;
+  }
+  .color5 {
+    color: #3498db;
+  }
+  .color6 {
+    color: #9b59b6;
+  }
+
+  .wiggleLeftRight {
+    display: inline-block;
+    color: rgba(#27ae60, 0.8);
+
+    animation: wiggle-left-right 0.7s ease-out;
+    animation-iteration-count: infinite;
+  }
+  .wiggleUpDown {
+    display: inline-block;
+    color: #d35400;
+
+    animation: wiggle-up-down 1.6s ease-in-out;
+    animation-iteration-count: infinite;
+  }
+  .wiggleRotate {
+    display: inline-block;
+    color: #27ae60;
+
+    transform-origin: 50% 100%;
+    animation: wiggle-rotate 1.6s ease-in-out;
+    animation-iteration-count: infinite;
+  }
+}

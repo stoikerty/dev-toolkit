@@ -2,7 +2,9 @@
 ## Generated Files
 #############
 
+temporary-test-dir/
 dist/
+build/
 
 #############
 ## Node

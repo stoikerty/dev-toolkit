@@ -1,0 +1,37 @@
+{
+  "name": "babel-preset-dev-toolkit",
+  "version": "1.0.0",
+  "description": "Uses create-react-app default, adds sane if-statements & root-relative imports",
+  "main": "index.js",
+  "scripts": {
+    "lint": "prettier --write './**/*.js'",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stoikerty/dev-toolkit/tree/master/packages/babel-preset-dev-toolkit"
+  },
+  "keywords": [
+    "babel",
+    "babel-preset",
+    "dev-toolkit",
+    "universal",
+    "universal javascript",
+    "import",
+    "jsx-control-statements",
+    "root-relative require",
+    "root-relative import"
+  ],
+  "author": "Jorge Antunes @stoikerty",
+  "license": "MIT",
+  "dependencies": {
+    "babel-plugin-dynamic-import-node": "^1.1.0",
+    "babel-plugin-module-resolver": "^2.7.1",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-react-app": "^3.0.2",
+    "jsx-control-statements": "^3.2.6"
+  },
+  "devDependencies": {
+    "prettier": "^1.7.4"
+  }
+}

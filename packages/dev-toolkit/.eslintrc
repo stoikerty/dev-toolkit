@@ -1,32 +1,19 @@
 {
-  "plugins": [
-    "jsx-control-statements"
-  ],
-  "extends": [
-    "airbnb",
-    "plugin:jsx-control-statements/recommended"
-  ],
+  "extends": ["airbnb-base", "prettier"],
   "parser": "babel-eslint",
+  "plugins": ["prettier"],
   "rules": {
-    "no-multiple-empty-lines": [
-      "error",
-      {
-        "max": 1
-      }
-    ],
+    "prettier/prettier": "error",
+    "import/no-extraneous-dependencies": ["off", "never"],
     "import/no-unresolved": [
       "error",
       {
-        "ignore": [ "src/" ]
+        "ignore": ["^dist/"]
       }
-    ]
+    ],
+    "import/extensions": ["off", "never"]
   },
-
-  "globals": [
-    "app"
-  ],
   "env": {
-    "browser": true,
     "mocha": true
   }
 }

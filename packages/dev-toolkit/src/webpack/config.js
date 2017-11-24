@@ -1,73 +1,109 @@
-import plugins from './config/plugins';
-import { cssHook, filesHook } from './config/extensionHooks';
-import loaders, { sass, postcss, eslint } from './config/loaders';
-import resolve from './config/resolve';
-import resolveLoader from './config/resolveLoader';
-import stats from './config/stats';
+import path from 'path';
+import AssetsPlugin from 'assets-webpack-plugin';
+import { DefinePlugin, HotModuleReplacementPlugin, NoEmitOnErrorsPlugin, optimize } from 'webpack';
+import { babelrc } from 'babel-runner';
 
 import {
-  PATHS,
-  env,
-  currentScript,
-  vendor,
-  overrideConfig,
-  namingConvention,
-} from '../_userSettings';
+  devToolkitRoot,
+  projectRoot,
+  assetsPath,
+  entryPoint,
+  publicPath,
+  assetsManifestFolder,
+  assetsManifestName,
+} from './projectSettings';
 
-// Set up server-rendering for file-extensions
-cssHook();
-filesHook();
+export default ({ getWebpackAssets, creatingBuild, userSettings } = { creatingBuild: true }) => {
+  const namingConvention = creatingBuild ? '[name].[chunkhash]' : '[name]';
+  const customizationOptions = {
+    projectRoot,
+    creatingBuild,
+    namingConvention,
+    assetsPath,
+    publicPath,
+    babelrc,
+  };
 
-// This is an escape-hatch for overriding the webpack config with your custom one.
-// NOTE: There's limited support for using these custom config escape hatches. You're on your own!
-const createConfig = (config) => {
-  const override = overrideConfig && overrideConfig.default ?
-    overrideConfig.default : overrideConfig;
-  return typeof override === 'function' ?
-    override({ config, paths: PATHS, env, currentScript }) : config;
+  // Allow completely extending webpack with `webpack.customize`
+  return userSettings.webpack.customize(
+    {
+      entry: {
+        app: [entryPoint],
+      },
+      output: {
+        path: assetsPath,
+        filename: `${namingConvention}.js`,
+        chunkFilename: `${namingConvention}.js`,
+        publicPath,
+      },
+      module: {
+        loaders: [
+          {
+            test: /\.jsx?$/,
+            loaders: [`babel-loader?${JSON.stringify(babelrc)}`],
+            exclude: /(node_modules)|\.route.jsx?$|\.dynamic.jsx?$/,
+          },
+          {
+            test: /\.route.jsx?$|\.dynamic.jsx?$/,
+            loaders: [
+              // `bundle`-loader automatically uses module directly when code is run on the server
+              'bundle-loader?lazy&name=[name]',
+              `babel-loader?${JSON.stringify(babelrc)}`,
+            ],
+            exclude: /(node_modules)/,
+          },
+        ].concat(
+          // Add any user settings from `webpack.loaders`
+          userSettings.webpack.loaders(customizationOptions)
+        ),
+      },
+      plugins: [
+        new DefinePlugin({
+          devToolkitSettings: JSON.stringify(userSettings.devToolkit),
+          // React & Redux rely on this to be set explicitly
+          'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+        }),
+      ]
+        .concat(
+          getWebpackAssets
+            ? [
+                new AssetsPlugin({
+                  path: assetsManifestFolder,
+                  filename: assetsManifestName,
+                  processOutput: getWebpackAssets,
+                }),
+              ]
+            : []
+        )
+        .concat(
+          creatingBuild
+            ? [new optimize.UglifyJsPlugin()]
+            : [new HotModuleReplacementPlugin(), new NoEmitOnErrorsPlugin()]
+        )
+        .concat(
+          // Add any user settings from `webpack.plugins`
+          userSettings.webpack.plugins(customizationOptions)
+        ),
+      resolve: {
+        modules: [
+          // Resolve dev-toolkit related modules like 'webpack-hot-middleware/client'
+          path.resolve(devToolkitRoot, 'node_modules'),
+          // Resolve all other modules from client app
+          path.resolve(projectRoot, 'node_modules'),
+          'node_modules',
+        ],
+      },
+      resolveLoader: {
+        modules: [
+          // Resolve dev-toolkit related webpack loaders like 'babel-loader'
+          path.resolve(devToolkitRoot, 'node_modules'),
+          // Resolve webpack loaders related to project
+          path.resolve(projectRoot, 'node_modules'),
+          'node_modules',
+        ],
+      },
+    },
+
+    customizationOptions
+  );
 };
-
-// Resulting webpack config
-// ---
-export default createConfig({
-  // The entry and ouput configuration for the bundle(s)
-  entry: {
-    app: [PATHS.clientAppEntryPoint],
-    vendor,
-  },
-  output: {
-    path: PATHS.buildFolder,
-    filename: `${namingConvention}.js`,
-    chunkFilename: `${namingConvention}.js`,
-    publicPath: PATHS.publicPath,
-  },
-
-  // Webpack plugins
-  plugins,
-
-  // Webpack module-loaders
-  module: { loaders },
-
-  // Specific config for loaders. `sass-loader`, `postcss-loader`, `eslint-loader`
-  sassLoader: sass,
-  postcss,
-  eslint,
-
-  // Manage directories for dependencies with `resolve` & `resolveLoader`
-  resolve,
-  resolveLoader,
-
-  // How much information webpack should output
-  stats,
-
-  // Ignore some node-specific packages on the client
-  node: {
-    fs: 'empty',
-    net: 'empty',
-    tls: 'empty',
-    path: 'empty',
-    chalk: 'empty',
-    mkdirp: 'empty',
-    fileExists: 'empty',
-  },
-});

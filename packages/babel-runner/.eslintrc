@@ -1,0 +1,12 @@
+{
+  "extends": [
+    "airbnb-base"
+  ],
+
+  "parser": "babel-eslint",
+
+  "rules": {
+    "global-require": [ "off" ],
+    "import/no-dynamic-require": [ "off" ]
+  }
+}
