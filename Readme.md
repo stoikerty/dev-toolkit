@@ -20,6 +20,7 @@ $ dev-toolkit init [project_name] [--template template_name] [--skip-comments]
 #### List of available templates
 - `standard` (default)
 - `minimal`
+- `with-eslint`
 - `with-sass`
 
 ## Features
@@ -28,7 +29,7 @@ $ dev-toolkit init [project_name] [--template template_name] [--skip-comments]
 - pre-rendering
 - creating a build
 - custom webpack config
-- environment variables usage on client
+- use environment variables on client
 
 ### No CSS by default
 With CSS-in-JS solutions on the rise, it would be unwise to include dependencies for css-modules, sass or less in every project that has `dev-toolkit` as a dependency which would introduce additional installation time and bloat. The aim of dev-toolkit is to be unopinionated so that it can be useful in many scenarios.
@@ -45,6 +46,8 @@ $ npm install
 
 # Bootstrap all packages
 $ npm run bootstrap
+# If you encounter linux/osx permission issues, try this
+$ npm run bootstrap-fix
 
 # Run feature tests
 $ cd feature-tests
@@ -52,6 +55,7 @@ $ npm install
 $ npm run test
 ```
 
+Your workflow will likely be to `cd` into a template of your choice in the `templates` directory where you can test `dev-toolkit` and in parallel (in a separate terminal) re-run the `bootstrap`-command in the root of the project after making changes in one of the `packages`.
 
 ### Roadmap
 - Improved docs

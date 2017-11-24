@@ -4,7 +4,7 @@ import babelRunner from 'babel-runner';
 
 import { log } from '../utilities';
 
-export default ({ command, message, options, programmatic }) => {
+export default ({ command, message, options, programmatic, skipPrimaryLog }) => {
   // Pass options down to specific command
   global.__devToolkitCommandOptions = options || {};
 
@@ -15,7 +15,9 @@ export default ({ command, message, options, programmatic }) => {
     useSeparator: true,
   });
 
-  log({ message: 'Adding universal configuration…' });
+  if (!skipPrimaryLog) {
+    log({ message: 'Adding universal configuration…' });
+  }
   try {
     babelRunner({
       fileToRun: path.resolve(__dirname, `../commands/${command}`),

@@ -23,6 +23,7 @@ const getTemplatesList = ({ folder }) => {
 const templatesList = getTemplatesList({ folder: generatedTemplates });
 const templateExists = templatesList.indexOf(template) > -1;
 const templateName = templateExists ? template : defaultTemplate;
+const isDefaultTemplate = templateName === defaultTemplate;
 
 if (template && !templateExists) {
   log({ type: 'warning', message: `template files for '${template}' don't exist.` });
@@ -45,9 +46,26 @@ copySync(inputFolder, projectFolder);
 log({ message: `Created project using ${white(templateName)} template in:` });
 log({ message: `${projectFolder}\n` });
 
-spinner.start({ message: `Installing NPM Dependencies for ${white(projectName)}` });
-spawn('npm', ['install'], { cwd: projectFolder }).on('close', code => {
-  spinner.stop();
+if (isDefaultTemplate) {
+  spinner.start({ message: `Installing NPM Dependencies for ${white(projectName)}` });
+} else {
+  log({ message: `Installing NPM Dependencies for ${white(projectName)}…\n` });
+}
+
+const spawnOptions = isDefaultTemplate
+  ? { cwd: projectFolder }
+  : {
+      cwd: projectFolder,
+      detached: true,
+      stdio: 'inherit',
+    };
+
+spawn('npm', ['install'], spawnOptions).on('close', code => {
+  if (isDefaultTemplate) {
+    spinner.stop();
+  } else {
+    log({ message: ' ' });
+  }
 
   if (code === 0) {
     log({ type: 'success', message: `Dependencies for ${projectName} have been installed.` });

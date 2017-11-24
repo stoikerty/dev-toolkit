@@ -51,6 +51,7 @@ const devToolkit = ({ cmdArgs }) => {
           },
           command: 'version',
           message: 'Output current version number',
+          skipPrimaryLog: true,
         }),
     })
     .command({
