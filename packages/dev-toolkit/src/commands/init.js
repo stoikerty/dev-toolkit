@@ -1,5 +1,5 @@
 import { statSync, readdirSync } from 'fs';
-import { ensureDirSync, copySync } from 'fs-extra';
+import { ensureDirSync, copySync, writeJson } from 'fs-extra';
 import { white } from 'chalk';
 import path from 'path';
 import spawn from 'cross-spawn';
@@ -43,37 +43,48 @@ const projectFolder = path.resolve(process.cwd(), projectName);
 
 ensureDirSync(projectFolder);
 copySync(inputFolder, projectFolder);
-log({ message: `Created project using ${white(templateName)} template in:` });
-log({ message: `${projectFolder}\n` });
 
-if (isDefaultTemplate) {
-  spinner.start({ message: `Installing NPM Dependencies for ${white(projectName)}` });
-} else {
-  log({ message: `Installing NPM Dependencies for ${white(projectName)}…\n` });
-}
+const pkgPath = path.resolve(projectFolder, 'package.json');
+import(pkgPath).then(pkg => {
+  // Add name to generated project
+  writeJson(pkgPath, { ...pkg, name: projectName, description: projectName }, { spaces: 2 })
+    .then(() => {
+      log({ message: `Created project using ${white(templateName)} template in:` });
+      log({ message: `${projectFolder}\n` });
 
-const spawnOptions = isDefaultTemplate
-  ? { cwd: projectFolder }
-  : {
-      cwd: projectFolder,
-      detached: true,
-      stdio: 'inherit',
-    };
+      if (isDefaultTemplate) {
+        spinner.start({ message: `Installing NPM Dependencies for ${white(projectName)}` });
+      } else {
+        log({ message: `Installing NPM Dependencies for ${white(projectName)}…\n` });
+      }
 
-spawn('npm', ['install'], spawnOptions).on('close', code => {
-  if (isDefaultTemplate) {
-    spinner.stop();
-  } else {
-    log({ message: ' ' });
-  }
+      const spawnOptions = isDefaultTemplate
+        ? { cwd: projectFolder }
+        : {
+            cwd: projectFolder,
+            detached: true,
+            stdio: 'inherit',
+          };
 
-  if (code === 0) {
-    log({ type: 'success', message: `Dependencies for ${projectName} have been installed.` });
-    log({
-      message: `Get started by running \`${white(`cd ${projectName} && npm run dev`)}\``,
-      useSeparator: true,
+      spawn('npm', ['install'], spawnOptions).on('close', code => {
+        if (isDefaultTemplate) {
+          spinner.stop();
+        } else {
+          log({ message: ' ' });
+        }
+
+        if (code === 0) {
+          log({ type: 'success', message: `Dependencies for ${projectName} have been installed.` });
+          log({
+            message: `Get started by running \`${white(`cd ${projectName} && npm run dev`)}\``,
+            useSeparator: true,
+          });
+        } else {
+          log({ type: 'warning', message: `Failed to install Dependencies for ${projectName}.` });
+        }
+      });
+    })
+    .catch(error => {
+      log({ type: 'warning', message: `Failed create project with name ${projectName}.`, error });
     });
-  } else {
-    log({ type: 'warning', message: `Failed to install Dependencies for ${projectName}.` });
-  }
 });
