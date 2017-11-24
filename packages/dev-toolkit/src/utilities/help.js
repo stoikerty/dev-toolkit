@@ -7,7 +7,8 @@ export default ({ displayedWhen, warning, instruction, link, error }) => {
       log({ message: instruction, type: 'success' });
     }
     if (link) {
-      log({ message: `see: https://github.com/stoikerty${link}\n` });
+      // TODO: add once there is more documentation
+      // log({ message: `see: https://github.com/stoikerty${link}\n` });
     }
     if (error) {
       log({ error });
