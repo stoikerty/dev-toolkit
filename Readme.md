@@ -7,7 +7,7 @@ Jump-start your <code>react</code>-powered Universal App<br />
 
 `dev-toolkit` provides you with an easy and quick way to get started with a pre-rendered & server-rendered app. After creating your starting point with the `init` command, you get full customizeability out of the box.
 
-### Quick Start - using a template
+### Quick Start
 ```bash
 $ npm install -g dev-toolkit
 ```
