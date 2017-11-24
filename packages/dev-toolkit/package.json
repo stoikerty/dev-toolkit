@@ -1,16 +1,18 @@
 {
   "name": "dev-toolkit",
-  "version": "6.0.0",
+  "version": "6.0.1",
   "description": "Universal Development Toolkit for React Veterans",
   "main": "dev-toolkit.js",
   "files": [
     "dist",
     "dev-toolkit.js",
     "settings.js",
-    "bootstrap.js"
+    "bootstrap.js",
+    "Readme.md"
   ],
   "scripts": {
-    "prepare": "npm run build",
+    "prepare": "npm run copy-readme && npm run build",
+    "copy-readme": "cp ../../Readme.md ./Readme.md",
     "publish-beta": "npm publish --tag beta",
     "build": "babel src --out-dir dist && node ./dist/postinstall-prepare/copy-templates",
     "watch": "babel src --watch --out-dir dist",
