@@ -55,12 +55,17 @@ jobs:
         - npm run lint
         - cd ../..
 
-        - cd templates/minimal
+        - cd templates/with-eslint
         - npm install
         - npm run lint
         - cd ../..
 
         - cd templates/with-sass
+        - npm install
+        - npm run lint
+        - cd ../..
+
+        - cd templates/minimal
         - npm install
         - npm run lint
         - cd ../..
