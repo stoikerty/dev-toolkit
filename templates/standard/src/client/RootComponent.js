@@ -3,6 +3,7 @@
 // It's likely that this component will stay mostly empty since it sits at the root.
 // It might contain your chosen routing solution or redux-provider.
 import React from 'react';
+
 import { isClient } from 'dev-toolkit/settings';
 import App from './views/App';
 

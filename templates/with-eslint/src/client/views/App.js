@@ -1,6 +1,7 @@
 import React from 'react';
 
-import { isProd, isDev, customEnvContent } from 'src/settings';
+import { isProd, isDev } from 'dev-toolkit/settings';
+import { customEnvContent } from 'src/settings';
 
 // Use this as the entry-point for your app.
 export default () => (
