@@ -1,13 +1,77 @@
 # dev-toolkit Templates
-A collection of templates of how dev-toolkit can be used.
-Each one of these templates can be initialized from the command-line with:
 ```bash
 dev-toolkit init my_project --template [template-name]
 ```
+After initialising a project with the `init` command you will get a small structured boilerplate to work with. `dev-toolkit` abstracts away the base universal & webpack configurations and some templates will show how to extend each one.
 
-## Shared Structure
-...
-- server / client split
+## Shared Structure between most templates
+There are a number of things that will be common amongst most templates. This base boilerplate represents a starting point for your app and although it's suggested that you stick with that structre you're not restricted to do so if you decide to use the `dev-toolkit` programmatic interface.
+
+### `build/`
+```bash
+# Folder is generated when the `build` command is run
+dev-toolkit build
+```
+It will contain the static files that are generated with webpack such as your assets and the manifest file. If you make use of the pre-render functionality of `dev-toolkit` you might also have one or more `index.html`-files. If you have extended webpack, it's likely you'll also have other assets in here such as a css file.
+
+### `src/`
+This folder contains your application source code and is split into 2 parts, a **`client/`** directory and a **`server/`** directory. Each directory has an `index.js` entry point which dev-toolkit expects. The `views/` directory in each is arbitrary, as is the use of the templating engine `handlebars` and other dependencies used on the server apart from `express`.
+
+When run using the command-line interface, `dev-toolkit` has the following dependencies:
+
+#### • `src/client/index.js` entry point
+This file is only run on the client. Webpack uses it as the entry point to generate a client-bundle. Although this file could technically only contain a single `console.log` and work just fine, it is recommended to use the following structure to benefit from webpack's hot-reloading feature:
+```js
+const hotReRender = () => {
+  // Dynamically require module inline for hot-reloading
+  import('./RootComponent').then(module => {
+    // Call `ReactDOM.hydrate`...
+  });
+};
+
+// Start the app by rendering it for the first time
+hotReRender();
+
+// Support hot-reloading of components by rerendering using webpack's included HMR (Hot-Module-Replacement)
+if (module.hot) {
+  // After accepting the new module from webpack, we rerender on the next tick
+  module.hot.accept('./RootComponent', () => setTimeout(hotReRender));
+}
+```
+
+#### • `src/server/index.js` entry point
+`dev-toolkit` uses this file as the entry point to start up the server and to pre-render. In order to do this, it expects a class like so:
+```js
+// Provide a class to dev-toolkit which is executed immediately once imported (using the brackets at the end of the export)
+export default new class {
+  constructor() {
+    // Let dev-toolkit know about express by setting `this.express`
+    // Without this bind, dev-toolkit can't attach the dev-server middleware to webpack
+    this.express = express();
+  }
+
+  // The start method allows `dev-toolkit` to start the server at the right time (after the hot-reload middleware is attached)
+  start({ assets, buildFolder }) {
+    // Start up the server...
+    // this.express.listen(serverPort, () => ...
+  }
+
+  // Rendering of the html on build happens through this preRender-method.
+  // This method is only called when using `dev-toolkit build`
+  preRender({ assets, buildFolder }) {
+    // return a Promise to dev-toolkit
+    return new Promise((resolve, reject) => {
+      // Later call `resolve()` and `reject`
+    });
+  }
+}();
+```
+
+### `.gitignore`
+### `.babelrc`
+### `.prettierrc`
+### `dev-toolkit.config.js`
+### `package.json`
 
 ## Available Templates
 
