@@ -9,6 +9,13 @@ Jump-start your <code>react</code>-powered Universal App<br />
 server-rendered app. After creating your starting point with the `init` command, you get full
 customizeability out of the box.
 
+[![Travis branch](https://img.shields.io/travis/stoikerty/dev-toolkit/master.svg)](https://github.com/stoikerty/dev-toolkit)
+[![Vulnerabilities for dev-toolkit](https://snyk.io/test/github/stoikerty/dev-toolkit/badge.svg?targetFile=packages%2Fdev-toolkit%2Fpackage.json)](https://snyk.io/test/github/stoikerty/dev-toolkit?targetFile=packages%2Fdev-toolkit%2Fpackage.json)
+[![npm](https://img.shields.io/npm/v/dev-toolkit.svg)](https://www.npmjs.com/package/dev-toolkit)
+[![npm](https://img.shields.io/npm/dm/dev-toolkit.svg)](https://www.npmjs.com/package/dev-toolkit)
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
+[![Twitter](https://img.shields.io/twitter/url/https/github.com/stoikerty/dev-toolkit.svg?style=social)](https://twitter.com/intent/tweet?text=An%20easy%20and%20quick%20way%20to%20start%20a%20pre-rendered%20and%20server-rendered%20%23react%20app!%20https%3A%2F%2Fgithub.com%2Fstoikerty%2Fdev-toolkit)
+
 ### Quick Start
 
 ```bash
@@ -23,9 +30,9 @@ $ dev-toolkit init [project_name] [--template template_name] [--skip-comments]
 
 #### List of available templates
 
-* `standard` (default)
-* `with-eslint`
-* `with-sass`
+- `standard` [![Vulnerabilities for standard template](https://snyk.io/test/github/stoikerty/dev-toolkit/badge.svg?targetFile=templates%2Fstandard%2Fpackage.json)](https://snyk.io/test/github/stoikerty/dev-toolkit?targetFile=templates%2Fstandard%2Fpackage.json)
+- `with-eslint` [![Vulnerabilities for with-eslint template](https://snyk.io/test/github/stoikerty/dev-toolkit/badge.svg?targetFile=templates%2Fwith-eslint%2Fpackage.json)](https://snyk.io/test/github/stoikerty/dev-toolkit?targetFile=templates%2Fwith-eslint%2Fpackage.json)
+- `with-sass` [![Vulnerabilities for with-sass template](https://snyk.io/test/github/stoikerty/dev-toolkit/badge.svg?targetFile=templates%2Fwith-sass%2Fpackage.json)](https://snyk.io/test/github/stoikerty/dev-toolkit?targetFile=templates%2Fwith-sass%2Fpackage.json)
 
 ## Features
 
