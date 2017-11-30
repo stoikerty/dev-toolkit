@@ -19,7 +19,10 @@ log({
 const ignoreDevFolders = item => item.indexOf('node_modules') < 0 && item.indexOf('build') < 0;
 
 const removeDevFiles = ({ directory }) => {
-  const devFiles = item => item && item.path && item.path.indexOf('package-lock') >= 0;
+  const devFiles = item =>
+    item &&
+    item.path &&
+    (item.path.indexOf('package-lock') >= 0 || item.path.indexOf('.snyk') >= 0);
   const allFiles = klawSync(directory, { nodir: true, filter: devFiles });
   const allFilePaths = Object.keys(allFiles).map(item => allFiles[item].path);
 

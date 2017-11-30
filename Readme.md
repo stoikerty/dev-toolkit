@@ -10,7 +10,7 @@ server-rendered app. After creating your starting point with the `init` command,
 customizeability out of the box.
 
 [![Travis branch](https://img.shields.io/travis/stoikerty/dev-toolkit/master.svg)](https://github.com/stoikerty/dev-toolkit)
-[![Known Vulnerabilities](https://snyk.io/test/github/stoikerty/dev-toolkit/badge.svg?targetFile=packages%2Fdev-toolkit%2Fpackage.json)](https://snyk.io/test/github/stoikerty/dev-toolkit?targetFile=packages%2Fdev-toolkit%2Fpackage.json)
+[![Vulnerabilities for dev-toolkit](https://snyk.io/test/github/stoikerty/dev-toolkit/badge.svg?targetFile=packages%2Fdev-toolkit%2Fpackage.json)](https://snyk.io/test/github/stoikerty/dev-toolkit?targetFile=packages%2Fdev-toolkit%2Fpackage.json)
 [![npm](https://img.shields.io/npm/v/dev-toolkit.svg)](https://www.npmjs.com/package/dev-toolkit)
 [![npm](https://img.shields.io/npm/dm/dev-toolkit.svg)](https://www.npmjs.com/package/dev-toolkit)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
@@ -30,9 +30,9 @@ $ dev-toolkit init [project_name] [--template template_name] [--skip-comments]
 
 #### List of available templates
 
-- `standard` [![Known Vulnerabilities](https://snyk.io/test/github/stoikerty/dev-toolkit/badge.svg?targetFile=templates%2Fstandard%2Fpackage.json)](https://snyk.io/test/github/stoikerty/dev-toolkit?targetFile=templates%2Fstandard%2Fpackage.json)
-- `with-eslint` [![Known Vulnerabilities](https://snyk.io/test/github/stoikerty/dev-toolkit/badge.svg?targetFile=templates%2Fwith-eslint%2Fpackage.json)](https://snyk.io/test/github/stoikerty/dev-toolkit?targetFile=templates%2Fwith-eslint%2Fpackage.json)
-- `with-sass` [![Known Vulnerabilities](https://snyk.io/test/github/stoikerty/dev-toolkit/badge.svg?targetFile=templates%2Fwith-sass%2Fpackage.json)](https://snyk.io/test/github/stoikerty/dev-toolkit?targetFile=templates%2Fwith-sass%2Fpackage.json)
+- `standard` [![Vulnerabilities for standard template](https://snyk.io/test/github/stoikerty/dev-toolkit/badge.svg?targetFile=templates%2Fstandard%2Fpackage.json)](https://snyk.io/test/github/stoikerty/dev-toolkit?targetFile=templates%2Fstandard%2Fpackage.json)
+- `with-eslint` [![Vulnerabilities for with-eslint template](https://snyk.io/test/github/stoikerty/dev-toolkit/badge.svg?targetFile=templates%2Fwith-eslint%2Fpackage.json)](https://snyk.io/test/github/stoikerty/dev-toolkit?targetFile=templates%2Fwith-eslint%2Fpackage.json)
+- `with-sass` [![Vulnerabilities for with-sass template](https://snyk.io/test/github/stoikerty/dev-toolkit/badge.svg?targetFile=templates%2Fwith-sass%2Fpackage.json)](https://snyk.io/test/github/stoikerty/dev-toolkit?targetFile=templates%2Fwith-sass%2Fpackage.json)
 
 ## Features
 
