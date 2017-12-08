@@ -71,7 +71,7 @@ export default new class {
     });
   }
 
-  // A way to stop and shut-down the server, you might need this for things like e2e-tests
+  // A way to stop and shut-down the server, you might need this for things like feature-tests
   stop() {
     this.serverInstance.close();
   }
