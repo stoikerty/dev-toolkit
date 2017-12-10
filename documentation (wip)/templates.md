@@ -3,7 +3,7 @@
 # You can specify the template with the `--template` parameter
 dev-toolkit init my_project --template [template-name]
 ```
-After initialising a project with the `init` command you will get a small structured boilerplate to work with. `dev-toolkit` abstracts away the base universal & webpack configurations and some templates will show how to extend each one.
+After initialising a project with the `init` command you will get a small structured boilerplate to work with. `dev-toolkit` abstracts away the base universal & webpack configurations. Some templates show how to extend each one.
 
 #### Quick-links to available templates
 - [minimal](#minimal)
@@ -14,22 +14,25 @@ After initialising a project with the `init` command you will get a small struct
 ---
 
 ## Shared Structure between most templates
-There are a number of things that will be common amongst most templates. This base boilerplate represents a starting point for your app and although it's suggested that you stick with that structure, you're not restricted to do so if you decide to use the `dev-toolkit` programmatic interface.
+There are a number of things that will be common amongst most templates. This base boilerplate represents a starting point for your app and although it's suggested that you stick with that structure, you're not restricted to do so. You also have the ability to completely forego the structure if you make use of the `dev-toolkit` programmatic interface.
 
 ### `build/`
 ```bash
 # The directory is generated when the `build` command is run
 dev-toolkit build
 ```
-The `build/` directory will contain the static files that are generated with webpack such as your assets and the manifest file. If you make use of the pre-render functionality of `dev-toolkit` you might also have one or more `index.html`-files. If you have extended webpack, it's likely you'll also have other assets in here.
+The `build/` directory will contain the static files that are generated with webpack such as your assets and the manifest file. If you make use of the pre-render functionality of `dev-toolkit` you might also have one or more `index.html`-files.
+
+If you have extended webpack, it's likely you'll have other assets in here as well. The `manifest.json`-file will contain references to all assets which are processed by webpack.
 
 ### `src/`
-This folder contains your application source code and is split into 2 parts, a **`client/`** directory and a **`server/`** directory. Each directory has an `index.js` entry point which dev-toolkit expects. The `views/` directories, the use of the templating engine `handlebars` and other dependencies that are pre-defined are not mandatory, the only package-dependency `dev-toolkit` needs to know about is `express`.
+This folder contains your application source code and is split into 2 parts, a **`client/`** directory and a **`server/`** directory. Each directory has an `index.js` entry point which dev-toolkit expects. The `views/`-directories, the use of the templating engine `handlebars` and other dependencies that are pre-defined are not mandatory, the only package-dependency `dev-toolkit` needs to know about is `express`.
 
-When run using the command-line interface, `dev-toolkit` expects the following 2 files to exist:
+When run using the command-line interface, `dev-toolkit` expects 2 `index.js`-files to exist. The `RootComponent.js` file is not necessary for `dev-toolkit` to work but it is useful for getting server-rendering working properly.
 
 #### • `src/client/index.js` - client entry point
 *This file is only run on the client.* Webpack uses the file as the entry point to generate a client-bundle. Although this file could technically only contain a single `console.log` and work just fine, it is recommended to use the following structure to benefit from webpack's hot-reloading feature:
+
 ```js
 const hotReRender = () => {
   // Dynamically require module inline for hot-reloading
@@ -48,8 +51,28 @@ if (module.hot) {
 }
 ```
 
+#### • `src/client/RootComponent.js` - shared entry point
+*This file is universal. It's imported from both, the client and the server.* Any code used within this file and any code imported into this file needs to be compatible with Node.js as well as the browser. To facilitate knowing which environment you are in, you can use the following:
+
+```js
+// Get the current environment from exposed settings
+import { isClient, isServer } from 'dev-toolkit/settings';
+
+if (isClient) {
+  // Code inside this if-block is only run on the client
+  // Using `typeof window !== 'undefined'` has a similar effect to `isClient` but
+  // `isClient` doesn't rely on the `window`-object, it uses webpack for this check
+}
+
+if (isServer) {
+  // Code inside this if-block is only run on the server
+  // `if (!isClient)` would also work, both variables are equivalent to each other
+}
+```
+
 #### • `src/server/index.js` - server entry point
 `dev-toolkit` uses this file as the entry point to start up the server and to pre-render. In order to do this, it expects a self-executing javascript class which is structure like this:
+
 ```js
 // Provide a class to dev-toolkit which is executed immediately once imported
 // (immediate execution is done using the brackets at the end of the export)
@@ -92,7 +115,7 @@ If you are looking where to place your webpack loaders and plugins, check this f
 See the docs on [extending with config]().
 
 ### `package.json`
-Your standard `package.json`. It contains a few commands that let you use dev-toolkit.
+Your standard `package.json`. It contains a few npm commands that make calls to the dev-toolkit CLI with the right environment variables.
 
 ---
 
@@ -102,7 +125,12 @@ Your standard `package.json`. It contains a few commands that let you use dev-to
 ```bash
 dev-toolkit init my_project --template minimal [--skip-comments]
 ```
-This template contains `dev-toolkit` at the most minimal level. In contrast to the other templates it does not include some defaults such as Prettier. The template is for all you minimalists out there that like to figure things out from scratch.
+This template uses `dev-toolkit` at its most minimal level. In contrast to the other templates it does not include some defaults such as `dev-toolkit.config.js` or Prettier. The template is for all you minimalists out there that like to figure things out from scratch.
+
+It contains only 3 files *(plus a `package.json` with babel-config)*
+- `src/client/index.js`
+- `src/client/RootComponent.js`
+- `src/server/index.js`
 
 ### standard (default)
 ```bash
