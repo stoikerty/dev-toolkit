@@ -7,7 +7,7 @@ After initialising a project with the `init` command you will get a small struct
 
 #### Quick-links to available templates
 - [minimal](#minimal)
-- [standard](#standard-default)
+- [standard (default)](#standard-default)
 - [with-sass](#with-sass)
 - [with-eslint](#with-eslint)
 

@@ -29,6 +29,7 @@ $ dev-toolkit init [project_name] [--template template_name] [--skip-comments]
 
 #### List of available templates
 
+* `minimal`
 * `standard` (default)
 * `with-eslint`
 * `with-sass`
