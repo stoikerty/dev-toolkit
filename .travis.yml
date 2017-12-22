@@ -1,4 +1,6 @@
 language: node_js
+node_js:
+  - "8.6"
 sudo: false
 install:
   - echo 'skip installation'
@@ -8,6 +10,7 @@ jobs:
     - stage: Testing dev-toolkit...
       env: Run feature-tests
       script:
+        - cd src
         - cd feature-tests
         - npm install
         - npm run test
@@ -15,12 +18,14 @@ jobs:
     - stage: Testing dev-toolkit...
       env: Test bootstrapping the project
       script:
+        - cd src
         - npm install
         - npm run bootstrap
 
     - stage: Testing dev-toolkit...
       env: Lint feature-tests
       script:
+        - cd src
         - cd feature-tests
         - npm install
         - npm run lint
@@ -28,6 +33,7 @@ jobs:
     - stage: Testing dev-toolkit...
       env: Lint packages
       script:
+        - cd src
         - cd packages/babel-preset-dev-toolkit
         - npm install
         - npm run lint
@@ -50,6 +56,7 @@ jobs:
     - stage: Testing dev-toolkit...
       env: Lint templates
       script:
+        - cd src
         - cd templates/standard
         - npm install
         - npm run lint
@@ -61,11 +68,6 @@ jobs:
         - cd ../..
 
         - cd templates/with-sass
-        - npm install
-        - npm run lint
-        - cd ../..
-
-        - cd templates/minimal
         - npm install
         - npm run lint
         - cd ../..

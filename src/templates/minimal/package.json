@@ -1,0 +1,20 @@
+{
+  "name": "dev-toolkit-minimal-template",
+  "version": "1.0.0",
+  "description": "universal app",
+  "author": "",
+  "scripts": {
+    "start": "npm run build && npm run serve",
+    "dev": "cross-env NODE_ENV=development dev-toolkit watch",
+    "build": "cross-env NODE_ENV=production dev-toolkit build",
+    "serve": "cross-env NODE_ENV=production dev-toolkit serve"
+  },
+  "dependencies": {
+    "babel-preset-dev-toolkit": "1.0.0",
+    "cross-env": "^5.0.5",
+    "dev-toolkit": "6.0.4",
+    "express": "^4.15.5",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0"
+  }
+}
