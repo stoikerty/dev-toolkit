@@ -63,9 +63,9 @@ $ dev-toolkit init [project_name] [--template template_name] [--skip-comments]
 
 ### Why No CSS by default?
 
-With CSS-in-JS solutions on the rise, it would be unwise to include dependencies for `css-modules`, `sass` or `less` in every project that has `dev-toolkit` as a dependency, it would introduce additional installation time and bloat.
-
 The aim of dev-toolkit is to be unopinionated so that it can be useful in many different scenarios. Therefore only the most necessary dependencies are included and other additions may be provided by yourself (see the other template examples for guidance).
+
+With CSS-in-JS solutions on the rise, it would be unwise to include dependencies for `css-modules`, `sass` or `less` in every project that has `dev-toolkit` as a dependency, it would introduce additional installation time and bloat.
 
 ### Roadmap
 
