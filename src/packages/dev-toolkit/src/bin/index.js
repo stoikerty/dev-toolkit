@@ -10,7 +10,7 @@ const devToolkit = ({ cmdArgs }) => {
     .command({
       command: 'init',
       aliases: ['init', 'i'],
-      desc: 'Initializes a new project',
+      desc: 'Initialises a new project',
       handler: argv =>
         runCommand({
           options: {
@@ -21,7 +21,7 @@ const devToolkit = ({ cmdArgs }) => {
             skipComments: argv.skipComments || argv['skip-comments'] || false,
           },
           command: 'init',
-          message: 'Initializing a new project',
+          message: 'Initialising a new project',
         }),
     })
     .command({
@@ -42,7 +42,7 @@ const devToolkit = ({ cmdArgs }) => {
     })
     .command({
       command: 'version',
-      aliases: ['version', 'v', '-v'],
+      aliases: ['version', 'v'],
       desc: 'Outputs current version number',
       handler: () =>
         runCommand({

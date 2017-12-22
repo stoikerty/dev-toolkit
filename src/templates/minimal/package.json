@@ -12,7 +12,7 @@
   "dependencies": {
     "babel-preset-dev-toolkit": "1.0.0",
     "cross-env": "^5.0.5",
-    "dev-toolkit": "6.0.4",
+    "dev-toolkit": "6.0.5-beta",
     "express": "^4.15.5",
     "react": "^16.0.0",
     "react-dom": "^16.0.0"

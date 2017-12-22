@@ -30,7 +30,7 @@ if (template && !templateExists) {
   log({ message: 'You can use one of the following templates:' });
   templatesList.forEach(name => log({ message: `• ${name}` }));
   log({
-    message: `\nProject will be initialized using default template files (${defaultTemplate}).`,
+    message: `\nProject will be Initialised using default template files (${defaultTemplate}).`,
     useSeparator: true,
   });
 }

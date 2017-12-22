@@ -21,7 +21,7 @@ $ npm install -g dev-toolkit
 ```
 
 ```bash
-# Initialize a project with optional name, template, comments
+# Initialise a project with optional name, template, comments
 # The comments explain how the `dev-toolkit` works with the template
 $ dev-toolkit init [project_name] [--template template_name] [--skip-comments]
 ```
