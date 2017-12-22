@@ -5,6 +5,7 @@ import { isDev } from 'dev-toolkit/settings';
 
 const createHTML = ({ html, script }) => `<!DOCTYPE html>
 <html>
+  <head><title>App</title></head>
   <body>
     <div data-jshook="app-body">${html}</div>
     <script src="${script}"></script>
