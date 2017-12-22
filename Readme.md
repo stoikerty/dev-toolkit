@@ -5,9 +5,7 @@ Jump-start your <code>react</code>-powered Universal App<br />
 </p>
 <br />
 
-`dev-toolkit` provides you with an easy and quick way to get started with a pre-rendered &
-server-rendered app. After creating your starting point with the `init` command, you get full
-customizeability out of the box.
+`dev-toolkit` provides you with an easy and quick way to get started with a pre-rendered & server-rendered app. After creating your starting point with the `init` command, you get full customisability out of the box.
 
 [![Travis branch](https://img.shields.io/travis/stoikerty/dev-toolkit/master.svg)](https://github.com/stoikerty/dev-toolkit)
 [![Vulnerabilities for dev-toolkit](https://snyk.io/test/github/stoikerty/dev-toolkit/badge.svg?targetFile=packages%2Fdev-toolkit%2Fpackage.json)](https://snyk.io/test/github/stoikerty/dev-toolkit?targetFile=packages%2Fdev-toolkit%2Fpackage.json)
@@ -30,57 +28,52 @@ $ dev-toolkit init [project_name] [--template template_name] [--skip-comments]
 
 #### List of available templates
 
-- `standard` [![Vulnerabilities for standard template](https://snyk.io/test/github/stoikerty/dev-toolkit/badge.svg?targetFile=templates%2Fstandard%2Fpackage.json)](https://snyk.io/test/github/stoikerty/dev-toolkit?targetFile=templates%2Fstandard%2Fpackage.json)
-- `with-eslint` [![Vulnerabilities for with-eslint template](https://snyk.io/test/github/stoikerty/dev-toolkit/badge.svg?targetFile=templates%2Fwith-eslint%2Fpackage.json)](https://snyk.io/test/github/stoikerty/dev-toolkit?targetFile=templates%2Fwith-eslint%2Fpackage.json)
-- `with-sass` [![Vulnerabilities for with-sass template](https://snyk.io/test/github/stoikerty/dev-toolkit/badge.svg?targetFile=templates%2Fwith-sass%2Fpackage.json)](https://snyk.io/test/github/stoikerty/dev-toolkit?targetFile=templates%2Fwith-sass%2Fpackage.json)
+- [`minimal`](https://github.com/stoikerty/dev-toolkit/blob/master/docs/templates.md#minimal) [![Vulnerabilities for minimal template](https://snyk.io/test/github/stoikerty/dev-toolkit/badge.svg?targetFile=templates%2Fminimal%2Fpackage.json)](https://snyk.io/test/github/stoikerty/dev-toolkit?targetFile=templates%2Fminimal%2Fpackage.json)
+- [`standard`](https://github.com/stoikerty/dev-toolkit/blob/master/docs/templates.md#standard)* [![Vulnerabilities for standard template](https://snyk.io/test/github/stoikerty/dev-toolkit/badge.svg?targetFile=templates%2Fstandard%2Fpackage.json)](https://snyk.io/test/github/stoikerty/dev-toolkit?targetFile=templates%2Fstandard%2Fpackage.json)
+- [`with-eslint`](https://github.com/stoikerty/dev-toolkit/blob/master/docs/templates.md#with-eslint) [![Vulnerabilities for with-eslint template](https://snyk.io/test/github/stoikerty/dev-toolkit/badge.svg?targetFile=templates%2Fwith-eslint%2Fpackage.json)](https://snyk.io/test/github/stoikerty/dev-toolkit?targetFile=templates%2Fwith-eslint%2Fpackage.json)
+- [`with-sass`](https://github.com/stoikerty/dev-toolkit/blob/master/docs/templates.md#with-sass) [![Vulnerabilities for with-sass template](https://snyk.io/test/github/stoikerty/dev-toolkit/badge.svg?targetFile=templates%2Fwith-sass%2Fpackage.json)](https://snyk.io/test/github/stoikerty/dev-toolkit?targetFile=templates%2Fwith-sass%2Fpackage.json)
 
-## Features
+<small>* used by default when initialising a new project</small>
 
-* hot-reload on client by default
-* server-rendering
-* pre-rendering
-* creating a build
-* custom webpack config
-* use environment variables on client
+## 📖 Docs
 
-### No CSS by default
+- [Templates](https://github.com/stoikerty/dev-toolkit/blob/master/docs/templates.md)
 
-With CSS-in-JS solutions on the rise, it would be unwise to include dependencies for css-modules,
-sass or less in every project that has `dev-toolkit` as a dependency which would introduce
-additional installation time and bloat. The aim of dev-toolkit is to be unopinionated so that it can
-be useful in many scenarios.
+## 🌟 Features
 
-## Contributing
+`dev-toolkit` is intentionally minimalist on features. It's meant to get you started quickly with a project where you _will_ need customisability instead of mandating which technologies that you must use (such as Jest).
 
-Check out the project locally & create a PR.
+* **SSR by default**
+* **Ability to pre-render** _after_ webpack creates a build
+* **Complete control over client & server**<br>
+  _see [template docs](https://github.com/stoikerty/dev-toolkit/blob/master/docs/templates.md)_
+* **Start your project without bloat** _or guidance_ if you like it rough<br>
+  _`dev-toolkit init --template minimal --skip-comments`_
+* **Full control over your server-rendered template**<br>
+  _no webpack lock-in such as with [html-webpack-plugin](https://github.com/jantimon/html-webpack-plugin) unless you choose to_
+* **hot-reload on client & server**, opt-in for both
+* **Easy way to integrate any nodeHooks for SSR usage**<br>
+  _using `/nodeHooks.js`_
+* **Easy way to add webpack plugins and presets**<br>
+  _using `/dev-toolkit.config.js`_
+* **use select environment variables on client**<br>
+  _using `import { sharedEnvs } from 'dev-toolkit/settings'`_
+* **you can use sane if-statements, [jsx-control-statements](https://github.com/AlexGilleran/jsx-control-statements)**<br>
+  _`<If condition={true}> ... </If>` will compile down to `&&`-syntax_
 
-```bash
-# Clone down the repo locally
-$ git clone git@github.com:stoikerty/dev-toolkit.git
+### Why No CSS by default?
 
-# Install root lerna dependencies
-$ cd dev-toolkit
-$ npm install
+With CSS-in-JS solutions on the rise, it would be unwise to include dependencies for `css-modules`, `sass` or `less` in every project that has `dev-toolkit` as a dependency, it would introduce additional installation time and bloat.
 
-# Bootstrap all packages
-$ npm run bootstrap
-# If you encounter linux/osx permission issues, try this
-$ npm run bootstrap-fix
-
-# Run feature tests
-$ cd feature-tests
-$ npm install
-$ npm run test
-```
-
-Your workflow will likely be to `cd` into a template of your choice in the `templates` directory
-where you can test `dev-toolkit` and in parallel (in a separate terminal) re-run the
-`bootstrap`-command in the root of the project after making changes in one of the `packages`.
+The aim of dev-toolkit is to be unopinionated so that it can be useful in many different scenarios. Therefore only the most necessary dependencies are included and other additions may be provided by yourself (see the other template examples for guidance).
 
 ### Roadmap
 
-* Improved docs
+* More docs on extending with config, how dev-toolkit works, choices
+* serverless template
 * Using your own (external) template - under consideration
 * Eject feature - under consideration
-* serverless template - in development
 * list differences between dev-toolkit, next.js & create-react-app
+
+## Contributing
+See [`Contributing.md`](https://github.com/stoikerty/dev-toolkit/blob/master/Contributing.md)
