@@ -1,5 +1,5 @@
 # Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
-version: v1.8.0
+version: v1.10.1
 # ignores vulnerabilities until expiry date; change duration by modifying expiry date
 ignore:
   'npm:tunnel-agent:20170305':
@@ -7,4 +7,7 @@ ignore:
         reason: >-
           This dependency is only used for installation of node-sass, not for
           any runtime code, see: https://github.com/sass/node-sass/issues/2164
+    - node-sass > request > tunnel-agent:
+        reason: None given
+        expires: '2018-01-21T12:15:46.159Z'
 patch: {}
