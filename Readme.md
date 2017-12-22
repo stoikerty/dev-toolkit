@@ -67,35 +67,13 @@ With CSS-in-JS solutions on the rise, it would be unwise to include dependencies
 
 The aim of dev-toolkit is to be unopinionated so that it can be useful in many different scenarios. Therefore only the most necessary dependencies are included and other additions may be provided by yourself (see the other template examples for guidance).
 
-## Contributing
-
-Check out the project locally & create a PR.
-
-```bash
-# Clone down the repo locally
-$ git clone git@github.com:stoikerty/dev-toolkit.git
-
-# Install root lerna dependencies
-$ cd dev-toolkit
-$ npm install
-
-# Bootstrap all packages
-$ npm run bootstrap
-# If you encounter linux/osx permission issues, try this
-$ npm run bootstrap-fix
-
-# Run feature tests
-$ cd feature-tests
-$ npm install
-$ npm run test
-```
-
-Your workflow will likely be to `cd` into a template of your choice in the `templates` directory where you can test `dev-toolkit` and in parallel (in a separate terminal) re-run the `bootstrap`-command in the root of the project after making changes in one of the `packages`.
-
 ### Roadmap
 
-* Improved docs
+* More docs on extending with config, how dev-toolkit works, choices
 * serverless template
 * Using your own (external) template - under consideration
 * Eject feature - under consideration
 * list differences between dev-toolkit, next.js & create-react-app
+
+## Contributing
+See [`Contributing.md`](https://github.com/stoikerty/dev-toolkit/blob/master/Contributing.md)
