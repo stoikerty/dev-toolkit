@@ -1,0 +1,10 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.8.0
+# ignores vulnerabilities until expiry date; change duration by modifying expiry date
+ignore:
+  'npm:shelljs:20140723':
+    - shelljs:
+        reason: >-
+          Shell.js is used to call out to npm to fetch packages. Without it,
+          feature-tests against npm wouldn't work.
+patch: {}

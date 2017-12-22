@@ -112,8 +112,6 @@ Every project has Prettier by default, feel free to use your preferred settings.
 ### `dev-toolkit.config.js`
 If you are looking where to place your webpack loaders and plugins, check this file out. This is your entry point for customising `dev-toolkit` itself and webpack.
 
-See the docs on [extending with config]().
-
 ### `package.json`
 Your standard `package.json`. It contains a few npm commands that make calls to the dev-toolkit CLI with the right environment variables.
 
@@ -161,12 +159,15 @@ Example using eslint-configuration.
 
 ## Possible future Templates
 
+Here are some of the templates that could be added if enough requests (or contributions) come in.
+
 - serverless
 - with-react-router
 - with-redux
 - with-mocha
 - with-jest
 - with-glamorous
+- with-typescript
 - with-dynamic-routes
 - with-styled-components
 - as exported npm-package?
