@@ -125,7 +125,7 @@ dev-toolkit init my_project --template minimal [--skip-comments]
 ```
 This template uses `dev-toolkit` at its most minimal level. In contrast to the other templates it does not include some defaults such as `dev-toolkit.config.js` or Prettier. The template is for all you minimalists out there that like to figure things out from scratch.
 
-It contains only 3 files *(plus a `package.json` with babel-config)*
+It contains only 3 files *(plus a `package.json` and a `.babelrc`)*
 - `src/client/index.js`
 - `src/client/RootComponent.js`
 - `src/server/index.js`
