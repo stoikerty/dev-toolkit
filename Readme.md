@@ -8,7 +8,7 @@ Jump-start your <code>react</code>-powered Universal App<br />
 `dev-toolkit` provides you with an easy and quick way to get started with a pre-rendered & server-rendered app. After creating your starting point with the `init` command, you get full customisability out of the box.
 
 [![Travis branch](https://img.shields.io/travis/stoikerty/dev-toolkit/master.svg)](https://github.com/stoikerty/dev-toolkit)
-[![Vulnerabilities for dev-toolkit](https://snyk.io/test/github/stoikerty/dev-toolkit/badge.svg?targetFile=packages%2Fdev-toolkit%2Fpackage.json)](https://snyk.io/test/github/stoikerty/dev-toolkit?targetFile=packages%2Fdev-toolkit%2Fpackage.json)
+[![Vulnerabilities for dev-toolkit](https://snyk.io/test/github/stoikerty/dev-toolkit/badge.svg?targetFile=src%2Fpackages%2Fdev-toolkit%2Fpackage.json)](https://snyk.io/test/github/stoikerty/dev-toolkit?targetFile=src%2Fpackages%2Fdev-toolkit%2Fpackage.json)
 [![npm](https://img.shields.io/npm/v/dev-toolkit.svg)](https://www.npmjs.com/package/dev-toolkit)
 [![npm](https://img.shields.io/npm/dm/dev-toolkit.svg)](https://www.npmjs.com/package/dev-toolkit)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
@@ -28,10 +28,10 @@ $ dev-toolkit init [project_name] [--template template_name] [--skip-comments]
 
 #### List of available templates
 
-- [`minimal`](https://github.com/stoikerty/dev-toolkit/blob/master/docs/templates.md#minimal) [![Vulnerabilities for minimal template](https://snyk.io/test/github/stoikerty/dev-toolkit/badge.svg?targetFile=templates%2Fminimal%2Fpackage.json)](https://snyk.io/test/github/stoikerty/dev-toolkit?targetFile=templates%2Fminimal%2Fpackage.json)
-- [`standard`](https://github.com/stoikerty/dev-toolkit/blob/master/docs/templates.md#standard)* [![Vulnerabilities for standard template](https://snyk.io/test/github/stoikerty/dev-toolkit/badge.svg?targetFile=templates%2Fstandard%2Fpackage.json)](https://snyk.io/test/github/stoikerty/dev-toolkit?targetFile=templates%2Fstandard%2Fpackage.json)
-- [`with-eslint`](https://github.com/stoikerty/dev-toolkit/blob/master/docs/templates.md#with-eslint) [![Vulnerabilities for with-eslint template](https://snyk.io/test/github/stoikerty/dev-toolkit/badge.svg?targetFile=templates%2Fwith-eslint%2Fpackage.json)](https://snyk.io/test/github/stoikerty/dev-toolkit?targetFile=templates%2Fwith-eslint%2Fpackage.json)
-- [`with-sass`](https://github.com/stoikerty/dev-toolkit/blob/master/docs/templates.md#with-sass) [![Vulnerabilities for with-sass template](https://snyk.io/test/github/stoikerty/dev-toolkit/badge.svg?targetFile=templates%2Fwith-sass%2Fpackage.json)](https://snyk.io/test/github/stoikerty/dev-toolkit?targetFile=templates%2Fwith-sass%2Fpackage.json)
+- [`minimal`](https://github.com/stoikerty/dev-toolkit/blob/master/docs/templates.md#minimal) [![Vulnerabilities for minimal template](https://snyk.io/test/github/stoikerty/dev-toolkit/badge.svg?targetFile=src%2templates%2Fminimal%2Fpackage.json)](https://snyk.io/test/github/stoikerty/dev-toolkit?targetFile=src%2templates%2Fminimal%2Fpackage.json)
+- [`standard`](https://github.com/stoikerty/dev-toolkit/blob/master/docs/templates.md#standard)* [![Vulnerabilities for standard template](https://snyk.io/test/github/stoikerty/dev-toolkit/badge.svg?targetFile=src%2templates%2Fstandard%2Fpackage.json)](https://snyk.io/test/github/stoikerty/dev-toolkit?targetFile=src%2templates%2Fstandard%2Fpackage.json)
+- [`with-eslint`](https://github.com/stoikerty/dev-toolkit/blob/master/docs/templates.md#with-eslint) [![Vulnerabilities for with-eslint template](https://snyk.io/test/github/stoikerty/dev-toolkit/badge.svg?targetFile=src%2templates%2Fwith-eslint%2Fpackage.json)](https://snyk.io/test/github/stoikerty/dev-toolkit?targetFile=src%2templates%2Fwith-eslint%2Fpackage.json)
+- [`with-sass`](https://github.com/stoikerty/dev-toolkit/blob/master/docs/templates.md#with-sass) [![Vulnerabilities for with-sass template](https://snyk.io/test/github/stoikerty/dev-toolkit/badge.svg?targetFile=src%2templates%2Fwith-sass%2Fpackage.json)](https://snyk.io/test/github/stoikerty/dev-toolkit?targetFile=src%2templates%2Fwith-sass%2Fpackage.json)
 
 <small>* used by default when initialising a new project</small>
 
