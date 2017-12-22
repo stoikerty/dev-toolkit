@@ -12,7 +12,7 @@ const logOutput = output => {
 };
 
 export default ({ name, isDefault } = { isDefault: false }) => {
-  describe('can be used to initialize a new app', () => {
+  describe('can be used to Initialise a new app', () => {
     // Optional templates can take up to 2 minutes to install
     it(`including comments, with specified template '${name}'`, done => {
       runDevToolkitCli({

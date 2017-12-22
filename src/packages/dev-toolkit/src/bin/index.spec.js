@@ -89,7 +89,7 @@ describe('dev-toolkit', () => {
     const processedArgs = yargs.alias('i', 'init').parse(['dev-toolkit', '-i']);
     const expectedOutput = {
       script: 'init',
-      message: 'Initializing new project',
+      message: 'Initialising new project',
       args: [processedArgs.init],
     };
 
