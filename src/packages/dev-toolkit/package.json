@@ -12,7 +12,7 @@
   ],
   "scripts": {
     "prepare": "npm run copy-readme && npm run build",
-    "copy-readme": "cp ../../Readme.md ./Readme.md",
+    "copy-readme": "cp ../../../Readme.md ./Readme.md",
     "publish-beta": "npm publish --tag beta",
     "build": "babel src --out-dir dist && node ./dist/postinstall-prepare/copy-templates",
     "watch": "babel src --watch --out-dir dist",

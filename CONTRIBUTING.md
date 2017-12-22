@@ -9,7 +9,7 @@ Check out the project locally & create a PR.
 $ git clone git@github.com:stoikerty/dev-toolkit.git
 
 # Use the correct node version for this project
-$ cd dev-toolkit
+$ cd dev-toolkit/src
 $ nvm use
 
 # Install root lerna dependencies

@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/stoikerty/dev-toolkit/tree/master/packages/babel-preset-dev-toolkit"
+    "url": "https://github.com/stoikerty/dev-toolkit/tree/master/src/packages/babel-preset-dev-toolkit"
   },
   "keywords": [
     "babel",

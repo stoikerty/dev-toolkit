@@ -16,7 +16,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/stoikerty/dev-toolkit/tree/master/packages/babel-runner"
+    "url": "https://github.com/stoikerty/dev-toolkit/tree/master/src/packages/babel-runner"
   },
   "keywords": [
     "babel",
