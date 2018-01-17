@@ -1,6 +1,6 @@
 {
   "name": "dev-toolkit",
-  "version": "6.0.5",
+  "version": "6.0.6",
   "description": "Universal Development Toolkit for React Veterans",
   "main": "dev-toolkit.js",
   "files": [
