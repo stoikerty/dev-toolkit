@@ -1,6 +1,8 @@
 import express from 'express';
 import path from 'path';
 import fs from 'fs';
+import React from 'react';
+import { renderToString } from 'react-dom/server';
 import { isDev } from 'dev-toolkit/settings';
 
 const createHTML = ({ html, script }) => `<!DOCTYPE html>
