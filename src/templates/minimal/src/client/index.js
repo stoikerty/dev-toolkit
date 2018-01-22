@@ -1,14 +1,17 @@
 // NOTE: This File is only run on the client only.
 // The server imports `RootComponent` directly.
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { hydrate, render } from 'react-dom';
+import { isDev } from 'dev-toolkit/settings';
 
+// We're only using pre-rendering. We therefore render normally in development.
+const renderMethod = isDev ? render : hydrate;
 const hotReRender = () => {
   // Dynamically require module inline for hot-reloading
   import('./RootComponent').then(module => {
     const RootComponent = module.default;
     // Render the newly required module to the DOM
-    ReactDOM.hydrate(<RootComponent />, document.querySelector('[data-jshook~="app-body"]'));
+    renderMethod(<RootComponent />, document.querySelector('[data-jshook~="app-body"]'));
   });
 };
 
