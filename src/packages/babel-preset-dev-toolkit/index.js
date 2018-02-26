@@ -1,4 +1,5 @@
 'use strict';
+const path = require('path');
 
 // Warn Users to make sure we don't have an invalid `NODE_ENV`
 var env = process.env.BABEL_ENV || process.env.NODE_ENV;
@@ -30,8 +31,10 @@ module.exports = {
     [
       require.resolve('babel-plugin-module-resolver'),
       {
-        // using `process.cwd` makes it also work with `import()`
-        root: [process.cwd()],
+        root: ['./src'],
+        alias: {
+          src: path.resolve(process.cwd(), 'src'),
+        },
       },
     ],
   ],
