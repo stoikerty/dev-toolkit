@@ -31,6 +31,7 @@ module.exports = {
     [
       require.resolve('babel-plugin-module-resolver'),
       {
+        // using `process.cwd` makes it also work with `import()`
         root: ['./src'],
         alias: {
           src: path.resolve(process.cwd(), 'src'),
