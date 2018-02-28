@@ -1,6 +1,6 @@
 import path from 'path';
 import AssetsPlugin from 'assets-webpack-plugin';
-import { DefinePlugin, HotModuleReplacementPlugin, NoEmitOnErrorsPlugin, optimize } from 'webpack';
+import { DefinePlugin, HotModuleReplacementPlugin, NoEmitOnErrorsPlugin } from 'webpack';
 import { babelrc } from 'babel-runner';
 
 import {
@@ -76,11 +76,7 @@ export default ({ getWebpackAssets, creatingBuild, userSettings } = { creatingBu
               ]
             : []
         )
-        .concat(
-          creatingBuild
-            ? [new optimize.UglifyJsPlugin()]
-            : [new HotModuleReplacementPlugin(), new NoEmitOnErrorsPlugin()]
-        )
+        .concat(creatingBuild ? [] : [new HotModuleReplacementPlugin(), new NoEmitOnErrorsPlugin()])
         .concat(
           // Add any user settings from `webpack.plugins`
           userSettings.webpack.plugins(customizationOptions)
