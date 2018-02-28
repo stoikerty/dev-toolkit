@@ -1,6 +1,6 @@
 {
   "name": "dev-toolkit",
-  "version": "6.1.0",
+  "version": "7.0.0",
   "description": "Universal Development Toolkit for React Veterans",
   "main": "dev-toolkit.js",
   "files": [
@@ -78,18 +78,18 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
-    "babel-eslint": "^7.2.3",
-    "better-npm-run": "^0.0.14",
-    "chai": "^3.5.0",
-    "dirty-chai": "^1.2.2",
-    "eslint": "^3.4.0",
-    "eslint-config-airbnb-base": "^11.3.1",
-    "eslint-config-prettier": "2.6.0",
-    "eslint-plugin-import": "^2.7.0",
-    "eslint-plugin-prettier": "2.3.1",
-    "mocha": "^3.5.0",
-    "prettier": "1.7.4",
-    "sinon": "^3.2.1",
-    "sinon-chai": "^2.13.0"
+    "babel-eslint": "^8.2.2",
+    "better-npm-run": "^0.1.0",
+    "chai": "^4.1.2",
+    "dirty-chai": "^2.0.1",
+    "eslint": "^4.18.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-import": "^2.9.0",
+    "eslint-plugin-prettier": "^2.6.0",
+    "mocha": "^5.0.1",
+    "prettier": "^1.11.0",
+    "sinon": "^4.4.2",
+    "sinon-chai": "^2.14.0"
   }
 }

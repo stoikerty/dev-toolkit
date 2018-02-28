@@ -37,6 +37,6 @@
     "node": ">= 4"
   },
   "devDependencies": {
-    "prettier": "^1.7.4"
+    "prettier": "^1.11.0"
   }
 }

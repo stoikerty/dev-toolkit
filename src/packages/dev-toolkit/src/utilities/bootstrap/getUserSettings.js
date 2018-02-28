@@ -32,8 +32,7 @@ export default () => {
   };
   const finalSettings = {
     webpack: {
-      rules:
-        webpack.rules && typeof webpack.rules === 'function' ? webpack.rules : () => [],
+      rules: webpack.rules && typeof webpack.rules === 'function' ? webpack.rules : () => [],
       plugins:
         webpack.plugins && typeof webpack.plugins === 'function' ? webpack.plugins : () => [],
       customize:
