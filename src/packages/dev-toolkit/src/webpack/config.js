@@ -30,6 +30,7 @@ export default ({ getWebpackAssets, creatingBuild, userSettings } = { creatingBu
       entry: {
         app: [entryPoint],
       },
+      mode: 'development',
       output: {
         path: assetsPath,
         filename: `${namingConvention}.js`,
