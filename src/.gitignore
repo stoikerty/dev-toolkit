@@ -13,3 +13,8 @@ build/
 node_modules/
 npm-debug.*
 lerna-debug.*
+
+#####
+Editors
+#####
+.idea

@@ -37,7 +37,7 @@ export default ({ getWebpackAssets, creatingBuild, userSettings } = { creatingBu
         publicPath,
       },
       module: {
-        loaders: [
+        rules: [
           {
             test: /\.jsx?$/,
             loaders: [`babel-loader?${JSON.stringify(babelrc)}`],
@@ -54,7 +54,7 @@ export default ({ getWebpackAssets, creatingBuild, userSettings } = { creatingBu
           },
         ].concat(
           // Add any user settings from `webpack.loaders`
-          userSettings.webpack.loaders(customizationOptions)
+          userSettings.webpack.rules(customizationOptions)
         ),
       },
       plugins: [
