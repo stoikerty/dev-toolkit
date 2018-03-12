@@ -4,7 +4,6 @@
   "scripts": {
     "bootstrap": "lerna bootstrap",
     "bootstrap-fix": "lerna bootstrap && chmod 777 packages/dev-toolkit/dist/bin/* packages/babel-runner/dist/bin/*",
-    "update-all": "lerna exec -- ncu -u -a",
     "lint-all": "lerna exec -- npm install && lerna run lint",
     "full-clean": "npm run safe-clean && npm run root-clean",
     "root-clean": "del './node_modules'",
@@ -19,7 +18,6 @@
     "lerna": "^2.9.0"
   },
   "dependencies": {
-    "del-cli": "^1.1.0",
-    "npm-check-updates": "^2.14.1"
+    "del-cli": "^1.1.0"
   }
 }
