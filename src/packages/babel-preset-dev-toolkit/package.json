@@ -32,6 +32,6 @@
     "jsx-control-statements": "^3.2.8"
   },
   "devDependencies": {
-    "prettier": "^1.11.0"
+    "prettier": "^1.11.1"
   }
 }
