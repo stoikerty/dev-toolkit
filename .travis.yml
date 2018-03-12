@@ -12,7 +12,6 @@ jobs:
       script:
         - cd src
         - cd feature-tests
-        - rm -rf ./node_modules
         - npm install
         - npm run test
 
