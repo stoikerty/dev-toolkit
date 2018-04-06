@@ -1,6 +1,6 @@
 {
   "name": "dev-toolkit",
-  "version": "7.0.0-1",
+  "version": "7.0.0-2",
   "description": "Universal Development Toolkit for React Veterans",
   "main": "dev-toolkit.js",
   "files": [
@@ -70,8 +70,8 @@
     "ora": "^2.0.0",
     "string-length": "^2.0.0",
     "strip-comments": "^0.4.4",
-    "webpack": "^4.1.1",
-    "webpack-dev-middleware": "^3.0.1",
+    "webpack": "^4.5.0",
+    "webpack-dev-middleware": "^3.1.2",
     "webpack-hot-middleware": "^2.21.2",
     "yargs": "^11.0.0"
   },
