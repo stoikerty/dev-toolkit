@@ -45,6 +45,7 @@ jobs:
         - cd ../..
 
         - cd packages/dev-toolkit
+        - rm -rf ./node_modules
         - npm install
         - npm run lint
         - cd ../..
