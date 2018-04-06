@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-dev-toolkit",
-  "version": "1.0.1-4",
+  "version": "1.0.1",
   "description": "essential eslint config for dev-toolkit",
   "main": "index.js",
   "scripts": {
