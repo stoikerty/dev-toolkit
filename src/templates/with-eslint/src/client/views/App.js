@@ -14,5 +14,12 @@ export default () => (
     <br />
     {`customEnvContent: ${customEnvContent}`}
     <br />
+
+    <Choose>
+      <When condition={isProd}>{'App is running in Prod'}</When>
+      <Otherwise>{'App is not running in Prod'}</Otherwise>
+    </Choose>
+
+    <If condition={isDev}>{'App is running in Dev'}</If>
   </div>
 );
