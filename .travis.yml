@@ -5,6 +5,10 @@ sudo: false
 install:
   - echo 'skip installation'
 
+cache:
+  directories:
+    - node_modules
+
 jobs:
   include:
     - stage: Testing dev-toolkit...
@@ -45,7 +49,6 @@ jobs:
         - cd ../..
 
         - cd packages/dev-toolkit
-        - rm -rf ./node_modules
         - npm install
         - npm run lint
         - cd ../..
