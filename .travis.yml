@@ -1,13 +1,23 @@
 language: node_js
 node_js:
-  - "9.11.1"
+  - "8.11.1"
 sudo: false
 install:
   - echo 'skip installation'
 
 cache:
   directories:
-    - node_modules
+    - src/node_modules
+    - src/feature-tests/node_modules
+    - src/packages/babel-preset-dev-toolkit/node_modules
+    - src/packages/babel-runner/node_modules
+    - src/packages/dev-toolkit/node_modules
+    - src/packages/eslint-config-dev-toolkit/node_modules
+    - src/templates/minimal/node_modules
+    - src/templates/serverless/node_modules
+    - src/templates/standard/node_modules
+    - src/templates/with-eslint/node_modules
+    - src/templates/with-sass/node_modules
 
 jobs:
   include:
