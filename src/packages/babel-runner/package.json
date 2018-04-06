@@ -1,6 +1,6 @@
 {
   "name": "babel-runner",
-  "version": "1.0.0",
+  "version": "1.0.1-1",
   "description": "Helper for integrating babel config & node hooks",
   "main": "dist/index.js",
   "scripts": {
@@ -32,17 +32,17 @@
   "author": "Jorge Antunes @stoikerty",
   "license": "MIT",
   "devDependencies": {
-    "babel-cli": "^6.24.1",
-    "babel-eslint": "^7.2.3",
-    "babel-preset-env": "^1.6.0",
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^8.2.2",
+    "babel-preset-env": "^1.6.1",
     "babel-preset-stage-1": "^6.24.1",
-    "eslint": "^4.4.0",
-    "eslint-config-airbnb-base": "^11.0.1",
-    "eslint-plugin-import": "^2.2.0",
-    "prettier": "^1.7.4"
+    "eslint": "^4.18.2",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.9.0",
+    "prettier": "^1.11.1"
   },
   "dependencies": {
     "babel-register": "^6.26.0",
-    "file-exists": "^4.0.0"
+    "file-exists": "^5.0.1"
   }
 }

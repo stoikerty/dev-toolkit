@@ -27,7 +27,7 @@ module.exports = {
 
   // Exports for dev-toolkit to pick up
   webpack: {
-    loaders: function(options) {
+    rules: function(options) {
       return [
         {
           test: /\.scss$/,

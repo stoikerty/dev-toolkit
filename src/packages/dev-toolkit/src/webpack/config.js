@@ -1,6 +1,6 @@
 import path from 'path';
 import AssetsPlugin from 'assets-webpack-plugin';
-import { DefinePlugin, HotModuleReplacementPlugin, NoEmitOnErrorsPlugin, optimize } from 'webpack';
+import { DefinePlugin, HotModuleReplacementPlugin, NoEmitOnErrorsPlugin } from 'webpack';
 import { babelrc } from 'babel-runner';
 
 import {
@@ -30,6 +30,7 @@ export default ({ getWebpackAssets, creatingBuild, userSettings } = { creatingBu
       entry: {
         app: [entryPoint],
       },
+      mode: creatingBuild ? 'production' : 'development',
       output: {
         path: assetsPath,
         filename: `${namingConvention}.js`,
@@ -37,7 +38,7 @@ export default ({ getWebpackAssets, creatingBuild, userSettings } = { creatingBu
         publicPath,
       },
       module: {
-        loaders: [
+        rules: [
           {
             test: /\.jsx?$/,
             loaders: [`babel-loader?${JSON.stringify(babelrc)}`],
@@ -54,7 +55,7 @@ export default ({ getWebpackAssets, creatingBuild, userSettings } = { creatingBu
           },
         ].concat(
           // Add any user settings from `webpack.loaders`
-          userSettings.webpack.loaders(customizationOptions)
+          userSettings.webpack.rules(customizationOptions)
         ),
       },
       plugins: [
@@ -75,11 +76,7 @@ export default ({ getWebpackAssets, creatingBuild, userSettings } = { creatingBu
               ]
             : []
         )
-        .concat(
-          creatingBuild
-            ? [new optimize.UglifyJsPlugin()]
-            : [new HotModuleReplacementPlugin(), new NoEmitOnErrorsPlugin()]
-        )
+        .concat(creatingBuild ? [] : [new HotModuleReplacementPlugin(), new NoEmitOnErrorsPlugin()])
         .concat(
           // Add any user settings from `webpack.plugins`
           userSettings.webpack.plugins(customizationOptions)

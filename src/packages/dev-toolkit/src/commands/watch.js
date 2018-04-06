@@ -32,7 +32,7 @@ bootstrap().then(({ server, userSettings }) => {
   log({ message: 'Compiling initial bundle…\n' });
 
   const webpackDevMiddlewareInstance = webpackDevMiddleware(compiler, {
-    noInfo: true,
+    stats: 'minimal',
     publicPath: config.output.publicPath,
   });
   const webpackHotMiddlewareInstance = webpackHotMiddleware(compiler);

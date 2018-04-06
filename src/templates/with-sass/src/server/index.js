@@ -53,13 +53,19 @@ export default new class {
           // It's a nice to have. Not guaranteed to always work, take it with a grain of salt.
           clearModule.match(new RegExp(`^${clientFolder}`, 'i'));
         }
-        // Load newest version of Client App via RootComponent
+
         import(rootComponentPath).then(module => {
-          const RootComponent = module.default;
-          res.status(200).render('template', {
-            assets,
-            renderedHtml: renderToString(<RootComponent />),
-          });
+          try {
+            // Load newest version of Client App via RootComponent
+            const RootComponent = module.default;
+            res.status(200).render('template', {
+              assets,
+              renderedHtml: renderToString(<RootComponent />),
+            });
+          } catch (error) {
+            // log any rendering or script errors
+            console.log(error.message);
+          }
         });
       });
     }

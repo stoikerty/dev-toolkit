@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-dev-toolkit",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "essential eslint config for dev-toolkit",
   "main": "index.js",
   "scripts": {
@@ -31,12 +31,13 @@
     "eslint": ">= 4",
     "eslint-import-resolver-babel-module": ">= 2",
     "eslint-plugin-import": ">= 2.7",
+    "eslint-plugin-jsx-control-statements": ">= 2.2",
     "eslint-plugin-react": ">= 7"
   },
   "engines": {
     "node": ">= 4"
   },
   "devDependencies": {
-    "prettier": "^1.7.4"
+    "prettier": "^1.11.1"
   }
 }
