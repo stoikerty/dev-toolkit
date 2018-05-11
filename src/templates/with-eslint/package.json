@@ -33,27 +33,27 @@
     }
   },
   "dependencies": {
-    "babel-preset-dev-toolkit": "1.0.1",
+    "babel-preset-dev-toolkit": "^1.0.3",
     "better-npm-run": "^0.1.0",
     "clear-module": "^2.1.0",
-    "dev-toolkit": "7.0.0",
-    "express": "^4.16.2",
+    "dev-toolkit": "^7.0.1-1",
+    "express": "^4.16.3",
     "express-handlebars": "^3.0.0",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0"
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2"
   },
   "devDependencies": {
     "babel-eslint": "8.2.2",
-    "eslint": "^4.18.2",
+    "eslint": "^4.19.1",
     "eslint-config-airbnb": "^16.1.0",
-    "eslint-config-dev-toolkit": "^1.0.1",
+    "eslint-config-dev-toolkit": "^1.0.2",
     "eslint-config-prettier": "2.9.0",
     "eslint-import-resolver-babel-module": "4.0.0",
-    "eslint-plugin-import": "^2.9.0",
+    "eslint-plugin-import": "^2.11.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
-    "eslint-plugin-jsx-control-statements": "^2.2.0",
+    "eslint-plugin-jsx-control-statements": "^2.2.1",
     "eslint-plugin-prettier": "2.6.0",
     "eslint-plugin-react": "^7.7.0",
-    "prettier": "^1.11.1"
+    "prettier": "^1.12.1"
   }
 }

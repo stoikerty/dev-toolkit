@@ -1,11 +1,15 @@
 {
   "name": "babel-preset-dev-toolkit",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Uses create-react-app default, adds sane if-statements & root-relative imports",
   "main": "index.js",
   "scripts": {
     "lint": "prettier --write './**/*.js'",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "release:patch": "npm version patch && npm publish",
+    "release:minor": "npm version minor && npm publish",
+    "release:major": "npm version major && npm publish",
+    "prerelease": "npm version prerelease && npm publish --tag beta"
   },
   "repository": {
     "type": "git",
@@ -27,11 +31,11 @@
   "dependencies": {
     "babel-plugin-dynamic-import-node": "^1.2.0",
     "babel-plugin-module-resolver": "^3.1.0",
-    "babel-preset-env": "^1.6.1",
+    "babel-preset-env": "^1.7.0",
     "babel-preset-react-app": "^3.1.1",
     "jsx-control-statements": "^3.2.8"
   },
   "devDependencies": {
-    "prettier": "^1.11.1"
+    "prettier": "^1.12.1"
   }
 }

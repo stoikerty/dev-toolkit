@@ -33,16 +33,16 @@
     }
   },
   "dependencies": {
-    "babel-preset-dev-toolkit": "1.0.1",
+    "babel-preset-dev-toolkit": "^1.0.3",
     "better-npm-run": "^0.1.0",
     "clear-module": "^2.1.0",
-    "dev-toolkit": "7.0.0",
-    "express": "^4.16.2",
+    "dev-toolkit": "^7.0.1-1",
+    "express": "^4.16.3",
     "express-handlebars": "^3.0.0",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0"
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2"
   },
   "devDependencies": {
-    "prettier": "^1.11.1"
+    "prettier": "^1.12.1"
   }
 }
