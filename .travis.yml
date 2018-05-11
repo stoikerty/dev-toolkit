@@ -47,13 +47,7 @@ jobs:
     - stage: Testing dev-toolkit...
       env: Lint packages
       script:
-        - cd src
-        - cd packages/babel-preset-dev-toolkit
-        - npm install
-        - npm run lint
-        - cd ../..
-
-        - cd packages/babel-runner
+        - cd src/packages/babel-runner
         - npm install
         - npm run lint
         - cd ../..
@@ -63,30 +57,10 @@ jobs:
         - npm run lint
         - cd ../..
 
-        - cd packages/eslint-config-dev-toolkit
-        - npm install
-        - npm run lint
-
     - stage: Testing dev-toolkit...
       env: Lint templates
       script:
-        - cd src
-        - cd templates/standard
-        - npm install
-        - npm run lint
-        - cd ../..
-
-        - cd templates/with-eslint
-        - npm install
-        - npm run lint
-        - cd ../..
-
-        - cd templates/with-sass
-        - npm install
-        - npm run lint
-        - cd ../..
-
-        - cd templates/serverless
+        - cd src/templates/with-eslint
         - npm install
         - npm run lint
         - cd ../..

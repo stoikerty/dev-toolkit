@@ -8,26 +8,26 @@
     "dev": "cross-env NODE_ENV=development dev-toolkit watch",
     "build": "cross-env NODE_ENV=production dev-toolkit build",
     "serve": "cross-env NODE_ENV=production SERVER_PORT=8080 dev-toolkit serve",
-    "lint": "prettier --write './**/*.js' './**/*.scss'"
+    "format": "prettier --write './**/*.js' './**/*.scss'"
   },
   "dependencies": {
-    "autoprefixer": "^8.1.0",
-    "babel-preset-dev-toolkit": "^1.0.1",
+    "autoprefixer": "^8.4.1",
+    "babel-preset-dev-toolkit": "^1.0.3",
     "clear-module": "^2.1.0",
-    "cross-env": "^5.1.4",
-    "css-loader": "^0.28.10",
+    "cross-env": "^5.1.5",
+    "css-loader": "^0.28.11",
     "css-modules-require-hook": "^4.2.3",
-    "dev-toolkit": "^7.0.0",
-    "express": "^4.16.2",
+    "dev-toolkit": "^7.0.2",
+    "express": "^4.16.3",
     "express-handlebars": "^3.0.0",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
-    "node-sass": "^4.8.1",
-    "postcss-loader": "^2.1.1",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
+    "node-sass": "^4.9.0",
+    "postcss-loader": "^2.1.5",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2",
     "sass-loader": "^6.0.7",
     "style-loader": "^0.20.3",
-    "webpack": "^4.1.1"
+    "webpack": "^4.8.1"
   },
   "devDependencies": {
     "prettier": "^1.11.1"

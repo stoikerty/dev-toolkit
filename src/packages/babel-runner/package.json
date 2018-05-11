@@ -1,6 +1,6 @@
 {
   "name": "babel-runner",
-  "version": "1.0.1-1",
+  "version": "1.0.1",
   "description": "Helper for integrating babel config & node hooks",
   "main": "dist/index.js",
   "scripts": {
@@ -8,8 +8,13 @@
     "publish-beta": "npm publish --tag beta",
     "build": "babel src --out-dir dist",
     "watch": "babel src --watch --out-dir dist",
-    "lint": "prettier --write './**/*.js' && eslint --config .eslintrc src",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "format": "prettier --write './**/*.js'",
+    "lint": "eslint --config .eslintrc src",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "release:patch": "npm version patch && npm publish",
+    "release:minor": "npm version minor && npm publish",
+    "release:major": "npm version major && npm publish",
+    "prerelease": "npm version prerelease && npm publish --tag beta"
   },
   "bin": {
     "babel-runner": "dist/bin/index.js"
@@ -33,13 +38,13 @@
   "license": "MIT",
   "devDependencies": {
     "babel-cli": "^6.26.0",
-    "babel-eslint": "^8.2.2",
-    "babel-preset-env": "^1.6.1",
+    "babel-eslint": "^8.2.3",
+    "babel-preset-env": "^1.7.0",
     "babel-preset-stage-1": "^6.24.1",
     "eslint": "^4.18.2",
     "eslint-config-airbnb-base": "^12.1.0",
-    "eslint-plugin-import": "^2.9.0",
-    "prettier": "^1.11.1"
+    "eslint-plugin-import": "^2.11.0",
+    "prettier": "^1.12.1"
   },
   "dependencies": {
     "babel-register": "^6.26.0",
