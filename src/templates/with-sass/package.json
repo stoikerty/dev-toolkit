@@ -8,7 +8,7 @@
     "dev": "cross-env NODE_ENV=development dev-toolkit watch",
     "build": "cross-env NODE_ENV=production dev-toolkit build",
     "serve": "cross-env NODE_ENV=production SERVER_PORT=8080 dev-toolkit serve",
-    "lint": "prettier --write './**/*.js' './**/*.scss'"
+    "format": "prettier --write './**/*.js' './**/*.scss'"
   },
   "dependencies": {
     "autoprefixer": "^8.4.1",

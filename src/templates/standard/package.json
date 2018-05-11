@@ -8,7 +8,7 @@
     "dev": "better-npm-run development",
     "build": "better-npm-run create-build",
     "serve": "better-npm-run run-server",
-    "lint": "prettier --write './**/*.js'"
+    "format": "prettier --write './**/*.js'"
   },
   "betterScripts": {
     "development": {

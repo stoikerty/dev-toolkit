@@ -8,7 +8,8 @@
     "dev": "better-npm-run development",
     "build": "better-npm-run create-build",
     "serve": "better-npm-run run-server",
-    "lint": "prettier --write './**/*.js' && eslint 'src/**/*.js'"
+    "format": "prettier --write './**/*.js'",
+    "lint": "better-npm-run lint"
   },
   "betterScripts": {
     "development": {
@@ -29,6 +30,12 @@
       "env": {
         "NODE_ENV": "production",
         "SERVER_PORT": "8080"
+      }
+    },
+    "lint": {
+      "command": "eslint 'src/**/*.js'",
+      "env": {
+        "NODE_ENV": "test"
       }
     }
   },
