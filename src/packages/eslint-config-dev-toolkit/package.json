@@ -4,7 +4,7 @@
   "description": "essential eslint config for dev-toolkit",
   "main": "index.js",
   "scripts": {
-    "lint": "prettier --write './**/*.js'",
+    "format": "prettier --write './**/*.js'",
     "test": "echo \"Error: no test specified\" && exit 1",
     "release:patch": "npm version patch && npm publish",
     "release:minor": "npm version minor && npm publish",
