@@ -19,22 +19,30 @@ if (env !== 'development' && env !== 'test' && env !== 'production') {
 module.exports = {
   presets: [
     require.resolve('babel-preset-env'),
-    // Use create-react-app default which also supports dynamic `import()`-statement
+    // Use create-react-app default
     require.resolve('babel-preset-react-app'),
   ],
-  plugins: [
-    // Sane if-statements for React
-    require.resolve('jsx-control-statements'),
-    // Allow root-relative imports for client & server
-    [
-      require.resolve('babel-plugin-module-resolver'),
-      {
-        // using `process.cwd` makes it also work with `import()`
-        root: ['./src'],
-        alias: {
-          src: path.resolve(process.cwd(), 'src'),
+  plugins: []
+    .concat(
+      env !== 'test'
+        ? // Support dynamic `import()`-statement everywhere
+          [require.resolve('babel-plugin-transform-dynamic-import')]
+        : // Ignore transform-dynamic-import in `test` env since `babel-preset-react-app` already includes it
+          []
+    )
+    .concat([
+      // Sane if-statements for React
+      require.resolve('jsx-control-statements'),
+      // Allow root-relative imports for client & server
+      [
+        require.resolve('babel-plugin-module-resolver'),
+        {
+          // using `process.cwd` makes it also work with `import()`
+          root: ['./src'],
+          alias: {
+            src: path.resolve(process.cwd(), 'src'),
+          },
         },
-      },
-    ],
-  ],
+      ],
+    ]),
 };
