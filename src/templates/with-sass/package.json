@@ -8,7 +8,9 @@
     "dev": "cross-env NODE_ENV=development dev-toolkit watch",
     "build": "cross-env NODE_ENV=production dev-toolkit build",
     "serve": "cross-env NODE_ENV=production SERVER_PORT=8080 dev-toolkit serve",
-    "format": "prettier --write './**/*.js' './**/*.scss'"
+    "format": "prettier --write './**/*.js' './**/*.scss'",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "dependencies": {
     "autoprefixer": "^8.4.1",
@@ -27,9 +29,11 @@
     "react-dom": "^16.3.2",
     "sass-loader": "^6.0.7",
     "style-loader": "^0.20.3",
-    "webpack": "^4.8.1"
+    "webpack": "^4.8.1",
+    "snyk": "^1.83.0"
   },
   "devDependencies": {
     "prettier": "^1.11.1"
-  }
+  },
+  "snyk": true
 }
