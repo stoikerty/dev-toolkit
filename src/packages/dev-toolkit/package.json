@@ -1,6 +1,6 @@
 {
   "name": "dev-toolkit",
-  "version": "7.0.2",
+  "version": "7.0.3",
   "description": "Universal Development Toolkit for React Veterans",
   "main": "dev-toolkit.js",
   "files": [
@@ -61,7 +61,7 @@
   },
   "homepage": "https://github.com/stoikerty/dev-toolkit#readme",
   "dependencies": {
-    "assets-webpack-plugin": "^3.5.1",
+    "assets-webpack-plugin": "^3.8.3",
     "babel-loader": "^7.1.4",
     "babel-plugin-dynamic-import-node": "^1.2.0",
     "babel-preset-env": "^1.7.0",
