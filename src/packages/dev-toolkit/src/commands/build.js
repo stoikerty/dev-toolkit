@@ -43,7 +43,7 @@ bootstrap().then(({ server, userSettings }) => {
   };
 
   // delete previous build folder & compile all files necessary for serving
-  if (userSettings.removeBuildFolder) {
+  if (userSettings.devToolkit.removeBuildFolder) {
     log({ message: 'Removing previous build folder…' });
     emptyDir(buildFolder, error => {
       log({ error });
