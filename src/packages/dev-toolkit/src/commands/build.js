@@ -12,12 +12,7 @@ bootstrap().then(({ server, userSettings }) => {
   const showSuccessMessage = () =>
     log({ message: '\n⭐️  Your build is ready ⭐️\n', type: 'success' });
 
-  log({ message: 'Deleting previous build folder…' });
-
-  // delete previous build folder & compile all files necessary for serving
-  emptyDir(buildFolder, error => {
-    log({ error });
-
+  const runWebpackBuild = () => {
     let webpackAssets = {};
     const config = generateConfig({
       creatingBuild: true,
@@ -45,5 +40,16 @@ bootstrap().then(({ server, userSettings }) => {
         }
       });
     });
-  });
+  };
+
+  // delete previous build folder & compile all files necessary for serving
+  if (userSettings.removeBuildFolder) {
+    log({ message: 'Removing previous build folder…' });
+    emptyDir(buildFolder, error => {
+      log({ error });
+      runWebpackBuild();
+    });
+  } else {
+    runWebpackBuild();
+  }
 });
