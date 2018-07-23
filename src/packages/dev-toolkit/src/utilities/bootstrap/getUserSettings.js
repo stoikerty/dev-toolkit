@@ -42,6 +42,8 @@ export default () => {
     },
     devToolkit: {
       usePreRender: typeof devToolkit.usePreRender === 'boolean' ? devToolkit.usePreRender : true,
+      removeBuildFolder:
+        typeof devToolkit.removeBuildFolder === 'boolean' ? devToolkit.removeBuildFolder : true,
       sharedEnvs,
     },
   };
