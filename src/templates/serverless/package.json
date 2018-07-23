@@ -14,7 +14,7 @@
     "babel-preset-dev-toolkit": "^1.0.3",
     "clear-module": "^2.1.0",
     "cross-env": "^5.1.5",
-    "dev-toolkit": "^7.0.3",
+    "dev-toolkit": "^7.0.4",
     "express": "^4.16.3",
     "express-handlebars": "^3.0.0",
     "react": "^16.3.2",
