@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "test": "mocha --require babel-register.js 'src/index.spec.js' --timeout 30000",
-    "lint": "prettier --write './**/*.js' && eslint './**/*.js'"
+    "format": "prettier --write './**/*.js'",
+    "lint": "eslint './**/*.js'"
   },
   "dependencies": {
     "babel-plugin-dynamic-import-node": "^1.2.0",
@@ -20,10 +21,11 @@
     "babel-runner": "^1.0.1",
     "eslint": "^5.4.0",
     "eslint-config-airbnb-base": "^12.1.0",
-    "eslint-config-dev-toolkit": "^1.0.0",
+    "eslint-config-dev-toolkit": "^1.0.2",
     "eslint-config-prettier": "2.9.0",
     "eslint-import-resolver-babel-module": "4.0.0",
     "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-control-statements": "^2.2.1",
     "eslint-plugin-prettier": "2.6.0",
     "prettier": "^1.11.1"
   }
