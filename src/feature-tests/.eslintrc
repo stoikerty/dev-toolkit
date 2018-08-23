@@ -3,7 +3,8 @@
   "plugins": ["prettier"],
   "rules": {
     "prettier/prettier": "error",
-    "import/prefer-default-export": ["off", "never"]
+    "import/prefer-default-export": ["off", "never"],
+    "react/jsx-no-undef": ["off", "never"]
   },
   "env": {
     "mocha": true
