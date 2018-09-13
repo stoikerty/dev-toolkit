@@ -4,6 +4,7 @@ const path = require('path');
 require('dev-toolkit').default({
   command: 'preRender',
   options: {
-    entryPoint: path.resolve(process.cwd(), 'src/server/preRender'),
+    preRenderEntryPoint: path.resolve(process.cwd(), 'src/server/preRender'),
+    silent: true,
   },
 });

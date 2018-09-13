@@ -1,5 +1,6 @@
 import getUserSettings from './getUserSettings';
 import importServerApp from './importServerApp';
+import createEmptyServerApp from './createEmptyServerApp';
 
 export default ({ skipServerImport } = { skipServerImport: false }) => {
   const userSettings = getUserSettings();
@@ -8,9 +9,16 @@ export default ({ skipServerImport } = { skipServerImport: false }) => {
     if (skipServerImport) {
       resolve({ userSettings });
     } else {
-      importServerApp()
-        .then(({ server }) => resolve({ server, userSettings }))
-        .catch(reject);
+      const { preRenderEntryPoint } = global.__devToolkitCommandOptions;
+      if (preRenderEntryPoint) {
+        createEmptyServerApp({ preRenderEntryPoint })
+          .then(({ server }) => resolve({ server, userSettings }))
+          .catch(reject);
+      } else {
+        importServerApp()
+          .then(({ server }) => resolve({ server, userSettings }))
+          .catch(reject);
+      }
     }
   });
 };
