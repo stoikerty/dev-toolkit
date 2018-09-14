@@ -155,6 +155,9 @@ This template contains no routing or css, it will give you out of the box:
 ### with-sass
 Example using sass/scss with custom webpack configuration and node-hooks.
 
+### serverless
+Example using a `handler.js`-file that simulates a serverless scenario. You can test the file with `npm run render`. This file uses the dev-toolkit `preRender` command in programmatic mode which allows to avoid using express for the preRender while still being able to use express for local development with hot-reload using `npm run dev`.
+
 ### with-eslint
 Example using eslint-configuration.
 

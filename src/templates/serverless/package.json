@@ -8,13 +8,14 @@
     "dev": "cross-env NODE_ENV=development dev-toolkit watch",
     "build": "cross-env NODE_ENV=production dev-toolkit build",
     "serve": "cross-env NODE_ENV=production SERVER_PORT=8080 dev-toolkit serve",
+    "render": "cross-env NODE_ENV=production node handler.js",
     "format": "prettier --write './**/*.js'"
   },
   "dependencies": {
-    "babel-preset-dev-toolkit": "^1.0.3",
+    "babel-preset-dev-toolkit": "^1.0.5",
     "clear-module": "^2.1.0",
     "cross-env": "^5.1.5",
-    "dev-toolkit": "^7.0.7",
+    "dev-toolkit": "^7.1.0",
     "express": "^4.16.3",
     "express-handlebars": "^3.0.0",
     "react": "^16.3.2",
