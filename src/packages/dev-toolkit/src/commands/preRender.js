@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import { buildFolder } from '../webpack/projectSettings';
 import { log, bootstrap, getWebpackAssets, preRender } from '../utilities';
 

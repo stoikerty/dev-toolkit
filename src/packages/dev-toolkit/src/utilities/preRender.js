@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import help from './help';
 import log from './log';
 

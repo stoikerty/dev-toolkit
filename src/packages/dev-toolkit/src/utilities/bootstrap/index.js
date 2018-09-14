@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import getUserSettings from './getUserSettings';
 import importServerApp from './importServerApp';
 import createEmptyServerApp from './createEmptyServerApp';

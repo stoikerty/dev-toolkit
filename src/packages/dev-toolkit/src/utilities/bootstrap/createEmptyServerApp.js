@@ -1,8 +1,8 @@
+/* eslint-disable no-underscore-dangle */
 import { pathExistsSync } from 'fs-extra';
 
 import log from '../log';
 import help from '../help';
-import { serverAppEntryPoint } from '../../webpack/projectSettings';
 
 export default ({ preRenderEntryPoint }) =>
   new Promise(resolve => {
