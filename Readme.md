@@ -32,6 +32,7 @@ $ dev-toolkit init [project_name] [--template template_name] [--skip-comments]
 - [`standard`](https://github.com/stoikerty/dev-toolkit/blob/master/docs/templates.md#standard)* [![Vulnerabilities for standard template](https://snyk.io/test/github/stoikerty/dev-toolkit/badge.svg?targetFile=src%2Ftemplates%2Fstandard%2Fpackage.json)](https://snyk.io/test/github/stoikerty/dev-toolkit?targetFile=src%2Ftemplates%2Fstandard%2Fpackage.json)
 - [`with-eslint`](https://github.com/stoikerty/dev-toolkit/blob/master/docs/templates.md#with-eslint) [![Vulnerabilities for with-eslint template](https://snyk.io/test/github/stoikerty/dev-toolkit/badge.svg?targetFile=src%2Ftemplates%2Fwith-eslint%2Fpackage.json)](https://snyk.io/test/github/stoikerty/dev-toolkit?targetFile=src%2Ftemplates%2Fwith-eslint%2Fpackage.json)
 - [`with-sass`](https://github.com/stoikerty/dev-toolkit/blob/master/docs/templates.md#with-sass) [![Vulnerabilities for with-sass template](https://snyk.io/test/github/stoikerty/dev-toolkit/badge.svg?targetFile=src%2Ftemplates%2Fwith-sass%2Fpackage.json)](https://snyk.io/test/github/stoikerty/dev-toolkit?targetFile=src%2Ftemplates%2Fwith-sass%2Fpackage.json)
+- [`serverless`](https://github.com/stoikerty/dev-toolkit/blob/master/docs/templates.md#serverless) [![Vulnerabilities for serverless template](https://snyk.io/test/github/stoikerty/dev-toolkit/badge.svg?targetFile=src%2Ftemplates%2Fserverless%2Fpackage.json)](https://snyk.io/test/github/stoikerty/dev-toolkit?targetFile=src%2Ftemplates%2Fserverless%2Fpackage.json)
 
 <small>* used by default when initialising a new project</small>
 
@@ -66,14 +67,6 @@ $ dev-toolkit init [project_name] [--template template_name] [--skip-comments]
 The aim of dev-toolkit is to be unopinionated so that it can be useful in many different scenarios. Therefore only the most necessary dependencies are included and other additions may be provided by yourself (see the other template examples for guidance).
 
 With CSS-in-JS solutions on the rise, it would be unwise to include dependencies for `css-modules`, `sass` or `less` in every project that has `dev-toolkit` as a dependency, it would introduce additional installation time and bloat.
-
-### Roadmap
-
-* More docs on extending with config, how dev-toolkit works, choices
-* serverless template
-* Using your own (external) template - under consideration
-* Eject feature - under consideration
-* list differences between dev-toolkit, next.js & create-react-app
 
 ## Contributing
 See [`Contributing.md`](https://github.com/stoikerty/dev-toolkit/blob/master/Contributing.md)

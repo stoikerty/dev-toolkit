@@ -54,7 +54,7 @@ ensureDirSync(generatedTemplates);
 copySync(originalTemplates, generatedTemplates, { filter: ignoreDevFolders });
 removeDevFiles({ directory: generatedTemplates });
 
-log({ message: 'Creating an templates-folder in dist that has comments stripped out...' });
+log({ message: 'Creating a templates-folder in dist that has comments stripped out...' });
 removeSync(generatedTemplatesWithoutComments);
 ensureDirSync(generatedTemplatesWithoutComments);
 copySync(originalTemplates, generatedTemplatesWithoutComments, { filter: ignoreDevFolders });

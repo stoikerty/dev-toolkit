@@ -13,18 +13,22 @@ export default ({ assets, buildFolder }) => {
   // return a Promise to dev-toolkit
   return new Promise((resolve, reject) => {
     // Load Client App via RootComponent
-    import(rootComponentPath).then(module => {
-      const RootComponent = module.default;
-      // Here handlebars is used to generate the html without express and without webpack
-      handlebarsInstance
-        .render(path.join(serverViews, 'template.hbs'), {
-          assets,
-          renderedHtml: renderToString(<RootComponent />),
-        })
-        .then(html => {
-          // Generated html is output immediately
-          console.log(html);
-        });
-    });
+    import(rootComponentPath)
+      .then(module => {
+        const RootComponent = module.default;
+        // Here handlebars is used to generate the html without express and without webpack
+        handlebarsInstance
+          .render(path.join(serverViews, 'template.hbs'), {
+            assets,
+            renderedHtml: renderToString(<RootComponent />),
+          })
+          .then(html => {
+            // Generated html is output immediately
+            console.log(html);
+            resolve();
+          })
+          .catch(reject);
+      })
+      .catch(reject);
   });
 };
