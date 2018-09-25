@@ -25,9 +25,11 @@ module.exports = {
   cssChunkNaming: cssChunkNaming,
   includePaths: includePaths,
 
-  // Exports for dev-toolkit to pick up
+  // Use custom webpack configuration here. Available `options` for each function:
+  // { projectRoot, creatingBuild, namingConvention, assetsPath, publicPath, babelrc }
   webpack: {
-    rules: function(options) {
+    // Extend existing webpack rules (formerly called loaders)
+    rules: function rules(options) {
       return [
         {
           test: /\.scss$/,
@@ -46,8 +48,9 @@ module.exports = {
       ];
     },
 
+    // Extend existing webpack plugins
     // Generate a single css-file on build from all extracted files
-    plugins: function(options) {
+    plugins: function plugins(options) {
       const cssFileToGenerate = options.namingConvention + '.css';
       return options.creatingBuild
         ? [new ExtractTextPlugin({ filename: cssFileToGenerate, allChunks: true })]

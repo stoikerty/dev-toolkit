@@ -4,12 +4,15 @@ module.exports = {
     sharedEnvs: ['MY_CUSTOM_ENV'],
   },
 
-  // Use custom webpack configuration here
+  // Use custom webpack configuration here. Available `options` for each function:
+  // { projectRoot, creatingBuild, namingConvention, assetsPath, publicPath, babelrc }
   webpack: {
-    loaders: function(options) {
+    // Extend existing webpack rules (formerly called loaders)
+    rules: function rules(options) {
       return [];
     },
-    plugins: function(options) {
+    // Extend existing webpack plugins
+    plugins: function plugins(options) {
       return [];
     },
   },
