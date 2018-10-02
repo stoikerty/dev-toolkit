@@ -16,9 +16,8 @@ if (env !== 'development' && env !== 'test' && env !== 'production') {
 
 // Use require.resolve to prevent issues when using npm link
 // see: https://github.com/babel/babel-loader/issues/149
-module.exports = {
+module.exports = () => ({
   presets: [
-    require.resolve('babel-preset-env'),
     // Use create-react-app default
     require.resolve('babel-preset-react-app'),
   ],
@@ -45,4 +44,4 @@ module.exports = {
         },
       ],
     ]),
-};
+});
