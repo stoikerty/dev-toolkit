@@ -12,10 +12,10 @@
     "format": "prettier --write './**/*.js'"
   },
   "dependencies": {
-    "babel-preset-dev-toolkit": "^1.0.5",
+    "babel-preset-dev-toolkit": "^1.1.0",
     "clear-module": "^2.1.0",
     "cross-env": "^5.1.5",
-    "dev-toolkit": "^7.1.1",
+    "dev-toolkit": "^7.1.2",
     "express": "^4.16.3",
     "express-handlebars": "^3.0.0",
     "react": "^16.3.2",
