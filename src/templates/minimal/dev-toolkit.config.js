@@ -2,10 +2,7 @@
 module.exports = {
   // `dev-toolkit` specific settings
   // Defaults: `usePreRender: true, removeBuildFolder: true, sharedEnvs: []`
-  devToolkit: {
-    // Example usage of environment variables shared between client & server
-    sharedEnvs: ['MY_CUSTOM_ENV'],
-  },
+  devToolkit: {},
 
   // Use custom webpack configuration here. Available `options` for each function:
   // { projectRoot, creatingBuild, namingConvention, assetsPath, publicPath, babelrc }

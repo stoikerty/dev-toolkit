@@ -5,44 +5,22 @@
   "author": "",
   "scripts": {
     "start": "npm run build && npm run serve",
-    "dev": "better-npm-run development",
-    "build": "better-npm-run create-build",
-    "serve": "better-npm-run run-server",
+    "dev": "cross-env NODE_ENV=development MY_CUSTOM_ENV=foo dev-toolkit watch",
+    "build": "cross-env NODE_ENV=production dev-toolkit build",
+    "serve": "cross-env NODE_ENV=production SERVER_PORT=8080 dev-toolkit serve",
     "format": "prettier --write './**/*.js'"
-  },
-  "betterScripts": {
-    "development": {
-      "command": "dev-toolkit watch",
-      "env": {
-        "NODE_ENV": "development",
-        "MY_CUSTOM_ENV": "foo"
-      }
-    },
-    "create-build": {
-      "command": "dev-toolkit build",
-      "env": {
-        "NODE_ENV": "production"
-      }
-    },
-    "run-server": {
-      "command": "dev-toolkit serve",
-      "env": {
-        "NODE_ENV": "production",
-        "SERVER_PORT": "8080"
-      }
-    }
   },
   "dependencies": {
     "babel-preset-dev-toolkit": "^1.1.0",
-    "better-npm-run": "^0.1.0",
-    "clear-module": "^2.1.0",
+    "clear-module": "^3.0.0",
+    "cross-env": "^5.2.0",
     "dev-toolkit": "^7.1.2",
     "express": "^4.16.3",
     "express-handlebars": "^3.0.0",
-    "react": "^16.3.2",
-    "react-dom": "^16.3.2"
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2"
   },
   "devDependencies": {
-    "prettier": "^1.12.1"
+    "prettier": "^1.14.3"
   }
 }

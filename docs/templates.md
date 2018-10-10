@@ -112,6 +112,44 @@ Every project has Prettier by default, feel free to use your preferred settings.
 ### `dev-toolkit.config.js`
 If you are looking where to place your webpack loaders and plugins, check this file out. This is your entry point for customising `dev-toolkit` itself and webpack.
 
+```js
+// This file will be imported by `dev-toolkit` or fall back to defaults if it doesn't exist.
+module.exports = {
+  // `dev-toolkit` specific settings, defaults:
+  devToolkit: {
+    usePreRender: true,
+    removeBuildFolder: true,
+    sharedEnvs: [],
+  },
+
+  // Use custom webpack configuration here.
+  // Available `options` for each function:
+  // { projectRoot, creatingBuild, namingConvention, assetsPath, publicPath, babelrc }
+  webpack: {
+    // Add only webpack rules (formerly called loaders)
+    rules: options => [],
+    // Add only webpack plugins
+    plugins: options => [],
+
+    // Completely customize output config after rules and loaders have been added
+    // `webpackConfig` will contain the existing config from ```
+    customize: (webpackConfig, options) => ({
+      ...webpackConfig,
+      // Example for adding externals to webpack config:
+      // ...(options.creatingBuild
+      //   ? {
+      //       externals: {
+      //         react: 'React',
+      //         'react-dom': 'ReactDOM',
+      //         redux: 'Redux',
+      //       },
+      //     }
+      //   : {}),
+    }),
+  },
+};
+```
+
 ### `package.json`
 Your standard `package.json`. It contains a few npm commands that make calls to the dev-toolkit CLI with the right environment variables.
 
