@@ -1,6 +1,6 @@
 {
   "name": "babel-preset-dev-toolkit",
-  "version": "1.1.0",
+  "version": "1.1.1-1",
   "description": "Adds sane if-statements & root-relative imports",
   "main": "index.js",
   "scripts": {
