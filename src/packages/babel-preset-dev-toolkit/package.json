@@ -1,6 +1,6 @@
 {
   "name": "babel-preset-dev-toolkit",
-  "version": "1.1.1-1",
+  "version": "1.1.1-5",
   "description": "Adds sane if-statements & root-relative imports",
   "main": "index.js",
   "scripts": {
@@ -29,20 +29,21 @@
   "author": "Jorge Antunes @stoikerty",
   "license": "MIT",
   "dependencies": {
-    "babel-plugin-dynamic-import-node": "^2.1.0",
-    "babel-plugin-module-resolver": "3.1.0",
-    "babel-plugin-transform-class-properties": "^6.24.1",
-    "babel-plugin-transform-dynamic-import": "2.0.0",
-    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-plugin-transform-react-jsx-source": "^6.22.0",
-    "babel-plugin-transform-react-remove-prop-types": "^0.4.18",
-    "babel-plugin-transform-runtime": "^6.23.0",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-react": "^6.24.1",
-    "jsx-control-statements": "3.2.8"
+    "@babel/core": "^7.1.2",
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
+    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
+    "@babel/plugin-transform-modules-commonjs": "^7.1.0",
+    "@babel/plugin-transform-react-jsx-source": "^7.0.0",
+    "@babel/plugin-transform-runtime": "^7.1.0",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-plugin-jsx-control-statements": "^3.2.8",
+    "babel-plugin-module-resolver": "^3.1.1",
+    "babel-plugin-transform-dynamic-import": "^2.1.0",
+    "babel-plugin-transform-react-remove-prop-types": "^0.4.18"
   },
   "devDependencies": {
-    "prettier": "^1.12.1"
+    "prettier": "^1.14.3"
   }
 }

@@ -44,7 +44,7 @@ const babelRunner = ({ fileToRun } = {}) => {
 
   // Teach Node how to use babel compilation, using explicitly specified babelrc
   if (babelrc) {
-    require('babel-register')(babelrc);
+    require('@babel/register')(babelrc);
   }
 
   if (fileToRun) {
