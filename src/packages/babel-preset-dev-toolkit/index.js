@@ -67,6 +67,4 @@ if (env === 'production') {
   ]);
 }
 
-module.exports = function(api, opts) {
-  return preset;
-};
+module.exports = (api, opts) => preset;
