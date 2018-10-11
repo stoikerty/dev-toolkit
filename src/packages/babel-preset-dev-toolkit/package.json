@@ -1,6 +1,6 @@
 {
   "name": "babel-preset-dev-toolkit",
-  "version": "1.1.1-5",
+  "version": "1.1.1-6",
   "description": "Adds sane if-statements & root-relative imports",
   "main": "index.js",
   "scripts": {
@@ -38,6 +38,7 @@
     "@babel/plugin-transform-runtime": "^7.1.0",
     "@babel/preset-env": "^7.1.0",
     "@babel/preset-react": "^7.0.0",
+    "@babel/runtime": "^7.1.2",
     "babel-plugin-jsx-control-statements": "^3.2.8",
     "babel-plugin-module-resolver": "^3.1.1",
     "babel-plugin-transform-dynamic-import": "^2.1.0",
