@@ -15,7 +15,7 @@
     "fix-permissions": "chmod 777 packages/dev-toolkit/dist/bin/* packages/babel-runner/dist/bin/*"
   },
   "devDependencies": {
-    "lerna": "^2.9.1"
+    "lerna": "^2.11.0"
   },
   "dependencies": {
     "del-cli": "^1.1.0"
