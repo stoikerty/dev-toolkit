@@ -1,3 +1,4 @@
+// This file will be imported by `dev-toolkit` or fall back to defaults if it doesn't exist.
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const path = require('path');
 
@@ -25,11 +26,15 @@ module.exports = {
   cssChunkNaming: cssChunkNaming,
   includePaths: includePaths,
 
+  // `dev-toolkit` specific settings
+  // Defaults: `usePreRender: true, removeBuildFolder: true, sharedEnvs: []`
+  devToolkit: {},
+
   // Use custom webpack configuration here. Available `options` for each function:
   // { projectRoot, creatingBuild, namingConvention, assetsPath, publicPath, babelrc }
   webpack: {
     // Extend existing webpack rules (formerly called loaders)
-    rules: function rules(options) {
+    rules: options => {
       return [
         {
           test: /\.scss$/,
@@ -50,11 +55,27 @@ module.exports = {
 
     // Extend existing webpack plugins
     // Generate a single css-file on build from all extracted files
-    plugins: function plugins(options) {
+    plugins: options => {
       const cssFileToGenerate = options.namingConvention + '.css';
       return options.creatingBuild
         ? [new ExtractTextPlugin({ filename: cssFileToGenerate, allChunks: true })]
         : [];
     },
+
+    // Completely customize output config after rules and loaders have been added
+    // `webpackConfig` will contain the existing config from ```
+    customize: (webpackConfig, options) => ({
+      ...webpackConfig,
+      // Example for adding externals to webpack config:
+      // ...(options.creatingBuild
+      //   ? {
+      //       externals: {
+      //         react: 'React',
+      //         'react-dom': 'ReactDOM',
+      //         redux: 'Redux',
+      //       },
+      //     }
+      //   : {}),
+    }),
   },
 };

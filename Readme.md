@@ -62,6 +62,10 @@ $ dev-toolkit init [project_name] [--template template_name] [--skip-comments]
 * **you can use sane if-statements, [jsx-control-statements](https://github.com/AlexGilleran/jsx-control-statements)**<br>
   _`<If condition={true}> ... </If>` will compile down to `&&`-syntax_
 
+### Compatibilty
+
+Node.js `8.9.4` or higher suggested. You can use lower versions but you might not have arrow-functions or async/await support available. See [Node.js compatibility table](https://node.green/) for more information.
+
 ### Why No CSS by default?
 
 The aim of dev-toolkit is to be unopinionated so that it can be useful in many different scenarios. Therefore only the most necessary dependencies are included and other additions may be provided by yourself (see the other template examples for guidance).

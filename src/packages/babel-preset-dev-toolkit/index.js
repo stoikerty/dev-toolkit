@@ -4,39 +4,35 @@ const path = require('path');
 // Use require.resolve to prevent issues when using npm link
 // see: https://github.com/babel/babel-loader/issues/149
 var preset = {
-  presets: [require.resolve('babel-preset-env'), require.resolve('babel-preset-react')],
+  presets: [require.resolve('@babel/preset-env'), require.resolve('@babel/preset-react')],
   plugins: [
     // class { handleThing = () => { } }
-    require.resolve('babel-plugin-transform-class-properties'),
+    require.resolve('@babel/plugin-proposal-class-properties'),
 
     // { ...todo, completed: true }
-    require.resolve('babel-plugin-transform-object-rest-spread'),
+    require.resolve('@babel/plugin-proposal-object-rest-spread'),
 
     // support for async/await
-    require.resolve('babel-plugin-transform-runtime'),
-  ]
-    .concat(
-      env !== 'test'
-        ? // Support dynamic `import()`-statement everywhere
-          [require.resolve('babel-plugin-transform-dynamic-import')]
-        : // Ignore transform-dynamic-import in `test` env since `babel-preset-react-app` already includes it
-          []
-    )
-    .concat([
-      // Sane if-statements for React
-      require.resolve('jsx-control-statements'),
-      // Allow root-relative imports for client & server
-      [
-        require.resolve('babel-plugin-module-resolver'),
-        {
-          // using `process.cwd` makes it also work with `import()`
-          root: ['./src'],
-          alias: {
-            src: path.resolve(process.cwd(), 'src'),
-          },
+    require.resolve('@babel/plugin-transform-runtime'),
+
+    // Support dynamic `import()`-statement everywhere
+    require.resolve('babel-plugin-transform-dynamic-import'),
+
+    // Sane if-statements for React
+    require.resolve('babel-plugin-jsx-control-statements'),
+
+    // Allow root-relative imports for client & server
+    [
+      require.resolve('babel-plugin-module-resolver'),
+      {
+        // using `process.cwd` makes it also work with `import()`
+        root: ['./src'],
+        alias: {
+          src: path.resolve(process.cwd(), 'src'),
         },
-      ],
-    ]),
+      },
+    ],
+  ],
 };
 
 // Warn Users to make sure we don't have an invalid `NODE_ENV`
@@ -54,16 +50,14 @@ if (env !== 'development' && env !== 'test' && env !== 'production') {
 if (env === 'development' || env === 'test') {
   preset.plugins.push.apply(preset.plugins, [
     // Adds component stack to warning messages
-    require.resolve('babel-plugin-transform-react-jsx-source'),
+    require.resolve('@babel/plugin-transform-react-jsx-source'),
   ]);
 }
 
 if (env === 'test') {
   preset.plugins.push.apply(preset.plugins, [
-    // Compiles import() to a deferred require()
-    require.resolve('babel-plugin-dynamic-import-node'),
     // Transform ES modules to commonjs for Jest support
-    [require.resolve('babel-plugin-transform-es2015-modules-commonjs'), { loose: true }],
+    [require.resolve('@babel/plugin-transform-modules-commonjs'), { loose: true }],
   ]);
 }
 
@@ -73,4 +67,4 @@ if (env === 'production') {
   ]);
 }
 
-module.exports = preset;
+module.exports = (api, opts) => preset;
