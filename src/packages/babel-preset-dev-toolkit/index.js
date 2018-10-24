@@ -30,6 +30,7 @@ var preset = {
         alias: {
           src: path.resolve(process.cwd(), 'src'),
         },
+        extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
       },
     ],
   ],

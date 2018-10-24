@@ -40,12 +40,12 @@ export default ({ getWebpackAssets, creatingBuild, userSettings } = { creatingBu
       module: {
         rules: [
           {
-            test: /\.jsx?$/,
+            test: /\.(tsx?)|(jsx?)$/,
             loaders: [`babel-loader?${JSON.stringify(babelrc)}`],
-            exclude: /(node_modules)|\.route.jsx?$|\.dynamic.jsx?$/,
+            exclude: /(node_modules)|\.route.jsx?$|\.dynamic.jsx?|\.route.tsx?$|\.dynamic.tsx?$/,
           },
           {
-            test: /\.route.jsx?$|\.dynamic.jsx?$/,
+            test: /\.route.jsx?$|\.dynamic.jsx?|\.route.tsx?$|\.dynamic.tsx?$/,
             loaders: [
               // `bundle`-loader automatically uses module directly when code is run on the server
               'bundle-loader?lazy&name=[name]',
@@ -82,6 +82,7 @@ export default ({ getWebpackAssets, creatingBuild, userSettings } = { creatingBu
           userSettings.webpack.plugins(customizationOptions)
         ),
       resolve: {
+        extensions: ['.js', '.ts', '.tsx', '.json'],
         modules: [
           // Resolve dev-toolkit related modules like 'webpack-hot-middleware/client'
           path.resolve(devToolkitRoot, 'node_modules'),
