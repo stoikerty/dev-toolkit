@@ -14,7 +14,7 @@ import {
 } from './projectSettings';
 
 export default ({ getWebpackAssets, creatingBuild, userSettings } = { creatingBuild: true }) => {
-  const namingConvention = creatingBuild ? '[name].[md5:contenthash:hex:20]' : '[name]';
+  const namingConvention = creatingBuild ? '[name].[hash:8]' : '[name]';
   const customizationOptions = {
     projectRoot,
     creatingBuild,
