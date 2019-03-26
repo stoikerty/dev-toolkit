@@ -14,7 +14,7 @@ import {
 } from './projectSettings';
 
 export default ({ getWebpackAssets, creatingBuild, userSettings } = { creatingBuild: true }) => {
-  const namingConvention = creatingBuild ? '[name].[chunkhash]' : '[name]';
+  const namingConvention = creatingBuild ? '[name].[contenthash]' : '[name]';
   const customizationOptions = {
     projectRoot,
     creatingBuild,
