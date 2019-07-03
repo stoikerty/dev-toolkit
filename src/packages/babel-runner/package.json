@@ -4,7 +4,7 @@
   "description": "Helper for integrating babel config & node hooks",
   "main": "dist/index.js",
   "scripts": {
-    "prepare": "npm run build",
+    "prepare": "npm run snyk-protect; npm run build",
     "publish-beta": "npm publish --tag beta",
     "build": "babel src --out-dir dist",
     "watch": "babel src --watch --out-dir dist",
@@ -14,7 +14,8 @@
     "release:patch": "npm version patch && npm publish",
     "release:minor": "npm version minor && npm publish",
     "release:major": "npm version major && npm publish",
-    "prerelease": "npm version prerelease && npm publish --tag beta"
+    "prerelease": "npm version prerelease && npm publish --tag beta",
+    "snyk-protect": "snyk protect"
   },
   "bin": {
     "babel-runner": "dist/bin/index.js"
@@ -48,6 +49,8 @@
   "dependencies": {
     "@babel/core": "^7.1.2",
     "@babel/register": "^7.0.0",
-    "file-exists": "^5.0.1"
-  }
+    "file-exists": "^5.0.1",
+    "snyk": "^1.189.0"
+  },
+  "snyk": true
 }
