@@ -8,7 +8,9 @@
     "dev": "cross-env NODE_ENV=development MY_CUSTOM_ENV=foo dev-toolkit watch",
     "build": "cross-env NODE_ENV=production dev-toolkit build",
     "serve": "cross-env NODE_ENV=production SERVER_PORT=8080 dev-toolkit serve",
-    "format": "prettier --write './**/*.js'"
+    "format": "prettier --write './**/*.js'",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "dependencies": {
     "babel-preset-dev-toolkit": "^2.0.0",
@@ -18,9 +20,11 @@
     "express": "^4.16.3",
     "express-handlebars": "^3.0.0",
     "react": "^16.5.2",
-    "react-dom": "^16.5.2"
+    "react-dom": "^16.5.2",
+    "snyk": "^1.189.0"
   },
   "devDependencies": {
     "prettier": "^1.14.3"
-  }
+  },
+  "snyk": true
 }
