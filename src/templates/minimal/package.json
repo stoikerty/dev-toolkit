@@ -7,7 +7,9 @@
     "start": "npm run build && npm run serve",
     "dev": "cross-env NODE_ENV=development dev-toolkit watch",
     "build": "cross-env NODE_ENV=production dev-toolkit build",
-    "serve": "cross-env NODE_ENV=production dev-toolkit serve"
+    "serve": "cross-env NODE_ENV=production dev-toolkit serve",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "dependencies": {
     "babel-preset-dev-toolkit": "^2.0.0",
@@ -15,9 +17,11 @@
     "dev-toolkit": "^7.2.0",
     "express": "^4.16.3",
     "react": "^16.5.2",
-    "react-dom": "^16.5.2"
+    "react-dom": "^16.5.2",
+    "snyk": "^1.189.0"
   },
   "devDependencies": {
     "prettier": "^1.14.3"
-  }
+  },
+  "snyk": true
 }
