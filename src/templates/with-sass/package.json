@@ -10,7 +10,8 @@
     "serve": "cross-env NODE_ENV=production SERVER_PORT=8080 dev-toolkit serve",
     "format": "prettier --write './**/*.js' './**/*.scss'",
     "snyk-protect": "snyk protect",
-    "prepare": "npm run snyk-protect"
+    "prepare": "npm run snyk-protect",
+    "prepublish": "npm run snyk-protect"
   },
   "dependencies": {
     "autoprefixer": "^8.4.1",
@@ -30,7 +31,7 @@
     "sass-loader": "^6.0.7",
     "style-loader": "^0.20.3",
     "webpack": "^4.8.1",
-    "snyk": "^1.85.0"
+    "snyk": "^1.189.0"
   },
   "devDependencies": {
     "prettier": "^1.14.3"

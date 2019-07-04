@@ -1,5 +1,5 @@
 # Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
-version: v1.12.0
+version: v1.13.5
 # ignores vulnerabilities until expiry date; change duration by modifying expiry date
 ignore:
   'npm:tunnel-agent:20170305':
@@ -13,3 +13,124 @@ patch:
   'npm:tunnel-agent:20170305':
     - node-sass > request > tunnel-agent:
         patched: '2018-06-25T23:37:14.776Z'
+  SNYK-JS-LODASH-450202:
+    - babel-preset-dev-toolkit > babel-plugin-jsx-control-statements > babel-core > babel-generator > babel-types > lodash:
+        patched: '2019-07-04T01:50:00.795Z'
+    - snyk > lodash:
+        patched: '2019-07-04T01:50:00.795Z'
+    - node-sass > lodash:
+        patched: '2019-07-04T01:50:00.795Z'
+    - snyk > snyk-nodejs-lockfile-parser > lodash:
+        patched: '2019-07-04T01:50:00.795Z'
+    - snyk > snyk-mvn-plugin > lodash:
+        patched: '2019-07-04T01:50:00.795Z'
+    - snyk > snyk-config > lodash:
+        patched: '2019-07-04T01:50:00.795Z'
+    - snyk > inquirer > lodash:
+        patched: '2019-07-04T01:50:00.795Z'
+    - snyk > @snyk/dep-graph > lodash:
+        patched: '2019-07-04T01:50:00.795Z'
+    - babel-preset-dev-toolkit > @babel/core > lodash:
+        patched: '2019-07-04T01:50:00.795Z'
+    - dev-toolkit > assets-webpack-plugin > lodash:
+        patched: '2019-07-04T01:50:00.795Z'
+    - extract-text-webpack-plugin > async > lodash:
+        patched: '2019-07-04T01:50:00.795Z'
+    - snyk > snyk-nuget-plugin > lodash:
+        patched: '2019-07-04T01:50:00.795Z'
+    - node-sass > sass-graph > lodash:
+        patched: '2019-07-04T01:50:00.795Z'
+    - snyk > @snyk/dep-graph > graphlib > lodash:
+        patched: '2019-07-04T01:50:00.795Z'
+    - node-sass > gaze > globule > lodash:
+        patched: '2019-07-04T01:50:00.795Z'
+    - babel-preset-dev-toolkit > @babel/core > @babel/traverse > lodash:
+        patched: '2019-07-04T01:50:00.795Z'
+    - dev-toolkit > babel-runner > @babel/core > lodash:
+        patched: '2019-07-04T01:50:00.795Z'
+    - snyk > snyk-go-plugin > graphlib > lodash:
+        patched: '2019-07-04T01:50:00.795Z'
+    - snyk > snyk-nodejs-lockfile-parser > graphlib > lodash:
+        patched: '2019-07-04T01:50:00.795Z'
+    - snyk > snyk-php-plugin > @snyk/composer-lockfile-parser > lodash:
+        patched: '2019-07-04T01:50:00.795Z'
+    - babel-preset-dev-toolkit > babel-plugin-jsx-control-statements > babel-core > lodash:
+        patched: '2019-07-04T01:50:00.795Z'
+    - babel-preset-dev-toolkit > @babel/plugin-transform-modules-commonjs > @babel/helper-simple-access > @babel/types > lodash:
+        patched: '2019-07-04T01:50:00.795Z'
+    - dev-toolkit > babel-runner > @babel/core > @babel/traverse > lodash:
+        patched: '2019-07-04T01:50:00.795Z'
+    - babel-preset-dev-toolkit > babel-plugin-jsx-control-statements > babel-core > babel-generator > lodash:
+        patched: '2019-07-04T01:50:00.795Z'
+    - babel-preset-dev-toolkit > babel-plugin-jsx-control-statements > babel-core > babel-types > lodash:
+        patched: '2019-07-04T01:50:00.795Z'
+    - babel-preset-dev-toolkit > babel-plugin-jsx-control-statements > babel-core > babel-register > lodash:
+        patched: '2019-07-04T01:50:00.795Z'
+    - babel-preset-dev-toolkit > babel-plugin-jsx-control-statements > babel-core > babel-template > lodash:
+        patched: '2019-07-04T01:50:00.795Z'
+    - babel-preset-dev-toolkit > babel-plugin-jsx-control-statements > babel-core > babel-traverse > lodash:
+        patched: '2019-07-04T01:50:00.795Z'
+    - babel-preset-dev-toolkit > @babel/preset-env > @babel/plugin-proposal-async-generator-functions > @babel/helper-remap-async-to-generator > @babel/traverse > lodash:
+        patched: '2019-07-04T01:50:00.795Z'
+    - dev-toolkit > babel-runner > @babel/core > @babel/generator > @babel/types > lodash:
+        patched: '2019-07-04T01:50:00.795Z'
+    - css-modules-require-hook > lodash:
+        patched: '2019-07-04T01:50:00.795Z'
+    - babel-preset-dev-toolkit > babel-plugin-jsx-control-statements > babel-core > babel-traverse > babel-types > lodash:
+        patched: '2019-07-04T01:50:00.795Z'
+    - babel-preset-dev-toolkit > babel-plugin-jsx-control-statements > babel-core > babel-template > babel-types > lodash:
+        patched: '2019-07-04T01:50:00.795Z'
+    - babel-preset-dev-toolkit > babel-plugin-jsx-control-statements > babel-core > babel-template > babel-traverse > lodash:
+        patched: '2019-07-04T01:50:00.795Z'
+    - babel-preset-dev-toolkit > babel-plugin-jsx-control-statements > babel-core > babel-helpers > babel-template > lodash:
+        patched: '2019-07-04T01:50:00.795Z'
+    - babel-preset-dev-toolkit > babel-plugin-jsx-control-statements > babel-core > babel-register > babel-core > lodash:
+        patched: '2019-07-04T01:50:00.795Z'
+    - babel-preset-dev-toolkit > @babel/preset-env > @babel/plugin-transform-object-super > @babel/helper-replace-supers > @babel/helper-member-expression-to-functions > @babel/types > lodash:
+        patched: '2019-07-04T01:50:00.795Z'
+    - dev-toolkit > babel-runner > @babel/core > @babel/helpers > @babel/traverse > @babel/generator > lodash:
+        patched: '2019-07-04T01:50:00.795Z'
+    - babel-preset-dev-toolkit > babel-plugin-jsx-control-statements > babel-core > babel-register > babel-core > babel-generator > lodash:
+        patched: '2019-07-04T01:50:00.795Z'
+    - babel-preset-dev-toolkit > babel-plugin-jsx-control-statements > babel-core > babel-register > babel-core > babel-types > lodash:
+        patched: '2019-07-04T01:50:00.795Z'
+    - babel-preset-dev-toolkit > babel-plugin-jsx-control-statements > babel-core > babel-helpers > babel-template > babel-types > lodash:
+        patched: '2019-07-04T01:50:00.795Z'
+    - babel-preset-dev-toolkit > babel-plugin-jsx-control-statements > babel-core > babel-template > babel-traverse > babel-types > lodash:
+        patched: '2019-07-04T01:50:00.795Z'
+    - babel-preset-dev-toolkit > babel-plugin-jsx-control-statements > babel-core > babel-register > babel-core > babel-template > lodash:
+        patched: '2019-07-04T01:50:00.795Z'
+    - babel-preset-dev-toolkit > babel-plugin-jsx-control-statements > babel-core > babel-register > babel-core > babel-traverse > lodash:
+        patched: '2019-07-04T01:50:00.795Z'
+    - babel-preset-dev-toolkit > babel-plugin-jsx-control-statements > babel-core > babel-helpers > babel-template > babel-traverse > lodash:
+        patched: '2019-07-04T01:50:00.795Z'
+    - dev-toolkit > babel-runner > @babel/core > @babel/traverse > @babel/helper-function-name > @babel/helper-get-function-arity > @babel/types > lodash:
+        patched: '2019-07-04T01:50:00.795Z'
+    - babel-preset-dev-toolkit > @babel/core > @babel/helpers > @babel/traverse > @babel/helper-function-name > @babel/helper-get-function-arity > @babel/types > lodash:
+        patched: '2019-07-04T01:50:00.795Z'
+    - babel-preset-dev-toolkit > babel-plugin-jsx-control-statements > babel-core > babel-register > babel-core > babel-helpers > babel-template > lodash:
+        patched: '2019-07-04T01:50:00.795Z'
+    - babel-preset-dev-toolkit > babel-plugin-jsx-control-statements > babel-core > babel-register > babel-core > babel-template > babel-traverse > lodash:
+        patched: '2019-07-04T01:50:00.795Z'
+    - babel-preset-dev-toolkit > babel-plugin-jsx-control-statements > babel-core > babel-register > babel-core > babel-generator > babel-types > lodash:
+        patched: '2019-07-04T01:50:00.795Z'
+    - babel-preset-dev-toolkit > babel-plugin-jsx-control-statements > babel-core > babel-helpers > babel-template > babel-traverse > babel-types > lodash:
+        patched: '2019-07-04T01:50:00.795Z'
+    - babel-preset-dev-toolkit > babel-plugin-jsx-control-statements > babel-core > babel-register > babel-core > babel-traverse > babel-types > lodash:
+        patched: '2019-07-04T01:50:00.795Z'
+    - babel-preset-dev-toolkit > babel-plugin-jsx-control-statements > babel-core > babel-register > babel-core > babel-template > babel-types > lodash:
+        patched: '2019-07-04T01:50:00.795Z'
+    - babel-preset-dev-toolkit > @babel/preset-env > @babel/plugin-transform-object-super > @babel/helper-replace-supers > @babel/traverse > @babel/helper-function-name > @babel/helper-get-function-arity > @babel/types > lodash:
+        patched: '2019-07-04T01:50:00.795Z'
+    - dev-toolkit > babel-runner > @babel/core > @babel/helpers > @babel/traverse > @babel/helper-function-name > @babel/template > @babel/types > lodash:
+        patched: '2019-07-04T01:50:00.795Z'
+    - babel-preset-dev-toolkit > babel-plugin-jsx-control-statements > babel-core > babel-register > babel-core > babel-template > babel-traverse > babel-types > lodash:
+        patched: '2019-07-04T01:50:00.795Z'
+    - babel-preset-dev-toolkit > babel-plugin-jsx-control-statements > babel-core > babel-register > babel-core > babel-helpers > babel-template > babel-traverse > lodash:
+        patched: '2019-07-04T01:50:00.795Z'
+    - babel-preset-dev-toolkit > babel-plugin-jsx-control-statements > babel-core > babel-register > babel-core > babel-helpers > babel-template > babel-types > lodash:
+        patched: '2019-07-04T01:50:00.795Z'
+    - babel-preset-dev-toolkit > @babel/preset-env > @babel/plugin-proposal-async-generator-functions > @babel/helper-remap-async-to-generator > @babel/helper-wrap-function > @babel/traverse > @babel/helper-function-name > @babel/helper-get-function-arity > @babel/types > lodash:
+        patched: '2019-07-04T01:50:00.795Z'
+    - babel-preset-dev-toolkit > babel-plugin-jsx-control-statements > babel-core > babel-register > babel-core > babel-helpers > babel-template > babel-traverse > babel-types > lodash:
+        patched: '2019-07-04T01:50:00.795Z'
