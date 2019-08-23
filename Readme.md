@@ -7,6 +7,8 @@ Jump-start your <code>react</code>-powered Universal App<br />
 
 `dev-toolkit` provides you with an easy and quick way to get started with a pre-rendered & server-rendered app. After creating your starting point with the `init` command, you get full customisability out of the box.
 
+*Note: Please be aware that this project will be phased out as by 2020 and I'm only making minor additions at this time. I'm happy for you to keep using `dev-toolkit` if you wish and will respond to important Issues or PR-requests but they won't be my top-priority. I suggest you switch to an alternative such as [Next.js](https://github.com/zeit/next.js) or [razzle](https://github.com/jaredpalmer/razzle).*
+
 [![Travis branch](https://img.shields.io/travis/stoikerty/dev-toolkit/master.svg)](https://github.com/stoikerty/dev-toolkit)
 [![Vulnerabilities for dev-toolkit](https://snyk.io/test/github/stoikerty/dev-toolkit/badge.svg?targetFile=src%2Fpackages%2Fdev-toolkit%2Fpackage.json)](https://snyk.io/test/github/stoikerty/dev-toolkit?targetFile=src%2Fpackages%2Fdev-toolkit%2Fpackage.json)
 [![npm](https://img.shields.io/npm/v/dev-toolkit.svg)](https://www.npmjs.com/package/dev-toolkit)
