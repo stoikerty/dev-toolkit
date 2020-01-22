@@ -70,7 +70,7 @@
     "klaw-sync": "^3.0.2",
     "ora": "^2.1.0",
     "string-length": "^2.0.0",
-    "strip-comments": "^0.4.4",
+    "strip-comments": "^1.0.0",
     "webpack": "^4.20.2",
     "webpack-dev-middleware": "^3.4.0",
     "webpack-hot-middleware": "^2.24.3",
