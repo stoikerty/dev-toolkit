@@ -47,7 +47,7 @@
   },
   "dependencies": {
     "@babel/core": "^7.1.2",
-    "@babel/register": "^7.0.0",
+    "@babel/register": "^7.7.0",
     "file-exists": "^5.0.1"
   }
 }
