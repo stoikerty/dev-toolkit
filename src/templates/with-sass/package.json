@@ -30,7 +30,7 @@
     "sass-loader": "^6.0.7",
     "style-loader": "^0.20.3",
     "webpack": "^4.8.1",
-    "snyk": "^1.85.0"
+    "snyk": "^1.316.1"
   },
   "devDependencies": {
     "prettier": "^1.14.3"
