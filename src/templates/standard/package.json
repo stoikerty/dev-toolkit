@@ -13,7 +13,7 @@
   "dependencies": {
     "babel-preset-dev-toolkit": "^2.0.0",
     "clear-module": "^3.0.0",
-    "cross-env": "^5.2.0",
+    "cross-env": "^6.0.0",
     "dev-toolkit": "^7.2.0",
     "express": "^4.16.3",
     "express-handlebars": "^3.0.0",
