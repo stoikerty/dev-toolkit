@@ -39,7 +39,7 @@
     "@babel/preset-env": "^7.1.0",
     "@babel/preset-react": "^7.0.0",
     "@babel/runtime": "^7.1.2",
-    "babel-plugin-jsx-control-statements": "^3.2.8",
+    "babel-plugin-jsx-control-statements": "^4.0.0",
     "babel-plugin-module-resolver": "^3.1.1",
     "babel-plugin-transform-dynamic-import": "^2.1.0",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.18"
